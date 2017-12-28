@@ -27,7 +27,7 @@ export class StudentListComponent implements OnInit {
       {id:1,name:"Ryane",github:"ryanemax",sex:"male"},
       {id:2,name:"Liming",github:"liming",sex:"male"},
       {id:3,name:"Xiaohong",github:"xiaohong",sex:"female"}
-    ]
+    ];
   }
   addNewUser(){
     let uuid = Number(Math.random()*1000).toFixed(0);
