@@ -49,6 +49,14 @@ fix：解决项目BUG
 
 3. 点击左下角同步按钮
 
+# 作业指导
+作业详细要求：
+http://ng.futurestack.cn/chapter1/exam1-firstproject.php
+
+1. 完成选题与模拟数据填写
+2. 完成列表排序
+3. 完成界面样式美化
+
 # 作者
 - 姓名：Ryane Liu
 - Github：ryanemax
