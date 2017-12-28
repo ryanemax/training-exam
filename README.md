@@ -47,6 +47,8 @@ feat：提交新特性
 
 fix：解决项目BUG
 
+3. 点击左下角同步按钮
+
 # 作者
 - 姓名：Ryane Liu
 - Github：ryanemax
