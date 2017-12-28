@@ -14,13 +14,13 @@ interface User{
 })
 export class StudentListComponent implements OnInit {
   users:Array<User>;
-  constructor() { 
-    this.loadUsersData()
+  constructor() {
+    this.loadUsersData();
   }
   sortUsers(type){
     // 参考MDN中的ES6，Array语法
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
-    console.log("sortUsers Works!")
+    console.log("sortUsers Works!");
   }
   loadUsersData(){
     this.users = [
@@ -30,8 +30,9 @@ export class StudentListComponent implements OnInit {
     ]
   }
   addNewUser(){
+    let uuid = Number(Math.random()*1000).toFixed(0);
     let newUser:User = {
-      id:Number(Math.random()*1000).toFixed(0),
+      id:Number(uuid),
       name:"Jack",
       github:"Jack",
       sex:"male"
