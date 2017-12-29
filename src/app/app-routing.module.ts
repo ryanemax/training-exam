@@ -69,6 +69,11 @@ const routes: Routes = [
     path: 'flower',
     loadChildren: '../pages/flower/flower.module#FlowerModule',
   }
+  ,
+  {
+    path: 'personal-info',
+    loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
+  }
 ];
 
 @NgModule({
