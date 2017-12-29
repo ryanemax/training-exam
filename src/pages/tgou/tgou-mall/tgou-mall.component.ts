@@ -34,9 +34,9 @@ export class TgouMallComponent implements OnInit {
   }
   loadUsersData(){
     this.users = [
-      {id:1,name:"五粮液",github:"wuliangye",sex:"800"},
-      {id:2,name:"茅台",github:"maotai",sex:"2800"},
-      {id:3,name:"獐子岛海参",github:"zhangzidao",sex:"3000"}
+      {id:1,name:"五粮液",github:"wuliangye",sex:"¥1199.00"},
+      {id:2,name:"茅台",github:"maotai",sex:"¥1798.00"},
+      {id:3,name:"獐子岛海参",github:"zhangzidao",sex:"¥10899.00"}
     ];
   }
   addNewUser(){

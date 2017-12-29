@@ -1,8 +1,30 @@
 <h1>商品列表</h1>
 <button class="button button2" (click)="sortUsers('asc')">正序</button>
-<button class="button button2" (click)="sortUsers('desc')" >倒序</button>
+<button class="button button2" (click)="sortUsers('desc')">倒序</button>
 <button class="button button2" (click)="sortUsers('random')">随机</button>
 <button class="button button2" (click)="addNewUser()">新增商品</button>
 <ul>
-  <li *ngFor="let user of users"><span (click)="deleteUserByID(user.id)">[删除]</span> GOODSID:{{user.id}}，商品名：{{user.name}}，英文名：{{user.github}}，价格：{{user.sex}}</li>
+  <li *ngFor="let user of users">
+    <span (click)="deleteUserByID(user.id)">[删除]</span>
+    GOODSID:{{user.id}}，商品名：{{user.name}}，英文名：{{user.github}}，价格：{{user.sex}}
+  </li>
+
+  <div class="productImg-wrap">
+    <img src="//img.alicdn.com/bao/uploaded/i4/TB1gu4vKFXXXXXYXpXXXXXXXXXX_!!0-item_pic.jpg_b.jpg">
+    <p class="productPrice">
+      <em title="1199.00">
+        <b>¥</b>1199.00</em>
+    </p>
+    <img src="//img.alicdn.com/bao/uploaded/i3/3532929347/TB2qGlPfx6I8KJjSszfXXaZVXXa_!!3532929347.jpg_b.jpg">
+    <p class="productPrice">
+      <em title="1798.00">
+        <b>¥</b>1798.00</em>
+    </p>
+    <img src="//img.alicdn.com/bao/uploaded/i1/1579528508/TB28gDFmWigSKJjSsppXXabnpXa_!!1579528508.jpg_b.jpg">
+    <p class="productPrice">
+      <em title="10899.00">
+        <b>¥</b>10899.00</em>
+    </p>
+  </div>
+
 </ul>
