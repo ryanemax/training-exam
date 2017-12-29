@@ -13,8 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
-
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
+
+  },
+  {
+    path: 'book',
+    loadChildren: '../pages/book/book.module#BookModule',
   },
   {
     path: 'lipstick',
@@ -26,11 +30,11 @@ const routes: Routes = [
   },
   {
     path: 'warehouse-goods',
-    loadChildren: './warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
+    loadChildren: '../pages/warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
   },
   {
     path: 'trips-number',
-    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+    loadChildren: '../pages/trips-number/trips-number.module#TripsNumberModule',
   },
   {
     path: 'tgou',
@@ -46,12 +50,20 @@ const routes: Routes = [
   },
   {
     path: 'ws-goods',
-    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+    loadChildren: '../pages/ws-goods/ws-goods.module#WsGoodsModule',
   }
   ,
   {
     path: 'inv-material',
     loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
+  },
+  {
+    path: 'decoration-engineering-management',
+    loadChildren: '../pages/decoration-engineering-management/decoration-engineering-management.module#DecorationEngineeringManagementModule',
+  },
+  {
+    path: 'weather-data',
+    loadChildren: '../pages/weather-data/weather-data.module#WeatherDataModule',
   }
   ,
   {
