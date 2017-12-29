@@ -13,7 +13,7 @@
   描述：{{item.description}}
 </div>
 <div class="llc-item-list-count">
-  库存{{item.count}}
+  库存{{item.count | invTok}}
 </div>
 <div class="tar" (click)='deleteById(item.id)'>
   <span class="llc-item-list-del">x</span>
