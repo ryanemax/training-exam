@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TgouMallComponent } from './tgou-mall.component';
+import { CinematicketHomeComponent } from './cinematicket-home.component';
 
-describe('TgouMallComponent', () => {
-  let component: TgouMallComponent;
-  let fixture: ComponentFixture<TgouMallComponent>;
+describe('CinematicketHomeComponent', () => {
+  let component: CinematicketHomeComponent;
+  let fixture: ComponentFixture<CinematicketHomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TgouMallComponent ]
+      declarations: [ CinematicketHomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TgouMallComponent);
+    fixture = TestBed.createComponent(CinematicketHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
