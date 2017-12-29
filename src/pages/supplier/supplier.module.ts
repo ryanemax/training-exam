@@ -6,7 +6,7 @@ import { SupplierListComponent } from './supplier-list/supplier-list.component';
 
 @NgModule({
   imports: [
-    CommonModule，
+    CommonModule,
     RouterModule.forChild([
       { path: '', component: SupplierListComponent, pathMatch: 'full' },
     ])
