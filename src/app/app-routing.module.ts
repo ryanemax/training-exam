@@ -58,8 +58,8 @@ const routes: Routes = [
     loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
   },
   {
-    path: 'decoration-engineering-management',
-    loadChildren: '../pages/decoration-engineering-management/decoration-engineering-management.module#DecorationEngineeringManagementModule',
+    path: 'engineeringManagement',
+    loadChildren: '../pages/engineeringManagement/engineering-management.module#EngineeringManagementModule',
   },
   {
     path: 'weather-data',
@@ -69,6 +69,10 @@ const routes: Routes = [
   {
     path: 'personal-info',
     loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
+  },
+  {
+    path: 'supplier',
+    loadChildren: '../pages/supplier/supplier.module#SupplierModule'
   }
 ];
 
@@ -76,4 +80,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
