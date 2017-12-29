@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'bigdata',
     loadChildren: './bigdata/bigdata.module#BigdataModule',
+  },
+  {
+    path: 'eightstock',
+    loadChildren: './eightstock/eightstock.module#EightstockModule',
   }
 ];
 
