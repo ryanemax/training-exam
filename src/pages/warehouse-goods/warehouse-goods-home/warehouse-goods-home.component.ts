@@ -74,6 +74,7 @@ export class WarehouseGoodsHomeComponent implements OnInit {
     })
   }
 
+
   ngOnInit() {
   }
 
