@@ -13,8 +13,20 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
-
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
+
+  },
+  {
+    path: 'book',
+    loadChildren: '../pages/book/book.module#BookModule',
+  },
+  {
+    path: 'lipstick',
+    loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
+  },
+  {
+    path: 'kqgl',
+    loadChildren: '../pages/kqgl/kqgl.module#KqglModule',
   },
   {
     path: 'warehouse-goods',
@@ -22,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'trips-number',
-    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+    loadChildren: '../pages/trips-number/trips-number.module#TripsNumberModule',
   },
   {
     path: 'tgou',
