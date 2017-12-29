@@ -3,6 +3,10 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { StudentListComponent } from '../student-list/student-list.component';
 import { StudentDetailComponent } from '../student-detail/student-detail.component';
+import { StudentItemComponent } from '../student-item/student-item.component';
+import { ToKPipe } from '../to-k.pipe';
+import { ActButtonDirective } from '../act-button.directive';
+import { ActCardDirective } from '../act-card.directive';
 
 @NgModule({
   imports: [
@@ -12,6 +16,12 @@ import { StudentDetailComponent } from '../student-detail/student-detail.compone
       { path: 'detail', component: StudentDetailComponent, pathMatch: 'full' }
     ])
   ],
-  declarations: [StudentListComponent, StudentDetailComponent]
+  declarations: [
+    StudentListComponent,
+    StudentDetailComponent,
+    StudentItemComponent,
+    ToKPipe,
+    ActButtonDirective,
+    ActCardDirective]
 })
 export class StudentModule { }

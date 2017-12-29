@@ -1,0 +1,26 @@
+<li class="col-3">
+  <div class="llc-student-list-id">
+    ID:{{user.id}}
+
+  </div>
+  <div class="llc-student-list-id">
+    生日：
+
+    {{birthday | date}}
+  </div>
+  <div class="llc-student-list-name">
+    姓名：{{user.name | toK}}
+  </div>
+  <div class="llc-student-list-git">
+    Github：{{user.github}}
+  </div>
+  <div class="llc-student-list-sex">
+    性别：{{showSexName(user.sex)}}
+  </div>
+  <div class="llc-student-list-count">
+    粉丝数：{{user.count | toK}}
+  </div>
+  <div class="tar" (click)='deleteById(user.id)'>
+    <span class="llc-student-list-del">x</span>
+  </div>
+</li>

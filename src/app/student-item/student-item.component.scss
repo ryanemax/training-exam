@@ -1,40 +1,17 @@
 
-.llc-btn {
-    padding: 5px 15px;
-    border: 0 none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 30px;
-    background-color: #448AFF;
-    color: #fff;
-    cursor: pointer;
-    outline: 0 none;
-  }
-  
-  .llc-btn:active {
-    opacity: .8;
-  }
-  
-  .llc-student-list {
-    padding-left: 0;
-    display: flex;
-    flex-flow: row wrap;
-  }
-  
-  .llc-student-list li {
+  li {
     position: relative;
     padding: 10px;
     margin-bottom: 15px;
     margin-right: 10px;
-    width: calc((100% / 3) - 40px);
+    width: 100px;
     display: inline-block;
     list-style: none;
     border: 1px solid #BDBDBD;
     border-radius: 4px;
   }
   
-  .llc-student-list li:hover {
+  li:hover {
     background-color: #B3E5FC;
   }
   
@@ -65,8 +42,3 @@
   .llc-student-list-sex {
     margin-bottom: 10px;
   }
-  
-  .tar {
-    text-align: right;
-  }
-  

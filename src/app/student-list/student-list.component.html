@@ -1,8 +1,32 @@
-<h1>学生列表</h1>
-<button (click)="sortUsers('asc')">正序</button>
-<button (click)="sortUsers('desc')" >倒序</button>
-<button (click)="sortUsers('random')">随机</button>
-<button (click)="addNewUser()">新增学生</button>
-<ul>
-  <li *ngFor="let user of users"><span (click)="deleteUserByID(user.id)">[删除]</span> ID:{{user.id}}，姓名：{{user.name}}，Github：{{user.github}}，性别：{{user.sex}}</li>
+<h1>学生列表(共：{{9939491293 | toK}}人)</h1>
+<div>
+<h1>已选择的用户</h1>
+<app-student-item [user]="selectedUser"></app-student-item>
+</div>
+
+<button appActButton class="llc-btn" (click)="sortUsers('asc')">正序</button>
+<button appActButton class="llc-btn" (click)="sortUsers('desc')" >倒序</button>
+<button appActButton class="llc-btn" (click)="sortUsers('random')">随机</button>
+<button appActButton class="llc-btn" (click)="addNewUser()">新增学生</button>
+<ul class="llc-student-list">
+  <!-- <li *ngFor="let user of users" class="col-3">
+    <div class="llc-student-list-id">
+      ID:{{user.id}}
+    </div>
+    <div class="llc-student-list-name">
+      姓名：{{user.name}}
+    </div>
+    <div class="llc-student-list-git">
+      Github：{{user.github}}
+    </div>
+    <div class="llc-student-list-sex">
+      Github：{{user.sex}}
+    </div>
+    <div class="tar">
+      <span (click)="deleteUserByID(user.id)" class="llc-student-list-del">x</span>
+    </div>
+  </li> -->
+
+  <app-student-item appActCard [user]="user" *ngFor="let user of users"></app-student-item>
+
 </ul>

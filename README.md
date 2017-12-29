@@ -1,9 +1,10 @@
 # 学员管理
-- ryane-exam
+- training-exam
 
-用于管理学员学习状况数据
+# Day 2 作业参考
 
-# 提交作业流程
+# Day 1 作业参考
+## 提交作业流程
 1. 确保ng serve项目启动正常
 2. 显示隐藏文件，删除项目根目录.git文件夹
 3. 编写自己的README.md文件，描述项目信息
@@ -26,7 +27,7 @@ git remote add origin https://github.com/ryanemax/ryane-exam.git
 git push -u origin master
 ```
 
-# 如何克隆一个已有项目？
+## 如何克隆一个已有项目？
 ``` sh
 ## 克隆项目文件
 git clone https://github.com/ryanemax/ryane-exam
@@ -37,7 +38,7 @@ cnpm install
 ## 启动项目
 ```
 
-# 如何提交新的更改到版本库？
+## 如何提交新的更改到版本库？
 1. 保存所有更改文件，ng serve确认正常启动
 2. 在左侧源码管理，填写备注信息
     - feat: new xxxx
@@ -49,7 +50,7 @@ fix：解决项目BUG
 
 3. 点击左下角同步按钮
 
-# 作业指导
+## 作业指导
 作业详细要求：
 http://ng.futurestack.cn/chapter1/exam1-firstproject.php
 
