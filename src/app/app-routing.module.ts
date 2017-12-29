@@ -15,6 +15,11 @@ const routes: Routes = [
     path: 'bigdata',
     loadChildren: './bigdata/bigdata.module#BigdataModule',
   }
+  ,
+  {
+    path: 'inv-material',
+    loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
+  }
 ];
 
 @NgModule({
