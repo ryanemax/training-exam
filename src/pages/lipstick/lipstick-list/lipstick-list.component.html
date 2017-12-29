@@ -1,3 +1,26 @@
-<p>
-  lipstick-list works!
-</p>
+<h1>热门口红推荐</h1>
+<button >正序</button>
+<button >倒序</button>
+<button >新增商品</button>
+<table width="100%"  border="solid" style="margin:10px">
+  <tr>
+    <th>删除</th>
+    <th>ID</th>
+    <th>名称</th>
+    <th>品牌</th>
+    <th>色号</th>
+    <th>价位</th>
+    <th>销售量</th>
+    <th>简介</th>
+  </tr>
+  <tr *ngFor="let lipstick of lipsticks" >
+    <td ><span (click)="deleteLipstickByID(lipstick.id)">[删除]</span></td>
+    <td >{{lipstick.id}}</td>
+    <td >{{lipstick.name}}</td>
+    <td >{{lipstick.brand}}</td>
+    <td>{{lipstick.colorNumber}}</td>
+    <td>{{lipstick.price}}</td>        
+    <td>{{lipstick.soldNumber}}</td>
+    <td>{{lipstick.introduction}}</td>
+  </tr>
+</table>
