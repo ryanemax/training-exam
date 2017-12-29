@@ -9,7 +9,7 @@ import { ButtonComponent } from './button/button.component';
     CommonModule,
     RouterModule.forChild([
       { path: '', component: FlowerHomeComponent, pathMatch: 'full' },
-      { path: '', component: ButtonComponent, pathMatch: 'full' },
+    
     ])
   ],
   declarations: [FlowerHomeComponent,ButtonComponent]
