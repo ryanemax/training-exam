@@ -8,16 +8,28 @@ const routes: Routes = [
   },
   {
     path: 'student',
-    loadChildren: './student/student.module#StudentModule',
+    loadChildren: '../pages/student/student.module#StudentModule',
     // data: { title: "主页" }
   },
   {
     path: 'bigdata',
-    loadChildren: './bigdata/bigdata.module#BigdataModule',
+    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   },
   {
     path: 'trips-number',
     loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+  },
+  {
+    path: 'tgou',
+    loadChildren: './tgou/tgou.module#TgouModule',
+  },
+  {
+    path: 'eightstock',
+    loadChildren: '../pages/eightstock/eightstock.module#EightstockModule',
+  },
+  {
+    path: 'lms',
+    loadChildren: '../pages/lms/lms.module#LmsModule',
   }
 ];
 
