@@ -69,6 +69,10 @@ const routes: Routes = [
   {
     path: 'personal-info',
     loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
+  },
+  {
+    path: 'supplier',
+    loadChildren: '../pages/supplier/supplier.module#SupplierModule'
   }
 ];
 
