@@ -50,16 +50,12 @@ const routes: Routes = [
   },
   {
     path: 'ws-goods',
-    loadChildren: '../pages/ws-goods.module#WsGoodsModule',
+    loadChildren: '../pages/ws-goods/ws-goods.module#WsGoodsModule',
   }
   ,
   {
     path: 'inv-material',
     loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
-  },
-  {
-    path: 'decoration-engineering-management',
-    loadChildren: '../pages/decoration-engineering-management/decoration-engineering-management.module#DecorationEngineeringManagementModule',
   }
 ];
 
