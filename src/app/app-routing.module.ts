@@ -30,6 +30,15 @@ const routes: Routes = [
   {
     path: 'lms',
     loadChildren: '../pages/lms/lms.module#LmsModule',
+  },
+  {
+    path: 'ws-goods',
+    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+  }
+  ,
+  {
+    path: 'inv-material',
+    loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
   }
 ];
 
