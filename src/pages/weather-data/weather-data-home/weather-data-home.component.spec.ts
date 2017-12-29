@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TgouMallComponent } from './tgou-mall.component';
+import { WeatherDataHomeComponent } from './weather-data-home.component';
 
-describe('TgouMallComponent', () => {
-  let component: TgouMallComponent;
-  let fixture: ComponentFixture<TgouMallComponent>;
+describe('WeatherDataHomeComponent', () => {
+  let component: WeatherDataHomeComponent;
+  let fixture: ComponentFixture<WeatherDataHomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TgouMallComponent ]
+      declarations: [ WeatherDataHomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TgouMallComponent);
+    fixture = TestBed.createComponent(WeatherDataHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
