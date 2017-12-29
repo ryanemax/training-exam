@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
+interface User {
+  id: number,
+  name: string,
+  sex: string,
+  score: number
+}
+
 @Component({
   selector: 'app-lms-home',
   templateUrl: './lms-home.component.html',
-  styleUrls: ['./lms-home.component.scss']
+  styleUrls: ['./lms-home.component.scss', './style.css']
 })
 export class LmsHomeComponent implements OnInit {
 
@@ -12,4 +19,5 @@ export class LmsHomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  
 }
