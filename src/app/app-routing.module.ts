@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'lms',
-    loadChildren: './lms/lms.module#LmsModule',
+    loadChildren: '../pages/lms/lms.module#LmsModule',
   }
 ];
 
