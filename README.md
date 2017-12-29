@@ -1,4 +1,4 @@
-# 学员管理
+﻿# 学员管理
 - training-exam
 
 # Day 2 作业参考
@@ -24,7 +24,7 @@ ng g module bigdata
 ng g component bigdata-home --module bigdata
 ```
 
-## 如何给特性模块配置路由？
+## 如何给特性模块配置路由？   module.ts
 - 引入关键的Module库
 ```
 import { Routes, RouterModule } from '@angular/router';
@@ -47,6 +47,14 @@ RouterModule.forChild([
 ```
 
 ## 如何正确调整特性模块目录结构？
+文件复制：
+- 所有的特性Module与Component文件，复制到/src/pages文件夹内
+- 所有的Component文件，复制到/src/pages/<module>/文件夹内
+- 所有的通用构造块（Pipe、Directive），复制到/src/pages/<module>/sharing/文件夹内
+
+路径修改：
+- /src/app/app-routing.module.ts loadChildren路径
+- /src/pages/<module>/<module>.module.ts 引用路径
 
 # Day 1 作业参考
 ## 提交作业流程
@@ -102,6 +110,14 @@ http://ng.futurestack.cn/chapter1/exam1-firstproject.php
 1. 完成选题与模拟数据填写
 2. 完成列表排序
 3. 完成界面样式美化
+
+## commit描述规范
+- <type>:<decs>(issue)
+
+示例：
+- feat:new module student & new comp student-list
+- fix:student-item comp can't show bg
+- chrone:optimization of file structure
 
 # 作者
 - 姓名：Ryane Liu

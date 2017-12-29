@@ -1,0 +1,21 @@
+<h1>仓库货源管理</h1>
+<button (click)="sortUsers('asc')">正序</button>
+<button (click)="sortUsers('desc')" >倒序</button>
+<button (click)="mySort()">随机</button>
+<button (click)="addNewUser()">新增商品</button>
+<table width="100%"  border="solid">
+  <tr>
+    <th>删除</th>
+    <th>ID</th>
+    <th>商品名</th>
+    <th>商品别名</th>
+    <th>仓库所在地</th>
+  </tr>
+  <tr *ngFor="let user of users" >
+    <td ><span (click)="deleteUserByID(user.id)">[删除]</span></td>
+    <td >{{user.id}}</td>
+    <td >{{user.name}}</td>
+    <td >{{user.detailName}}</td>
+  <td>{{user.address}}</td>
+  </tr>
+</table>
