@@ -17,6 +17,14 @@ const routes: Routes = [
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   },
   {
+    path: 'lipstick',
+    loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
+  },
+  {
+    path: 'kqgl',
+    loadChildren: '../pages/kqgl/kqgl.module#KqglModule',
+  },
+  {
     path: 'warehouse-goods',
     loadChildren: './warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
   },
