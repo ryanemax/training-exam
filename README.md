@@ -2,6 +2,20 @@
 - training-exam
 
 # Day 2 作业参考
+## 如何加入版本库？
+- 注册Github：https://github.com
+- 将账号发在微信群
+
+``` sh
+git clone https://github.com/ryanemax/training-exam
+
+cd training-exam
+
+cnpm install
+
+ng serve
+```
+
 ## 如何创建一个特性模块，添加构造块？
 
 ``` sh
