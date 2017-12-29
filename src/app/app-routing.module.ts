@@ -47,10 +47,6 @@ const routes: Routes = [
   {
     path: 'lms',
     loadChildren: '../pages/lms/lms.module#LmsModule',
-  },
-  {
-    path: 'ws-goods',
-    loadChildren: '../pages/ws-goods.module#WsGoodsModule',
   }
   ,
   {
@@ -60,6 +56,10 @@ const routes: Routes = [
   {
     path: 'decoration-engineering-management',
     loadChildren: '../pages/decoration-engineering-management/decoration-engineering-management.module#DecorationEngineeringManagementModule',
+  },
+  {
+    path: 'supplier',
+    loadChildren: '../pages/supplier/supplier.module#SupplierModule'
   }
 ];
 
