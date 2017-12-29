@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   },
   {
+    path: 'trips-number',
+    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+  },
+  {
     path: 'tgou',
     loadChildren: '../pages/tgou/tgou.module#TgouModule',
   },
@@ -26,6 +30,15 @@ const routes: Routes = [
   {
     path: 'lms',
     loadChildren: '../pages/lms/lms.module#LmsModule',
+  },
+  {
+    path: 'ws-goods',
+    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+  }
+  ,
+  {
+    path: 'inv-material',
+    loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
   }
 ];
 
