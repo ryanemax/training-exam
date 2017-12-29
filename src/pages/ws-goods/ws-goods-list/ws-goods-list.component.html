@@ -9,7 +9,7 @@
 <button  class="llc-btn" (click)="sortGoods('random')">随机</button>
 <!--<button appActButton class="llc-btn" (click)="addNewGoods()">新增学生</button>-->
 <ul class="llc-student-list">
-   <li *ngFor="let goods of goodsList" class="col-3">
+   <!--<li *ngFor="let goods of goodsList" class="col-3">
     <div class="llc-student-list-id">
       商品番号:{{goods.goods_no}}
     </div>
@@ -24,12 +24,12 @@
     </div>
     <div class="llc-student-list-sex">
       在库数量：{{goods.wsCnt}}
-    </div>
+    </div>-->
     <!-- <div class="tar">
       <span class="llc-student-list-del">x</span>
-    </div>-->
-  </li>
+    </div>
+  </li>-->
 
- <!-- <app-student-item appActCard [user]="user" *ngFor="let user of Goods"></app-student-item> -->
+  <app-ws-good-list-item [goods]="goods" *ngFor="let goods of goodsList"></app-ws-good-list-item> 
 
 </ul>
