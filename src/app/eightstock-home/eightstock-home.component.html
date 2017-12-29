@@ -1,0 +1,28 @@
+<h1>个人自选股票列表</h1>
+<button (click)="sortUsers('asc')">价格正序</button>
+<button (click)="sortUsers('desc')" >价格倒序</button>
+<button (click)="sortUsers('random')">随机排序</button>
+<button (click)="addNewUser()">新增自选股</button>
+<hr>
+<div style="width: 100%;">
+<table style="width: 100%;">
+    <thead style="width: 100%;">
+      <tr style="width: 100%;">
+        <th class="col-m-2">删除股票</th>
+        <th class="col-m-2">股票代码</th>
+        <th class="col-m-3">股票名称</th>
+        <th class="col-m-2">最新价格</th>
+        <th class="col-m-3">成交手数</th>
+      </tr>
+    </thead>
+    <tbody style="width: 100%;">
+      <tr style="width: 100%;" *ngFor="let user of users">
+        <td style="text-align: center;"><button (click)="deleteUserByID(user.id)">删除</button></td>
+        <td style="text-align: center;">{{user.id}}</td>
+        <td style="text-align: center;">{{user.name}}</td>
+        <td style="text-align: center;">{{user.price}}</td>
+        <td style="text-align: center;">{{user.nums}}</td>
+      </tr>
+    </tbody>
+</table>
+</div>
