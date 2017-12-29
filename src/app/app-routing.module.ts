@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'tgou',
-    loadChildren: './tgou/tgou.module#TgouModule',
+    loadChildren: '../pages/tgou/tgou.module#TgouModule',
   },
   {
     path: 'eightstock',
