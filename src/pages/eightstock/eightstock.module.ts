@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { EightstockHomeComponent } from '../eightstock-home/eightstock-home.component';
+import { EightstockHomeComponent } from './eightstock-home/eightstock-home.component';
 
 @NgModule({
   imports: [
