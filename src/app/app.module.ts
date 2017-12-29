@@ -6,10 +6,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { ButtonDirective } from './button.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ButtonDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-
 import { LmsHomeComponent } from './lms-home/lms-home.component';
 import { LmsStudentComponent } from './lms-student/lms-student.component';
 import { LmsClassComponent } from './lms-class/lms-class.component';
