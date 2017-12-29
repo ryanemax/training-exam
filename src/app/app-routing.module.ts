@@ -65,6 +65,11 @@ const routes: Routes = [
     path: 'weather-data',
     loadChildren: '../pages/weather-data/weather-data.module#WeatherDataModule',
   }
+  ,
+  {
+    path: 'personal-info',
+    loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
+  }
 ];
 
 @NgModule({
