@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FlowerHomeComponent } from './flower-home/flower-home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
-
+import { ButtonDirective } from './sharing/button.directive';
 @NgModule({
   imports: [
     CommonModule,
