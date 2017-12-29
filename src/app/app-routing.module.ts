@@ -56,7 +56,7 @@ const routes: Routes = [
   ,
   {
     path: 'personal-info',
-    loadChildren: './pages/personal-info/personal-info.module#PersonalInfoModule',
+    loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
   }
 ];
 
