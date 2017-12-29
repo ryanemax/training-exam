@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'student',
-    loadChildren: './student/student.module#StudentModule',
+    loadChildren: '../pages/student/student.module#StudentModule',
     // data: { title: "主页" }
   },
   {
@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'tgou',
     loadChildren: './tgou/tgou.module#TgouModule',
+  },
+  {
+    path: 'eightstock',
+    loadChildren: './eightstock/eightstock.module#EightstockModule',
+  },
+  {
+    path: 'lms',
+    loadChildren: './lms/lms.module#LmsModule',
   }
 ];
 
