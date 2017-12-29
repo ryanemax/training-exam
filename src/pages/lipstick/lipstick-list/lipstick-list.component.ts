@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-// import { interpolate } from '../../../../node_modules/_@angular_core@5.0.0@@angular/core/src/view/util';
+import { interpolate } from '../../../../node_modules/_@angular_core@5.0.0@@angular/core/src/view/util';
 
 interface Lipstick{
-  id:number,
-  name:string,
-  brand:string,
-  colorNumber:string,
-  price:number,
-  soldNumber:number,
-  introduction:string
+  id:number;
+  name:string;
+  brand:string;
+  colorNumber:string;
+  price:number;
+  soldNumber:number;
+  introduction:string;
 }
 
 @Component({
