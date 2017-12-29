@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
 interface User {
-  id: number,
-  name: string,
-  github: string,
-  sex: string,
-  count: number
+  id: number;
+  name: string;
+  github: string;
+  sex: string;
+  count: number;
 }
 
 @Component({
@@ -32,7 +32,7 @@ export class StudentListComponent implements OnInit {
   sortUsers(type) {
     // 参考MDN中的ES6，Array语法
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
-    if (type == 'asc') {
+    if (type === 'asc') {
       this.users.sort(function (a, b) {
         if (a.id > b.id) {
           return 1;
@@ -44,7 +44,7 @@ export class StudentListComponent implements OnInit {
       });
     }
 
-    if (type == 'desc') {
+    if (type === 'desc') {
       this.users.sort(function (a, b) {
         if (a.id > b.id) {
           return -1;
@@ -56,7 +56,7 @@ export class StudentListComponent implements OnInit {
       });
     }
 
-    if(type == 'random') {
+    if(type === 'random') {
       for(let i=0, len=this.users.length; i<len; i++){
         let rand = Number(Math.random()*len).toFixed(0);
         let temp = this.users[rand];
@@ -91,7 +91,7 @@ export class StudentListComponent implements OnInit {
 
   deleteUserByID(id) {
     this.users.forEach((user, index, arr)=> {
-      if (user.id == id) {
+      if (user.id === id) {
         arr.splice(index, 1);
       }
     })

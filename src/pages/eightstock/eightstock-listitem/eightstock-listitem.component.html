@@ -1,0 +1,23 @@
+<div class="col-12">
+    <table class="col-12" style="margin-bottom:1px;border:1px #888888; border-radius: 4px;">
+        <tr class="col-12" style="color:red" *ngIf="stock.change>=0">
+                <td class="col-2" style="text-align: center;">{{stock.id}}</td>
+                <td class="col-2" style="text-align: center;">{{stock.name}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.price}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.change}}</td>
+                <td class="col-2" style="text-align: center;">{{stock.volume}}手</td>
+                <td class="col-2" style="text-align: center;">{{stock.amount}}亿元</td>
+                <td class="col-2" style="text-align: center;">{{stock.marketValue}}亿元</td>
+        </tr>
+        <tr class="col-12" style="color:rgb(3, 94, 3)" *ngIf="stock.change<0">
+            <td class="col-2" style="text-align: center;">{{stock.id}}</td>
+            <td class="col-2" style="text-align: center;">{{stock.name}}</td>
+            <td class="col-1" style="text-align: center;">{{stock.price}}</td>
+            <td class="col-1" style="text-align: center;">{{stock.change}}</td>
+            <td class="col-2" style="text-align: center;">{{stock.volume}}手</td>
+            <td class="col-2" style="text-align: center;">{{stock.amount}}亿元</td>
+            <td class="col-2" style="text-align: center;">{{stock.marketValue}}亿元</td>
+        </tr>
+    </table>
+</div>
+<hr>
