@@ -21,11 +21,11 @@ const routes: Routes = [
   },
   {
     path: 'eightstock',
-    loadChildren: './eightstock/eightstock.module#EightstockModule',
+    loadChildren: '../pages/eightstock/eightstock.module#EightstockModule',
   },
   {
     path: 'lms',
-    loadChildren: './lms/lms.module#LmsModule',
+    loadChildren: '../pages/lms/lms.module#LmsModule',
   }
 ];
 
