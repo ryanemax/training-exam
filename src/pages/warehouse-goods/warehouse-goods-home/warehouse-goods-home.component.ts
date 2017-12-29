@@ -51,9 +51,9 @@ export class WarehouseGoodsHomeComponent implements OnInit {
 
   loadUsersData(){
     this.users = [
-      {id:1,name:"小火锅",detailName:"四川小火锅",address:"成都"},
+      {id:1,name:"小火锅",detailName:"四川小火锅123123",address:"成都"},
       {id:2,name:"洗面奶",detailName:"自然堂洗面奶",address:"北京"},
-      {id:3,name:"洗发水",detailName:"潘婷洗发水",address:"上海"}
+      {id:3,name:"洗发水",detailName:"潘婷洗发水最新第二代升级产品",address:"上海"}
     ];
   }
   addNewUser(){
