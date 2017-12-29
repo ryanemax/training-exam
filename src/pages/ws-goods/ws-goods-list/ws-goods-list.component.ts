@@ -15,7 +15,7 @@ interface goods(){
 export class WsGoodsListComponent implements OnInit {
   goodsList:Array<goods>;
   constructor() { 
-    loadGoodsList()；
+    loadGoodsList();
   }
 
   loadGoodsList(){
