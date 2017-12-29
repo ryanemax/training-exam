@@ -13,6 +13,7 @@ interface Flower{
 })
 export class FlowerHomeComponent implements OnInit {
   flowers:Array<Flower>;
+  selectedFlower:Flower;
   constructor() { 
     this.loadFlowersData();
   }
@@ -51,6 +52,9 @@ export class FlowerHomeComponent implements OnInit {
         arr.splice(index,1);
       }
     })
+  }
+  selectFlower(flower){
+    this.selectedFlower=flower;
   }
   ngOnInit() {
   }

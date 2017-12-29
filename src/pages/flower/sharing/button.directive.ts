@@ -4,7 +4,7 @@ import { Directive,ElementRef} from '@angular/core';
   selector: '[appButton]'
 })
 export class ButtonDirective {
-
-  constructor() { }
-  
+  constructor(el:ElementRef){
+    el.nativeElement.style.background = "yellow";
+  }
 }

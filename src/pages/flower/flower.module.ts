@@ -4,6 +4,7 @@ import { FlowerHomeComponent } from './flower-home/flower-home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
 import { ButtonDirective } from './sharing/button.directive';
+import { ToKPipe } from './sharing/to-k.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -12,6 +13,6 @@ import { ButtonDirective } from './sharing/button.directive';
     
     ])
   ],
-  declarations: [FlowerHomeComponent,ButtonComponent,ButtonDirective]
+  declarations: [FlowerHomeComponent,ButtonComponent,ButtonDirective,ToKPipe]
 })
 export class FlowerModule { }
