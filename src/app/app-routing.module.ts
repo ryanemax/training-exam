@@ -50,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'ws-goods',
-    loadChildren: '../pages/ws-goods.module#WsGoodsModule',
+    loadChildren: '../pages/ws-goods/ws-goods.module#WsGoodsModule',
   }
   ,
   {
