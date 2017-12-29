@@ -8,12 +8,12 @@ const routes: Routes = [
   },
   {
     path: 'student',
-    loadChildren: './student/student.module#StudentModule',
+    loadChildren: '../pages/student/student.module#StudentModule',
     // data: { title: "主页" }
   },
   {
     path: 'bigdata',
-    loadChildren: './bigdata/bigdata.module#BigdataModule',
+    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   }
 ];
 
