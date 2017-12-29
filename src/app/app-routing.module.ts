@@ -53,6 +53,11 @@ const routes: Routes = [
     path: 'inv-material',
     loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
   }
+  ,
+  {
+    path: 'personal-info',
+    loadChildren: './pages/personal-info/personal-info.module#PersonalInfoModule',
+  }
 ];
 
 @NgModule({
