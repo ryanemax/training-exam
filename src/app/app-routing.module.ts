@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'eightstock',
-    loadChildren: './eightstock/eightstock.module#EightstockModule',
+    loadChildren: '../pages/eightstock/eightstock.module#EightstockModule',
   },
   {
     path: 'lms',

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PercentPipe } from '@angular/common/src/pipes/number_pipe';
 
 interface User{
   id:number,
@@ -6,6 +7,15 @@ interface User{
   price:number,
   nums:number
 }
+interface MarketIndex{
+  id:number,
+  name:string,
+  price:number,
+  percent:number
+  total:number
+}
+
+
 
 @Component({
   selector: 'app-eightstock-home',
@@ -15,6 +25,7 @@ interface User{
 export class EightstockHomeComponent implements OnInit {
 
   users:Array<User>;
+  marketIndex:Array<MarketIndex>;
   constructor() { 
     this.loadUsersData()
   }
@@ -51,17 +62,27 @@ export class EightstockHomeComponent implements OnInit {
   }
   loadUsersData(){
     this.users = [
-      {id:6000,name:"浦发银行",price:10,nums:123},
-      {id:6004,name:"白云机场",price:19,nums:555},
-      {id:6006,name:"东风汽车",price:6,nums:7575},
-      {id:6007,name:"中国国贸",price:14,nums:65412},
-      {id:6008,name:"首创股份",price:13,nums:9951},
-      {id:6009,name:"上海机场",price:31,nums:987},
+      {id:600000,name:"浦发银行",price:10,nums:123},
+      {id:600004,name:"白云机场",price:19,nums:555},
+      {id:600006,name:"东风汽车",price:6,nums:7575},
+      {id:600007,name:"中国国贸",price:14,nums:65412},
+      {id:600008,name:"首创股份",price:13,nums:9951},
+      {id:600009,name:"上海机场",price:31,nums:987},
    
-    ]
+    ];
+    this.marketIndex = [
+      {id:1,name:"上证指数",price:3301,percent:4.09,total:123},
+      {id:1,name:"深证成指",price:10089,percent:13.09,total:123},
+      {id:1,name:"创业板指",price:1748,percent:1.09,total:123},
+
+  //     <td class="col-4 market-index"> 3301 +4.09 0.65% 1523.42亿</td>
+  // <td class="col-4 market-index"> 10089 +13.09 0.17% 3023.96亿</td>
+  // <td class="col-4 market-index"> 1748 -1.09 0.25% 567.60亿</td>
+   
+    ];
   }
   addNewUser(){
-    let uuid = Number(Math.random()*10000).toFixed(0); 
+    let uuid = Number(Math.random()*1000000).toFixed(0); 
     let newprice = Number(Math.random()*100).toFixed(0); 
     let newNums = Number(Math.random()*1000).toFixed(0); 
     let newUser:User = { 
