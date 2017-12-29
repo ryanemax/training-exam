@@ -13,7 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
+
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
+  },
+  {
+    path: 'warehouse-goods',
+    loadChildren: './warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
   },
   {
     path: 'trips-number',
