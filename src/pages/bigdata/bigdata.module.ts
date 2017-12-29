@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { BigdataHomeComponent } from '../bigdata-home/bigdata-home.component';
+import { BigdataHomeComponent } from './bigdata-home/bigdata-home.component';
 
 @NgModule({
   imports: [
