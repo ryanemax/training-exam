@@ -11,7 +11,7 @@
     <th>商品别名</th>
     <th>仓库所在地</th>
   </tr>
-  <tr *ngFor="let user of users">
+  <tr *ngFor="let user of users;let i = index;" [style.backgroundColor]="(i % 2 == 0)?'#':'#AFB42B'">
     <td ><span (click)="deleteUserByID(user.id)">[删除]</span></td>
     <td >{{user.id}}</td>
     <td >{{user.name}}</td>
