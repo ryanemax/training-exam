@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { TgouMallComponent } from '../tgou-mall/tgou-mall.component';
+import { TgouMallComponent } from './tgou-mall/tgou-mall.component';
 
 @NgModule({
   imports: [
