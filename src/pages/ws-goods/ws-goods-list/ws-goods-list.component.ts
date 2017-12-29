@@ -4,7 +4,7 @@ interface goods(){
     goods_no:string,
     goods_nm:string,
     sale_type:number,
-    maker：string，
+    maker：string,
     wsCnt：number
 }
 @Component({
