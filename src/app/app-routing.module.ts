@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'lms',
     loadChildren: '../pages/lms/lms.module#LmsModule',
+  },
+  {
+    path: 'ws-goods',
+    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
   }
   ,
   {
