@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'warehouse-goods',
-    loadChildren: './warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
+    loadChildren: '../pages/warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
   },
   {
     path: 'trips-number',
