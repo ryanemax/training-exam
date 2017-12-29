@@ -73,7 +73,12 @@ const routes: Routes = [
   {
     path: 'cinematicket',
     loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule',
+  },
+    {
+      path: 'supplier',
+    loadChildren: '../pages/supplier/supplier.module#SupplierModule'
   }
+
 ];
 
 @NgModule({

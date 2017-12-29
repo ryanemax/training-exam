@@ -1,33 +1,36 @@
 <div class="col-12">
-  <td class="col-4 market-index">上证指数 3301 +4.09 0.65% 1523.42亿</td>
-  <td class="col-4 market-index">深证成指 10089 +13.09 0.17% 3023.96亿</td>
-  <td class="col-4 market-index">创业板指 1748 -1.09 0.25% 567.60亿</td>
+  <td class="col-4 market-index" *ngFor="let marketIndex of marketIndexes">
+    <span style="color:#888888">&nbsp;{{marketIndex.name}}</span>
+    <span appMarketIndexColor>{{marketIndex.price}}</span>
+    <span appMarketIndexColor>&nbsp;{{marketIndex.percent}}%</span>
+    <span>&nbsp;{{marketIndex.total|moneyUnit}}</span>
+    <span>&nbsp;&nbsp;</span>
+  </td>
 </div>
 <hr>
-<button (click)="sortUsers('asc')">价格正序</button>
-<button (click)="sortUsers('desc')" >价格倒序</button>
-<button (click)="sortUsers('random')">随机排序</button>
-<button (click)="addNewUser()">新增自选股</button>
-<hr>
+<div class="col-12">
+  <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+    <tr class="col-12">
+      <th class="col-1">股票代码</th>
+      <th class="col-1">股票名称</th>
+      <th class="col-1">开盘价格</th>
+      <th class="col-1">最新价格</th>
+      <th class="col-1">涨跌</th>
+      <th class="col-1">最低价格</th>
+      <th class="col-1">最高价格</th>
+      <th class="col-1">成交量</th>
+      <th class="col-1">成交金额</th>
+      <th class="col-1">总市值</th>
+      <th class="col-1">流通市值</th>
+      <th class="col-1">添加自选</th>
+    </tr>
+  </table>
+</div>
+
+<app-eightstock-listitem colspan="6" [stock]="stock" *ngFor="let stock of stocks"></app-eightstock-listitem>
+
 <div style="width: 100%;">
-<table style="width: 100%;">
-    <thead style="width: 100%;">
-      <tr style="width: 100%;">
-        <th class="col-m-2">删除股票</th>
-        <th class="col-m-2">股票代码</th>
-        <th class="col-m-3">股票名称</th>
-        <th class="col-m-2">最新价格</th>
-        <th class="col-m-3">成交手数</th>
-      </tr>
-    </thead>
-    <tbody style="width: 100%;">
-      <tr style="width: 100%;" *ngFor="let user of users">
-        <td style="text-align: center;"><button (click)="deleteUserByID(user.id)">删除</button></td>
-        <td style="text-align: center;">{{user.id}}</td>
-        <td style="text-align: center;">{{user.name}}</td>
-        <td style="text-align: center;">{{user.price}}</td>
-        <td style="text-align: center;">{{user.nums}}</td>
-      </tr>
-    </tbody>
-</table>
+  <table style="width: 100%;">
+    
+  </table>
 </div>
