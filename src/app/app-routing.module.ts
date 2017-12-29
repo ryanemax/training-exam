@@ -18,6 +18,18 @@ const routes: Routes = [
   {
     path: 'kqgl',
     loadChildren: '../pages/kqgl/kqgl.module#KqglModule',
+  },
+  {
+    path: 'tgou',
+    loadChildren: './tgou/tgou.module#TgouModule',
+  },
+  {
+    path: 'eightstock',
+    loadChildren: '../pages/eightstock/eightstock.module#EightstockModule',
+  },
+  {
+    path: 'lms',
+    loadChildren: '../pages/lms/lms.module#LmsModule',
   }
 ];
 
