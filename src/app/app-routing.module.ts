@@ -19,15 +19,31 @@ const routes: Routes = [
   {
     path: 'warehouse-goods',
     loadChildren: './warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
-    
+  },
+  {
+    path: 'trips-number',
+    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+  },
+  {
+    path: 'tgou',
+    loadChildren: './tgou/tgou.module#TgouModule',
   },
   {
     path: 'eightstock',
-    loadChildren: './eightstock/eightstock.module#EightstockModule',
+    loadChildren: '../pages/eightstock/eightstock.module#EightstockModule',
   },
   {
     path: 'lms',
-    loadChildren: './lms/lms.module#LmsModule',
+    loadChildren: '../pages/lms/lms.module#LmsModule',
+  },
+  {
+    path: 'ws-goods',
+    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+  }
+  ,
+  {
+    path: 'inv-material',
+    loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
   }
 ];
 
