@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'trips-number',
-    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+    loadChildren: '../pages/trips-number/trips-number.module#TripsNumberModule',
   },
   {
     path: 'tgou',
