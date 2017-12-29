@@ -1,35 +1,6 @@
 <h1>商品列表</h1>
-<div>
-<!--<h1>已选择的用户</h1>
+<!--<div>
+<h1>已选择的用户</h1>
 <app-student-item [user]="selectedUser"></app-student-item>
 </div>  -->
 
-<button appActButton class="llc-btn" (click)="sortGoods('asc')">正序</button>
-<button appActButton class="llc-btn" (click)="sortGoods('desc')" >倒序</button>
-<button appActButton class="llc-btn" (click)="sortGoods('random')">随机</button>
-<!--<button appActButton class="llc-btn" (click)="addNewGoods()">新增学生</button>-->
-<ul class="llc-student-list">
-   <li *ngFor="let goods of goodsList" class="col-3">
-    <div class="llc-student-list-id">
-      商品番号:{{goods.goods_no}}
-    </div>
-    <div class="llc-student-list-name">
-      商品名称：{{goods.goods_nm}}
-    </div>
-    <div class="llc-student-list-git">
-      贩卖类型：{{goods.sale_type}}
-    </div>
-    <div class="llc-student-list-sex">
-      制造商：{{goods.maker}}
-    </div>
-    <div class="llc-student-list-sex">
-      在库数量：{{goods.wsCnt}}
-    </div>
-    <div class="tar">
-      <span class="llc-student-list-del">x</span>
-    </div>
-  </li>
-
- <!-- <app-student-item appActCard [user]="user" *ngFor="let user of Goods"></app-student-item> -->
-
-</ul>

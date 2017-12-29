@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
+<<<<<<< HEAD
 interface goods{
     goods_no:string,
     goods_nm:string,
     sale_type:number,
     maker:string,
     wsCnt:number
+=======
+interface Goods{
+    goods_no:string;
+    goods_nm:string;
+    sale_type:number;
+    maker:string;
+    wsCnt:number;
+>>>>>>> 345aaf700e413dc65d523a051b2ec5f567b9c6f3
 }
 @Component({
   selector: 'app-ws-goods-list',
@@ -13,9 +22,15 @@ interface goods{
   styleUrls: ['./ws-goods-list.component.scss']
 })
 export class WsGoodsListComponent implements OnInit {
+<<<<<<< HEAD
   goodsList:Array<goods>;
   constructor() { 
 
+=======
+  goodsList:Array<Goods>;
+  constructor() {
+    this.loadGoodsList();
+>>>>>>> 345aaf700e413dc65d523a051b2ec5f567b9c6f3
   }
 
   loadGoodsList(){
@@ -28,4 +43,5 @@ export class WsGoodsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  sortGoods(){}
 }
