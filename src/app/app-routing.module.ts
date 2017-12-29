@@ -13,7 +13,32 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
-    loadChildren: '../pages/bigdata.module#BigdataModule',
+    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
+
+  },
+  {
+    path: 'book',
+    loadChildren: '../pages/book/book.module#BookModule',
+  },
+  {
+    path: 'lipstick',
+    loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
+  },
+  {
+    path: 'kqgl',
+    loadChildren: '../pages/kqgl/kqgl.module#KqglModule',
+  },
+  {
+    path: 'warehouse-goods',
+    loadChildren: '../pages/warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
+  },
+  {
+    path: 'trips-number',
+    loadChildren: '../pages/trips-number/trips-number.module#TripsNumberModule',
+  },
+  {
+    path: 'tgou',
+    loadChildren: '../pages/tgou/tgou.module#TgouModule',
   },
   {
     path: 'eightstock',
@@ -24,8 +49,13 @@ const routes: Routes = [
     loadChildren: '../pages/lms/lms.module#LmsModule',
   },
   {
-    path: 'supplier',
-    loadChildren: '../pages/supplier/supplier.module#SupplierModule',
+    path: 'ws-goods',
+    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+  }
+  ,
+  {
+    path: 'inv-material',
+    loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
   }
 ];
 
