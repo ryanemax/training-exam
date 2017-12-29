@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'ws-goods',
-    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+    loadChildren: '../pages/ws-goods.module#WsGoodsModule',
   }
 ];
 
