@@ -1,0 +1,82 @@
+
+.llc-btn {
+  padding: 5px 15px;
+  border: 0 none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 30px;
+  background-color: #33b5e5;
+  color: #fff;
+  cursor: pointer;
+  outline: 0 none;
+  box-shadow: 1px 1px 3px #ddd;
+}
+
+.llc-btn:active {
+  opacity: .8;
+}
+
+.llc-student-list {
+  padding-left: 0;
+
+}
+
+.llc-student-list li {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  display: inline-block;
+  list-style: none;
+  border: 1px solid #BDBDBD;
+  border-radius: 4px;
+}
+
+.llc-student-list li:hover {
+  background-color: #B3E5FC;
+}
+
+.llc-student-list-del {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #F44336;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: bold;
+  font-family:  Helvetica, Arial, sans-serif;
+}
+
+
+.llc-student-list-id,
+.llc-student-list-name,
+.llc-student-list-git,
+.llc-student-list-sex {
+  margin-bottom: 10px;
+}
+
+.tar {
+  text-align: right;
+}
+
+.llc-personal-info-tt {
+  padding-bottom: 10px;
+  margin: 0 0 20px;
+  font-size: 22px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.llc-personal-info-ctrl {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dbdbdb;
+  .llc-btn {
+    margin-right: 10px;
+  }
+}

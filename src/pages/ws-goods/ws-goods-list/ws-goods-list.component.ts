@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
 interface Goods{
     goods_no:string;
     goods_nm:string;
     sale_type:number;
     maker:string;
     wsCnt:number;
+
 }
 @Component({
   selector: 'app-ws-goods-list',
@@ -13,9 +15,11 @@ interface Goods{
   styleUrls: ['./ws-goods-list.component.scss']
 })
 export class WsGoodsListComponent implements OnInit {
+
   goodsList:Array<Goods>;
   constructor() {
     this.loadGoodsList();
+
   }
 
   loadGoodsList(){
