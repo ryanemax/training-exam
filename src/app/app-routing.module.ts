@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   },
   {
+    path: 'trips-number',
+    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+  },
+  {
     path: 'tgou',
     loadChildren: './tgou/tgou.module#TgouModule',
   },
