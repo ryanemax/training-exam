@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'bigdata',
     loadChildren: './bigdata/bigdata.module#BigdataModule',
+  },
+  {
+    path: 'book',
+    loadChildren: '../pages/book/book.module#BookModule',
   }
 ];
 
