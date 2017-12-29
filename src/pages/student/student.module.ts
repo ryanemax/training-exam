@@ -8,6 +8,12 @@ import { ToKPipe } from './sharing/to-k.pipe';
 import { ActButtonDirective } from './sharing/act-button.directive';
 import { ActCardDirective } from './sharing/act-card.directive';
 
+import { ActButtonComponent } from './act-button/act-button.component';
+
+import { Say666Pipe } from './sharing/say-666.pipe';
+
+import { HightLightDirective } from './sharing/highlight.directive';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +27,11 @@ import { ActCardDirective } from './sharing/act-card.directive';
     StudentDetailComponent,
     StudentItemComponent,
     ToKPipe,
+    Say666Pipe,
     ActButtonDirective,
-    ActCardDirective]
+    ActCardDirective,
+    HightLightDirective,
+    ActButtonComponent
+  ]
 })
 export class StudentModule { }
