@@ -6,104 +6,25 @@
   <button class="llc-btn">新增学生</button>
 </div>
 <ul class="llc-student-list col-12">
-  <li class="col-3">
+  <li class="col-3" *ngFor="let user of users">
     <div class="llc-student-list-id">
-      序号：
+      序号：{{user.id}}
     </div>
     <div class="llc-student-list-name">
-      姓名：
+      姓名：{{user.name}}
     </div>
     <div class="llc-student-list-name">
-      性别：
+      性别：{{user.sex}}
     </div>
     <div class="llc-student-list-git">
-      邮箱：
+      邮箱：{{user.email}}
     </div>
     <div class="llc-student-list-sex">
-      电话：
+      电话：{{user.phone}}
     </div>
     <div class="tar">
       <span class="llc-student-list-del">x</span>
     </div>
   </li>
-  <li class="col-3">
-    <div class="llc-student-list-id">
-      序号：
-    </div>
-    <div class="llc-student-list-name">
-      姓名：
-    </div>
-    <div class="llc-student-list-name">
-      性别：
-    </div>
-    <div class="llc-student-list-git">
-      邮箱：
-    </div>
-    <div class="llc-student-list-sex">
-      电话：
-    </div>
-    <div class="tar">
-      <span class="llc-student-list-del">x</span>
-    </div>
-  </li>
-  <li class="col-3">
-    <div class="llc-student-list-id">
-      序号：
-    </div>
-    <div class="llc-student-list-name">
-      姓名：
-    </div>
-    <div class="llc-student-list-name">
-      性别：
-    </div>
-    <div class="llc-student-list-git">
-      邮箱：
-    </div>
-    <div class="llc-student-list-sex">
-      电话：
-    </div>
-    <div class="tar">
-      <span class="llc-student-list-del">x</span>
-    </div>
-  </li>
-  <li class="col-3">
-    <div class="llc-student-list-id">
-      序号：
-    </div>
-    <div class="llc-student-list-name">
-      姓名：
-    </div>
-    <div class="llc-student-list-name">
-      性别：
-    </div>
-    <div class="llc-student-list-git">
-      邮箱：
-    </div>
-    <div class="llc-student-list-sex">
-      电话：
-    </div>
-    <div class="tar">
-      <span class="llc-student-list-del">x</span>
-    </div>
-  </li>
-  <li class="col-3">
-    <div class="llc-student-list-id">
-      序号：
-    </div>
-    <div class="llc-student-list-name">
-      姓名：
-    </div>
-    <div class="llc-student-list-name">
-      性别：
-    </div>
-    <div class="llc-student-list-git">
-      邮箱：
-    </div>
-    <div class="llc-student-list-sex">
-      电话：
-    </div>
-    <div class="tar">
-      <span class="llc-student-list-del">x</span>
-    </div>
-  </li>
+
 </ul>
