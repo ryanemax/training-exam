@@ -19,7 +19,9 @@ ng serve
 ## 如何创建一个特性模块，添加构造块？
 
 ``` sh
+ng g module bigdata --routing
 
+ng g component bigdata-home --module
 ```
 
 ## 如何给特性模块配置路由？

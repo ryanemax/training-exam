@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'student',
     loadChildren: './student/student.module#StudentModule',
     // data: { title: "主页" }
+  },
+  {
+    path: 'bigdata',
+    loadChildren: './bigdata/bigdata.module#BigdataModule',
   }];
 
 @NgModule({
