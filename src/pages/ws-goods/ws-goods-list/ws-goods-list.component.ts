@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
 interface Goods{
     goods_no:string;
     goods_nm:string;
     sale_type:number;
     maker:string;
     wsCnt:number;
+
 }
 @Component({
   selector: 'app-ws-goods-list',
@@ -13,9 +15,11 @@ interface Goods{
   styleUrls: ['./ws-goods-list.component.scss']
 })
 export class WsGoodsListComponent implements OnInit {
+
   goodsList:Array<Goods>;
   constructor() {
     this.loadGoodsList();
+
   }
 
   loadGoodsList(){
@@ -28,5 +32,38 @@ export class WsGoodsListComponent implements OnInit {
   ngOnInit() {
   }
 
-  sortGoods(){}
+  sortGoods(type:string){
+    if('asc' == type){
+      this.goodsList.sort((a:Goods, b:Goods) => {
+        if(a.goods_no > b.goods_no){
+            return 1;
+        }else if(a.goods_no < b.goods_no){
+            return -1;
+        }else{
+          return 0;
+        }
+     });
+    }else if('desc' == type){
+        this.goodsList.sort((a:Goods, b:Goods) => {
+          if(a.goods_no > b.goods_no){
+              return -1;
+          }else if(a.goods_no < b.goods_no){
+              return 1;
+          }else{
+            return 0;
+          }
+        });
+    }else{
+      this.goodsList.sort((a:Goods, b:Goods) => {
+      let temp = Number(Math.random()*1000).toFixed(0);
+            if(temp > '500'){
+        return -1;
+      }else if(temp < '500'){
+          return 1;
+      }else{
+        return 0;
+      }});
+    }
+    console.log("sortgoodsList Works!");
+  }
 }
