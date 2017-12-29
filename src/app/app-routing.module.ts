@@ -59,7 +59,7 @@ const routes: Routes = [
   },
   {
     path: 'decoration-engineering-management',
-    loadChildren: '../pages/decoration-engineering-management/decoration-engineering-management.module#DecorationEngineeringManagementModule',
+    loadChildren: '../pages/decoration-engineering-management.module#DecorationEngineeringManagementModule',
   }
 ];
 
