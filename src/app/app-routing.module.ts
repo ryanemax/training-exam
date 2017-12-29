@@ -56,6 +56,10 @@ const routes: Routes = [
   {
     path: 'inv-material',
     loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
+  },
+  {
+    path: 'decoration-engineering-management',
+    loadChildren: '../pages/decoration-engineering-management/decoration-engineering-management.module#DecorationEngineeringManagementModule',
   }
 ];
 
