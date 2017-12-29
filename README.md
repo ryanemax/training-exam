@@ -1,4 +1,4 @@
-# 学员管理
+﻿# 学员管理
 - training-exam
 
 # Day 2 作业参考
@@ -24,7 +24,7 @@ ng g module bigdata
 ng g component bigdata-home --module bigdata
 ```
 
-## 如何给特性模块配置路由？
+## 如何给特性模块配置路由？   module.ts
 - 引入关键的Module库
 ```
 import { Routes, RouterModule } from '@angular/router';

@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Routes, RouterModule } from '@angular/router';
+import { InvHomeComponent } from './inv-home/inv-home.component';
 
-import { TgouMallComponent } from '../tgou-mall/tgou-mall.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: TgouMallComponent, pathMatch: 'full' },
+      { path: '', component: InvHomeComponent, pathMatch: 'full' },
     ])
   ],
-  declarations: [TgouMallComponent]
+  declarations: [InvHomeComponent]
 })
-export class TgouModule { }
+export class InvMaterialModule { }

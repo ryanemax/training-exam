@@ -13,6 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
+
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   },
   {
@@ -20,8 +21,16 @@ const routes: Routes = [
     loadChildren: '../pages/kqgl/kqgl.module#KqglModule',
   },
   {
+    path: 'warehouse-goods',
+    loadChildren: './warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
+  },
+  {
+    path: 'trips-number',
+    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+  },
+  {
     path: 'tgou',
-    loadChildren: './tgou/tgou.module#TgouModule',
+    loadChildren: '../pages/tgou/tgou.module#TgouModule',
   },
   {
     path: 'eightstock',
@@ -30,6 +39,15 @@ const routes: Routes = [
   {
     path: 'lms',
     loadChildren: '../pages/lms/lms.module#LmsModule',
+  },
+  {
+    path: 'ws-goods',
+    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+  }
+  ,
+  {
+    path: 'inv-material',
+    loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
   }
 ];
 
