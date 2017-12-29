@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TgouMallComponent } from './tgou-mall/tgou-mall.component';
+import { TgouItemComponent } from './tgou-item/tgou-item.component';
+
+import { TgouToKPipe } from './sharing/tgou-to-k.pipe';
+import { TgouActCardDirective } from './sharing/tgou-act-card.directive';
 
 @NgModule({
   imports: [
@@ -12,6 +16,11 @@ import { TgouMallComponent } from './tgou-mall/tgou-mall.component';
       { path: '', component: TgouMallComponent, pathMatch: 'full' },
     ])
   ],
-  declarations: [TgouMallComponent]
+  declarations: [
+    TgouMallComponent,
+    TgouItemComponent,
+    TgouToKPipe,
+    TgouActCardDirective
+  ]
 })
 export class TgouModule { }
