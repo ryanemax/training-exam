@@ -31,9 +31,9 @@ export class FlowerHomeComponent implements OnInit {
   }
   loadFlowersData(){
     this.flowers = [
-      {id:1,name:"百合",language:"lily",price:"800"},
-      {id:2,name:"玫瑰",language:"rose",price:"2800"},
-      {id:3,name:"郁金香",language:"tulip",price:"3000"}
+      {id:1,name:"百合",language:"百年好合",price:"800"},
+      {id:2,name:"玫瑰",language:"爱情",price:"2800"},
+      {id:3,name:"郁金香",language:"荣誉的皇冠",price:"3000"}
     ];
   }
   addNewFlower(){
