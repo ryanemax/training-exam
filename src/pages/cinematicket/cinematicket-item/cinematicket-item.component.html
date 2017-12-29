@@ -1,0 +1,9 @@
+<ul>
+  <div id="sytle1">
+  <li *ngFor="let weatherInfo of weatherDataList"> 
+  <span (click)="deleteByDate(weatherInfo.dateInfo)">
+  <div id="sytle2">[删除日期]</div></span>
+  日期:{{weatherInfo.dateInfo}}，星期：{{weatherInfo.weekInfo}}，温度：{{weatherInfo.temperature}}，湿度：{{weatherInfo.years}}
+  </li>
+  </div>
+  </ul> 

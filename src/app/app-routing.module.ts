@@ -69,6 +69,10 @@ const routes: Routes = [
   {
     path: 'personal-info',
     loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
+  },
+  {
+    path: 'cinematicket',
+    loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule',
   }
 ];
 
