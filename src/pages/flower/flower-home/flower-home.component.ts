@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-interface User{
+interface Flower{
   id:number,
   name:string,
-  github:string,
+  language:string,
   price:string
 }
 @Component({
@@ -12,44 +12,41 @@ interface User{
   styleUrls: ['./flower-home.component.scss']
 })
 export class FlowerHomeComponent implements OnInit {
-  users:Array<User>;
+  flowers:Array<Flower>;
   constructor() { 
-    this.loadUsersData();
+    this.loadFlowersData();
   }
   sortUsers(type){
-    // 参考MDN中的ES6，Array语法
-    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
     if (type == 'asc') {
-      // alert('dfdfg');
-      this.users.sort((a,b)=>(a.id-b.id));
+      this.flowers.sort((a,b)=>(a.id-b.id));
     }
     if (type == 'desc') {
-      this.users.sort((a,b)=>(b.id-a.id));
+      this.flowers.sort((a,b)=>(b.id-a.id));
     }
     if (type == 'random') {
-      this.users.sort((a,b)=>(Math.random() - 0.5));
+      this.flowers.sort((a,b)=>(Math.random() - 0.5));
     }
     console.log("sortUsers Works!");
   }
-  loadUsersData(){
-    this.users = [
-      {id:1,name:"百合",github:"lily",price:"800"},
-      {id:2,name:"玫瑰",github:"rose",price:"2800"},
-      {id:3,name:"郁金香",github:"tulip",price:"3000"}
+  loadFlowersData(){
+    this.flowers = [
+      {id:1,name:"百合",language:"lily",price:"800"},
+      {id:2,name:"玫瑰",language:"rose",price:"2800"},
+      {id:3,name:"郁金香",language:"tulip",price:"3000"}
     ];
   }
-  addNewUser(){
+  addNewFlower(){
     let uuid = Number(Math.random()*1000).toFixed(0);
-    let newUser:User = {
+    let newFlower:Flower = {
       id:Number(uuid),
       name:"樱花",
-      github:"sakura",
+      language:"sakura",
       price:"200"
     }
-    this.users.push(newUser);
+    this.flowers.push(newFlower);
   }
-  deleteUserByID(id){
-    this.users.forEach((user,index,arr)=>{
+  deleteFlowerByID(id){
+    this.flowers.forEach((user,index,arr)=>{
       if(user.id==id){
         arr.splice(index,1);
       }
@@ -57,5 +54,5 @@ export class FlowerHomeComponent implements OnInit {
   }
   ngOnInit() {
   }
-  
+
 }

@@ -1,9 +1,24 @@
-<h1>鲜花列表</h1>
+<div class="a" >
+<h1 class="a">鲜花列表</h1>
 <button class="button button2" (click)="sortUsers('asc')">正序</button>
 <button class="button button2" (click)="sortUsers('desc')" >倒序</button>
 <button class="button button2" (click)="sortUsers('random')">随机</button>
-<button class="button button2" (click)="addNewUser()">新品鲜花</button>
-<ul>
-  <li *ngFor="let user of users"><span (click)="deleteUserByID(user.id)">[删除]</span> GOODSID:{{user.id}}，鲜花名：{{user.name}}，英文名：{{user.github}}，价格：{{user.price}}</li>
-</ul>
+<button class="button button2" (click)="addNewFlower()">新品鲜花</button>
 
+<table class="b" width="100%"  border="solid" style="margin:10px">
+    <tr>
+      <th>删除</th>
+      <th>鲜花ID</th>
+      <th>鲜花名</th>
+      <th>鲜花花语</th>
+      <th>鲜花价格</th>
+    </tr>
+    <tr *ngFor="let flower of flowers" >
+      <td ><span (click)="deleteFlowerByID(flower.id)">[删除]</span></td>
+      <td >{{flower.id}}</td>
+      <td >{{flower.name}}</td>
+      <td >{{flower.language}}</td>
+      <td>{{flower.price}}</td>
+    </tr>
+  </table>
+</div>
