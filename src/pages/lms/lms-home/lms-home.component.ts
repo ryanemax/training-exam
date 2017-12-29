@@ -10,7 +10,7 @@ interface User {
 @Component({
   selector: 'app-lms-home',
   templateUrl: './lms-home.component.html',
-  styleUrls: ['./lms-home.component.scss', './style.css']
+  styleUrls: ['./lms-home.component.scss']
 })
 export class LmsHomeComponent implements OnInit {
 
