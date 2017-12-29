@@ -14,10 +14,27 @@ const routes: Routes = [
   {
     path: 'bigdata',
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
+
+  },
+  {
+    path: 'book',
+    loadChildren: '../pages/book/book.module#BookModule',
+  },
+  {
+    path: 'lipstick',
+    loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
+  },
+  {
+    path: 'kqgl',
+    loadChildren: '../pages/kqgl/kqgl.module#KqglModule',
+  },
+  {
+    path: 'warehouse-goods',
+    loadChildren: '../pages/warehouse-goods/warehouse-goods.module#WarehouseGoodsModule',
   },
   {
     path: 'trips-number',
-    loadChildren: './trips-number/trips-number.module#TripsNumberModule',
+    loadChildren: '../pages/trips-number/trips-number.module#TripsNumberModule',
   },
   {
     path: 'tgou',
@@ -33,12 +50,25 @@ const routes: Routes = [
   },
   {
     path: 'ws-goods',
-    loadChildren: './ws-goods/ws-goods.module#WsGoodsModule',
+    loadChildren: '../pages/ws-goods/ws-goods.module#WsGoodsModule',
   }
   ,
   {
     path: 'inv-material',
     loadChildren: '../pages/inv-material/inv-material.module#InvMaterialModule',
+  },
+  {
+    path: 'decoration-engineering-management',
+    loadChildren: '../pages/decoration-engineering-management/decoration-engineering-management.module#DecorationEngineeringManagementModule',
+  },
+  {
+    path: 'weather-data',
+    loadChildren: '../pages/weather-data/weather-data.module#WeatherDataModule',
+  }
+  ,
+  {
+    path: 'personal-info',
+    loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
   }
 ];
 
