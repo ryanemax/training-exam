@@ -12,6 +12,6 @@ import { ButtonComponent } from './button/button.component';
     
     ])
   ],
-  declarations: [FlowerHomeComponent,ButtonComponent]
+  declarations: [FlowerHomeComponent,ButtonComponent,ButtonDirective]
 })
 export class FlowerModule { }
