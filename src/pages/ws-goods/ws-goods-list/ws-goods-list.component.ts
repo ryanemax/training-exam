@@ -13,15 +13,9 @@ interface Goods{
   styleUrls: ['./ws-goods-list.component.scss']
 })
 export class WsGoodsListComponent implements OnInit {
-<<<<<<< HEAD
-  goodsList:Array<goods>;
-  constructor() { 
-    loadGoodsList();
-=======
   goodsList:Array<Goods>;
   constructor() {
     this.loadGoodsList();
->>>>>>> 0b079cd823c018073942a39ffcb4886b9c4a660c
   }
 
   loadGoodsList(){
