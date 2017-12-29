@@ -13,7 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
-    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
+    loadChildren: './bigdata/bigdata.module#BigdataModule',
+  },
+  {
+    path: 'tgou',
+    loadChildren: './tgou/tgou.module#TgouModule',
   },
   {
     path: 'eightstock',
@@ -21,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'lms',
-    loadChildren: './lms/lms.module#LmsModule',
+    loadChildren: '../pages/lms/lms.module#LmsModule',
   },
   {
     path: 'ws-goods',
