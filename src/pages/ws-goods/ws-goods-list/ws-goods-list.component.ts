@@ -28,4 +28,5 @@ export class WsGoodsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  sortGoods(){}
 }
