@@ -23,4 +23,8 @@ export class EightstockListitemComponent implements OnInit {
   ngOnInit() {
   }
 
+  showStock(){
+    alert(this.stock.name+'被选中');
+  }
+
 }
