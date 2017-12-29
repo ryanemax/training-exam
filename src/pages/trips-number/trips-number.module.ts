@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TripsNumberHomeComponent } from '../trips-number-home/trips-number-home.component';
+import { TripsNumberHomeComponent } from './trips-number-home/trips-number-home.component';
 import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
