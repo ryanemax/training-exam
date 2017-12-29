@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'bigdata',
     loadChildren: './bigdata/bigdata.module#BigdataModule',
-  }];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

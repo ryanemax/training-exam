@@ -19,12 +19,32 @@ ng serve
 ## 如何创建一个特性模块，添加构造块？
 
 ``` sh
-ng g module bigdata --routing
+ng g module bigdata
 
-ng g component bigdata-home --module
+ng g component bigdata-home --module bigdata
 ```
 
 ## 如何给特性模块配置路由？
+- 引入关键的Module库
+```
+import { Routes, RouterModule } from '@angular/router';
+```
+- 配置Router
+```
+RouterModule.forChild([
+      { path: '', component: BigdataHomeComponent, pathMatch: 'full' },
+    ])
+```
+
+## 如何配置全局路由
+- 找到路由配置文件：app-routing.module.ts
+- 在const routes: Routes，列表中加一项自己的特性模块
+
+## 如何加左侧导航链接？
+- app.component.html
+```
+<li routerLink="/bigdata">大数据</li>
+```
 
 ## 如何正确调整特性模块目录结构？
 
