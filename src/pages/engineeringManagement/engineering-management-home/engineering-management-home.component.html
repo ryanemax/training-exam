@@ -42,7 +42,7 @@
         <span class="itemStyle">{{item.address}}</span>
       </td>
       <td>
-        <span class="itemStyle">{{item.startDate}}</span>
+        <span class="itemStyle">{{item.startDate | dateFormat}}</span>
       </td>
       <td>
         <span class="itemStyle">{{item.endDate}}</span>
@@ -62,7 +62,7 @@
     </tr>
   </div>
   <div>
-    <app-engineering-btn ></app-engineering-btn>
+    <app-engineering-btn></app-engineering-btn>
   </div>
 
 </div>
