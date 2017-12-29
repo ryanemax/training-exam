@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TripsNumberHomeComponent } from './trips-number-home/trips-number-home.component';
 import { Routes, RouterModule } from '@angular/router';
+import { CountPipe } from './count.pipe';
 
 @NgModule({
   imports: [
@@ -10,6 +11,8 @@ import { Routes, RouterModule } from '@angular/router';
       { path: '', component: TripsNumberHomeComponent, pathMatch: 'full' },
     ])
   ],
-  declarations: [TripsNumberHomeComponent]
+  declarations: [
+    TripsNumberHomeComponent,
+    CountPipe]
 })
 export class TripsNumberModule { }

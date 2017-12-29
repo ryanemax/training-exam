@@ -1,0 +1,68 @@
+<p>
+  工程管理系统
+</p>
+<div>
+  <button>追加</button>
+</div>
+<div id="div-1" class="div-fa">
+  <div id="div-2">
+    <tr>
+      <td>
+        <span class="itemStyle">序号</span>
+      </td>
+      <td>
+        <span class="itemStyle">施工地点</span>
+      </td>
+      <td>
+        <span class="itemStyle">开始日</span>
+      </td>
+      <td>
+        <span class="itemStyle">结束日</span>
+      </td>
+      <td>
+        <span class="itemStyle">总共实施（天）</span>
+      </td>
+      <td>
+        <span class="itemStyle">施工责任人</span>
+      </td>
+      <td>
+        <span class="itemStyle">状态</span>
+      </td>
+      <td>
+        <span class="itemStyle">详细</span>
+      </td>
+    </tr>
+  </div>
+  <div id="div-3">
+    <tr *ngFor="let item of engineerings;let i=index">
+      <td>
+        <span class="itemStyle">{{item.id}}</span>
+      </td>
+      <td>
+        <span class="itemStyle">{{item.address}}</span>
+      </td>
+      <td>
+        <span class="itemStyle">{{item.startDate | dateFormat}}</span>
+      </td>
+      <td>
+        <span class="itemStyle">{{item.endDate}}</span>
+      </td>
+      <td>
+        <span class="itemStyle">{{item.endDate}}-{{item.startDate}}</span>
+      </td>
+      <td>
+        <span class="itemStyle">{{item.personLiable}}</span>
+      </td>
+      <td>
+        <span class="itemStyle">{{item.status}}</span>
+      </td>
+      <td>
+        <button class="itemStyle">详细</button>
+      </td>
+    </tr>
+  </div>
+  <div>
+    <app-engineering-btn></app-engineering-btn>
+  </div>
+
+</div>
