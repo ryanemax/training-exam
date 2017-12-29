@@ -4,11 +4,14 @@ import { PercentPipe } from '@angular/common/src/pipes/number_pipe';
 interface Stock{
   id:number,
   name:string,
-  price:number,
-  change:number,
+  startPrice:number,
+  nowPrice:number,
+  minPrice:number,
+  maxPrice:number,
   volume:number,
   amount:number,
   marketValue:number
+  circulationValue:number
 }
 interface MarketIndex{
   id:number,
@@ -32,45 +35,15 @@ export class EightstockHomeComponent implements OnInit {
   constructor() { 
     this.loadUsersData()
   }
-  sortUsers(type){
-    var stocks = this.stocks;
-    var len = stocks.length,
-        i, j, tmp;
-    if(type == 'random'){
-      for(i=0; i<len; i++){
-        stocks = stocks.sort(()=>(Math.random()>.5 ? -1 : 1));
-      }
-    }
-    else{
-      for(i=0; i<len; i++){
-        for(j=len-1; j>i; j--){
-            if(type == 'asc'){
-              if(stocks[j].price < stocks[j-1].price){
-                tmp = stocks[j-1];
-                stocks[j-1] =stocks[j];
-                stocks[j] = tmp;
-            }
-            }
-            if(type == 'desc'){
-              if(stocks[j].price > stocks[j-1].price){
-                tmp = stocks[j-1];
-                stocks[j-1] =stocks[j];
-                stocks[j] = tmp;
-            }
-            }
-        }
-    }
-    }
-    console.log("sortUsers Works!")
-  }
+  
   loadUsersData(){
     this.stocks = [
-      {id:600000,name:"浦发银行",price:10,change:0.5,volume:123,amount:34,marketValue:123},
-      {id:600004,name:"白云机场",price:19,change:1.4,volume:555,amount:34,marketValue:123},
-      {id:600006,name:"东风汽车",price:6,change:-0.2,volume:7575,amount:34,marketValue:123},
-      {id:600007,name:"中国国贸",price:14,change:1.3,volume:65412,amount:34,marketValue:123},
-      {id:600008,name:"首创股份",price:13,change:-1.1,volume:9951,amount:34,marketValue:123},
-      {id:600009,name:"上海机场",price:31,change:+2,volume:987,amount:34,marketValue:123},
+      {id:600000,name:"浦发银行",startPrice:9,nowPrice:9.5,minPrice:9.3,maxPrice:10.2,volume:123,amount:4,marketValue:54,circulationValue:20},
+      {id:600004,name:"白云机场",startPrice:11,nowPrice:11.5,minPrice:11.3,maxPrice:12.2,volume:555,amount:44,marketValue:234,circulationValue:200},
+      {id:600006,name:"东风汽车",startPrice:23,nowPrice:22,minPrice:21.3,maxPrice:23.2,volume:7575,amount:36,marketValue:5,circulationValue:3},
+      {id:600007,name:"中国国贸",startPrice:4,nowPrice:4,minPrice:2.3,maxPrice:5.2,volume:65412,amount:87,marketValue:374,circulationValue:293},
+      {id:600008,name:"首创股份",startPrice:66,nowPrice:67,minPrice:64.3,maxPrice:69.2,volume:9951,amount:70,marketValue:45,circulationValue:40},
+      {id:600009,name:"上海机场",startPrice:112,nowPrice:110,minPrice:100.3,maxPrice:120.2,volume:987,amount:229,marketValue:314,circulationValue:120},
    
     ];
     this.marketIndexes = [
@@ -78,22 +51,6 @@ export class EightstockHomeComponent implements OnInit {
       {id:2,name:"深证成指",price:10089,percent:13.09,total:3023.96},
       {id:3,name:"创业板指",price:1748,percent:-1.09,total:567.60}
     ];
-  }
-  addNewStock(){
-    let uuid = Number(Math.random()*1000000).toFixed(0); 
-    let newprice = Number(Math.random()*100).toFixed(0); 
-    let newNums = Number(Math.random()*1000).toFixed(0); 
-    let newStock:Stock = { 
-       id:Number(uuid), 
-       name:"新选股票", 
-       price:Number(newprice), 
-       change:0.1,
-       volume:Number(newNums),
-       amount:234,
-       marketValue:45345
-     } 
-
-    this.stocks.push(newStock);
   }
   deleteUserByID(id){
     this.stocks.forEach((user,index,arr)=>{

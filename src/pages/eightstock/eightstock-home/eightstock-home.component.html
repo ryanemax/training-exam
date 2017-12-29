@@ -3,26 +3,26 @@
     <span style="color:#888888">&nbsp;{{marketIndex.name}}</span>
     <span appMarketIndexColor>{{marketIndex.price}}</span>
     <span appMarketIndexColor>&nbsp;{{marketIndex.percent}}%</span>
-    <span>&nbsp;{{marketIndex.total}}亿元</span>
+    <span>&nbsp;{{marketIndex.total|moneyUnit}}</span>
     <span>&nbsp;&nbsp;</span>
   </td>
 </div>
 <hr>
-<!-- <button (click)="sortUsers('asc')">价格正序</button>
-<button (click)="sortUsers('desc')" >价格倒序</button>
-<button (click)="sortUsers('random')">随机排序</button>
-<button (click)="addNewUser()">新增自选股</button> -->
-<!-- <hr> -->
 <div class="col-12">
-  <table class="col-12" style="background-color:#d4d4d4;height:36px;">
+  <table class="col-12" style="background-color:#d4d4d4;height:32px;">
     <tr class="col-12">
-      <th class="col-2">股票代码</th>
-      <th class="col-2">股票名称</th>
+      <th class="col-1">股票代码</th>
+      <th class="col-1">股票名称</th>
+      <th class="col-1">开盘价格</th>
       <th class="col-1">最新价格</th>
       <th class="col-1">涨跌</th>
-      <th class="col-2">成交量</th>
-      <th class="col-2">成交金额</th>
-      <th class="col-2">总市值</th>
+      <th class="col-1">最低价格</th>
+      <th class="col-1">最高价格</th>
+      <th class="col-1">成交量</th>
+      <th class="col-1">成交金额</th>
+      <th class="col-1">总市值</th>
+      <th class="col-1">流通市值</th>
+      <th class="col-1">添加自选</th>
     </tr>
   </table>
 </div>
