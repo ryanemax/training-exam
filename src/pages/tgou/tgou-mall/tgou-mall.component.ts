@@ -9,7 +9,7 @@ interface User{
 }
 
 @Component({
-  selector: 'app-tgou-mall';
+  selector: 'app-tgou-mall',
   templateUrl: './tgou-mall.component.html',
   styleUrls: ['./tgou-mall.component.scss']
 })
@@ -21,14 +21,14 @@ export class TgouMallComponent implements OnInit {
   sortUsers(type){
     // 参考MDN中的ES6，Array语法
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
-    if (type == 'asc') {
+    if (type === 'asc') {
       // alert('dfdfg');
       this.users.sort((a,b)=>(a.id-b.id));
     }
-    if (type == 'desc') {
+    if (type === 'desc') {
       this.users.sort((a,b)=>(b.id-a.id));
     }
-    if (type == 'random') {
+    if (type === 'random') {
       this.users.sort((a,b)=>(Math.random() - 0.5));
     }
     console.log("sortUsers Works!");
@@ -51,15 +51,15 @@ export class TgouMallComponent implements OnInit {
       name:"泸州老窖",
       github:"luzhou",
       sex:"200"
-    }
+    };
     this.users.push(newUser);
   }
   deleteUserByID(id){
     this.users.forEach((user,index,arr)=>{
-      if(user.id==id){
+      if(user.id===id){
         arr.splice(index,1);
       }
-    })
+    });
   }
   ngOnInit() {
   }
