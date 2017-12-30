@@ -1,6 +1,6 @@
 <div class="a" >
 <h1 class="a">鲜花列表</h1>
-<h1 button>已选择的鲜花：{{selectedFlower.name}}</h1>
+<h1 button>已选择的鲜花：{{selectedFlower?selectedFlower.name:""}}</h1>
 <button class="button button2" (click)="sortUsers('asc')">正序</button>
 <button class="button button2" (click)="sortUsers('desc')" >倒序</button>
 <button class="button button2" (click)="sortUsers('random')">随机</button>
@@ -15,7 +15,7 @@
       <th>鲜花价格</th>
     </tr>
     <tr *ngFor="let flower of flowers" (click)="selectFlower(flower)" appButton>
-      <td (click)="deleteFlowerByID(flower.id)">[删除]</td>
+      <td (click)="deleteFlowerByID(flower.id)">[删除]<span></span></td>
       <td >{{flower.id}}</td>
       <td >{{flower.name}}</td>
       <td >{{flower.language}}</td>
