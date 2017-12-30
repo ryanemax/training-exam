@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
   {
+    path: 'book',
+    loadChildren: '../pages/book/book.module#BookModule',
+  },
+  {
     path: 'lipstick',
     loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
   },
