@@ -1,0 +1,48 @@
+<div class="header">
+        <h1>账户信息</h1>
+ </div>
+
+  <div id="div-page">
+    <div id="div-head">
+      <tr>
+        <td>
+          <span class="itemStyle">ACCTID</span>
+        </td>
+        <td>
+          <span class="itemStyle">NAME</span>
+        </td>
+        <td>
+          <span class="itemStyle">ADDRESS</span>
+        </td>
+        <td>
+          <span class="itemStyle">METERNUM</span>
+        </td>
+      </tr>
+    </div>
+
+    <div id="div-data">
+      <tr *ngFor="let acct of account;let i=index">
+        <td>
+          <span class="itemStyle">{{acct.acctId}}</span>
+        </td>
+        <td>
+          <span class="itemStyle">{{acct.name}}</span>
+        </td>
+        <td>
+          <span class="itemStyle">{{acct.address}}</span>
+        </td>
+        <td>
+          <span class="itemStyle">{{acct.meterNum}}</span>
+        </td>
+        <td>
+          <button class="itemStyle">REPORT</button>
+        </td>
+      </tr>
+    </div>
+    <div>
+      <button appActButton class="btn" (click)="addNewAccount()">新用户</button>
+    </div>
+  
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+.itemStyle{
+    font-size: 15px;
+    background: rgba(110, 98, 161, 0.466);
+    margin: 10px;
+    text-shadow: 3ch;
+}
+
+.btn {
+    padding: 5px 15px;
+    border: 0 none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 30px;
+    background-color: #448AFF;
+    color: #fff;
+    cursor: pointer;
+    outline: 0 none;
+  }
+  
+  .llc-btn:active {
+    opacity: .8;
+  }
+  

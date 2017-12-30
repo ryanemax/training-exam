@@ -47,6 +47,29 @@ RouterModule.forChild([
 ```
 
 ## 如何正确调整特性模块目录结构？
+文件复制：
+- 所有的特性Module与Component文件，复制到/src/pages文件夹内
+- 所有的Component文件，复制到/src/pages/<module>/文件夹内
+- 所有的通用构造块（Pipe、Directive），复制到/src/pages/<module>/sharing/文件夹内
+
+路径修改：
+- /src/app/app-routing.module.ts loadChildren路径
+- /src/pages/<module>/<module>.module.ts 引用路径
+
+## 如何不影响其他人开发，全新提交自己的特性模块
+- 源码管理-更多-撤销上次提交，确保左下向上箭头为0
+- 源码管理-更多-取消暂存所有更改，确保左侧“更改”区域为空
+- 执行强制更新指令
+
+``` sh
+git reset --hard
+git pull
+```
+
+- 复制自己的特性模块文件夹至/src/pages
+- 添加app-routing.module.ts
+- ng serve确保运行正常
+- 提交代码
 
 # Day 1 作业参考
 ## 提交作业流程
@@ -102,6 +125,14 @@ http://ng.futurestack.cn/chapter1/exam1-firstproject.php
 1. 完成选题与模拟数据填写
 2. 完成列表排序
 3. 完成界面样式美化
+
+## commit描述规范
+- <type>:<decs>(issue)
+
+示例：
+- feat:new module student & new comp student-list
+- fix:student-item comp can't show bg
+- chrone:optimization of file structure
 
 # 作者
 - 姓名：Ryane Liu
