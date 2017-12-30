@@ -71,9 +71,14 @@ const routes: Routes = [
     loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
   },
   {
-    path: 'supplier',
+    path: 'cinematicket',
+    loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule',
+  },
+    {
+      path: 'supplier',
     loadChildren: '../pages/supplier/supplier.module#SupplierModule'
   }
+
 ];
 
 @NgModule({

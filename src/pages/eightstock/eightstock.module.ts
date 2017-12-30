@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EightstockHomeComponent } from './eightstock-home/eightstock-home.component';
 import { EightstockListitemComponent } from './eightstock-listitem/eightstock-listitem.component';
 import { MarketIndexColorDirective } from './sharing/market-index-color.directive';
+import { MoneyUnitPipe } from './sharing/money-unit.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -11,6 +12,6 @@ import { MarketIndexColorDirective } from './sharing/market-index-color.directiv
       { path: '', component: EightstockHomeComponent, pathMatch: 'full' },
     ])
   ],
-  declarations: [EightstockHomeComponent,EightstockListitemComponent,MarketIndexColorDirective]
+  declarations: [EightstockHomeComponent,EightstockListitemComponent,MarketIndexColorDirective,MoneyUnitPipe]
 })
 export class EightstockModule { }

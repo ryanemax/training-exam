@@ -11,8 +11,8 @@ export class Button1Directive {
     el.nativeElement.style.backgroundColor = "red";
     el.nativeElement.style.fontSize = "18px";
     el.nativeElement.style.margin = "10px";
-    el.nativeElement.style.boxShadow = "10px 10px 5px #000fff";
-    el.nativeElement.innerHTML = "<span>X</span>";
+    el.nativeElement.style.boxShadow = "5px 5px 5px #888888";
+    el.nativeElement.style.borderRadius="15px";
   }
 
 }
