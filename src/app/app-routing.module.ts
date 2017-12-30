@@ -75,6 +75,10 @@ const routes: Routes = [
   {
     path: 'weather-data',
     loadChildren: '../pages/weather-data/weather-data.module#WeatherDataModule',
+  },
+  {
+    path: 'flower',
+    loadChildren: '../pages/flower/flower.module#FlowerModule',
   }
   ,
   {

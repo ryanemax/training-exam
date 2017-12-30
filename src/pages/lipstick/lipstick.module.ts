@@ -5,6 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ToKPipe } from './sharing/to-k.pipe';
 import { ColorChangeDirective } from './sharing/color-change.directive';
 import { LipStickService } from './lipstick-data';
+import {LipstickDialogComponent} from './lipstick-dialog/lipstick-dialog';
+
+
 
 @NgModule({
   imports: [
@@ -13,7 +16,8 @@ import { LipStickService } from './lipstick-data';
       { path: '', component: LipstickListComponent, pathMatch: 'full' },
     ])
   ],
-  declarations: [LipstickListComponent, ToKPipe, ColorChangeDirective],
-  providers:[LipStickService]
+  declarations: [LipstickListComponent, ToKPipe, ColorChangeDirective,LipstickDialogComponent],
+  providers:[LipStickService],
+  entryComponents:[LipstickDialogComponent]
 })
 export class LipstickModule { }

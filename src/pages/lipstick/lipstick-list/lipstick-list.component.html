@@ -15,7 +15,7 @@
   </tr>
   <tr *ngFor="let lipstick of lipstickServ.lipsticks" >
     <td style="text-align:center">
-      <span >[编辑]</span></td>
+      <span (click)="openDialog(lipstick)">[编辑]</span></td>
     <td style="text-align:center">
       <span (click)="lipstickServ.deleteLipstickByID(lipstick.objectId)" >[删除]</span></td>
     <td >{{lipstick.objectId}}</td>
