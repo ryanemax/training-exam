@@ -7,6 +7,7 @@ import { InvButtonDirective } from './sharing/inv-button.directive';
 import { InvTokPipe } from './sharing/inv-tok.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ItemService } from "./item-data";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MatTabsModule } from '@angular/material/tabs';
       { path: '', component: InvHomeComponent, pathMatch: 'full' }
     ])
   ],
-  declarations: [InvHomeComponent,InvItemComponent,InvButtonDirective,InvTokPipe]
+  declarations: [InvHomeComponent,InvItemComponent,InvButtonDirective,InvTokPipe],
+  providers:[ItemService]
 })
 export class InvMaterialModule { }
