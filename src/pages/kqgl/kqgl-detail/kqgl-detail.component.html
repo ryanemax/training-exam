@@ -1,0 +1,18 @@
+<h1>考勤明细</h1>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{user.name}}</mat-card-title>
+    <mat-card-subtitle>出勤: {{user.cq}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+        打卡时间：{{user.dksj | toDateYmd}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

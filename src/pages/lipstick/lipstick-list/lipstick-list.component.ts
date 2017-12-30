@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { LipStickService } from '../lipstick-data';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+
+import {MatDialog} from '@angular/material';
+import {LipstickDialogComponent} from '../lipstick-dialog/lipstick-dialog';
 
 interface Lipstick{
   id?:number;
@@ -39,11 +41,26 @@ export class LipstickListComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
-  constructor(private http:HttpClient,private lipstickServ:LipStickService) {
-    this.lipstickServ.loadLipsticksData();
+  constructor(private http:HttpClient,private lipstickServ:LipStickService,
+    public dialog: MatDialog) {
+      this.lipstickServ.loadLipsticksData();
   }
   selectLipsticks(lipstick){
     this.selectedlipsticks = lipstick;
+  }
+  openDialog(lipstick?): void {
+    if(!lipstick){
+      lipstick = {name:"",brand:"",colorNumber:"",price:"",soldNumber:""};
+    }
+    let dialogRef = this.dialog.open(LipstickDialogComponent, {
+      width: '250px',
+      data: lipstick,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.lipstickServ.addNewLipstick(result);
+    });
   }
   ngOnInit() {
   }
