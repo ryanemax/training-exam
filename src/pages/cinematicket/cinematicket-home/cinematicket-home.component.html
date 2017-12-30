@@ -1,7 +1,7 @@
 <h1 class="hone">电影票系统：</h1>
 
 <div >
-
+    <button class="button-style" (click)="addNewCinema()">增加</button>
     <button class="button-style" appActButton (click)="sortcinemas('asc')">正序</button>
 
     <button class="button-style" (click)="sortcinemas('desc')" >倒序</button>
@@ -26,7 +26,7 @@
         <span (click)="deleteCinemaByID(cinema.id)">    
         <div class="shanchu">[删除]</div>
       </span>
-         ID:{{cinema.id}}  电影名称：{{cinema.name}}  票数：{{cinema.ticketcounts |tok}}
+         ID:{{cinema.objectId}}  电影名称：{{cinema.name}}  票数：{{cinema.counts |tok}}
     </li>
     </div>
   </ul>

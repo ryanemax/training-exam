@@ -6,6 +6,7 @@ import {Routes,RouterModule} from '@angular/router';
 import { ActButtonDirestive } from './sharing/act-button.directive';
 import { ToKPipe } from './sharing/to-k.pipe';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,4 +20,4 @@ import { ToKPipe } from './sharing/to-k.pipe';
     ActButtonDirestive,
     ToKPipe]
 })
-export class CinematicketModule { }
+export class CinematicketModule {}

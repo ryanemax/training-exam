@@ -84,7 +84,11 @@ const routes: Routes = [
     {
       path: 'supplier',
     loadChildren: '../pages/supplier/supplier.module#SupplierModule'
-  }
+  },
+  {
+    path: 'cinematicket',
+  loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule'
+}
 
 ];
 

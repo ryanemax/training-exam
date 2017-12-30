@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import "rxjs/operators/map";
+import { HttpHandler } from '@angular/common/http/src/backend';
 
 interface Cinema {
-  id: number;
+  objectId?: number;
   name: string;
-  ticketcounts: number;
+  counts: number;
 }
 
-
+interface ParseResponse {
+  results:any;
+}
 @Component({
   selector: 'app-cinematicket-home',
   templateUrl: './cinematicket-home.component.html',
@@ -16,7 +20,7 @@ interface Cinema {
 export class CinematicketHomeComponent implements OnInit {
   cinemas: Array<Cinema>;
 
-  constructor() {
+  constructor(private http:HttpClient) {
     this.loadCinemaData();
   }
   
@@ -28,19 +32,19 @@ export class CinematicketHomeComponent implements OnInit {
 
     if (type == "asc") {
       this.cinemas.sort(function(a, b) {
-        if (a.id > b.id) {
+        if (a.objectId > b.objectId) {
           return 1;
         }
-        if (a.id < b.id) {
+        if (a.objectId < b.objectId) {
           return -1;
         }
       });
     } else if (type == "desc") {
       this.cinemas.sort(function(a, b) {
-        if (a.id < b.id) {
+        if (a.objectId < b.objectId) {
           return 1;
         }
-        if (a.id > b.id) {
+        if (a.objectId > b.objectId) {
           return -1;
         }
       });
@@ -51,28 +55,42 @@ export class CinematicketHomeComponent implements OnInit {
     console.log("sortcinemas Works!");
   }
   loadCinemaData() {
-    this.cinemas = [
-      {id:1, name:"芳华", ticketcounts:100000},
-      {id:2, name:"犬夜叉", ticketcounts:100},
-      {id:3, name:"速度与激情8", ticketcounts:100},
-      {id:4, name:"你的名字", ticketcounts:100},
-      {id:5, name:"绝地求生", ticketcounts:100},
-      {id:6, name:"不知道", ticketcounts:100}
-    ];
+    let guz = "Cinemas";
+    let url = "http://47.92.145.25:80/parse" + "/classes/" + guz;
+    let headers:HttpHeaders = new HttpHeaders;
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options:any = {
+      headers:headers
+    };
+    this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.cinemas = data['results'];
+    });
+
   }
 
   addNewCinema(){
-    let uuid = Number(Math.random()*1000).toFixed(0);
-    let newCinema:Cinema = {
-      id:Number(uuid),
-      name:"null",
-      ticketcounts:100
-    }
-    this.cinemas.push(newCinema);
+    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+    
+
+    let options:any = {
+        headers:headers
+    };
+
+    let newCinema: Cinema = {
+      name:"叛逆的鲁鲁修",
+      counts:1000,
+    };
+    this.http.post(url,newCinema,options).subscribe(data =>{
+        this.loadCinemaData();
+    });
+
   }
-  deleteCinemaByID(id){
+  deleteCinemaByobjectId(objectId){
     this.cinemas.forEach((Cinema,index,arr)=>{
-      if(Cinema.id==id){
+      if(Cinema.objectId==objectId){
         arr.splice(index,1);
       }
     })
