@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import "rxjs/operators/map";
 
 interface Bus {

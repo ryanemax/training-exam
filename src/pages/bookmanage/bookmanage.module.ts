@@ -14,15 +14,26 @@ import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
     MatFormFieldModule,
-    MatInputModule,MatSelectModule,MatOptionModule,MatIconModule,MatMenuModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatIconModule,
+    MatMenuModule,
+    MatCardModule,
+    MatButtonModule,
     RouterModule.forChild([
       { path: '', component: BookListComponent, pathMatch: 'full' },
-      { path: 'detail', component: BookDetailComponent, pathMatch: 'full' }
+      { path: ':id', component: BookDetailComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [

@@ -1,23 +1,15 @@
-<h1>小红书架</h1>
-<div>
-<h1>已选择的用户</h1>
-<app-book-item [book]="selectedBooks"></app-book-item>
-</div>
+<em><h1>博雅书坊</h1></em>
 
-<button  appBookBtn class="llc-btn" (click)="sortBooks('asc')">正序</button>
-<button appBookBtn class="llc-btn" (click)="sortBooks('desc')" >倒序</button>
-<button appBookBtn class="llc-btn" (click)="sortBooks('random')">随机</button>
-<button  class="llc-btn" (click)="addNewBook()">新增图书</button>
+<button  mat-raised-button color="primary" (click)="sortBooks('asc')">正序</button>
+<button mat-raised-button color="accent" (click)="sortBooks('desc')" >倒序</button>
+<button  mat-raised-button color="accent" (click)="addNewBook()">新增图书</button>
 <table cellspacing="0" cellpadding="0">
   <thead>
       <tr>
           <th>编号</th>
-          <!-- <th>宝贝图片</th> -->
           <th>书名</th>
           <th>作者</th>
           <th>出版日期</th>
-          <!-- <th>价格</th> -->
-          <!-- <th>入手时间</th> -->
           <th>销量</th>
           <th>操作</th>
       </tr>
@@ -25,17 +17,12 @@
   <tbody>
       <tr *ngFor="let book of books">
           <td>{{book.objectId}}</td>
-          <!-- <td><img src="{{book.img}}" /></td> -->
           <td>{{book.name}}</td>
           <td>{{book.author}}</td>
           <td>{{book.date}}</td>
           <td>{{book.sale}}</td>
-          <!-- <td>{{student.price | studentCurrency:"cn"}}</td> -->
-          <!-- <td><span *ngIf="student.addTime">{{student.addTime.iso | date:"y-MM-dd"}}</span></td> -->
           <td>
-              <!-- <mat-icon title="修改" (click)=showEditAssetDailog(student)>edit</mat-icon> -->
-              <!-- <mat-icon title="修改" routerLink="edit/{{student.objectId}}">edit</mat-icon> -->
-              <!-- <mat-icon title="查看" routerLink="view/{{student.objectId}}">menu</mat-icon> -->
+              <mat-icon title="详情" routerLink="/bookmanage/{{book.objectId}}">menu</mat-icon>
               <mat-icon title="删除" (click)="deleteBookByID(book.objectId)">delete</mat-icon>
           </td>
       </tr>

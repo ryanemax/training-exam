@@ -1,3 +1,24 @@
-<p>
-  book-detail works!
-</p>
+<h1>小红书架</h1>
+<button mat-fab color="warn" (click)="backHome()">返回</button>
+<div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{book.name}}</mat-card-title>
+    <mat-card-subtitle>作者: {{book.author}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      出版日期:{{book.date}}
+    </p>
+    <p>
+      销量:{{book.sale}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>12</button>
+    <button mat-button>34</button>
+  </mat-card-actions>
+</mat-card>
+</div>
