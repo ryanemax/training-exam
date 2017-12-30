@@ -13,8 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
-    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
-
+    loadChildren: './bigdata/bigdata.module#BigdataModule',
+  },
+  {
+    path: 'el-home',
+    loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
   },
   {
     path: 'book',
