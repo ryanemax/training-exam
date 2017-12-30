@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+//import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 interface Flower {
   id?:number,
@@ -40,7 +40,10 @@ export class FlowerService{
       console.log(this.flowers);
     });
   }
-    addNewFlower() {
+    addNewFlower(flower) {
+      if(flower["name"]===""||flower["github"]===""){
+        alert("请输入正确的用户信息");
+      }
         let url = "http://47.92.145.25:80/parse"+"/classes/Flower";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
@@ -48,15 +51,33 @@ export class FlowerService{
         let options:any ={
           headers:headers
         };
-        let newFlower: Flower = {
-          name:"樱花",
-          language:"sakura",
-          price:"200"
-        };
-        this.http.post(url,newFlower,options).subscribe(data=>{
-          this.loadFlowersData();
-        });
-      }
+        if(!flower.objectId){
+          // 新增用户
+          this.http.post(url,flower,options).subscribe(data=>{
+            this.loadFlowersData();
+          });
+        }else{
+          // 修改用户
+          url = "http://47.92.145.25:80/parse"+"/classes/Flower/"+flower.objectId;
+          delete flower["objectId"];
+          delete flower["createdAt"];
+          delete flower["updatedAt"];
+          this.http.put(url,flower,options).subscribe(data=>{
+            this.loadFlowersData();
+          });
+        }
+  
+  
+        }
+      //   let newFlower: Flower = {
+      //     name:"樱花",
+      //     language:"sakura",
+      //     price:"200"
+      //   };
+      //   this.http.post(url,newFlower,options).subscribe(data=>{
+      //     this.loadFlowersData();
+      //   });
+      // }
     
       deleteFlowerByID(objectId) {
         let url = "http://47.92.145.25:80/parse"+"/classes/Flower"+"/"+objectId;

@@ -1,7 +1,11 @@
-import { Component, OnInit , Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { FlowerService } from '../flower-data';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+//import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+import {MatDialog} from '@angular/material';
+import {FlowerDialogComponent} from '../flower-dialog/flower-dialog';   
+import { FlowerModule } from '../flower.module';
+
 interface Flower{
   id?:number,
   name:string,
@@ -20,9 +24,14 @@ interface ParseResponse {
   styleUrls: ['./flower-home.component.scss']
 })
 export class FlowerHomeComponent implements OnInit {
-  flowers:Array<Flower>;
-  selectedFlower:Flower;
-  constructor(private http:HttpClient,private flowerServ:FlowerService) {
+  //flowers:Array<Flower>;
+  selectedFlower:any={
+    id:99,
+    name:"鲜花",
+    language:"xianhua",
+    price:"888"
+  };
+  constructor(private http:HttpClient,private flowerServ:FlowerService,public dialog: MatDialog) {
     this.flowerServ.loadFlowersData();
   }
   /*constructor() { 
@@ -66,6 +75,20 @@ export class FlowerHomeComponent implements OnInit {
   }*/
   selectFlower(flower){
     this.selectedFlower=flower;
+  }
+  openDialog(flower?):void{
+    if(!flower){
+      flower={name:"",language:""};
+    }
+    let dialogRef = this.dialog.open(FlowerDialogComponent, {
+      width: '250px',
+      data: flower,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.flowerServ.addNewFlower(result);
+    });
   }
   ngOnInit() {
   }
