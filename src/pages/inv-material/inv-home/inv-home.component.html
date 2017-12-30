@@ -6,15 +6,17 @@
 <mat-tab-group class="col-9">
     <mat-tab label="总览">
         <ul >
-            <li  *ngFor="let item of itemtServ.items">
+            <li  *ngFor="let item of itemtServ.items" (click)="openDialog(item)">
+          <div class="tar" >
+                    <mat-icon title="删除" (click)="itemtServ.deleteItemByID(item.objectId)">delete</mat-icon>
+                    <mat-icon title="编辑" (click)="openDialog(item)">edit</mat-icon>
+          </div>
             <div class="item-list-id">ID：{{item.objectId}}</div>
                   <div class="item-list-code">编码：{{item.code}}</div>
                   <div class="item-list-uom">单位：{{item.uom}}</div>
                   <div class="item-list-description">描述：{{item.description}}</div>
                   <div class="item-list-count">库存：{{item.count | invTok}}</div>
-                  <div class="tar" (click)='itemtServ.deleteItemByID(item.objectId)'>
-                    <span class="item-list-del">x</span>
-            </div>
+                  
             </li>
           </ul>
     </mat-tab>
@@ -39,7 +41,7 @@
                     <td>{{item.description}}</td>
                     <td>{{item.count}}</td>
                     <td>
-                      <mat-icon title="编辑" (click)="openDialog(item)">修改</mat-icon>
+                      <mat-icon title="编辑" (click)="openDialog(item)">edit</mat-icon>
                       <mat-icon title="删除" (click)="itemtServ.deleteItemByID(item.objectId)">delete</mat-icon></td>
                     
                    
