@@ -30,6 +30,7 @@ export class CoffeeStar1HomeComponent implements OnInit {
       sex:"50",
       github:"两颗星",
       goods:"100"
+      
     };
     constructor(private http:HttpClient,private studentServ: StudentService,
     public dialog: MatDialog) {
