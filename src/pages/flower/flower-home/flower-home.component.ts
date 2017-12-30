@@ -1,10 +1,18 @@
 import { Component, OnInit , Input } from '@angular/core';
-
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { FlowerService } from '../flower-data';
+import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 interface Flower{
-  id:number,
+  id?:number,
   name:string,
   language:string,
-  price:string
+  price:string,
+  objectId?:string;
+  updatedAt?:string;
+  createdAt?:string;
+}
+interface ParseResponse {
+  results: any[];
 }
 @Component({
   selector: 'app-flower-home',
@@ -14,7 +22,10 @@ interface Flower{
 export class FlowerHomeComponent implements OnInit {
   flowers:Array<Flower>;
   selectedFlower:Flower;
-  constructor() { 
+  constructor(private http:HttpClient,private flowerServ:FlowerService) {
+    this.flowerServ.loadFlowersData();
+  }
+  /*constructor() { 
     this.loadFlowersData();
   }
   sortUsers(type){
@@ -52,7 +63,7 @@ export class FlowerHomeComponent implements OnInit {
         arr.splice(index,1);
       }
     });
-  }
+  }*/
   selectFlower(flower){
     this.selectedFlower=flower;
   }

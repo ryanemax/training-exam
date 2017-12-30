@@ -16,7 +16,7 @@
     </tr>
     <tr *ngFor="let flower of flowers" (click)="selectFlower(flower)" appButton>
       <td (click)="deleteFlowerByID(flower.id)">[删除]<span></span></td>
-      <td >{{flower.id}}</td>
+      <td >{{flower.objectId}}</td>
       <td >{{flower.name}}</td>
       <td >{{flower.language}}</td>
       <td>{{flower.price|toK}}</td>
