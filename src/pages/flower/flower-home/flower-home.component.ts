@@ -4,7 +4,7 @@ import { FlowerService } from '../flower-data';
 //
 import {MatDialog} from '@angular/material';
 import {FlowerDialogComponent} from '../flower-dialog/flower-dialog';   
-import { FlowerModule } from '../flower.module';
+//import { FlowerModule } from '../flower.module';
 
 interface Flower{
   id?:number,

@@ -18,12 +18,13 @@ import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 import {  FlowerDetailComponent } from './flower-detail/flower-detail.component';
 @NgModule({
   imports: [
     CommonModule,MatDialogModule,
     MatFormFieldModule,MatInputModule,
-    FormsModule,MatIconModule,
+    FormsModule,MatIconModule,MatButtonModule,
     MatOptionModule,MatCardModule,//模块
   
     RouterModule.forChild([
