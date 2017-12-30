@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
-import { $ } from '../../../node_modules/_protractor@5.1.2@protractor';
 
 interface EngineeringsMaster {
     check?: boolean,
