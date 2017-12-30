@@ -1,0 +1,23 @@
+<li class="col-3">
+  <div class="llc-weather-date">
+    日期:{{weatherInfo.dateInfo}}
+  </div>
+  <div class="llc-weather-week">
+    星期：{{weatherInfo.weekInfo}}
+  </div>
+  <div class="llc-weather-temperature">
+    温度：{{weatherInfo.temperature | weather}}
+  </div>
+  <div class="llc-weather-humidity">
+    湿度：{{weatherInfo.humidity}}
+  </div>
+  <div class="llc-weather-pm">
+    PM值：{{weatherInfo.pm}}
+  </div>
+  <div class="llc-weather-comfort">
+    舒适度：{{weatherInfo.comfort}}
+  </div>
+  <div class="tar" (click)='deleteById(weatherInfo.date)'>
+    <ion-delete-button></ion-delete-button>
+  </div>
+</li>
