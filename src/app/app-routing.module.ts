@@ -17,8 +17,8 @@ const routes: Routes = [
 
   },
   {
-    path: 'book',
-    loadChildren: '../pages/book/book.module#BookModule',
+    path: 'bookmanage',
+    loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
   {
     path: 'lipstick',
