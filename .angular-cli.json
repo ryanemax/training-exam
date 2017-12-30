@@ -23,6 +23,7 @@
         "./pages/commonstyle/common.scss",
         "styles.scss",
         "responsive.scss"
+
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
