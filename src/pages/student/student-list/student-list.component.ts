@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { StudentService } from '../student-data';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+// import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 interface User {
   id?: number;
@@ -44,7 +44,6 @@ export class StudentListComponent implements OnInit {
   selectUser(user){
     this.selectedUser = user;
   }
-  
   ngOnInit() {
   }
 
