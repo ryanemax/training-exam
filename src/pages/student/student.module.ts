@@ -22,10 +22,13 @@ import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
 
 import { StudentService } from "./student-data";
+
+import {StudentDialogComponent} from './student-dialog/student-dialog';
 
 @NgModule({
   imports: [
@@ -33,7 +36,7 @@ import { StudentService } from "./student-data";
     MatFormFieldModule,MatInputModule,
     FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,MatCardModule,
-    MatButtonModule,
+    MatButtonModule,MatDialogModule,
     RouterModule.forChild([
       { path: '', component: StudentListComponent, pathMatch: 'full' },
       { path: ':id', component: StudentDetailComponent, pathMatch: 'full' }
@@ -48,8 +51,10 @@ import { StudentService } from "./student-data";
     ActButtonDirective,
     ActCardDirective,
     HightLightDirective,
-    ActButtonComponent
+    ActButtonComponent,
+    StudentDialogComponent
   ],
-  providers:[StudentService]
+  providers:[StudentService],
+  entryComponents:[StudentDialogComponent]
 })
 export class StudentModule { }

@@ -28,6 +28,7 @@
 <ul>
   <li *ngFor="let user of users">
     <span><button (click)="deleteUserByID(user.objectId)">删除</button></span>
+    <mat-icon title="查看" routerLink="/tgou/{{user.objectId}}">menu</mat-icon>
     GOODSID:{{user.objectId}}，商品名：{{user.name}}，英文名：{{user.github}}，价格：{{user.sex | toK}}
     <br>
     <img src={{user.img}}>
