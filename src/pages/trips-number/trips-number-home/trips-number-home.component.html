@@ -62,8 +62,8 @@
                     <!-- <td>{{student.price | studentCurrency:"cn"}}</td> -->
                     <!-- <td><span *ngIf="student.addTime">{{student.addTime.iso | date:"y-MM-dd"}}</span></td> -->
                     <td>
-                        <mat-icon title="修改" (click)=showEditAssetDailog(bus)>edit</mat-icon> 
-                        <mat-icon title="修改" routerLink="edit/{{bus.objectId}}">edit</mat-icon> 
+                        <!-- <mat-icon title="修改" (click)=showEditAssetDailog(bus)>edit</mat-icon> 
+                        <mat-icon title="修改" routerLink="edit/{{bus.objectId}}">edit</mat-icon>  -->
                         <mat-icon title="查看" routerLink="view/{{bus.objectId}}">menu</mat-icon> 
                         <mat-icon title="删除" (click)="deleteUserByID(bus.objectId)">delete</mat-icon>
                     </td>
