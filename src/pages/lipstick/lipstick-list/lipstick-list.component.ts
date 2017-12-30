@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { LipStickService } from '../lipstick-data';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+
 import {MatDialog} from '@angular/material';
 import {LipstickDialogComponent} from '../lipstick-dialog/lipstick-dialog';
 
