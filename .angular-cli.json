@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "./pages/commonstyle/common.scss"
+        "./pages/commonstyle/common.scss",
         "styles.scss",
         "responsive.scss"
       ],
