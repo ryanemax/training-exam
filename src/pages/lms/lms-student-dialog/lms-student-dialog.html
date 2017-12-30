@@ -1,0 +1,17 @@
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="student.studentNo" matInput placeholder="学号" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="student.name" matInput placeholder="姓名" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="student.classId" matInput placeholder="班级" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="student.sex" matInput placeholder="性别" value="">
+</mat-form-field>
+
+<button (click)="save()" mat-raised-button>保存</button>

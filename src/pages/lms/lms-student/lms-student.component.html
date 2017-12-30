@@ -1,7 +1,10 @@
 <div class="student-container mat-elevation-z8">
-  <form class="student-form">
+  <form class="student-form student-full-width">
     <table class="student-full-width" cellspacing="0">
       <tr>
+        <td>
+          <b>Search: </b>
+        </td>
         <td>
           <mat-form-field class="student-full-width">
             <input matInput placeholder="Name" />
@@ -16,23 +19,25 @@
           </mat-form-field>
         </td>
         <td>
-          <button mat-raised-button color="primary" (click)="searchStudent()"><mat-icon>search</mat-icon>查询</button>
+          <button mat-button (click)="deleteStudentByID(element.objectId)"><mat-icon title="查询" >search</mat-icon>查询</button>
+        </td>
+        <td>
+          <button mat-button (click)="openDialog()"><mat-icon title="新增" >add</mat-icon>新增</button>
         </td>
       </tr>
     </table>
   </form>
   <mat-table #table [dataSource]="dataSource" matSort>
-
     <!-- No. Column -->
     <ng-container matColumnDef="studentNo">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 学号 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.studentNo}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> 姓名 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <mat-cell *matCellDef="let element"> <span matTooltip="{{element.description}}">{{element.name}}</span> </mat-cell>
     </ng-container>
 
     <!-- ClassName Column -->
@@ -45,6 +50,16 @@
     <ng-container matColumnDef="sex">
       <mat-header-cell *matHeaderCellDef mat-sort-header> 性别 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.sex}} </mat-cell>
+    </ng-container>
+
+    <!-- Operation Column -->
+    <ng-container matColumnDef="operation">
+      <mat-header-cell *matHeaderCellDef style="text-align: center;"> 操作 </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button routerLink="/lms/student/{{element.objectId}}"><mat-icon title="查看">description</mat-icon></button>
+        <button mat-icon-button (click)="openDialog(element)"><mat-icon title="修改" >edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteStudentByID(element.objectId)"><mat-icon title="删除" >delete</mat-icon></button>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

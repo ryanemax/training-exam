@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
-
+import { EmployeeService } from "./employee-data";
 import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
@@ -18,13 +18,11 @@ import { FormsModule } from '@angular/forms';
     FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,
     RouterModule.forChild([
-      
+      { path: '', component: EmployeeManageHomeComponent, pathMatch: 'full' },      
       { path: 'list', component: EmployeeManageListComponent, pathMatch: 'full' },
-      { path: '', component: EmployeeManageHomeComponent, pathMatch: 'full' },
-     
     ])
   ],
-  
+  providers:[EmployeeService],
   declarations: [EmployeeManageHomeComponent,EmployeeManageListComponent]
 })
 export class EmployeeManageModule { }

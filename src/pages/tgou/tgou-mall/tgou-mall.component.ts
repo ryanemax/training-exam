@@ -12,7 +12,7 @@ interface User{
   updatedAt?:string;
   createdAt?:string;
 }
-
+ 
 @Component({
   selector: 'app-tgou-mall',
   templateUrl: './tgou-mall.component.html',
