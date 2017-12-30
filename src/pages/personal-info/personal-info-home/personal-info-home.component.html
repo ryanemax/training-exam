@@ -1,14 +1,13 @@
 <h1 class="llc-personal-info-tt col-12">人员信息列表</h1>
 <div class="llc-personal-info-ctrl col-12">
-  <button class="llc-btn">正序</button>
-  <button class="llc-btn">倒序</button>
-  <button class="llc-btn">随机</button>
+  <button class="llc-btn" (click)="sortUsers('asc')">正序</button>
+  <button class="llc-btn" (click)="sortUsers('desc')">倒序</button>
   <button class="llc-btn">新增学生</button>
 </div>
 <ul class="llc-student-list col-12">
   <li class="col-3" *ngFor="let user of users">
     <div class="llc-student-list-id">
-      序号：{{user.id}}
+      id：{{user.objectId}}
     </div>
     <div class="llc-student-list-name">
       姓名：{{user.name}}
