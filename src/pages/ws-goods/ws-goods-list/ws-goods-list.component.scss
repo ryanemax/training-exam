@@ -6,7 +6,7 @@
     -moz-appearance: none;
     appearance: none;
     border-radius: 30px;
-    background-color: #448AFF;
+    background-color: #00bcd4;
     color: #fff;
     cursor: pointer;
     outline: 0 none;
@@ -69,4 +69,20 @@
   .tar {
     text-align: right;
   }
+
+  h1{margin-left: 10px;}
+
+  table{width:100%;background-color: #f9f5f5;margin-top: 5px; margin-bottom: 10px;}
+  
+  thead tr{font-weight: bold;}
+  
+  td,th{border:1px solid rgba(198, 183, 183, 0.75);padding: 10px;}
+  
+  .center{text-align: center;}
+  
+  th{background-color: #00bcd4;text-align: center;}
+  
+  td{text-align: center;}
+  
+  table img{width: 80px;height: 80px;}
   
