@@ -2,7 +2,11 @@
 <div class="llc-personal-info-ctrl col-12">
   <button class="llc-btn" (click)="sortUsers('asc')">正序</button>
   <button class="llc-btn" (click)="sortUsers('desc')">倒序</button>
-  <button class="llc-btn" (click)="addNewPeople()">新增学生</button>
+  <button class="llc-btn" (click)="addNewUser()">新增学生</button>
+</div>
+<div class="llc-personal-info-ctrl col-12 pdt10">
+  <input type="text" placeholder="请输入要搜索的内容" class="llc-input">
+  <button class="llc-btn">搜索</button>
 </div>
 <ul class="llc-student-list col-12">
   <li class="col-3" *ngFor="let user of users">
@@ -22,7 +26,7 @@
       电话：{{user.phone}}
     </div>
     <div class="tar">
-      <span class="llc-student-list-del">x</span>
+      <span class="llc-student-list-del" (click)="deleteUserByID(user.objectId)">x</span>
     </div>
   </li>
 
