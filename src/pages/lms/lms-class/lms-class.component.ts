@@ -70,5 +70,5 @@ deleteClassByID(id) {
   this.http.delete(url,options).subscribe(data=>{
     this.loadClassData();
   });
-}
-}
+}}
+
