@@ -58,8 +58,8 @@ export class FlowerService{
         });
       }
     
-      deleteFlowerByID(id) {
-        let url = "http://47.92.145.25:80/parse"+"/classes/Flower"+"/"+id;
+      deleteFlowerByID(objectId) {
+        let url = "http://47.92.145.25:80/parse"+"/classes/Flower"+"/"+objectId;
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
     

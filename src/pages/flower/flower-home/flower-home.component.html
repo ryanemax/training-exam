@@ -14,8 +14,8 @@
       <th>鲜花花语</th>
       <th>鲜花价格</th>
     </tr>
-    <tr *ngFor="let flower of flowerServ:flowers" (click)="flowerServ.selectFlower(flower)" appButton>
-      <td (click)="deleteFlowerByID(flower.id)">[删除]<span></span></td>
+    <tr *ngFor="let flower of flowerServ.flowers" (click)="flowerServ.selectFlower(flower)" appButton>
+      <td (click)="deleteFlowerByID(flower.objectId)">[删除]<span></span></td>
       <td >{{flower.objectId}}</td>
       <td >{{flower.name}}</td>
       <td >{{flower.language}}</td>
