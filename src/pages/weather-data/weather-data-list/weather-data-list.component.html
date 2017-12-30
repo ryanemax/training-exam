@@ -1,0 +1,17 @@
+<h1>一周天气信息预报：</h1>
+<button appWeatherButton (click)="sortUsers('asc')">日期排序</button>
+<button appWeatherButton (click)="sortUsers('desc')" >温度排序</button>
+<button appWeatherButton (click)="sortUsers('random')">正常</button>
+<button appWeatherButton (click)="addNewUser()">下周天气预报</button>
+<ul>
+    <div id="sytle1">
+    <li *ngFor="let weatherInfo of weatherDataList">      
+        <span (click)="deleteByDate(weatherInfo.dateInfo)">
+          <div appWeatherButton id="sytle2" style="float:right;">[删除日期]</div></span>
+          日期:{{weatherInfo.dateInfo}}，星期：{{weatherInfo.weekInfo}}，温度：{{weatherInfo.temperature | weather}}，湿度：{{weatherInfo.humidity}}
+    
+    </li>
+    </div>
+
+    
+</ul>
