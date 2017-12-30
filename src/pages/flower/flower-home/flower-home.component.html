@@ -15,7 +15,7 @@
       <th>鲜花价格</th>
     </tr>
     <tr *ngFor="let flower of flowers" (click)="selectFlower(flower)" appButton>
-      <td ><span (click)="deleteFlowerByID(flower.id)">[删除]</span></td>
+      <td (click)="deleteFlowerByID(flower.id)">[删除]</td>
       <td >{{flower.id}}</td>
       <td >{{flower.name}}</td>
       <td >{{flower.language}}</td>
