@@ -72,7 +72,7 @@ export class ItemService{
         let options ={
           headers:headers
         };
-        if(!item.objectId){
+        if(!item){
           console.log(item);
           this.http.post(url,item,options).subscribe(data=>{
             this.loadItemsData();

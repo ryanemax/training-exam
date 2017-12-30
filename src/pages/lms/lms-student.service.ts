@@ -54,6 +54,27 @@ export class LmsStudentService {
     };
     return this.http.get(REST_API_LMS_STUDENT_URL + "/" + id, options);
   }
+
+  registStudent(student) {
+    let options = {
+      headers: REST_API_HEADERS
+    };
+    if (student.studentNo) {
+      student.studentNo = Number(student.studentNo);
+    }
+    // Add Student
+    if (!student.objectId) {
+      console.info("add");
+      return this.http.post(REST_API_LMS_STUDENT_URL, student, options);
+    } else { // Update Student
+      console.info("update");
+      let objectId = student.objectId;
+      delete student["objectId"];
+      delete student["createdAt"];
+      delete student["updatedAt"];
+      return this.http.put(REST_API_LMS_STUDENT_URL + "/" + objectId, student, options);
+    }
+  }
 }
 
 

@@ -38,7 +38,7 @@ export class InvHomeComponent implements OnInit {
 
   openDialog(item?): void {
     if(!item){
-      item = {code:"",uom:"",description:"",count:""};
+      item = {code:"",uom:"",description:"",count:0};
     }
     let dialogRef = this.dialog.open(ItemDialogComponent, {
       width: '250px',
@@ -46,7 +46,6 @@ export class InvHomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      alert("aaa");
       this.itemtServ.addNewItem(result);
     });
   }

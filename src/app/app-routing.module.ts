@@ -92,6 +92,10 @@ const routes: Routes = [
     {
       path: 'supplier',
     loadChildren: '../pages/supplier/supplier.module#SupplierModule'
+  },
+  {
+    path: 'clothes1',
+    loadChildren: '../pages/clothes1/clothes1.module#Clothes1Module',
   }
 
 ];
