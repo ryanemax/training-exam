@@ -1,0 +1,17 @@
+<mat-card class="example-card" *ngIf="flower">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{flower.name}}</mat-card-title>
+    <mat-card-subtitle>花语: {{flower.language}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/assets/img/flower/mg.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      价格：{{flower.price}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
