@@ -8,9 +8,18 @@ import { BookItemComponent } from './book-item/book-item.component';
 import {BookPipe} from './sharing/book.pipe';
 import {BookBtn} from './sharing/bookBtn.directive';
 
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
+import { MatOptionModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
+
 @NgModule({
   imports: [
     CommonModule,
+    MatFormFieldModule,
+    MatInputModule,MatSelectModule,MatOptionModule,MatIconModule,MatMenuModule,
     RouterModule.forChild([
       { path: '', component: BookListComponent, pathMatch: 'full' },
       { path: 'detail', component: BookDetailComponent, pathMatch: 'full' }
