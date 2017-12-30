@@ -1,0 +1,13 @@
+<h1>小红书架</h1>
+<div>
+<h1>已选择的用户</h1>
+<app-book-item [book]="selectedBooks"></app-book-item>
+</div>
+
+<button  appBookBtn class="llc-btn" (click)="sortBooks('asc')">正序</button>
+<button appBookBtn class="llc-btn" (click)="sortBooks('desc')" >倒序</button>
+<button appBookBtn class="llc-btn" (click)="sortBooks('random')">随机</button>
+<button  class="llc-btn" (click)="addNewBook()">新增学生</button>
+<ul class="llc-student-list">
+  <app-book-item  [book]="book" *ngFor="let book of books" (click)="selectBook(book)"></app-book-item>
+</ul>

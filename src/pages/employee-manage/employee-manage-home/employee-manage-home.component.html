@@ -1,0 +1,19 @@
+<li class="col-3">
+  <div class="llc-employee-list-id">
+    ID:{{employee.id}}
+  </div>
+  <div class="llc-employee-list-name">
+    姓名：{{employee.name}}
+  </div>
+  <div class="llc-employee-list-sex">
+    性别：{{showSexName(employee.sex)}}
+  </div>
+  <div class="llc-employee-list-count">
+    部门：{{employee.dept}}
+  </div>
+  <div class="tar" (click)='deleteById(employee.id)'>
+    <span class="llc-employee-list-del">x</span>
+  </div>
+</li>
+
+<!-- <app-employee-manage-list></app-employee-manage-list> -->
