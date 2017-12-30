@@ -10,7 +10,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule} from '@angular/material/table';
 import { ItemService } from "./item-data";
 import { MatIconModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 
+import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule } from '@angular/material/input';
+import {ItemDialogComponent} from './item-dialog/item-dialog';
 
 @NgModule({
   imports: [
@@ -19,11 +24,16 @@ import { MatIconModule } from '@angular/material';
     MatTabsModule,
     MatTableModule,
     MatIconModule,
+    MatDialogModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forChild([
       { path: '', component: InvHomeComponent, pathMatch: 'full' }
     ])
   ],
-  declarations: [InvHomeComponent,InvItemComponent,InvButtonDirective,InvTokPipe],
-  providers:[ItemService]
+  declarations: [InvHomeComponent,InvItemComponent,InvButtonDirective,InvTokPipe,ItemDialogComponent],
+  providers:[ItemService],
+  entryComponents:[ItemDialogComponent]
 })
 export class InvMaterialModule { }
