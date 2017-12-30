@@ -19,13 +19,14 @@ let options = { headers: headers };
 
 export class EightstockDetailComponent implements OnInit {
   stockd: any;
+  id:any;
   constructor(private route: ActivatedRoute, private http: Http) {
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      let id = params["params"]["id"];
-      this.getStockById(id);
+      this.id = params["params"]["id"];
+      this.getStockById(this.id);
     });
 
   }
@@ -34,7 +35,18 @@ export class EightstockDetailComponent implements OnInit {
 
     this.http.get(url + "/classes/EStock" + "/" + id, options).subscribe(data => {
       this.stockd = data.json();
-      // console.log(this.stockd);
     });
   }
+
+  updateSelectStatusById(type) {
+
+    delete this.stockd["objectId"];
+    delete this.stockd["createdAt"];
+    delete this.stockd["updatedAt"];
+    this.stockd['selected']=type;
+    this.http.put(url + "/classes/EStock/" + this.id, this.stockd, options).subscribe(data => {
+      this.getStockById(this.id);
+    });
+  }
+
 }

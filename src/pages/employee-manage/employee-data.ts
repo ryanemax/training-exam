@@ -3,11 +3,12 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 // import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 interface Employee {
-  id?: number;
+  Id: number;
   name: string;
   sex: string;
   dept:string;
   sale:number;
+  objectId:string;
   joinin:string;
 }
 
@@ -25,7 +26,7 @@ export class EmployeeService{
     //   {id: 1, count:3432500, name: "Zhangdayong", github: "Zhangdayong", sex: "male"},
     //   {id: 2, count:10012312321, name: "Hanmeimei", github: "Hanmeimei", sex: "female"}
     // ];
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
+    let url = "http://47.92.145.25:80/parse"+"/classes/Employee12";
     let headers:HttpHeaders = new HttpHeaders();
     headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
@@ -39,7 +40,7 @@ export class EmployeeService{
   }
 
 
-  addNewEmployee(employee) {
+  addNewEmployee(employee?) {
         if(employee["name"]===""||employee["dept"]===""){
           alert("请输入正确的用户信息");
         }
@@ -59,7 +60,7 @@ export class EmployeeService{
         });
       }else{
         // 修改用户
-        url = "http://47.92.145.25:80/parse"+"/classes/User12/"+employee.objectId;
+        url = "http://47.92.145.25:80/parse"+"/classes/Employee12/"+employee.objectId;
         delete employee["objectId"];
         delete employee["createdAt"];
         delete employee["updatedAt"];
@@ -72,7 +73,7 @@ export class EmployeeService{
       }
     
       deleteEmployeeByID(id) {
-        let url = "http://47.92.145.25:80/parse"+"/classes/User12"+"/"+id;
+        let url = "http://47.92.145.25:80/parse"+"/classes/Employee12"+"/"+id;
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
     

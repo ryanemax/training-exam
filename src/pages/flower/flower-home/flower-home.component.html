@@ -1,10 +1,10 @@
 <div class="a" >
-<h1 class="a">鲜花列表</h1>
+<h1 class="b">鲜花列表</h1><br>
 <button class="button button2" (click)="flowerServ.sortUsers('asc')">正序</button>
 <button class="button button2" (click)="flowerServ.sortUsers('desc')" >倒序</button>
 <button class="button button2" (click)="flowerServ.sortUsers('random')">随机</button>
 <button class="button button2" (click)="openDialog()">新品鲜花</button>
-
+<br>
 <table class="b" width="100%"  border="2" style="margin:10px">
     <tr>
       <th>鲜花ID</th>
@@ -19,10 +19,13 @@
       <td >{{flower.language}}</td>
       <td>{{flower.price|toK}}</td>
       <td>
-          <mat-icon title="编辑" (click)="openDialog(flower)"><span class="c">[修改]</span></mat-icon>
-          <mat-icon title="查看" routerLink="/flower/{{flower.objectId}}"><span class="c">[查看]</span></mat-icon>
-          <mat-icon title="删除" (click)="flowerServ.deleteFlowerByID(flower.objectId)"><span class="c">[删除]</span></mat-icon>
+        <div class="button-row">
+        <button mat-button (click)="openDialog(flower)">[修改]</button>
+        <button mat-button color="primary" routerLink="/flower/{{flower.objectId}}">[查看]</button>
+        <button mat-button color="accent" (click)="flowerServ.deleteFlowerByID(flower.objectId)">[删除]</button>
+      </div>
     </td>
+      
     </tr>
   </table>
 </div>

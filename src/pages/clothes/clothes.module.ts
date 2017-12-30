@@ -12,7 +12,7 @@ import { Say666Pipe } from './sharing/say-666.pipe';
 
 import { HightLightDirective } from './sharing/highlight.directive';
 
-import { MatFormFieldModule } from '@angular/material';
+import { MatFormFieldModule, MatDialog, MatDialogModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
@@ -26,6 +26,7 @@ import { ClothesListComponent } from './clothes-list/clothes-list.component';
 import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component';
 import { ClothesItemComponent } from './clothes-item/clothes-item.component';
 import { ClothesService } from './clothes-data';
+import { ClothesDialogComponent } from './clothes-dialog/clothes-dialog';
 
 
 
@@ -36,6 +37,7 @@ import { ClothesService } from './clothes-data';
     FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,MatCardModule,
     MatButtonModule,
+    MatDialogModule,
     RouterModule.forChild([
       { path: '', component: ClothesListComponent, pathMatch: 'full' },
       { path: ':id', component: ClothesDetailComponent, pathMatch: 'full' }
@@ -50,8 +52,10 @@ import { ClothesService } from './clothes-data';
     ActButtonDirective,
     ActCardDirective,
     HightLightDirective,
-    ActButtonComponent
+    ActButtonComponent,
+    ClothesDialogComponent
   ],
-  providers:[ClothesService]
+  providers:[ClothesService],
+  entryComponents:[ClothesDialogComponent]
 })
 export class ClothesModule { }

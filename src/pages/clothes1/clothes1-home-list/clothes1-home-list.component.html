@@ -1,0 +1,80 @@
+<div>
+  <h1>服装管理1</h1>
+  <div class="clothes1Content">
+
+      <nav mat-tab-nav-bar>
+          <a mat-tab-link active="true">
+                  服装列表
+                  </a>
+          <a mat-tab-link routerLink="analysis">
+                  统计分析
+               </a>
+      </nav>
+      <div class="tabMenu">
+
+          <div class="mat-table-controls">
+              <mat-select placeholder="搜索范围" [(ngModel)]="searchType" name="searchType">
+                  <mat-option value="name">名称</mat-option>
+                  <mat-option value="classification">分类</mat-option>
+              </mat-select>
+              <mat-input-container>
+                  <input [(ngModel)]="searchText" matInput placeholder="请输入要搜索的内容">
+              </mat-input-container>
+              <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
+              <button style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
+          </div>
+
+          <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
+            添加服装</button>
+          <button class="sortBtn" mat-raised-button [matMenuTriggerFor]="menu">
+                          <mat-icon>more_vert</mat-icon>排序方式
+                        </button>
+          <mat-menu #menu="matMenu">
+              <button mat-menu-item class="mat-menu-item" (click)="clothes1Serv.sortClothes1('asc')">
+                            <span>正序</span>
+                          </button>
+              <button mat-menu-item (click)="clothes1Serv.sortClothes1('desc')">
+                            <span>倒序</span>
+                          </button>
+              <button mat-menu-item (click)="clothes1Serv.sortClothes1('random')">
+                            <span>随机</span>
+                          </button>
+          </mat-menu>
+      </div>
+
+      <table cellspacing="0" cellpadding="0">
+          <thead>
+              <tr>
+                  <th>编号</th>
+                  <th>图片</th>
+                  <th>名称</th>
+                  <th>价格</th>
+                  <th>数量</th>
+                  <!-- <th>价格</th> -->
+                  <!-- <th>入手时间</th> -->
+                  <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let clothes1 of clothes1Serv.clothes1list">
+                  <td>{{clothes1.objectId}}</td>
+                  <td><img src="{{clothes1.img?clothes1.img:'/assets/img/timg.jpg'}}" /></td>
+                  <td>{{clothes1.name}}</td>
+                  <td>{{clothes1.price}}</td>
+                  <!--<td>{{clothes1.price | clothes1Currency:"cn"}}</td>-->
+                  <td>{{clothes1.count}}</td>
+                   
+                  <!-- <td><span *ngIf="student.addTime">{{student.addTime.iso | date:"y-MM-dd"}}</span></td> -->
+                  <td>
+                      <!-- <mat-icon title="修改" (click)=showEditAssetDailog(student)>edit</mat-icon> -->
+                      <!-- <mat-icon title="修改" routerLink="edit/{{student.objectId}}">edit</mat-icon> -->
+                      <mat-icon title="编辑" (click)="openDialog(clothes1)">修改</mat-icon>
+                      <mat-icon title="查看" routerLink="/clothes1/{{clothes1.objectId}}">menu</mat-icon>
+                      <mat-icon title="删除" (click)="clothes1Serv.deleteClothes1ByID(clothes1.objectId)">delete</mat-icon>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </div>
+</div>

@@ -1,68 +1,73 @@
+<br>
 <div class="col-12">
-  <td class="col-4 market-index" *ngFor="let marketIndex of marketIndexes">
-    <span style="color:#888888">&nbsp;{{marketIndex.name}}</span>
-    <span appMarketIndexColor>{{marketIndex.price}}</span>
-    <span appMarketIndexColor>&nbsp;{{marketIndex.percent}}%</span>
-    <span>&nbsp;{{marketIndex.total|moneyUnit}}</span>
-    <span>&nbsp;&nbsp;</span>
-  </td>
+  <tr>
+    <td *ngFor="let marketIndex of marketIndexes" class="col-4 market-index">
+      <mat-card>
+        <span style="color:#888888">&nbsp;{{marketIndex.name}}</span>
+        <span appMarketIndexColor>{{marketIndex.price}}</span>
+        <span appMarketIndexColor>&nbsp;{{marketIndex.percent}}%</span>
+        <span>&nbsp;{{marketIndex.total|moneyUnit}}</span>
+      </mat-card>
+    </td>
+  </tr>
 </div>
-<div *ngIf="tabNo==1" class="col-12">
-  <div class="col-12">
-    <td class="tabBtn" style="background-color:#d4d4d4;" (click)="changeTab(1,this)">行情</td>
-    <td class="tabBtn" (click)="changeTab(2,this)">自选</td>
-    <td class="tabBtn" (click)="changeTab(3,this)">资讯</td>
-  </div>
-  <div class="col-12">
-    <table class="col-12" style="background-color:#d4d4d4;height:32px;">
-      <tr class="col-12">
-        <th class="col-1" (click)="sortStock('id')">股票代码</th>
-        <th class="col-1">股票名称</th>
-        <th class="col-1" (click)="sortStock('startPrice')">开盘价</th>
-        <th class="col-1" (click)="sortStock('nowPrice')">最新价</th>
-        <th class="col-1" (click)="sortStock('minPrice')">最低价</th>
-        <th class="col-1" (click)="sortStock('maxPrice')">最高价</th>
-        <th class="col-1" (click)="sortStock('volume')">成交量</th>
-        <th class="col-1" (click)="sortStock('amount')">成交金额</th>
-        <th class="col-1" (click)="sortStock('marketValue')">总市值</th>
-        <th class="col-1" (click)="sortStock('circulationValue')">流通市值</th>
-      </tr>
-    </table>
-  </div>
-  <app-eightstock-listitem [stock]="stock" *ngFor="let stock of stocks"></app-eightstock-listitem>
-  <br>
-  <button (click)="addStock()">增加股票</button>
-</div>
-<div *ngIf="tabNo==2">
-  <div class="col-12">
-    <td class="tabBtn" (click)="changeTab(1,this)">行情</td>
-    <td class="tabBtn" style="background-color:#d4d4d4;" (click)="changeTab(2,this)">自选</td>
-    <td class="tabBtn" (click)="changeTab(3,this)">资讯</td>
-  </div>
-  <div class="col-12">
-    <table class="col-12" style="background-color:#d4d4d4;height:32px;">
-      <tr class="col-12">
-        <th class="col-1" (click)="sortStock('id')">股票代码</th>
-        <th class="col-1" (click)="sortStock('name')">股票名称</th>
-        <th class="col-1" (click)="sortStock('startPrice')">开盘价</th>
-        <th class="col-1" (click)="sortStock('nowPrice')">最新价</th>
-        <th class="col-1" (click)="sortStock('minPrice')">最低价</th>
-        <th class="col-1" (click)="sortStock('maxPrice')">最高价</th>
-        <th class="col-1" (click)="sortStock('volume')">成交量</th>
-        <th class="col-1" (click)="sortStock('amount')">成交金额</th>
-        <th class="col-1" (click)="sortStock('marketValue')">总市值</th>
-        <th class="col-1" (click)="sortStock('circulationValue')">流通市值</th>
-      </tr>
-    </table>
-  </div>
-  <app-eightstock-listitem [stock]="stock" *ngFor="let stock of selectedStocks"></app-eightstock-listitem>
-</div>
-<div *ngIf="tabNo==3">
-  <div class="col-12">
-    <td class="tabBtn" (click)="changeTab(1,this)">行情</td>
-    <td class="tabBtn" (click)="changeTab(2,this)">自选</td>
-    <td class="tabBtn" style="background-color:#d4d4d4;" (click)="changeTab(3,this)">资讯</td>
-  </div>
-  <br> 2017年的A股交易今日落下帷幕，沪指红盘收官，收盘报3307.17点，全年累计涨6.56%；受益于大蓝筹的强劲表现，上证50指数全年累计飙升25.08%；而创业板指则表现萎靡，全年累计下跌10.67%，在全球主要股指中排名倒数第一。
-  从全球主要股市的表现来看，A股今年处于中下游水平，市值上涨超过8万亿元，这是A股交出的答卷。 从年初的再融资新规出台，到年中的A股被纳入MSCI、再到股指期货再松绑等，虽然热点在各个板块轮动，但全年来看，A股呈现明显的价值投资趋势，这也是A股多年来难得一见的盛况。
-</div>
+<br>
+<mat-tab-group class="demo-tab-group">
+  <mat-tab label="自选" (click)="getSelectedStockList()">
+    <mat-card-content class="col-12">
+      <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+        <tr class="col-12">
+          <th class="col-1" (click)="sortStock('id',true)">股票代码</th>
+          <th class="col-1" (click)="sortStock('name',true)">股票名称</th>
+          <th class="col-1" (click)="sortStock('startPrice',true)">开盘价</th>
+          <th class="col-1" (click)="sortStock('nowPrice',true)">最新价</th>
+          <th class="col-1" (click)="sortStock('minPrice',true)">最低价</th>
+          <th class="col-1" (click)="sortStock('maxPrice',true)">最高价</th>
+          <th class="col-1" (click)="sortStock('volume',true)">成交量</th>
+          <th class="col-1" (click)="sortStock('amount',true)">成交金额</th>
+          <th class="col-1" (click)="sortStock('marketValue',true)">总市值</th>
+          <th class="col-1" (click)="sortStock('circulationValue',true)">流通市值</th>
+        </tr>
+      </table>
+    </mat-card-content>
+    <app-eightstock-listitem [stock]="stock" *ngFor="let stock of selectedStocks"></app-eightstock-listitem>
+  </mat-tab>
+  <mat-tab label="行情">
+    <mat-card-content class="col-12">
+      <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+        <tr class="col-12">
+          <th class="col-1" (click)="sortStock('id',false)">股票代码</th>
+          <th class="col-1" (click)="sortStock('name',false)">股票名称</th>
+          <th class="col-1" (click)="sortStock('startPrice',false)">开盘价</th>
+          <th class="col-1" (click)="sortStock('nowPrice',false)">最新价</th>
+          <th class="col-1" (click)="sortStock('minPrice',false)">最低价</th>
+          <th class="col-1" (click)="sortStock('maxPrice',false)">最高价</th>
+          <th class="col-1" (click)="sortStock('volume',false)">成交量</th>
+          <th class="col-1" (click)="sortStock('amount',false)">成交金额</th>
+          <th class="col-1" (click)="sortStock('marketValue',false)">总市值</th>
+          <th class="col-1" (click)="sortStock('circulationValue',false)">流通市值</th>
+        </tr>
+      </table>
+    </mat-card-content>
+    <app-eightstock-listitem [stock]="stock" *ngFor="let stock of stocks"></app-eightstock-listitem>
+  </mat-tab>
+  <mat-tab label="资讯">
+    <br>
+    <mat-card class="col-12">
+      <table class="col-12">
+        <tr>
+          <td class="col-3" colspan="1" rowspan="4">
+            <img mat-card-image class="col-12" src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=b456f3cc800a19d8df0e8c575293e9ee/a08b87d6277f9e2f7fe1b7751f30e924b999f3f3.jpg"
+              alt="2017年度基金业绩排行榜出炉！">
+          </td>
+          <td class="col-9" colspan="1" rowspan="1">2017年度基金业绩排行榜出炉！</td>
+        </tr>
+        <tr>
+          <mat-card-content colspan="1" rowspan="3">
+            东方证券资管林鹏管理的东方红睿华沪港深混合、东方红沪港深混合以67.91%和66.70%的年度收益率排名包揽冠亚军； 易方达基金萧楠管理的易方达消费行业股票以64.97%的收益率获得年度季军。
+          </mat-card-content>
+        </tr>
+      </table>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
