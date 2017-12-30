@@ -8,9 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WsGoodListItemComponent implements OnInit {
 
   @Input() goods:any = {
-    goods_no : "",
-    goods_nm : "",
-    sale_type : 1,
+    goodsNo : "",
+    goodsNm : "",
+    saleType : 1,
     maker : "",
     wsCnt : 0
   };
