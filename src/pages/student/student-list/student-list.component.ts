@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { StudentService } from '../student-data';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+// import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 interface User {
   id?: number;
@@ -32,11 +32,6 @@ export class StudentListComponent implements OnInit {
     github:"kingsman",
     count:"0"
   };
-  foods:any = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
 
   constructor(private http:HttpClient,private studentServ:StudentService) {
     this.studentServ.loadUsersData();
@@ -44,7 +39,6 @@ export class StudentListComponent implements OnInit {
   selectUser(user){
     this.selectedUser = user;
   }
-  
   ngOnInit() {
   }
 

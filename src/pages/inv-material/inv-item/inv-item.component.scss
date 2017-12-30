@@ -1,11 +1,8 @@
 
-  li {
-    position: relative;
+  .card {
     padding: 10px;
     margin-bottom: 15px;
     margin-right: 10px;
-    width: 100px;
-    display: inline-block;
     list-style: none;
     border: 1px solid #BDBDBD;
     border-radius: 4px;
@@ -27,7 +24,7 @@
   .llc-item-list-count {
     margin-bottom: 10px;
   }
-  .llc-item-list-del {
+  .item-list-del {
     position: absolute;
     right: 5px;
     top: 5px;
