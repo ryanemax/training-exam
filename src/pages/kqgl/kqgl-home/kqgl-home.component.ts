@@ -28,7 +28,7 @@ export class KqglHomeComponent implements OnInit {
     qq:"0",
     dksj:"20171212 08:12:25"
   };
-  constructor(private http:Http) {
+  constructor(private http:HttpClient) {
 
     this.loadUsersData();
    }
@@ -47,10 +47,9 @@ export class KqglHomeComponent implements OnInit {
     // })
 
     let url = "http://47.92.145.25:80/parse"+"/classes/Kqgl"+"/"+id;
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
     let options ={
       headers:headers
     };
@@ -103,10 +102,9 @@ export class KqglHomeComponent implements OnInit {
 
   addNewUser() {
     let url = "http://47.92.145.25:80/parse"+"/classes/Kqgl";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
     let options ={
       headers:headers
     };
