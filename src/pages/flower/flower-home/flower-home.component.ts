@@ -78,7 +78,7 @@ export class FlowerHomeComponent implements OnInit {
   }
   openDialog(flower?):void{
     if(!flower){
-      flower={name:"",language:""};
+      flower={name:"",language:"",price:""};
     }
     let dialogRef = this.dialog.open(FlowerDialogComponent, {
       width: '250px',
