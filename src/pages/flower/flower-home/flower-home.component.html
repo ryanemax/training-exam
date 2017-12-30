@@ -19,9 +19,9 @@
       <td >{{flower.language}}</td>
       <td>{{flower.price|toK}}</td>
       <td>
-          <mat-icon title="编辑" (click)="openDialog(flower)">修改</mat-icon>
-          <mat-icon title="查看" routerLink="/flower/{{flower.objectId}}">[查看]</mat-icon>
-          <mat-icon title="删除" (click)="flowerServ.deleteFlowerByID(flower.objectId)">[删除]</mat-icon>
+          <mat-icon title="编辑" (click)="openDialog(flower)"><span class="c">[修改]</span></mat-icon>
+          <mat-icon title="查看" routerLink="/flower/{{flower.objectId}}"><span class="c">[查看]</span></mat-icon>
+          <mat-icon title="删除" (click)="flowerServ.deleteFlowerByID(flower.objectId)"><span class="c">[删除]</span></mat-icon>
     </td>
     </tr>
   </table>
