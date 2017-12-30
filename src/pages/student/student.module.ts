@@ -18,6 +18,8 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
 
@@ -27,7 +29,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MatFormFieldModule,MatInputModule,
-    FormsModule,
+    FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,
     RouterModule.forChild([
       { path: '', component: StudentListComponent, pathMatch: 'full' },

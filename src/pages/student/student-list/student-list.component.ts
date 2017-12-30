@@ -1,11 +1,16 @@
 import {Component, OnInit} from '@angular/core';
+import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import "rxjs/operators/map";
 
 interface User {
-  id: number;
+  id?: number;
   name: string;
   github: string;
   sex: string;
   count: number;
+  objectId?:string;
+  updatedAt?:string;
+  createdAt?:string;
 }
 
 @Component({
@@ -29,7 +34,7 @@ export class StudentListComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
 
-  constructor() {
+  constructor(private http:Http) {
     this.loadUsersData();
   }
   selectUser(user){
@@ -74,33 +79,60 @@ export class StudentListComponent implements OnInit {
   }
 
   loadUsersData() {
-    this.users = [
-      {id: 5, count:100, name: "Ryane", github: "ryanemax", sex: "male"},
-      {id: 4, count:999, name: "Liming", github: "liming", sex: "male"},
-      {id: 3, count:1000, name: "Xiaohong", github: "xiaohong", sex: "female"},
-      {id: 1, count:3432500, name: "Zhangdayong", github: "Zhangdayong", sex: "male"},
-      {id: 2, count:10012312321, name: "Hanmeimei", github: "Hanmeimei", sex: "female"}
-    ];
+    // this.users = [
+    //   {id: 5, count:100, name: "Ryane", github: "ryanemax", sex: "male"},
+    //   {id: 4, count:999, name: "Liming", github: "liming", sex: "male"},
+    //   {id: 3, count:1000, name: "Xiaohong", github: "xiaohong", sex: "female"},
+    //   {id: 1, count:3432500, name: "Zhangdayong", github: "Zhangdayong", sex: "male"},
+    //   {id: 2, count:10012312321, name: "Hanmeimei", github: "Hanmeimei", sex: "female"}
+    // ];
+    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
+    let headers:Headers = new Headers();
+    headers.append("Content-Type","application/json");
+    headers.append("X-Parse-Application-Id","dev");
+    headers.append("X-Parse-Master-Key","angulardev");
+
+    let options ={
+      headers:headers
+    };
+    this.http.get(url,options).subscribe(data=>{
+      this.users = data.json().results;
+    });
   }
 
   addNewUser() {
-    let uuid = Number(Math.random() * 1000).toFixed(0);
+    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
+    let headers:Headers = new Headers();
+    headers.append("Content-Type","application/json");
+    headers.append("X-Parse-Application-Id","dev");
+    headers.append("X-Parse-Master-Key","angulardev");
+    let options ={
+      headers:headers
+    };
     let newUser: User = {
-      id: Number(uuid),
       name: "Jack",
       github: "Jack",
       sex: "male",
       count: 666
-    }
-    this.users.push(newUser);
+    };
+    this.http.post(url,newUser,options).subscribe(data=>{
+      this.loadUsersData();
+    });
   }
 
   deleteUserByID(id) {
-    this.users.forEach((user, index, arr)=> {
-      if (user.id === id) {
-        arr.splice(index, 1);
-      }
-    })
+    let url = "http://47.92.145.25:80/parse"+"/classes/User12"+"/"+id;
+    let headers:Headers = new Headers();
+    headers.append("Content-Type","application/json");
+    headers.append("X-Parse-Application-Id","dev");
+    headers.append("X-Parse-Master-Key","angulardev");
+    let options ={
+      headers:headers
+    };
+
+    this.http.delete(url,options).subscribe(data=>{
+      this.loadUsersData();
+    });
   }
 
   ngOnInit() {
