@@ -1,3 +1,36 @@
-<p>
-  lms-class works!
-</p>
+<div>
+  <h1>班级管理</h1>
+  <div class="studentContent">
+
+      <div class="tabMenu">
+
+          <!-- <a mat-raised-button routerLink="edit/new">新增宝贝</a> -->
+          <button class="addBtn" mat-raised-button (click)="addNewClass()"><mat-icon>add</mat-icon>
+              新增班级</button>
+      </div>
+
+      <table cellspacing="0" cellpadding="0">
+          <thead>
+              <tr>
+                  <th>编号</th>
+                  <th>年级</th>
+                  <th>班级</th>
+                  <th>班级名</th>
+                  <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let student of classInfoArr">
+                  <td>{{classInfoArr.objectId}}</td>
+                  <td>{{classInfoArr.gradeNo}}</td>
+                  <td>{{classInfoArr.classNo}}</td>
+                  <td>{{classInfoArr.name}}</td>
+                  <td>
+                      <mat-icon title="删除" (click)="deleteClassByID(classInfoArr.objectId)">delete</mat-icon>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </div>
+</div>

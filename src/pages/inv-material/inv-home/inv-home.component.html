@@ -1,11 +1,41 @@
-<div><h1>物料清单列表</h1></div>
-<button class = "inv-button" appInvButton (click)="sortItems('asc')">正序</button>
-<button class = "inv-button" appInvButton (click)="sortItems('desc')" >倒序</button>
-<button class = "inv-button" appInvButton (click)="sortItems('random')">随机</button>
-<button class = "inv-button" appInvButton (click)="addNewItem()">新增物料</button>
-<ul class="llc-item-list">
-<app-inv-item  [item]="item" *ngFor="let item of items"></app-inv-item>
-</ul>
+<h1>物料清单列表</h1>
+<button mat-raised-button color="primary" class="inv-button" (click)="sortItems('asc')">正序</button>
+<button mat-raised-button color="primary" class="inv-button" (click)="sortItems('desc')" >倒序</button>
+<button mat-raised-button color="primary" class="inv-button" (click)="sortItems('random')">随机</button>
+<button mat-raised-button color="primary" class="inv-button" (click)="addNewItem()">新增物料</button>
+<mat-tab-group class="col-9">
+    <mat-tab label="总览">
+        <ul >
+            <li  *ngFor="let item of items">
+            <div class="item-list-id">
+                    ID：{{item.objectId}}
+                  </div>
+                  <div class="item-list-code">
+                    编码：{{item.code}}
+                  </div>
+                  <div class="item-list-uom">
+                    单位：{{item.uom}}
+                  </div>
+                  <div class="item-list-description">
+                    描述：{{item.description}}
+                  </div>
+                  <div class="item-list-count">
+                    库存：{{item.count | invTok}}
+                  </div>
+                  <div class="tar" (click)='deleteItemByID(item.objectId)'>
+                    <span class="item-list-del">x</span>
+            </div>
+            </li>
+            </ul>
+    </mat-tab>
+    <mat-tab label="详细">
+        <div class="example-container mat-elevation-z8">
+           
+          </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
 
 
 
