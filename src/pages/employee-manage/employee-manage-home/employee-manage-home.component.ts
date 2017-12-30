@@ -8,6 +8,7 @@ interface Employee {
   name: string;
   sex: string;
   dept:string;
+  sale:number;
   joinin:string;
 }
 @Component({
@@ -23,6 +24,7 @@ export class EmployeeManageHomeComponent implements OnInit {
     name:"Kingsman",
     sex:"male",
     dept:"管理部门",
+    sale:"5000",
     joinin:"2017.1"
   };
   foods:any = [
@@ -110,6 +112,7 @@ export class EmployeeManageHomeComponent implements OnInit {
       name: "Jack",
       sex: "male",
       dept:"行政",
+      sale:4000,
       joinin:"2014",
       
     };
