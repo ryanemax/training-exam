@@ -1,0 +1,20 @@
+<li class="col-3">
+  <div class="llc-student-list-id">
+    bookID:{{book.bookID}}
+  </div>
+  <div class="llc-student-list-id">
+    书名：{{book.name}}
+  </div>
+  <div class="llc-student-list-name">
+    作者：{{book.author}}
+  </div>
+  <div class="llc-student-list-git">
+    发表日期：{{book.date}}
+  </div>
+  <div class="llc-student-list-sex">
+    销量：{{book.sale | remen}}
+  </div>
+  <div class="tar" (click)='deleteById(book.bookID)'>
+    <span class="llc-student-list-del">x</span>
+  </div>
+</li>
