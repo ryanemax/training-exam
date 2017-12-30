@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12" routerLink="/eightstock/{{stock.objectId}}">
     <table class="col-12">
         <tr class="col-12" style="color:red" *ngIf="(stock.nowPrice-stock.startPrice)>=0">
                 <td class="col-1" style="text-align: center;">{{stock.stockNo}}</td>

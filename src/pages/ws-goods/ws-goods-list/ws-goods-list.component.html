@@ -4,10 +4,10 @@
 <app-student-item [user]="selectedUser"></app-student-item>
 </div>  -->
 <!--<button appActButton class="llc-btn" (click)="sortGoods('asc')">正序</button> -->
-<button class="llc-btn" (click)="sortGoods('asc')">正序</button>
-<button  class="llc-btn" (click)="sortGoods('desc')" >倒序</button>
-<button  class="llc-btn" (click)="sortGoods('random')">随机</button>
-<button  class="llc-btn" (click)="addGoods()">新商品登陆</button>
+<button class="llc-btn" (click)="service.sortGoods('asc')">正序</button>
+<button  class="llc-btn" (click)="service.sortGoods('desc')" >倒序</button>
+<button  class="llc-btn" (click)="service.sortGoods('random')">随机</button>
+<button  class="llc-btn" (click)="service.addGoods()">新商品登陆</button>
 
 <!--<ul class="llc-student-list">
    <li *ngFor="let goods of goodsList" class="col-3">
@@ -47,7 +47,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let goods of goodsList">
+        <tr *ngFor="let goods of service.goodsList">
             <td>{{goods.goodsNo}}</td>
             <!-- <td><img src="{{student.img}}" /></td> -->
             <td>{{goods.goodsNm}}</td>
@@ -59,7 +59,10 @@
                 <!-- <mat-icon title="修改" (click)=showEditAssetDailog(student)>edit</mat-icon> -->
                 <!-- <mat-icon title="修改" routerLink="edit/{{student.objectId}}">edit</mat-icon> -->
                 <!-- <mat-icon title="查看" routerLink="view/{{student.objectId}}">menu</mat-icon> -->
-                <span (click)="deleteGoods(goods.objectId)" >[删除]</span>
+                <!-- <mat-icon title="查看" routerLink="/student/{{student.objectId}}">menu</mat-icon>-->
+                <mat-icon title="编辑" (click)="openDialog(goods)">修改</mat-icon>
+                <span routerLink="/ws-goods/{{goods.objectId}}">[查看]</span>
+                <span (click)="service.deleteGoods(goods.objectId)" >[删除]</span>
             </td>
         </tr>
     </tbody>

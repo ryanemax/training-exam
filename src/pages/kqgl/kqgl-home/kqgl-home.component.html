@@ -1,19 +1,21 @@
 
 <h1>考勤管理</h1>
-<div class="studentContent">
+<div class="search-tab">
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="姓名"></textarea>
+        </mat-form-field>
+      </form>
+    <button  style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
+    <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
 
 </div>
-<div class="studentContent">
-  
-  
-<button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
-<button style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
-</div>
-<button mat-button color="accent">检索</button>
-<button appButton1 (click)="sortUsers('asc')">正序</button>
-<button appButton1 (click)="sortUsers('desc')" >倒序</button>
-<button appButton1 (click)="sortUsers('random')">随机</button>
-<button appButton1 (click)="addNewUser()">新增学生</button>
+
+
+<button mat-raised-button color="primary" (click)="kqglServ.sortUsers('asc')">正序</button>
+<button mat-raised-button color="primary" (click)="kqglServ.sortUsers('desc')" >倒序</button>
+<button mat-raised-button color="primary" (click)="kqglServ.sortUsers('random')">随机</button>
+<button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon>新增用户</button>
 <!-->
 <mat-tab-group>
   <mat-tab label="Tab 1">Content 1</mat-tab>
@@ -23,18 +25,20 @@
 
 <table border="1" >
   <tr>
-    <td class="lev1">操作</td>
+    
     <td class="lev1">编号</td>
     <td class="lev1">姓名</td>
     <td class="lev1">出勤</td>
     <td class="lev1">缺勤</td>
     <td class="lev2">打卡时间</td>
-  </tr>
 
-  <tr *ngFor="let user of users">
+    <td class="lev1">操作</td>  </tr>
 
-  <td ><span (click)="deleteUserByID(user.objectId)">[删除]</span>
-  </td>
+  <tr *ngFor="let user of kqglServ.users">
+
+
+    
+  
   <td >
     {{user.objectId}}
   </td>
@@ -54,7 +58,12 @@
 
     {{user.dksj | toDateYmd}}
   </td>
-
+  <td>
+      <mat-icon title="查看" routerLink="/kqgl/{{user.objectId}}">menu</mat-icon>
+      <mat-icon title="编辑" (click)="openDialog(user)">update</mat-icon>
+      <mat-icon title="删除" (click)="kqglServ.deleteUserByID(user.objectId)">delete</mat-icon>
+    
+  </td>
 </tr>
 </table>
 
