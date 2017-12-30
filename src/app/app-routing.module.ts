@@ -13,15 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
-    loadChildren: './bigdata/bigdata.module#BigdataModule',
+    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   },
   {
     path: 'el-home',
     loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
   },
   {
-    path: 'book',
-    loadChildren: '../pages/book/book.module#BookModule',
+    path: 'employee-manage',
+    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
+  },
+  {
+    path: 'bookmanage',
+    loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
   {
     path: 'lipstick',
