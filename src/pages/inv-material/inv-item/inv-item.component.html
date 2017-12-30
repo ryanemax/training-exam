@@ -1,0 +1,21 @@
+<li class="col-3">
+<div class="llc-item-list-id">
+  ID：{{item.id}}
+</div>
+
+<div class="llc-item-list-code">
+  编码：{{item.code}}
+</div>
+<div class="llc-item-list-uom">
+  单位：{{item.uom}}
+</div>
+<div class="llc-item-list-description">
+  描述：{{item.description}}
+</div>
+<div class="llc-item-list-count">
+  库存：{{item.count | invTok}}
+</div>
+<div class="tar" (click)='deleteById(item.id)'>
+  <span class="llc-item-list-del">x</span>
+</div>
+</li>

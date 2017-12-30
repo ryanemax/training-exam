@@ -1,0 +1,31 @@
+.stype1 {
+    font-size:15px;
+
+    font-style:italic;
+    box-shadow: 10px 10px grey;
+    list-style-type: none
+}
+
+.button-style {
+    background-color:rgb(0, 225, 255)
+}
+
+.hone {
+    text-shadow: 5px 5px 5px #FF0000;
+}
+.shanchu {
+    animation: myfirst 5s;
+    -webkit-animation: myfirst 5s;
+
+}
+@keyframes myfirst
+{
+	from {background:red;}
+	to {background:yellow;}
+}
+
+@-webkit-keyframes myfirst
+{
+	from {background:red;}
+	to {background:yellow;}
+}

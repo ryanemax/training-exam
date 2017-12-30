@@ -1,0 +1,33 @@
+<div class="col-12" (click)="showStock()">
+    <table class="col-12">
+        <tr class="col-12" style="color:red" *ngIf="(stock.nowPrice-stock.startPrice)>=0">
+                <td class="col-1" style="text-align: center;">{{stock.id}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.name}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.startPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.nowPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.nowPrice-stock.startPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.minPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.maxPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.volume}}万</td>
+                <td class="col-1" style="text-align: center;">{{stock.amount|moneyUnit}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.marketValue|moneyUnit}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.circulationValue|moneyUnit}}</td>
+                <td class="col-1" style="text-align: center;"><button>添加</button></td>
+        </tr>
+        <tr class="col-12" style="color:rgb(3, 94, 3)" *ngIf="(stock.nowPrice-stock.startPrice)<0">
+                <td class="col-1" style="text-align: center;">{{stock.id}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.name}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.startPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.nowPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.nowPrice-stock.startPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.minPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.maxPrice}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.volume}}万</td>
+                <td class="col-1" style="text-align: center;">{{stock.amount|moneyUnit}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.marketValue|moneyUnit}}</td>
+                <td class="col-1" style="text-align: center;">{{stock.circulationValue|moneyUnit}}</td>
+                <td class="col-1" style="text-align: center;">已添加</td>
+        </tr>
+    </table>
+</div>
+<hr>
