@@ -2,11 +2,26 @@
 <div>{{'123' | say666}}
 <h1 appHightlight>已选择的用户：{{selectedUser.name}}</h1>
 </div>
+<h1 appHightlight>Input输入：{{searchText}}</h1>
 
-<button appActButton class="llc-btn" (click)="sortUsers('asc')">正序</button>
-<button appActButton class="llc-btn" (click)="sortUsers('desc')" >倒序</button>
-<button appActButton class="llc-btn" (click)="sortUsers('random')">随机</button>
-<button appActButton class="llc-btn" (click)="addNewUser()">新增学生</button>
+
+<mat-form-field>
+  <mat-select placeholder="Favorite food">
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{ food.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [(ngModel)]="searchText" placeholder="Input"/>
+</mat-form-field>
+
+
+<button mat-raised-button color="primary" (click)="sortUsers('asc')">正序</button>
+<button mat-raised-button color="primary" (click)="sortUsers('desc')" >倒序</button>
+<button mat-raised-button color="primary" (click)="sortUsers('random')">随机</button>
+<button mat-raised-button color="primary" (click)="addNewUser()">新增学生</button>
 <ul class="llc-student-list">
   <li *ngFor="let user of users"></li>
 </ul>

@@ -15,6 +15,7 @@ interface User {
 })
 export class StudentListComponent implements OnInit {
   users: Array<User>;
+  searchText:string;
   selectedUser:any={
     id:666,
     name:"Kingsman",
@@ -22,6 +23,11 @@ export class StudentListComponent implements OnInit {
     github:"kingsman",
     count:"0"
   };
+  foods:any = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
   constructor() {
     this.loadUsersData();
