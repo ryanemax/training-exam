@@ -18,7 +18,13 @@
     overflow: auto;
     height: 550px;
 }
-
+.mat-header-row {
+    background-color: #00bcd4;
+}
 .mat-header-cell.mat-sort-header-sorted {
     color: black;
+}
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
 }

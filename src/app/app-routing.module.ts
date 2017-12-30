@@ -75,6 +75,10 @@ const routes: Routes = [
   {
     path: 'weather-data',
     loadChildren: '../pages/weather-data/weather-data.module#WeatherDataModule',
+  },
+  {
+    path: 'flower',
+    loadChildren: '../pages/flower/flower.module#FlowerModule',
   }
   ,
   {
@@ -90,9 +94,10 @@ const routes: Routes = [
     loadChildren: '../pages/supplier/supplier.module#SupplierModule'
   },
   {
-    path: 'coffee-star1',
-  loadChildren: '../pages/coffee-star1/coffee-star1.module#CoffeeStar1Module'
-}
+    path: 'clothes1',
+    loadChildren: '../pages/clothes1/clothes1.module#Clothes1Module',
+  }
+
 ];
 
 @NgModule({

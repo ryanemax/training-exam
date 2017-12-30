@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 interface Lipstick{
     id?:number;
@@ -43,24 +42,31 @@ export class LipStickService{
         });
       }
 
-      addNewLipstick() {
+      addNewLipstick(lipstick) {
         let url = "http://47.92.145.25:80/parse"+"/classes/Lipsticks";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
         let options ={
           headers:headers
         };
-        let newLipstick: Lipstick  = {
-            name:"纪梵希小羊皮",
-            brand:"纪梵希 GIVENCHY",
-            colorNumber:"N305红",
-            price:355,
-            soldNumber:752541
-        };
-        this.http.post(url,newLipstick,options).subscribe(data=>{
-          this.loadLipsticksData();
-        });
+        lipstick["price"] = Number(lipstick["price"]);
+        lipstick["soldNumber"] = Number(lipstick["soldNumber"]);
+        if(!lipstick.objectId){
+          // 新增用户
+          this.http.post(url,lipstick,options).subscribe(data=>{
+            this.loadLipsticksData();
+          });
+        }else{
+          // 修改用户
+          url = "http://47.92.145.25:80/parse"+"/classes/Lipsticks/"+lipstick.objectId;
+          delete lipstick["objectId"];
+          delete lipstick["createdAt"];
+          delete lipstick["updatedAt"];
+          this.http.put(url,lipstick,options).subscribe(data=>{
+            this.loadLipsticksData();
+          });
       }
+    }
       deleteLipstickByID(id){
         let url = "http://47.92.145.25:80/parse"+"/classes/Lipsticks"+"/"+id;
         let headers:HttpHeaders = new HttpHeaders();

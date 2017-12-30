@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+
 import {MatDialog} from '@angular/material';
 import {KqglDialogComponent} from '../kqgl-dialog/kqgl-dialog';
-
 import {KqglService} from '../kqgl-data';
 
 interface User {
@@ -16,7 +15,9 @@ interface User {
   updatedAt?:string;
   createdAt?:string;
 }
-
+interface ParseResponse {
+  results: any[];
+}
 @Component({
   selector: 'app-kqgl-home',
   templateUrl: './kqgl-home.component.html',
@@ -44,7 +45,7 @@ export class KqglHomeComponent implements OnInit {
   }
   openDialog(user?): void {
     if(!user){
-      user = {name:"",github:""};
+      user = {name:"",cq:""};
     }
     let dialogRef = this.dialog.open(KqglDialogComponent, {
       width: '250px',
