@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import "rxjs/operators/map";
+
 interface Book {
   bookID: number,
   name: string,
@@ -21,7 +24,7 @@ export class BookListComponent implements OnInit {
     sale:"1024"
   };
 
-  constructor() {
+  constructor(private http:Http) {
     this.loadBooksData();
   }
   selectBook(book){
@@ -66,26 +69,59 @@ export class BookListComponent implements OnInit {
   }
 
   loadBooksData() {
-    this.books = [
-      {bookID: 4534, sale:100, name: "语文", author: "阿迪锅", date: "1995,2,3"},
-      {bookID: 4534, sale:999, name: "数学", author: "人撒骨灰", date: "1937,5,30"},
-      {bookID: 8473, sale:1000, name: "英语", author: "傻大个", date: "1988,12,30"},
-      {bookID: 48542, sale:3432500, name: "生物", author: "电话", date: "2012,10,30"},
-      {bookID: 3483, sale:10012312321, name: "化学", author: "是个啥", date: "2011,5,28"}
-    ];
+    // this.books = [
+    //   {bookID: 4534, sale:100, name: "语文", author: "阿迪锅", date: "1995,2,3"},
+    //   {bookID: 4534, sale:999, name: "数学", author: "人撒骨灰", date: "1937,5,30"},
+    //   {bookID: 8473, sale:1000, name: "英语", author: "傻大个", date: "1988,12,30"},
+    //   {bookID: 48542, sale:3432500, name: "生物", author: "电话", date: "2012,10,30"},
+    //   {bookID: 3483, sale:10012312321, name: "化学", author: "是个啥", date: "2011,5,28"}
+    // ];
+    let url = "http://47.92.145.25:80/parse"+"/classes/Book";
+    let headers:Headers = new Headers();
+    headers.append("Content-Type","application/json");
+    headers.append("X-Parse-Application-Id","dev");
+    headers.append("X-Parse-Master-Key","angulardev");
+
+    let options ={
+      headers:headers
+    };
+    this.http.get(url,options).subscribe(data=>{
+      this.books = data.json().results;
+    });
   }
 
-  addNewBook() {
-    let uuid = Number(Math.random() * 1000).toFixed(0);
-    let newUser: Book = {
-      bookID: Number(uuid),
-      name: "Jack",
-      author: "Jack",
-      date: "new Date(1997,7,7)",
-      sale: 888
-    }
-    this.books.push(newUser);
-  }
+  // addNewUser() {
+  //   let url = "http://47.92.145.25:80/parse"+"/classes/Book";
+  //   let headers:Headers = new Headers();
+  //   headers.append("Content-Type","application/json");
+  //   headers.append("X-Parse-Application-Id","dev");
+  //   headers.append("X-Parse-Master-Key","angulardev");
+  //   let options ={
+  //     headers:headers
+  //   };
+  //   // let newUser: Book = {
+  //   //   bookID: number,
+  //   //   name: "",
+  //   //   author: string,
+  //   //   date: string,
+  //   //   sale: number
+  //   // };
+  //   // this.http.post(url,newUser,options).subscribe(data=>{
+  //   //   this.loadUsersData();
+  //   // });
+  // }
+
+  // addNewBook() {
+  //   let uuid = Number(Math.random() * 1000).toFixed(0);
+  //   let newUser: Book = {
+  //     bookID: Number(uuid),
+  //     name: "Jack",
+  //     author: "Jack",
+  //     date: "new Date(1997,7,7)",
+  //     sale: 888
+  //   }
+  //   this.books.push(newUser);
+  // }
 
   deleteUserByID(id) {
     this.books.forEach((user, index, arr)=> {

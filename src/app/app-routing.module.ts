@@ -13,20 +13,13 @@ const routes: Routes = [
   },
   {
     path: 'bigdata',
-    loadChildren: './bigdata/bigdata.module#BigdataModule',
+    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
   },
   {
     path: 'el-home',
     loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
   },
   {
-<<<<<<< HEAD
-=======
-    path: 'employee-manage',
-    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
-  },
-  {
->>>>>>> 277332d88922077c2d6b42bf6c4fe227924aa8d4
     path: 'bookmanage',
     loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
