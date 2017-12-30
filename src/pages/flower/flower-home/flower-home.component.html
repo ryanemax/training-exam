@@ -16,10 +16,10 @@
     </tr>
     <tr *ngFor="let flower of flowers" (click)="selectFlower(flower)" appButton>
       <td ><span (click)="deleteFlowerByID(flower.id)">[删除]</span></td>
-      <td >{{flower.id}}</td>
-      <td >{{flower.name}}</td>
-      <td >{{flower.language}}</td>
-      <td>{{flower.price|toK}}</td>
+      <td ><span (click)="deleteFlowerByID(flower.id)">{{flower.id}}</span></td>
+      <td ><span (click)="deleteFlowerByID(flower.id)">{{flower.name}}</span></td>
+      <td ><span (click)="deleteFlowerByID(flower.id)">{{flower.language}}</span></td>
+      <td><span (click)="deleteFlowerByID(flower.id)">{{flower.price|toK}}</span></td>
     </tr>
   </table>
 </div>
