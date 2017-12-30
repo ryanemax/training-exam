@@ -1,0 +1,39 @@
+<h1>咖啡管理</h1>
+
+
+ 
+<ul>
+      <h2>已选择的用户：{{selectedUser.name}}</h2>
+  <li *ngFor="let user of users" (click)="selectUser(user)" appActButton>
+      <table style="width: 100%;">
+          <thead style="width: 100%;">
+              <tr style="width: 100%;">
+                  <th class="col-m-2">操作</th>
+                  <th class="col-m-2">ID</th>
+                  <th class="col-m-3">名称</th>
+                  <th class="col-m-2">浓度</th>
+                  <th class="col-m-3">价格</th>
+                  <th class="col-m-3">库存</th>
+                </tr>
+          </thead>
+          <tbody >
+            <tr>
+              <td><button class="ll"  (click)="deleteUserByID(user.id)">删除</button></td>
+              <td style="text-align: center;">{{user.id}}</td>
+              <td style="text-align: center;" >{{user.name}}</td>
+              <td style="text-align: center;">{{user.github}}</td>
+              <td style="text-align: center;">{{user.sex}}</td>
+              <td style="text-align: center;">{{user.goods|toK}}</td>
+            </tr>
+          </tbody>
+      </table>
+ 
+   
+    
+  
+  </li>
+</ul>
+<button class="button button2" (click)="sortUsers('asc')">正序</button>
+<button class="button button2" (click)="sortUsers('desc')">倒序</button>
+<button class="button button2" (click)="sortUsers('random')">随机</button>
+<button class="button button2" (click)="addNewUser()">新增商品</button>
