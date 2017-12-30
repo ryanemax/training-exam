@@ -12,6 +12,7 @@ interface Item {
   updatedAt?:string;
   createdAt?:string;
 }
+
 interface ParseResponse {
   results: any[];
 }
@@ -23,6 +24,8 @@ interface ParseResponse {
 
 export class InvHomeComponent implements OnInit {
   items: Array<Item>;
+  displayedColumns = [ 'objectId'];
+
   constructor(private http:HttpClient,private itemtServ:ItemService) {
     this.itemtServ.loadItemsData();
   }
