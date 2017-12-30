@@ -71,3 +71,4 @@ deleteClassByID(id) {
     this.loadClassData();
   });
 }}
+
