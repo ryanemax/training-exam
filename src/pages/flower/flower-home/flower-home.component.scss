@@ -13,14 +13,21 @@ ul li {
     font-size: 14px;
 }
 .b{
+    
     list-style:none;
     border-color: rgb(223, 185, 255);
     border-collapse: collapse;
+    color:#b0c1f7;
 th{background-color: #b0c1f7;
     text-align: center;
     color: white;
-} 
-   
+}
+td{
+    color: white;
+}
+table{
+    border-color: rgb(185, 20, 218);
+}
 }
 .button {
     background-color: pink; /* Green */
