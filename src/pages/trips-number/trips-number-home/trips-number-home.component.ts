@@ -7,6 +7,9 @@ interface Bus {
   name: string;
   count: number;
 }
+interface ParseResponse {
+  results: any[];
+}
 
 @Component({
   selector: 'app-trips-number-home',
@@ -21,11 +24,11 @@ export class TripsNumberHomeComponent implements OnInit {
     name:"Kingsman",
     count:"0"
   };
-  foods:any = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  // foods:any = [
+  //   {value: 'steak-0', viewValue: 'Steak'},
+  //   {value: 'pizza-1', viewValue: 'Pizza'},
+  //   {value: 'tacos-2', viewValue: 'Tacos'}
+  // ];
 
   constructor(private http:Http) {
     this.loadUsersData();
@@ -79,27 +82,24 @@ export class TripsNumberHomeComponent implements OnInit {
     //   {id: 1, count:3432500, name: "Zhangdayong", github: "Zhangdayong", sex: "male"},
     //   {id: 2, count:10012312321, name: "Hanmeimei", github: "Hanmeimei", sex: "female"}
     // ];
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let url = "http://47.92.145.25:80/parse"+"/classes/Bus";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-    let options ={
+    let options:any ={
       headers:headers
     };
-    this.http.get(url,options).subscribe(data=>{
-      this.buses = data.json().results;
+    this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.buses = data['results'];
     });
   }
 
   addNewUser() {
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
-    let options ={
+    let url = "http://47.92.145.25:80/parse"+"/classes/Bus";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options:any ={
       headers:headers
     };
     let newUser: Bus = {
@@ -112,11 +112,10 @@ export class TripsNumberHomeComponent implements OnInit {
   }
 
   deleteUserByID(id) {
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12"+"/"+id;
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let url = "http://47.92.145.25:80/parse"+"/classes/Bus"+"/"+id;
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
     let options ={
       headers:headers
     };
