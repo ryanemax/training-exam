@@ -6,9 +6,10 @@ import { Directive,ElementRef } from '@angular/core';
 export class InvButtonDirective {
 
   constructor(el:ElementRef) {
-    el.nativeElement.style.backgroundColor = "#0288D1";
+    el.nativeElement.style.backgroundColor = "#2D7BBB";
     el.nativeElement.style.fontSize = "18px";
-    el.nativeElement.style.boxShadow = "10px 10px 5px #888888";
+    el.nativeElement.style.color = "#FFF";
+    el.nativeElement.style.boxShadow = "0 0 0 1px rgba(0,0,0,.05) inset";
 
   }
 

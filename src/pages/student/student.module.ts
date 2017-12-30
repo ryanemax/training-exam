@@ -14,9 +14,21 @@ import { Say666Pipe } from './sharing/say-666.pipe';
 
 import { HightLightDirective } from './sharing/highlight.directive';
 
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
+import { MatOptionModule } from '@angular/material';
+
+import { FormsModule } from '@angular/forms';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
+    MatFormFieldModule,MatInputModule,
+    FormsModule,
+    MatSelectModule,MatOptionModule,
     RouterModule.forChild([
       { path: '', component: StudentListComponent, pathMatch: 'full' },
       { path: 'detail', component: StudentDetailComponent, pathMatch: 'full' }
