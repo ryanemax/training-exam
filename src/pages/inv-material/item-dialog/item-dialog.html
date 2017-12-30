@@ -1,0 +1,15 @@
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="item.code" matInput placeholder="姓名" value=""/>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="item.uom" matInput placeholder="UOM" value=""/>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+ <input [(ngModel)]="item.description" matInput placeholder="描述" value=""/>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="item.count" matInput placeholder="数量" value=""/>
+</mat-form-field>
+<button (click)="save()" mat-raised-button>保存</button>

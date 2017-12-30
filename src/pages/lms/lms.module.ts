@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-<<<<<<< HEAD
-=======
+
+// Material Design Start
 import { MatTabsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
->>>>>>> 99da6eddbce75ab67c6571e7c28961718e759eba
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+// Material Design End
+
 import { LmsHomeComponent } from './lms-home/lms-home.component';
 import { LmsStudentComponent } from './lms-student/lms-student.component';
+import { LmsStudentRegistComponent } from './lms-student-regist/lms-student-regist.component';
+import { LmsStudentDetailComponent } from './lms-student-detail/lms-student-detail.component';
 import { LmsClassComponent } from './lms-class/lms-class.component';
 import { LmsScoreComponent } from './lms-score/lms-score.component';
+
+import { LmsStudentService } from './lms-student.service';
 
 @NgModule({
   imports: [
@@ -16,12 +24,11 @@ import { LmsScoreComponent } from './lms-score/lms-score.component';
     RouterModule.forChild([
       { path: '', component: LmsHomeComponent, pathMatch: 'full' },
       { path: 'student', component: LmsStudentComponent, pathMatch: 'full' },
+      { path: 'student/regist', component: LmsStudentRegistComponent, pathMatch: 'full' },
+      { path: 'student/:id', component: LmsStudentDetailComponent, pathMatch: 'full' },
       { path: 'class', component: LmsClassComponent, pathMatch: 'full' },
       { path: 'score', component: LmsScoreComponent, pathMatch: 'full' }
     ]),
-<<<<<<< HEAD
-    
-=======
     MatTabsModule,
     MatInputModule,
     MatSelectModule,
@@ -30,9 +37,13 @@ import { LmsScoreComponent } from './lms-score/lms-score.component';
     MatFormFieldModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
->>>>>>> 99da6eddbce75ab67c6571e7c28961718e759eba
+    MatPaginatorModule,
+    MatDialogModule,
+    MatCardModule,
+    MatTooltipModule
   ],
-  declarations: [LmsHomeComponent, LmsStudentComponent, LmsClassComponent, LmsScoreComponent]
+  declarations: [LmsHomeComponent, LmsStudentComponent, LmsStudentRegistComponent, LmsStudentDetailComponent, LmsClassComponent, LmsScoreComponent],
+
+  providers: [LmsStudentService]
 })
 export class LmsModule { }

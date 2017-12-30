@@ -25,14 +25,14 @@
 
     <!-- No. Column -->
     <ng-container matColumnDef="studentNo">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 学号 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.studentNo}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> 姓名 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <mat-cell *matCellDef="let element"> <span matTooltip="{{element.description}}">{{element.name}}</span> </mat-cell>
     </ng-container>
 
     <!-- ClassName Column -->
@@ -45,6 +45,16 @@
     <ng-container matColumnDef="sex">
       <mat-header-cell *matHeaderCellDef mat-sort-header> 性别 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.sex}} </mat-cell>
+    </ng-container>
+
+    <!-- Operation Column -->
+    <ng-container matColumnDef="operation">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 操作 <button mat-icon-button (click)="openEditDialog(element.objectId)"><mat-icon title="新增">add_circle</mat-icon></button></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button routerLink="/lms/student/{{element.objectId}}"><mat-icon title="查看">description</mat-icon></button>
+        <button mat-icon-button (click)="openEditDialog(element.objectId)"><mat-icon title="修改" >edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteStudentByID(element.objectId)"><mat-icon title="删除" >delete</mat-icon></button>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
