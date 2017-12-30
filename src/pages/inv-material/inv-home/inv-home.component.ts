@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import "rxjs/operators/map";
 interface Item {
   code: string,
   uom: string,
@@ -18,7 +19,7 @@ interface Item {
 
 export class InvHomeComponent implements OnInit {
   items: Array<Item>;
-  constructor(private http:Http) {
+  constructor(private http:HttpClient) {
     this.loadItemsData();
   }
 
@@ -33,16 +34,14 @@ export class InvHomeComponent implements OnInit {
   //     {id: 5, code:"XX005",uom:"Each",description:"nameplate",count:34}
   //   ];
   let url = "http://47.92.145.25:80/parse"+"/classes/InvItems";
-  let headers:Headers = new Headers();
-  headers.append("Content-Type","application/json");
-  headers.append("X-Parse-Application-Id","dev");
-  headers.append("X-Parse-Master-Key","angulardev");
+  let headers:HttpHeaders = new HttpHeaders();
+  headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-  let options ={
+  let options:any ={
     headers:headers
   };
-  this.http.get(url,options).subscribe(data=>{
-    this.items = data.json().results;
+  this.http.get<ParseResponse>(url,options).subscribe(data=>{
+    this.items = data['results'];
   });
   }
   sortItems(type) {
@@ -87,11 +86,10 @@ export class InvHomeComponent implements OnInit {
     //   description: "test",
     //   count: 666
     // }
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let url = "http://47.92.145.25:80/parse"+"/classes/InvItems";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
     let options ={
       headers:headers
     };
@@ -104,7 +102,7 @@ export class InvHomeComponent implements OnInit {
     this.http.post(url,newItem,options).subscribe(data=>{
       this.loadItemsData();
     });
-    this.items.push(newItem);
+    //this.items.push(newItem);
   }
 
   deleteItemByID(id) {
@@ -113,11 +111,10 @@ export class InvHomeComponent implements OnInit {
     //     arr.splice(index, 1);
     //   }
     // })
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12"+"/"+id;
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let url = "http://47.92.145.25:80/parse"+"/classes/InvItems"+"/"+id;
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+  
     let options ={
       headers:headers
     };
