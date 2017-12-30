@@ -7,7 +7,7 @@ interface User{
   sex : string;
   img? : string;
 }
-
+ 
 @Component({
   selector: 'app-tgou-mall',
   templateUrl: './tgou-mall.component.html',
