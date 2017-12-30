@@ -1,8 +1,7 @@
-<li class="col-3">
+<div class = "card col-6">
 <div class="llc-item-list-id">
-  ID：{{item.id}}
+  ID：{{item.objectId}}
 </div>
-
 <div class="llc-item-list-code">
   编码：{{item.code}}
 </div>
@@ -16,6 +15,6 @@
   库存：{{item.count | invTok}}
 </div>
 <div class="tar" (click)='deleteById(item.id)'>
-  <span class="llc-item-list-del">x</span>
+  <span class="item-list-del">x</span>
 </div>
-</li>
+</div>

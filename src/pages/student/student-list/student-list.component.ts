@@ -3,6 +3,9 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { StudentService } from '../student-data';
 // import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
+import {MatDialog} from '@angular/material';
+import {StudentDialogComponent} from '../student-dialog/student-dialog';
+
 interface User {
   id?: number;
   name: string;
@@ -32,17 +35,27 @@ export class StudentListComponent implements OnInit {
     github:"kingsman",
     count:"0"
   };
-  foods:any = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
 
-  constructor(private http:HttpClient,private studentServ:StudentService) {
+  constructor(private http:HttpClient,private studentServ:StudentService,
+  public dialog: MatDialog) {
     this.studentServ.loadUsersData();
   }
   selectUser(user){
     this.selectedUser = user;
+  }
+  openDialog(user?): void {
+    if(!user){
+      user = {name:"",github:""};
+    }
+    let dialogRef = this.dialog.open(StudentDialogComponent, {
+      width: '250px',
+      data: user,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.studentServ.addNewUser(result);
+    });
   }
   ngOnInit() {
   }

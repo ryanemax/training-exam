@@ -7,7 +7,6 @@ import { Component, OnInit , Input} from '@angular/core';
 })
 export class InvItemComponent implements OnInit {
   @Input() item:any = {
-    id:777,
     uom: "Kg",
     code:"XXY",
     description:"item01",
