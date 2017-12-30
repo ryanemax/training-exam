@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { WsGoodsService } from '../ws-goods-data';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+
 import { MatDialog} from '@angular/material';
 import { WsGoodsDialogComponent} from '../ws-goods-dialog/ws-goods-dialog';
 
