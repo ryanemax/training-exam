@@ -12,6 +12,10 @@ import { MoneyUnitPipe } from './sharing/money-unit.pipe';
       { path: '', component: EightstockHomeComponent, pathMatch: 'full' },
     ])
   ],
-  declarations: [EightstockHomeComponent,EightstockListitemComponent,MarketIndexColorDirective,MoneyUnitPipe]
+  declarations: [
+    EightstockHomeComponent,
+    EightstockListitemComponent,
+    MarketIndexColorDirective,
+    MoneyUnitPipe]
 })
 export class EightstockModule { }
