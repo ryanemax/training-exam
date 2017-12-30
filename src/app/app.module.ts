@@ -8,14 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> aa2eab355459ca4ac2f80fd13523f0419db089c5
 @NgModule({
   declarations: [
     AppComponent,

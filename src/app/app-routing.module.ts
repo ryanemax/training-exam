@@ -74,17 +74,12 @@ const routes: Routes = [
     loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
   },
   {
-<<<<<<< HEAD
     path: 'clothes',
     loadChildren: '../pages/clothes/clothes.module#ClothesModule',
-=======
-    path: 'cinematicket',
-    loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule',
   },
     {
       path: 'supplier',
     loadChildren: '../pages/supplier/supplier.module#SupplierModule'
->>>>>>> aa2eab355459ca4ac2f80fd13523f0419db089c5
   }
 
 ];
