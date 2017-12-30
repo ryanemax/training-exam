@@ -17,6 +17,20 @@ ul li span {
 ul li {
     color: rgb(0, 89, 255);
 }
+.sortBtn,.addBtn{float: right;margin:15px 0px 20px 10px;
+    background-color: rgb(76, 168, 175); /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 8px;}
 
 .button {
     background-color: rgb(76, 168, 175); /* Green */
@@ -67,7 +81,7 @@ ul li {
 	-webkit-column-count:3; /* Safari and Chrome */
 	column-count:3;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 300px) {
     /* For tablets: */
     .col-m-1 {width: 8.33%;}
     .col-m-2 {width: 16.66%;}
@@ -77,3 +91,4 @@ ul li {
 th,td,.market-index {
     text-align: center;
 }
+.mat-menu-item{background-color:#fbfbfb;}

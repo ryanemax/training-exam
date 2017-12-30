@@ -87,7 +87,7 @@ export class StudentListComponent implements OnInit {
     //   {id: 5, count:100, name: "Ryane", github: "ryanemax", sex: "male"},
     //   {id: 4, count:999, name: "Liming", github: "liming", sex: "male"},
     //   {id: 3, count:1000, name: "Xiaohong", github: "xiaohong", sex: "female"},
-    //   {id: 1, count:3432500, name: "Zhangdayong", github: "Zhangdayong", sex: "male"},
+    //   {id: 1, c4ount:3432500, name: "Zhangdayong", github: "Zhangdayong", sex: "male"},
     //   {id: 2, count:10012312321, name: "Hanmeimei", github: "Hanmeimei", sex: "female"}
     // ];
     let url = "http://47.92.145.25:80/parse"+"/classes/User12";
