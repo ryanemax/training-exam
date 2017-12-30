@@ -19,8 +19,8 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule,MatOptionModule,
     RouterModule.forChild([
       
-      { path: '', component: EmployeeManageListComponent, pathMatch: 'full' },
-      { path: 'home', component: EmployeeManageHomeComponent, pathMatch: 'full' },
+      { path: 'list', component: EmployeeManageListComponent, pathMatch: 'full' },
+      { path: '', component: EmployeeManageHomeComponent, pathMatch: 'full' },
      
     ])
   ],
