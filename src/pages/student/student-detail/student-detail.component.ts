@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient , HttpHeaders } from "@angular/common/http";
 import { StudentService } from '../student-data';
 
@@ -12,7 +12,6 @@ export class StudentDetailComponent implements OnInit {
 
   user:any;
   constructor(private route: ActivatedRoute,
-    private router: Router,
     private http:HttpClient,
   private studentServ:StudentService) {
     this.user = {
