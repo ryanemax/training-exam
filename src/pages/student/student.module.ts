@@ -20,20 +20,23 @@ import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
 
-
+import { StudentService } from "./student-data";
 
 @NgModule({
   imports: [
     CommonModule,
     MatFormFieldModule,MatInputModule,
     FormsModule,MatIconModule,MatMenuModule,
-    MatSelectModule,MatOptionModule,
+    MatSelectModule,MatOptionModule,MatCardModule,
+    MatButtonModule,
     RouterModule.forChild([
       { path: '', component: StudentListComponent, pathMatch: 'full' },
-      { path: 'detail', component: StudentDetailComponent, pathMatch: 'full' }
+      { path: ':id', component: StudentDetailComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [
@@ -46,6 +49,7 @@ import { FormsModule } from '@angular/forms';
     ActCardDirective,
     HightLightDirective,
     ActButtonComponent
-  ]
+  ],
+  providers:[StudentService]
 })
 export class StudentModule { }
