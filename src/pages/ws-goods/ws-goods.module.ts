@@ -7,6 +7,7 @@ import { WsGoodsListComponent } from './ws-goods-list/ws-goods-list.component';
 import { ItalicDirective} from './sharing/Italic.directive';
 import { GoodsTypeFilter} from './sharing/goodsTypeFileter.pipe';
 import { WsGoodListItemComponent } from './ws-good-list-item/ws-good-list-item.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,7 @@ import { WsGoodListItemComponent } from './ws-good-list-item/ws-good-list-item.c
    //   { path: 'list', component: WsGoodsListComponent, pathMatch: 'full' }
     ])
   ],
-  declarations: [WsGoodsHomeComponent, WsGoodsListComponent, ItalicDirective, GoodsTypeFilter, WsGoodListItemComponent]
+  declarations: [WsGoodsHomeComponent, WsGoodsListComponent,
+    ItalicDirective, GoodsTypeFilter, WsGoodListItemComponent]
 })
 export class WsGoodsModule { }
