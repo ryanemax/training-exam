@@ -51,7 +51,7 @@ export class FlowerHomeComponent implements OnInit {
       if(flower.id==id){
         arr.splice(index,1);
       }
-    })
+    });
   }
   selectFlower(flower){
     this.selectedFlower=flower;
