@@ -64,24 +64,28 @@ export class ItemService{
             return Math.random()*10 - Math.random()* 10;
           });
         }
-        console.log("sortUsers Works!");
       }
-      addNewItem() {
+      addNewItem(item) {
         let url = "http://47.92.145.25:80/parse"+"/classes/InvItems";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
         let options ={
           headers:headers
         };
-        let newItem: Item = {
-          code: "XXFS01",
-           uom: "Meter",
-           description: "test",
-           count: 666
-        };
-        this.http.post(url,newItem,options).subscribe(data=>{
-          this.loadItemsData();
-        });
+        if(!item.objectId){
+          console.log(item);
+          this.http.post(url,item,options).subscribe(data=>{
+            this.loadItemsData();
+          });
+        } else{
+          url = "http://47.92.145.25:80/parse"+"/classes/InvItems/"+item.objectId;
+          delete item["objectId"];
+          delete item["createdAt"];
+          delete item["updatedAt"];
+          this.http.put(url,item,options).subscribe(data=>{
+            this.loadItemsData();
+          });
+        }
       }
       deleteItemByID(id) {
         let url = "http://47.92.145.25:80/parse"+"/classes/InvItems"+"/"+id;
