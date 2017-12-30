@@ -1,6 +1,17 @@
 # 学员管理
 - training-exam
 
+# FAQ:提交github无权限
+错误信息
+```
+remote: Permission to ryanemax/training-exam.git denied to masatada-kurihara.
+fatal: unable to access 'https://github.com/ryanemax/training-exam/': The requested URL returned error: 403
+```
+
+解决方案：
+- Windows-进入控制面板-用户账户-凭据管理器-Windows凭据
+- 找到删除github相关项目-右侧点击删除
+
 # Day 2 作业参考
 ## 如何加入版本库？
 - 注册Github：https://github.com
