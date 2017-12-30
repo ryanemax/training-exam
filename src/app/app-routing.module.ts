@@ -77,8 +77,11 @@ const routes: Routes = [
     {
       path: 'supplier',
     loadChildren: '../pages/supplier/supplier.module#SupplierModule'
-  }
-
+  },
+  {
+    path: 'coffee-star1',
+  loadChildren: '../pages/coffee-star1/coffee-star1.module#CoffeeStar1Module'
+}
 ];
 
 @NgModule({
