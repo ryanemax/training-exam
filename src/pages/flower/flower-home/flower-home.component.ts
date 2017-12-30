@@ -43,7 +43,7 @@ export class FlowerHomeComponent implements OnInit {
       name:"樱花",
       language:"sakura",
       price:"200"
-    }
+    };
     this.flowers.push(newFlower);
   }
   deleteFlowerByID(id){
