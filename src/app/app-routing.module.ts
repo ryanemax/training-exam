@@ -14,11 +14,18 @@ const routes: Routes = [
   {
     path: 'bigdata',
     loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
-
   },
   {
-    path: 'book',
-    loadChildren: '../pages/book/book.module#BookModule',
+    path: 'el-home',
+    loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
+  },
+  {
+    path: 'employee-manage',
+    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
+  },
+  {
+    path: 'bookmanage',
+    loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
   {
     path: 'lipstick',
@@ -71,8 +78,8 @@ const routes: Routes = [
     loadChildren: '../pages/personal-info/personal-info.module#PersonalInfoModule',
   },
   {
-    path: 'cinematicket',
-    loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule',
+    path: 'clothes',
+    loadChildren: '../pages/clothes/clothes.module#ClothesModule',
   },
     {
       path: 'supplier',
