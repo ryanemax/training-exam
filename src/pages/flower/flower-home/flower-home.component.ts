@@ -48,7 +48,7 @@ export class FlowerHomeComponent implements OnInit {
   }
   deleteFlowerByID(id){
     this.flowers.forEach((flower,index,arr)=>{
-      if(flower.id==id){
+      if(flower.id===id){
         arr.splice(index,1);
       }
     });
