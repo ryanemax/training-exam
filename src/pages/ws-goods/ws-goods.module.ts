@@ -11,8 +11,8 @@ import { WsGoodListItemComponent } from './ws-good-list-item/ws-good-list-item.c
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: WsGoodsHomeComponent, pathMatch: 'full' },
-      { path: 'list', component: WsGoodsListComponent, pathMatch: 'full' }
+      { path: '', component: WsGoodsListComponent, pathMatch: 'full' }// ,
+   //   { path: 'list', component: WsGoodsListComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [WsGoodsHomeComponent, WsGoodsListComponent, ItalicDirective, GoodsTypeFilter, WsGoodListItemComponent]
