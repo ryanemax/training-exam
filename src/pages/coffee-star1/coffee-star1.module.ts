@@ -10,21 +10,32 @@ import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
-
+import { MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-
+import { StudentService } from './coffee-star1-data.ts';
+import {StudentDialogComponent} from './student-dialog/student-dialog';
+import { MatCardModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { CoffeeDetailComponent } from './coffee-star1-detail/coffee-star1-detail.component';
 @NgModule({
   imports: [
     CommonModule,
-    MatFormFieldModule,MatInputModule,
+    MatFormFieldModule,
+    MatInputModule,
+ 
     FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,
+    MatCardModule,
+    MatButtonModule,MatDialogModule,
+   
     RouterModule.forChild([
       { path: '', component: CoffeeStar1HomeComponent, pathMatch: 'full' },
-      
+      { path: ':id', component:CoffeeDetailComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [CoffeeStar1HomeComponent,
-    ToKPipe, ActButtonDirective]
+    ToKPipe, ActButtonDirective,StudentDialogComponent, StudentDialogComponent, CoffeeDetailComponent,],
+    providers:[StudentService],
+    entryComponents:[StudentDialogComponent]
 })
 export class CoffeeStar1Module { }

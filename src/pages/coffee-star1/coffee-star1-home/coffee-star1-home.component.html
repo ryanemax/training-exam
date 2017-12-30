@@ -1,44 +1,22 @@
-<h1>咖啡管理</h1>
+<h1>咖啡管理[{{studentServ.users?studentServ.users.length:0}}]</h1>
 
 <div class="studentContent">
     
-          <nav mat-tab-nav-bar>
-              <a mat-tab-link active="true">
-                      咖啡列表
-                      </a>
-              <a mat-tab-link routerLink="analysis">
-                      统计分析
-                   </a>
-          </nav>
           <div class="tabMenu">
-    
-              <div class="mat-table-controls">
-                  <mat-select placeholder="搜索范围" [(ngModel)]="searchType" name="searchType">
-                      <mat-option value="name">名称</mat-option>
-                      <mat-option value="classification">分类</mat-option>
-                  </mat-select>
-                  <mat-input-container>
-                      <input [(ngModel)]="searchText" matInput placeholder="请输入要搜索的内容">
-                  </mat-input-container>
-                  <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
-                  <button style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
-    
-              </div>
-    
               <!-- <a mat-raised-button routerLink="edit/new">新增宝贝</a> -->
-              <button class="addBtn" mat-raised-button (click)="addNewUser()"><mat-icon>add</mat-icon>
+              <button class="addBtn" mat-raised-button (click)="studentServ.addNewUser()"><mat-icon>add</mat-icon>
                   新增商品</button>
               <button class="sortBtn" mat-raised-button [matMenuTriggerFor]="menu">
                               <mat-icon>more_vert</mat-icon>排序方式
                             </button>
               <mat-menu #menu="matMenu">
-                  <button mat-menu-item class="mat-menu-item" (click)="sortUsers('asc')">
+                  <button mat-menu-item class="mat-menu-item" (click)="studentServ.sortUsers('asc')">
                                 <span>正序</span>
                               </button>
-                  <button mat-menu-item (click)="sortUsers('desc')">
+                  <button mat-menu-item (click)="studentServ.sortUsers('desc')">
                                 <span>倒序</span>
                               </button>
-                  <button mat-menu-item (click)="sortUsers('random')">
+                  <button mat-menu-item (click)="studentServ.sortUsers('random')">
                                 <span>随机</span>
                               </button>
               </mat-menu>
@@ -46,7 +24,7 @@
  
 <ul>
       <h2>已选择的用户：{{selectedUser.name}}</h2>
-  <li *ngFor="let user of users" (click)="selectUser(user)" appActButton>
+  <li *ngFor="let user of studentServ.users" (click)="selectUser(user)" appActButton>
       <table style="width: 100%;">
           <thead style="width: 100%;">
               <tr style="width: 100%;">
@@ -60,7 +38,10 @@
           </thead>
           <tbody >
             <tr>
-              <td><button class="ll"  (click)="deleteUserByID(user.objectId)">删除</button></td>
+              <td>
+                    <button class="ll"  routerLink="/coffee-star1/{{user.objectId}}">查看</button>
+                <button class="ll"  (click)="openDialog(user)">修改</button>
+            <button class="ll"  (click)="studentServ.deleteUserByID(user.objectId)">删除</button></td>
               <td style="text-align: center;">{{user.objectId}}</td>
               <td style="text-align: center;" >{{user.name}}</td>
               <td style="text-align: center;">{{user.github}}</td>
@@ -69,10 +50,14 @@
             </tr>
           </tbody>
       </table>
- 
-   
-    
-  
   </li>
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link active="true">
+            咖啡列表
+            </a>
+    <a mat-tab-link routerLink="analysis">
+            统计分析
+         </a>
+</nav>
 </ul>
 
