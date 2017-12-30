@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class LipstickDialogComponent {
 
-lipstick={};
+    lipstick={};
 constructor(
     public dialogRef: MatDialogRef<LipstickDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
