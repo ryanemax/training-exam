@@ -20,7 +20,9 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
+        "./pages/commonstyle/common.scss",
         "responsive.scss"
+
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
