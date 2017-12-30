@@ -7,6 +7,9 @@ import { InvButtonDirective } from './sharing/inv-button.directive';
 import { InvTokPipe } from './sharing/inv-tok.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule} from '@angular/material/table';
+import { ItemService } from "./item-data";
+import { MatIconModule } from '@angular/material';
 
 
 @NgModule({
@@ -14,10 +17,13 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommonModule,
     MatButtonModule,
     MatTabsModule,
+    MatTableModule,
+    MatIconModule,
     RouterModule.forChild([
       { path: '', component: InvHomeComponent, pathMatch: 'full' }
     ])
   ],
-  declarations: [InvHomeComponent,InvItemComponent,InvButtonDirective,InvTokPipe]
+  declarations: [InvHomeComponent,InvItemComponent,InvButtonDirective,InvTokPipe],
+  providers:[ItemService]
 })
 export class InvMaterialModule { }
