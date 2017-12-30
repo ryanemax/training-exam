@@ -1,0 +1,10 @@
+<h1>列表(共：{{9939491293}}件衣物)</h1>
+
+
+<button appActButton class="llc-btn" (click)="sortClothes('asc')">正序</button>
+<button appActButton class="llc-btn" (click)="sortClothes('desc')" >倒序</button>
+<button appActButton class="llc-btn" (click)="sortClothes('random')">随机</button>
+<button appActButton class="llc-btn" (click)="addNewClothes()">新增服装</button>
+<ul class="llc-clothes-list">
+  <app-clothes-item (click)="selectClothes(clothes)" appActCard [cloth]="cloth" *ngFor="let cloth of cloth"></app-clothes-item>
+</ul>
