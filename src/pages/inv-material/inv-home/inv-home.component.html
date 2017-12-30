@@ -1,8 +1,8 @@
 <div><h1>物料清单列表</h1></div>
-<button  appInvButton (click)="sortItems('asc')">正序</button>
-<button  appInvButton (click)="sortItems('desc')" >倒序</button>
-<button  appInvButton (click)="sortItems('random')">随机</button>
-<button  appInvButton (click)="addNewItem()">新增物料</button>
+<button class = "inv-button" appInvButton (click)="sortItems('asc')">正序</button>
+<button class = "inv-button" appInvButton (click)="sortItems('desc')" >倒序</button>
+<button class = "inv-button" appInvButton (click)="sortItems('random')">随机</button>
+<button class = "inv-button" appInvButton (click)="addNewItem()">新增物料</button>
 <ul class="llc-item-list">
 <app-inv-item  [item]="item" *ngFor="let item of items"></app-inv-item>
 </ul>
