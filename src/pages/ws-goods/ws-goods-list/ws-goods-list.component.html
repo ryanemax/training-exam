@@ -59,6 +59,9 @@
                 <!-- <mat-icon title="修改" (click)=showEditAssetDailog(student)>edit</mat-icon> -->
                 <!-- <mat-icon title="修改" routerLink="edit/{{student.objectId}}">edit</mat-icon> -->
                 <!-- <mat-icon title="查看" routerLink="view/{{student.objectId}}">menu</mat-icon> -->
+                <!-- <mat-icon title="查看" routerLink="/student/{{student.objectId}}">menu</mat-icon>-->
+                <mat-icon title="编辑" (click)="openDialog(goods)">修改</mat-icon>
+                <span routerLink="/ws-goods/{{goods.objectId}}">[查看]</span>
                 <span (click)="service.deleteGoods(goods.objectId)" >[删除]</span>
             </td>
         </tr>
