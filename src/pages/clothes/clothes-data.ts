@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
-interface Cloyhes {
+interface Clothes {
     id?: number;
     name: string;
     birthday:string;
@@ -34,7 +34,7 @@ export class ClothesService{
   }
 
 
-    /*addNewUser() {
+    addNewClothes() {
       let url = "http://47.92.145.25:80/parse"+"/classes/Clothes";
       let headers:HttpHeaders = new HttpHeaders();
       headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
@@ -47,12 +47,12 @@ export class ClothesService{
           brand:"dada",
           birthday:"2012/03/02"
         };
-        this.http.post(url,newUser,options).subscribe(data=>{
-          this.loadUsersData();
+        this.http.post(url,newClothes,options).subscribe(data=>{
+          this.loadClothesData();
         });
-      }*/
+      }
     
-      deleteUserByID(id) {
+      deleteClothesByID(id) {
         let url = "http://47.92.145.25:80/parse"+"/classes/Clothes"+"/"+id;
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
@@ -66,15 +66,15 @@ export class ClothesService{
         });
       }
 
-      sortUsers(type) {
+      sortClothes(type) {
         // 参考MDN中的ES6，Array语法
         // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
         if (type === 'asc') {
           this.clothes.sort(function (a, b) {
-            if (a.name > b.name) {
+            if (a.birthday > b.birthday) {
               return 1;
             }
-            if (a.name < b.name) {
+            if (a.birthday < b.birthday) {
               return -1;
             }
             return 0;
@@ -83,10 +83,10 @@ export class ClothesService{
     
         if (type === 'desc') {
           this.clothes.sort(function (a, b) {
-            if (a.name > b.name) {
+            if (a.birthday > b.birthday) {
               return -1;
             }
-            if (a.name < b.name) {
+            if (a.birthday < b.birthday) {
               return 1;
             }
             return 0;

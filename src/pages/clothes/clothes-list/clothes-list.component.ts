@@ -18,9 +18,10 @@ interface ParseResponse {
   styleUrls: ['./clothes-list.component.scss']
 })
 export class ClothesListComponent implements OnInit {
+  dialog: any;
   searchText:string;
   selectedClothes:any={
-    id:666,
+    id:111,
     name:"Kingsman",
     birthday:"1202/3/2",
     brand:"sasasa"
@@ -38,7 +39,20 @@ export class ClothesListComponent implements OnInit {
   selectUser(cloth){
     this.selectedClothes = cloth;
   }
-  
+  openDialog(cloth?): void {
+    if(!cloth){
+      cloth = {name:"",brand:""};
+    }
+    let dialogRef = this.dialog.open(ClothesListComponent, {
+      width: '250px',
+      data: cloth,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     
+    });
+  }
   ngOnInit() {
   }
 
