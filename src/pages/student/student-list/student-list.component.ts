@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import "rxjs/operators/map";
 
 interface User {
@@ -11,6 +11,10 @@ interface User {
   objectId?:string;
   updatedAt?:string;
   createdAt?:string;
+}
+
+interface ParseResponse {
+  results: any[];
 }
 
 @Component({
@@ -34,7 +38,7 @@ export class StudentListComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
 
-  constructor(private http:Http) {
+  constructor(private http:HttpClient) {
     this.loadUsersData();
   }
   selectUser(user){
@@ -87,26 +91,23 @@ export class StudentListComponent implements OnInit {
     //   {id: 2, count:10012312321, name: "Hanmeimei", github: "Hanmeimei", sex: "female"}
     // ];
     let url = "http://47.92.145.25:80/parse"+"/classes/User12";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-    let options ={
+    let options:any ={
       headers:headers
     };
-    this.http.get(url,options).subscribe(data=>{
-      this.users = data.json().results;
+    this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.users = data['results'];
     });
   }
 
   addNewUser() {
     let url = "http://47.92.145.25:80/parse"+"/classes/User12";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
-    let options ={
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options:any ={
       headers:headers
     };
     let newUser: User = {
@@ -122,10 +123,9 @@ export class StudentListComponent implements OnInit {
 
   deleteUserByID(id) {
     let url = "http://47.92.145.25:80/parse"+"/classes/User12"+"/"+id;
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
     let options ={
       headers:headers
     };
