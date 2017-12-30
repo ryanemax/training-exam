@@ -18,12 +18,61 @@ interface Lipstick{
 })
 export class LipstickListComponent implements OnInit {
   lipsticks:Array<Lipstick>;
-
+    selectedlipsticks:any={
+      id:666,
+      name:"纪梵希小羊皮",
+      brand:"纪梵希 GIVENCHY",
+      colorNumber:"N306法式红",
+      price:355,
+      soldNumber:352541,
+    introduction:"适合肤质"
+  };
   constructor() {
-  this.loadUsersData();
+  this.loadlipsticksData();
+  }
+  selectLipsticks(lipstick){
+    this.selectedlipsticks = lipstick;
   }
 
-  loadUsersData(){
+  sortlLipsticks(type) {
+    // 参考MDN中的ES6，Array语法
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
+    if (type === 'asc') {
+      this.lipsticks.sort(function (a, b) {
+        if (a.soldNumber > b.soldNumber) {
+          return 1;
+        }
+        if (a.soldNumber < b.soldNumber) {
+          return -1;
+        }
+        return 0;
+      });
+    }
+
+    if (type === 'desc') {
+      this.lipsticks.sort(function (a, b) {
+        if (a.soldNumber > b.soldNumber) {
+          return -1;
+        }
+        if (a.soldNumber < b.soldNumber) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+
+    if(type === 'random') {
+      for(let i=0, len=this.lipsticks.length; i<len; i++){
+        let rand = Number(Math.random()*len).toFixed(0);
+        let temp = this.lipsticks[rand];
+        this.lipsticks[rand] = this.lipsticks[i];
+        this.lipsticks[i] = temp;
+      }
+    }
+    console.log("sortlipsticks Works!");
+  }
+
+  loadlipsticksData(){
     this.lipsticks=[
       {id:1,name:"纪梵希小羊皮",brand:"纪梵希 GIVENCHY",colorNumber:"N306法式红",price:355,soldNumber:352541,introduction:"适合肤质: 各种肤质,功效: 滋润"},
       {id:2,name:"纪梵希小羊皮",brand:"纪梵希 GIVENCHY",colorNumber:"N102优雅米色",price:355,soldNumber:523464,introduction:"妆效: 自然,遮盖力: 轻度"},
@@ -32,6 +81,21 @@ export class LipstickListComponent implements OnInit {
       {id:5,name:"ROUGE PUR COUTURE ",brand:"圣罗兰",colorNumber:"#52 星星色",price:320,soldNumber:9635125,introduction:"隐藏于手袋内的一个美妆法宝"}
     ];
   }
+
+  addNewLipstick() {
+    let uuid = Number(Math.random() * 1000).toFixed(0);
+    let newLipstick: Lipstick = {
+      id:666,
+      name:"纪梵希小羊皮",
+      brand:"纪梵希 GIVENCHY",
+      colorNumber:"N305红",
+      price:355,
+      soldNumber:752541,
+    introduction:"适合肤质"
+    };
+    this.lipsticks.push(newLipstick);
+  }
+
   deleteLipstickByID(id){
     this.lipsticks.forEach((lipstick,index,arr)=>{
       if(lipstick.id===id){
