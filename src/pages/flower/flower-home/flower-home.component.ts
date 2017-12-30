@@ -8,7 +8,7 @@ import { FlowerModule } from '../flower.module';
 
 interface Flower{
   id?:number,
-  name:string,
+  name:string, 
   language:string,
   price:string,
   objectId?:string;
