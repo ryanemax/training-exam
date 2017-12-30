@@ -13,12 +13,19 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatOptionModule,
+    MatIconModule,MatMenuModule,MatCardModule,MatButtonModule,FormsModule,
     RouterModule.forChild([
       { path: '', component: TgouMallComponent, pathMatch: 'full' },
+      { path: ':id', component: TgouItemComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [

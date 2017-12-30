@@ -1,3 +1,58 @@
-<p>
-  lms-student works!
-</p>
+<div class="student-container mat-elevation-z8">
+  <form class="student-form">
+    <table class="student-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="student-full-width">
+            <input matInput placeholder="Name" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="student-full-width">
+            <mat-select placeholder="Class Name">
+              <mat-option value="1_1">一年一班</mat-option>
+              <mat-option value="1_2">一年二班</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <button mat-raised-button color="primary" (click)="searchStudent()"><mat-icon>search</mat-icon>查询</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- No. Column -->
+    <ng-container matColumnDef="studentNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.studentNo}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 姓名 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- ClassName Column -->
+    <ng-container matColumnDef="className">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 班级 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.className}} </mat-cell>
+    </ng-container>
+
+    <!-- Sex Column -->
+    <ng-container matColumnDef="sex">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 性别 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.sex}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="showPagingStudent($event)">
+  </mat-paginator>
+</div>

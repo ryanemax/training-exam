@@ -1,0 +1,24 @@
+.student-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.student-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+.student-form button {
+    top: -5px;
+}
+.student-full-width {
+    width: 100%;
+}
+.mat-table {
+    overflow: auto;
+    height: 550px;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+    color: black;
+}
