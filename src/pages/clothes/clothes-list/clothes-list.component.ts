@@ -1,92 +1,58 @@
 import {Component, OnInit} from '@angular/core';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { ClothesService } from '../clothes-data';
+import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 interface Clothes {
-  id: number;
+  id?: number;
+  name: string;
+  brand: string;
+  birthday:string;
 }
-
+interface ParseResponse {
+  results: any[];
+}
 @Component({
   selector: 'app-clothes-list',
   templateUrl: './clothes-list.component.html',
   styleUrls: ['./clothes-list.component.scss']
 })
 export class ClothesListComponent implements OnInit {
-  cloth: Array<Clothes>;
-  selectedclothes:any={
-    id:666,
+  dialog: any;
+  searchText:string;
+  selectedClothes:any={
+    id:111,
+    name:"Kingsman",
+    birthday:"1202/3/2",
+    brand:"sasasa"
    
   };
+  foods:any = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
-  constructor() {
-    this.loadClothData();
+  constructor(private http:HttpClient,private clothesServ:ClothesService) {
+    this.clothesServ.loadClothesData();
   }
-  selectClothes(cloth){
-    this.selectClothes = cloth;
+  selectUser(cloth){
+    this.selectedClothes = cloth;
   }
-  sortClothes(type) {
-    // 参考MDN中的ES6，Array语法
-    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
-    if (type === 'asc') {
-      this.cloth.sort(function (a, b) {
-        if (a.id > b.id) {
-          return 1;
-        }
-        if (a.id < b.id) {
-          return -1;
-        }
-        return 0;
-      });
+  openDialog(cloth?): void {
+    if(!cloth){
+      cloth = {name:"",brand:""};
     }
+    let dialogRef = this.dialog.open(ClothesListComponent, {
+      width: '250px',
+      data: cloth,
+    });
 
-    if (type === 'desc') {
-      this.cloth.sort(function (a, b) {
-        if (a.id > b.id) {
-          return -1;
-        }
-        if (a.id < b.id) {
-          return 1;
-        }
-        return 0;
-      });
-    }
-
-    if(type === 'random') {
-      for(let i=0, len=this.cloth.length; i<len; i++){
-        let rand = Number(Math.random()*len).toFixed(0);
-        let temp = this.cloth[rand];
-        this.cloth[rand] = this.cloth[i];
-        this.cloth[i] = temp;
-      }
-    }
-    console.log("sortUsers Works!");
-  }
-
-  loadClothData() {
-    this.cloth = [
-      {id: 5},
-      {id: 4},
-      {id: 3},
-      {id: 1},
-      {id: 2}
-    ];
-  }
-
-  addNewClothes() {
-    let cloth = Number(Math.random() * 1000).toFixed(0);
-    let newCloth: Clothes = {
-      id: Number(cloth),
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
      
-    }
-    this.cloth.push(newCloth);
+    });
   }
-
-  deleteUserByID(id) {
-    this.cloth.forEach((cloth, index, arr)=> {
-      if (cloth.id === id) {
-        arr.splice(index, 1);
-      }
-    })
-  }
-
   ngOnInit() {
   }
 

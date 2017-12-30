@@ -1,7 +1,7 @@
 <h1>热门口红推荐</h1>
-<button style="margin:10px" appColorChange (click)="sortlLipsticks('asc')">销售↓</button>
-<button style="margin:10px" appColorChange (click)="sortlLipsticks('desc')">销售↑</button>
-<button style="margin:10px" appColorChange (click)="addNewLipstick()">新增商品</button>
+<button style="margin:10px" appColorChange (click)="lipstickServ.sortLipsticks('asc')">销售↓</button>
+<button style="margin:10px" appColorChange (click)="lipstickServ.sortLipsticks('desc')">销售↑</button>
+<button style="margin:10px" appColorChange (click)="lipstickServ.addNewLipstick()">新增商品</button>
 <table width="100%"  border="solid" style="margin:10px">
   <tr style="background-color:bisque">
     <th >编 辑</th>
@@ -13,11 +13,11 @@
     <th width="5.5%">价 位</th>
     <th>销 售 量</th>
   </tr>
-  <tr *ngFor="let lipstick of lipsticks" >
+  <tr *ngFor="let lipstick of lipstickServ.lipsticks" >
     <td style="text-align:center">
-      <span >[编辑]</span></td>
+      <span (click)="openDialog(lipstick)">[编辑]</span></td>
     <td style="text-align:center">
-      <span (click)="deleteLipstickByID(lipstick.objectId)" >[删除]</span></td>
+      <span (click)="lipstickServ.deleteLipstickByID(lipstick.objectId)" >[删除]</span></td>
     <td >{{lipstick.objectId}}</td>
     <td >{{lipstick.name}}</td>
     <td >{{lipstick.brand}}</td>
