@@ -1,0 +1,36 @@
+<div class="col-12">
+  <td class="col-4 market-index" *ngFor="let marketIndex of marketIndexes">
+    <span style="color:#888888">&nbsp;{{marketIndex.name}}</span>
+    <span appMarketIndexColor>{{marketIndex.price}}</span>
+    <span appMarketIndexColor>&nbsp;{{marketIndex.percent}}%</span>
+    <span>&nbsp;{{marketIndex.total|moneyUnit}}</span>
+    <span>&nbsp;&nbsp;</span>
+  </td>
+</div>
+<hr>
+<div class="col-12">
+  <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+    <tr class="col-12">
+      <th class="col-1">股票代码</th>
+      <th class="col-1">股票名称</th>
+      <th class="col-1">开盘价格</th>
+      <th class="col-1">最新价格</th>
+      <th class="col-1">涨跌</th>
+      <th class="col-1">最低价格</th>
+      <th class="col-1">最高价格</th>
+      <th class="col-1">成交量</th>
+      <th class="col-1">成交金额</th>
+      <th class="col-1">总市值</th>
+      <th class="col-1">流通市值</th>
+      <th class="col-1">添加自选</th>
+    </tr>
+  </table>
+</div>
+
+<app-eightstock-listitem colspan="6" [stock]="stock" *ngFor="let stock of stocks"></app-eightstock-listitem>
+
+<div style="width: 100%;">
+  <table style="width: 100%;">
+    
+  </table>
+</div>

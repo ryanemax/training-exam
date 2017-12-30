@@ -1,0 +1,19 @@
+<h1>供应商信息</h1>
+
+
+<table >
+  <thead class="header">
+    <th>ID</th>
+    <th>姓名</th>
+    <th>mail</th>
+    <th>location</th>
+    <th>操作</th>
+  </thead>
+  <tbody >
+    <tr *ngFor="let user of suppliers"> <td>{{user.id}}</td><td>{{user.name}}</td><td>：{{user.mail | toMail}}</td><td>{{user.location}} </td><td><button appActButton  (click)="deleteUserByID(user.id)" >提供的产品</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>产品信息</h1>
+<div></div>

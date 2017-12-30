@@ -1,0 +1,15 @@
+<h1>学生列表(共：{{9939491293 | toK}}人)</h1>
+<div>{{'123' | say666}}
+<h1 appHightlight>已选择的用户：{{selectedUser.name}}</h1>
+</div>
+
+<button appActButton class="llc-btn" (click)="sortUsers('asc')">正序</button>
+<button appActButton class="llc-btn" (click)="sortUsers('desc')" >倒序</button>
+<button appActButton class="llc-btn" (click)="sortUsers('random')">随机</button>
+<button appActButton class="llc-btn" (click)="addNewUser()">新增学生</button>
+<ul class="llc-student-list">
+  <app-student-item (click)="selectUser(user)" appActCard [user]="user" *ngFor="let user of users"></app-student-item>
+</ul>
+
+<app-act-button [name]="'修改'"></app-act-button>
+<app-act-button></app-act-button>

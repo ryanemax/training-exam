@@ -1,0 +1,21 @@
+<h1>仓库货源管理</h1>
+<button appActWarehouseButton (click)="sortUsers('asc')" style="border-radius: 15px;">正序</button>
+<button appActWarehouseButton (click)="sortUsers('desc')" style="border-radius: 15px;">倒序</button>
+<button appActWarehouseButton (click)="mySort()" style="border-radius: 15px;">随机</button>
+<button appActWarehouseButton (click)="addNewUser()" style="border-radius: 15px;">新增商品</button>
+<table width="100%"  border="solid">
+  <tr appActTr>
+    <th>删除</th>
+    <th>ID</th>
+    <th>商品名</th>
+    <th>商品别名</th>
+    <th>仓库所在地</th>
+  </tr>
+  <tr *ngFor="let user of users;let i = index;" [style.backgroundColor]="(i % 2 == 0)?'#':'#AFB42B'">
+    <td ><span (click)="deleteUserByID(user.id)">[删除]</span></td>
+    <td >{{user.id}}</td>
+    <td >{{user.name}}</td>
+    <td >{{user.detailName | shortenString}}</td>
+  <td>{{user.address}}</td>
+  </tr>
+</table>

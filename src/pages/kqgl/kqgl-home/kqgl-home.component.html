@@ -1,0 +1,43 @@
+
+<h1>考勤管理</h1>
+<button appButton1 (click)="sortUsers('asc')">正序</button>
+<button appButton1 (click)="sortUsers('desc')" >倒序</button>
+<button appButton1 (click)="sortUsers('random')">随机</button>
+<button appButton1 (click)="addNewUser()">新增学生</button>
+<table border="1" >
+  <tr>
+    <td class="lev1">操作</td>
+    <td class="lev1">ID</td>
+    <td class="lev1">姓名</td>
+    <td class="lev1">出勤</td>
+    <td class="lev1">缺勤</td>
+    <td class="lev2">打卡时间</td>
+  </tr>
+
+  <tr *ngFor="let user of users">
+
+  <td ><span (click)="deleteUserByID(user.id)">[删除]</span>
+  </td>
+  <td >
+    {{user.id}}
+  </td>
+  <td >
+
+    {{user.name}}
+  </td>
+  <td >
+
+    {{user.cq}}
+  </td>
+  <td >
+
+    {{user.qq}}
+  </td>
+  <td >
+
+    {{user.dks | toDateYmd}}
+  </td>
+
+</tr>
+</table>
+
