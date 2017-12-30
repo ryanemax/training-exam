@@ -14,7 +14,7 @@ import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
-
+import { MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material';
 import { KqglService } from "./kqgl-data";
@@ -27,7 +27,7 @@ import {KqglDialogComponent} from './kqgl-dialog/kqgl-dialog';
     MatButtonModule,
     MatFormFieldModule,MatInputModule,
     FormsModule,MatIconModule,MatMenuModule,
-    MatSelectModule,MatOptionModule,MatCardModule,
+    MatSelectModule,MatOptionModule,MatCardModule,MatDialogModule,
     RouterModule.forChild([
       { path: '', component: KqglHomeComponent, pathMatch: 'full' },
       { path: ':id', component: KqglDetailComponent, pathMatch: 'full' },
