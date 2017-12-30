@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
   },
   {
+    path: 'coffee',
+    loadChildren: '../pages/coffee/coffee.module#CoffeeModule',
+  },
+  {
     path: 'kqgl',
     loadChildren: '../pages/kqgl/kqgl.module#KqglModule',
   },
