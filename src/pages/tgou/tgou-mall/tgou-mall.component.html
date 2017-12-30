@@ -1,8 +1,59 @@
 <h1>商品列表</h1>
+
 <button class="button button2" (click)="sortUsers('asc')">正序</button>
-<button class="button button2" (click)="sortUsers('desc')" >倒序</button>
+<button class="button button2" (click)="sortUsers('desc')">倒序</button>
 <button class="button button2" (click)="sortUsers('random')">随机</button>
 <button class="button button2" (click)="addNewUser()">新增商品</button>
+<br>
+<mat-form-field class="example-full-width">
+  <textarea matInput placeholder="Leave a comment"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <textarea matInput placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option value="option2">Option 2</mat-option>
+    <mat-option value="option3">Option 3</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>You selected: {{selected}}</p>
+
+
 <ul>
-  <li *ngFor="let user of users"><span (click)="deleteUserByID(user.id)">[删除]</span> GOODSID:{{user.id}}，商品名：{{user.name}}，英文名：{{user.github}}，价格：{{user.sex}}</li>
+  <li *ngFor="let user of users">
+    <span (click)="deleteUserByID(user.id)">[删除]</span>
+    GOODSID:{{user.id}}，商品名：{{user.name}}，英文名：{{user.github}}，价格：{{user.sex | toK}}
+    <br>
+    <img src={{user.img}}>
+  </li>
+
+  <h1>售出商品一览</h1>
+  <div class="productImg-wrap">
+    <img src="//img.alicdn.com/bao/uploaded/i4/TB1gu4vKFXXXXXYXpXXXXXXXXXX_!!0-item_pic.jpg_b.jpg">
+    <p class="productPrice">
+      <em title="1199.00">
+        <b>¥</b>1199.00</em>
+    </p>
+    <img src="//img.alicdn.com/bao/uploaded/i3/3532929347/TB2qGlPfx6I8KJjSszfXXaZVXXa_!!3532929347.jpg_b.jpg">
+    <p class="productPrice">
+      <em title="1798.00">
+        <b>¥</b>1798.00</em>
+    </p>
+    <img src="//img.alicdn.com/bao/uploaded/i1/1579528508/TB28gDFmWigSKJjSsppXXabnpXa_!!1579528508.jpg_b.jpg">
+    <p class="productPrice">
+      <em title="10899.00">
+        <b>¥</b>10899.00</em>
+    </p>
+  </div>
+
+  <ul class="llc-student-list">
+    <app-tgou-item appActCard></app-tgou-item>
+    <!-- <app-tgou-item (click)="selectUser(user)" appActCard [user]="user" *ngFor="let user of users"></app-tgou-item> -->
+  </ul>
 </ul>

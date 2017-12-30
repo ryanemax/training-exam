@@ -1,32 +1,80 @@
-<h1>学生列表(共：{{9939491293 | toK}}人)</h1>
 <div>
-<h1>已选择的用户</h1>
-<app-student-item [user]="selectedUser"></app-student-item>
+  <h1>学员管理</h1>
+  <div class="studentContent">
+
+      <nav mat-tab-nav-bar>
+          <a mat-tab-link active="true">
+                  学员列表
+                  </a>
+          <a mat-tab-link routerLink="analysis">
+                  统计分析
+               </a>
+      </nav>
+      <div class="tabMenu">
+
+          <div class="mat-table-controls">
+              <mat-select placeholder="搜索范围" [(ngModel)]="searchType" name="searchType">
+                  <mat-option value="name">名称</mat-option>
+                  <mat-option value="classification">分类</mat-option>
+              </mat-select>
+              <mat-input-container>
+                  <input [(ngModel)]="searchText" matInput placeholder="请输入要搜索的内容">
+              </mat-input-container>
+              <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
+              <button style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
+
+          </div>
+
+          <!-- <a mat-raised-button routerLink="edit/new">新增宝贝</a> -->
+          <button class="addBtn" mat-raised-button (click)="addNewUser()"><mat-icon>add</mat-icon>
+              新增用户</button>
+          <button class="sortBtn" mat-raised-button [matMenuTriggerFor]="menu">
+                          <mat-icon>more_vert</mat-icon>排序方式
+                        </button>
+          <mat-menu #menu="matMenu">
+              <button mat-menu-item class="mat-menu-item" (click)="sortUsers('asc')">
+                            <span>正序</span>
+                          </button>
+              <button mat-menu-item (click)="sortUsers('desc')">
+                            <span>倒序</span>
+                          </button>
+              <button mat-menu-item (click)="sortUsers('random')">
+                            <span>随机</span>
+                          </button>
+          </mat-menu>
+      </div>
+
+      <table cellspacing="0" cellpadding="0">
+          <thead>
+              <tr>
+                  <th>编号</th>
+                  <!-- <th>宝贝图片</th> -->
+                  <th>姓名</th>
+                  <th>github</th>
+                  <th>性别</th>
+                  <!-- <th>价格</th> -->
+                  <!-- <th>入手时间</th> -->
+                  <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let student of users">
+                  <td>{{student.objectId}}</td>
+                  <!-- <td><img src="{{student.img}}" /></td> -->
+                  <td>{{student.name}}</td>
+                  <td>{{student.github}}</td>
+                  <td>{{student.sex}}</td>
+                  <!-- <td>{{student.price | studentCurrency:"cn"}}</td> -->
+                  <!-- <td><span *ngIf="student.addTime">{{student.addTime.iso | date:"y-MM-dd"}}</span></td> -->
+                  <td>
+                      <!-- <mat-icon title="修改" (click)=showEditAssetDailog(student)>edit</mat-icon> -->
+                      <!-- <mat-icon title="修改" routerLink="edit/{{student.objectId}}">edit</mat-icon> -->
+                      <!-- <mat-icon title="查看" routerLink="view/{{student.objectId}}">menu</mat-icon> -->
+                      <mat-icon title="删除" (click)="deleteUserByID(student.objectId)">delete</mat-icon>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </div>
 </div>
-
-<button appActButton class="llc-btn" (click)="sortUsers('asc')">正序</button>
-<button appActButton class="llc-btn" (click)="sortUsers('desc')" >倒序</button>
-<button appActButton class="llc-btn" (click)="sortUsers('random')">随机</button>
-<button appActButton class="llc-btn" (click)="addNewUser()">新增学生</button>
-<ul class="llc-student-list">
-  <!-- <li *ngFor="let user of users" class="col-3">
-    <div class="llc-student-list-id">
-      ID:{{user.id}}
-    </div>
-    <div class="llc-student-list-name">
-      姓名：{{user.name}}
-    </div>
-    <div class="llc-student-list-git">
-      Github：{{user.github}}
-    </div>
-    <div class="llc-student-list-sex">
-      Github：{{user.sex}}
-    </div>
-    <div class="tar">
-      <span (click)="deleteUserByID(user.id)" class="llc-student-list-del">x</span>
-    </div>
-  </li> -->
-
-  <app-student-item appActCard [user]="user" *ngFor="let user of users"></app-student-item>
-
-</ul>

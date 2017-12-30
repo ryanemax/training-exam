@@ -56,6 +56,21 @@ RouterModule.forChild([
 - /src/app/app-routing.module.ts loadChildren路径
 - /src/pages/<module>/<module>.module.ts 引用路径
 
+## 如何不影响其他人开发，全新提交自己的特性模块
+- 源码管理-更多-撤销上次提交，确保左下向上箭头为0
+- 源码管理-更多-取消暂存所有更改，确保左侧“更改”区域为空
+- 执行强制更新指令
+
+``` sh
+git reset --hard
+git pull
+```
+
+- 复制自己的特性模块文件夹至/src/pages
+- 添加app-routing.module.ts
+- ng serve确保运行正常
+- 提交代码
+
 # Day 1 作业参考
 ## 提交作业流程
 1. 确保ng serve项目启动正常

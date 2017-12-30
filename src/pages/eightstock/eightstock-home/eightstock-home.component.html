@@ -1,33 +1,72 @@
 <div class="col-12">
-  <td class="col-4 market-index">上证指数 3301 +4.09 0.65% 1523.42亿</td>
-  <td class="col-4 market-index">深证成指 10089 +13.09 0.17% 3023.96亿</td>
-  <td class="col-4 market-index">创业板指 1748 -1.09 0.25% 567.60亿</td>
+  <td class="col-4 market-index" *ngFor="let marketIndex of marketIndexes">
+    <span style="color:#888888">&nbsp;{{marketIndex.name}}</span>
+    <span appMarketIndexColor>{{marketIndex.price}}</span>
+    <span appMarketIndexColor>&nbsp;{{marketIndex.percent}}%</span>
+    <span>&nbsp;{{marketIndex.total|moneyUnit}}</span>
+    <span>&nbsp;&nbsp;</span>
+  </td>
 </div>
-<hr>
-<button (click)="sortUsers('asc')">价格正序</button>
-<button (click)="sortUsers('desc')" >价格倒序</button>
-<button (click)="sortUsers('random')">随机排序</button>
-<button (click)="addNewUser()">新增自选股</button>
-<hr>
-<div style="width: 100%;">
-<table style="width: 100%;">
-    <thead style="width: 100%;">
-      <tr style="width: 100%;">
-        <th class="col-m-2">删除股票</th>
-        <th class="col-m-2">股票代码</th>
-        <th class="col-m-3">股票名称</th>
-        <th class="col-m-2">最新价格</th>
-        <th class="col-m-3">成交手数</th>
+<div *ngIf="tabNo==1" class="col-12">
+  <div class="col-12">
+      <td class="tabBtn" style="background-color:#d4d4d4;"  (click)="changeTab(1,this)">行情</td>
+      <td class="tabBtn" (click)="changeTab(2,this)">自选</td>
+      <td class="tabBtn" (click)="changeTab(3,this)">咨询</td>
+  </div>
+  <div class="col-12">
+    <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+      <tr class="col-12">
+        <th class="col-1">股票代码</th>
+        <th class="col-1">股票名称</th>
+        <th class="col-1">开盘价</th>
+        <th class="col-1">最新价</th>
+        <th class="col-1">涨跌</th>
+        <th class="col-1">最低价</th>
+        <th class="col-1">最高价</th>
+        <th class="col-1">成交量</th>
+        <th class="col-1">成交金额</th>
+        <th class="col-1">总市值</th>
+        <th class="col-1">流通市值</th>
+        <th class="col-1">添加自选</th>
       </tr>
-    </thead>
-    <tbody style="width: 100%;">
-      <tr style="width: 100%;" *ngFor="let user of users">
-        <td style="text-align: center;"><button (click)="deleteUserByID(user.id)">删除</button></td>
-        <td style="text-align: center;">{{user.id}}</td>
-        <td style="text-align: center;">{{user.name}}</td>
-        <td style="text-align: center;">{{user.price}}</td>
-        <td style="text-align: center;">{{user.nums}}</td>
-      </tr>
-    </tbody>
-</table>
+    </table>
+  </div>
+  <app-eightstock-listitem [stock]="stock" *ngFor="let stock of stocks"></app-eightstock-listitem>
+</div>
+<div *ngIf="tabNo==2">
+    <div class="col-12">
+        <td class="tabBtn" (click)="changeTab(1,this)">行情</td>
+        <td class="tabBtn" style="background-color:#d4d4d4;" (click)="changeTab(2,this)">自选</td>
+        <td class="tabBtn" (click)="changeTab(3,this)">咨询</td>
+    </div>
+    <div class="col-12">
+        <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+          <tr class="col-12">
+            <th class="col-1">股票代码</th>
+            <th class="col-1">股票名称</th>
+            <th class="col-1">开盘价</th>
+            <th class="col-1">最新价</th>
+            <th class="col-1">涨跌</th>
+            <th class="col-1">最低价</th>
+            <th class="col-1">最高价</th>
+            <th class="col-1">成交量</th>
+            <th class="col-1">成交金额</th>
+            <th class="col-1">总市值</th>
+            <th class="col-1">流通市值</th>
+            <th class="col-1">删除自选</th>
+          </tr>
+        </table>
+      </div>
+
+</div>
+<div *ngIf="tabNo==3">
+    <div class="col-12">
+        <td class="tabBtn" (click)="changeTab(1,this)">行情</td>
+        <td class="tabBtn" (click)="changeTab(2,this)">自选</td>
+        <td class="tabBtn" style="background-color:#d4d4d4;" (click)="changeTab(3,this)">咨询</td>
+    </div>
+ <br>
+2017年的A股交易今日落下帷幕，沪指红盘收官，收盘报3307.17点，全年累计涨6.56%；受益于大蓝筹的强劲表现，上证50指数全年累计飙升25.08%；而创业板指则表现萎靡，全年累计下跌10.67%，在全球主要股指中排名倒数第一。
+从全球主要股市的表现来看，A股今年处于中下游水平，市值上涨超过8万亿元，这是A股交出的答卷。
+从年初的再融资新规出台，到年中的A股被纳入MSCI、再到股指期货再松绑等，虽然热点在各个板块轮动，但全年来看，A股呈现明显的价值投资趋势，这也是A股多年来难得一见的盛况。
 </div>
