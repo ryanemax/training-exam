@@ -13,6 +13,11 @@
 .tar{
   text-align: right;
 }
+ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 li {
   position: relative;
   padding: 10px;
@@ -21,6 +26,7 @@ li {
   list-style: none;
   border: 1px solid #BDBDBD;
   border-radius: 4px;
+  width :200px;
 }
 
 li:hover {

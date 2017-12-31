@@ -1,7 +1,7 @@
 <h1>物料清单列表</h1>
 <button mat-raised-button color="primary" class="inv-button" (click)= "openDialog()" >新增物料</button>
 <mat-tab-group class="col-12">
-    <mat-tab label="物料表格">
+    <mat-tab label="物料表格" >
         
            <div>
                <mat-table [dataSource]="dataSource" matSort>
@@ -37,11 +37,11 @@
         <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('random')">随机</button>
         
         
-        <ul >
+        <ul>
             <li  *ngFor="let item of itemtServ.items" >
           <div class="tar" >
-            <span><mat-icon title="删除" (click)="itemtServ.deleteItemByID(item.objectId)">delete</mat-icon></span>              
-            <span><mat-icon title="编辑" (click)="openDialog(item)">edit</mat-icon></span>
+              <span><mat-icon title="删除" (click)="itemtServ.deleteItemByID(item.objectId)">delete</mat-icon></span>              
+              <span><mat-icon title="编辑" (click)="openDialog(item)">edit</mat-icon></span>
           </div>
             <div class="item-list-id">ID：{{item.objectId}}</div>
                   <div class="item-list-code">编码：{{item.code}}</div>
