@@ -96,6 +96,10 @@ const routes: Routes = [
   {
     path: 'clothes1',
     loadChildren: '../pages/clothes1/clothes1.module#Clothes1Module',
+  },
+  {
+    path: 'coffee-star1',
+    loadChildren: '../pages/coffee-star1/coffee-star1.module#CoffeeStar1Module',
   }
 
 ];
