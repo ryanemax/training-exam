@@ -64,21 +64,32 @@ export class WarehouseGoodsService{
         });
     
       }
-      addNewUser(){
+      addNewUser(goods){
+        if(goods["name"]===""||goods["detailName"]===""){
+          alert("请输入正确的商品信息");
+        }
+
         let url = "http://47.92.145.25:80/parse"+"/classes/WarehourseGoods";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
         let options:any ={
           headers:headers
         };
-        let newUser: Goods = {
-          name : "test",
-          detailName : "detailTest",
-          address : "testAddress"
-        };
-        this.http.post(url,newUser,options).subscribe(data=>{
-          this.loadUsersData();
-        });
+        if(!goods.objectId){
+          // 新增用户
+          this.http.post(url,goods,options).subscribe(data=>{
+            this.loadUsersData();
+          });
+        }else{
+          // 修改用户
+          url = "http://47.92.145.25:80/parse"+"/classes/WarehourseGoods/"+goods.objectId;
+          delete goods["objectId"];
+          delete goods["createdAt"];
+          delete goods["updatedAt"];
+          this.http.put(url,goods,options).subscribe(data=>{
+            this.loadUsersData();
+          });
+        }
       }
       deletegoodsByID(id){
         // this.goodses.forEach((user,index,arr)=>{

@@ -1,7 +1,8 @@
 <h1>咖啡管理[{{studentServ.users?studentServ.users.length:0}}]</h1>
 
-<div class="studentContent">
-    
+
+        <mat-tab-group class="col-9">
+                <mat-tab label="总览">
           <div class="tabMenu">
               <!-- <a mat-raised-button routerLink="edit/new">新增宝贝</a> -->
               <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
@@ -34,30 +35,30 @@
                   <th class="col-m-2">浓度</th>
                   <th class="col-m-3">价格</th>
                   <th class="col-m-3">库存</th>
+                  <th class="col-m-3">修改</th>
                 </tr>
           </thead>
           <tbody >
             <tr>
               <td>
                     <button class="ll"  routerLink="/coffee-star1/{{user.objectId}}">查看</button>
-                <button class="ll"  (click)="openDialog(user)">修改</button>
+               
             <button class="ll"  (click)="studentServ.deleteUserByID(user.objectId)">删除</button></td>
               <td style="text-align: center;">{{user.objectId}}</td>
               <td style="text-align: center;" >{{user.name}}</td>
               <td style="text-align: center;">{{user.github}}</td>
               <td style="text-align: center;">{{user.sex}}</td>
               <td style="text-align: center;">{{user.goods|toK}}</td>
+              <td ><button class="ll"  (click)="openDialog(user)">修改</button></td>
             </tr>
           </tbody>
       </table>
   </li>
-  <nav mat-tab-nav-bar>
-    <a mat-tab-link active="true">
-            咖啡列表
-            </a>
-    <a mat-tab-link routerLink="analysis">
-            统计分析
-         </a>
-</nav>
 </ul>
+</mat-tab>
+<mat-tab label="详细">
+
+</mat-tab>
+
+
 
