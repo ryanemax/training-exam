@@ -27,12 +27,12 @@ import { ClothesDetailComponent } from './clothes-detail/clothes-detail.componen
 import { ClothesItemComponent } from './clothes-item/clothes-item.component';
 import { ClothesService } from './clothes-data';
 import { ClothesDialogComponent } from './clothes-dialog/clothes-dialog';
-
+import { SharedModule } from "../../shared/shared.module";
 
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule,SharedModule,
     MatFormFieldModule,MatInputModule,
     FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,MatCardModule,
