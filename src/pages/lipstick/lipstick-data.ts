@@ -42,7 +42,7 @@ export class LipStickService{
         });
       }
 
-      addNewLipstick(lipstick) {
+      addNewLipstick(lipstick?) {
         let url = "http://47.92.145.25:80/parse"+"/classes/Lipsticks";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
@@ -65,8 +65,8 @@ export class LipStickService{
           this.http.put(url,lipstick,options).subscribe(data=>{
             this.loadLipsticksData();
           });
+        }
       }
-    }
       deleteLipstickByID(id){
         let url = "http://47.92.145.25:80/parse"+"/classes/Lipsticks"+"/"+id;
         let headers:HttpHeaders = new HttpHeaders();

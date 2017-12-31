@@ -105,3 +105,17 @@
   cursor: pointer;
   outline: 0 none;
 }
+
+.llc-btn-dis {
+  padding: 5px 10px;
+  border: 0 none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 15px;
+  background-color: rgb(157, 161, 167);
+  color: #fff;
+  cursor: pointer;
+  outline: 0 none;
+  pointer-events: none;
+}
