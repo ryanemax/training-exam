@@ -15,7 +15,7 @@
 <mat-tab-group class="demo-tab-group">
   <mat-tab label="自选" (click)="getSelectedStockList()">
     <mat-card-content class="col-12">
-      <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+      <table class="col-12 example-tooltip-host" matTooltip="点击排序" matTooltipPosition="after" style="background-color:#d4d4d4;height:32px;">
         <tr class="col-12">
           <th class="col-1" (click)="sortStock('id',true)">股票代码</th>
           <th class="col-1" (click)="sortStock('name',true)">股票名称</th>
@@ -53,18 +53,18 @@
   </mat-tab>
   <mat-tab label="资讯">
     <br>
-    <mat-card class="col-12">
-      <table class="col-12">
+    <mat-card class="col-11" *ngFor="let stockNews of stockNewsList">
+      <table class="col-12 example-tooltip-host" matTooltip="点击评论" matTooltipPosition="before" (click)="openDialog()">
         <tr>
-          <td class="col-3" colspan="1" rowspan="4">
-            <img mat-card-image class="col-12" src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=b456f3cc800a19d8df0e8c575293e9ee/a08b87d6277f9e2f7fe1b7751f30e924b999f3f3.jpg"
-              alt="2017年度基金业绩排行榜出炉！">
+          <td class="col-3" colspan="1" rowspan="2">
+            <img mat-card-image class="col-12" src={{stockNews.imagePath}} alt="{{stockNews.title}}">
           </td>
-          <td class="col-9" colspan="1" rowspan="1">2017年度基金业绩排行榜出炉！</td>
+          <td mat-card-title class="col-7" colspan="1" rowspan="1">{{stockNews.title}}</td>
+          <td mat-card-avatar class="col-2" colspan="1" rowspan="2">评论数{{stockNews.chatNum}} </td>
         </tr>
         <tr>
-          <mat-card-content colspan="1" rowspan="3">
-            东方证券资管林鹏管理的东方红睿华沪港深混合、东方红沪港深混合以67.91%和66.70%的年度收益率排名包揽冠亚军； 易方达基金萧楠管理的易方达消费行业股票以64.97%的收益率获得年度季军。
+          <mat-card-content  class="col-9" colspan="1" rowspan="1">
+              {{stockNews.content}}
           </mat-card-content>
         </tr>
       </table>
