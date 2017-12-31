@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
-
+import { Http } from '@angular/http';
+//import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+import {Parse} from "../../cloud/cloud";
 interface Clothes {
     id?: number;
     name: string;
@@ -16,20 +17,15 @@ interface Clothes {
 @Injectable()
 export class ClothesService{
     clothes:any[];
-    constructor(private http:HttpClient){
+    constructor(private httpclient:HttpClient,private http:Http){
     }
   loadClothesData() {
     
-    let url = "http://47.92.145.25:80/parse"+"/classes/Clothes";
-    let headers:HttpHeaders = new HttpHeaders();
-    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
-
-    let options:any ={
-      headers:headers
-    };
-    return this.http.get<ParseResponse>(url,options).subscribe(data=>{
-      this.clothes = data['results'];
-      console.log(this.clothes);
+    let query = new Parse.Query("Clothes",this.httpclient);
+    query.equalTo("aaa","aaa");
+    query.limit(10);
+    query.find().subscribe(data=>{
+      this.clothes = data;
     });
   }
 
@@ -74,7 +70,7 @@ export class ClothesService{
           headers:headers
         };
     
-        this.http.delete(url,options).subscribe(data=>{
+        this.httpclient.delete(url,options).subscribe(data=>{
           this.loadClothesData();
         });
       }

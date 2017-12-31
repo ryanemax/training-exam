@@ -70,7 +70,7 @@ export class StudentListComponent implements AfterViewInit {
     // 基于准备好的dom，初始化echarts实例
     // let el = document.getElementById('studentChart');
     let el = this.studentChart.nativeElement;
-    let myChart = echarts.init(el);
+    let myChart = echart.init(el);
 
     // 指定图表的配置项和数据
     let option = {
