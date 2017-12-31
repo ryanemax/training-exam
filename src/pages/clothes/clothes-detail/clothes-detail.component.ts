@@ -11,7 +11,7 @@ export class ClothesDetailComponent implements OnInit {
   clothes:any;
   constructor(private route: ActivatedRoute,
     private http:HttpClient,
-  private studentServ:ClothesService) { 
+  private clothesServ:ClothesService) { 
     this.clothes = {
       name:"Unknow Cloth"
     };

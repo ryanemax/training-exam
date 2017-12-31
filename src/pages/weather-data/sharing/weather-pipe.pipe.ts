@@ -6,11 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class WeatherPipePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    if (value != 0) {
-      return value + "度";
+    if (value == null) {
+      return 0 + "度";
     }
-    
-    return value;
+    return value + "度";
   }
 
 }
