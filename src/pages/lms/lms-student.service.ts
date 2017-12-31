@@ -41,10 +41,14 @@ export class LmsStudentService {
     return this.http.get(REST_API_LMS_CLASS_URL, options);
   }
 
-  getStudents(): Observable<Object> {
+  getStudents(param): Observable<Object> {
+    console.log(param);
     let options = {
       headers: REST_API_HEADERS
     };
+    if (Object.keys(param).length > 0) {
+      options['params'] = {where: JSON.stringify(param)};
+    }
     return this.http.get(REST_API_LMS_STUDENT_URL, options);
   }
 

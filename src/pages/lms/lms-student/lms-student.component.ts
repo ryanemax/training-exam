@@ -15,6 +15,11 @@ export class LmsStudentComponent implements OnInit {
   classes:Array<any>;
   // Student List
   students:Array<any>;
+
+  // Search Condition
+  searchName:string = "";
+  searchClass:string;
+
   // MatPaginator Inputs
   length:number;
   pageSize:number;
@@ -27,10 +32,6 @@ export class LmsStudentComponent implements OnInit {
     this.pageSize = 10;
     this.pageSizeOptions = [5, 10, 25, 100];
     this.displayedColumns = ['studentNo', 'name', 'className', 'sex', 'operation'];
-    this.lmsStudentService.getClasses()
-    .subscribe(data => {
-      this.classes = data["results"];
-    });
   }
 
   @ViewChild(MatSort) sort: MatSort;
@@ -44,8 +45,34 @@ export class LmsStudentComponent implements OnInit {
   }
 
   // Open Add Student Dialog
-  openAddStudentDialog() {
+  getStudents() {
+    console.log(this.searchClass);
+    console.log(this.searchName);
+    let searchCondition:any = {};
+    if (this.searchName) {
+      searchCondition.name = {"$regex":".*(" + this.searchName + ").*"};
+    }
+    if (this.searchClass) {
+      searchCondition.classId = this.searchClass;
+    }
+    this.lmsStudentService.getStudents(searchCondition)
+    .subscribe(data => {
+      this.students = data["results"];
 
+      this.students.forEach(item => {
+        let classInfo = this.classes.find(classObj => classObj.classNo == item.classId);
+        if (classInfo) {
+          item.className = classInfo.name;
+        } else {
+          item.className = item.classId
+        }
+      });
+
+      // MatPaginator Inputs
+      this.length = this.students.length;
+      this.dataSource = new MatTableDataSource(this.students.slice(0, this.pageSize));
+      this.dataSource.sort = this.sort;
+    });
   }
   
   openDialog(student?): void {
@@ -83,13 +110,10 @@ export class LmsStudentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lmsStudentService.getStudents()
+    this.lmsStudentService.getClasses()
     .subscribe(data => {
-      this.students = data["results"];
-      // MatPaginator Inputs
-      this.length = this.students.length;
-      this.dataSource = new MatTableDataSource(this.students.slice(0, this.pageSize));
-      this.dataSource.sort = this.sort;
+      this.classes = data["results"];
+      this.getStudents();
     });
   }
 }
