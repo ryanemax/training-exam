@@ -1,0 +1,23 @@
+<ng-container *ngIf="goods">
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="goods.name" matInput placeholder="商品名" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="goods.detailName" matInput placeholder="详细内容" value="">
+</mat-form-field>
+
+<!-- <mat-form-field>
+    <mat-select [(ngModel)]="goods.address" placeholder="地址">
+      <mat-option [value]="male">
+        男
+      </mat-option>
+      <mat-option [value]="female">
+        女
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  
+
+<button (click)="save()" mat-raised-button>保存</button>
+</ng-container>

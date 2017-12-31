@@ -41,6 +41,14 @@ export class FlowerHomeComponent implements OnInit {
     this.flowerServ.loadFlowersData();
     this.showData = this.Data1;
   }
+
+
+
+
+  // loadNewChartData(){
+  //   this.showData = this.Data2;
+  //   this.loadStudentChart();
+  // }
   loadStudentChart(){
     // 基于准备好的dom，初始化echarts实例
     // let el = document.getElementById('studentChart');
@@ -61,7 +69,7 @@ export class FlowerHomeComponent implements OnInit {
         },
         yAxis: {},
         series: [{
-            name: '销量',
+            name: '价格',
             type: 'bar',
             data: [5, 20, 36,10,29]
         }]

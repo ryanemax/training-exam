@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 // import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 import { Http } from '@angular/http';
-// import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
 
 // Cloud 微服务接口库
 import {Parse} from "../../cloud/cloud";
@@ -35,14 +36,6 @@ export class StudentService{
   //   let headers:HttpHeaders = new HttpHeaders();
   //   headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-<<<<<<< HEAD
-    let options:any ={
-      headers:headers
-    };
-     this.http.get<ParseResponse>(url,options).subscribe(data=>{
-      this.users = data['results'];
-      console.log(this.users);
-=======
   //   let options:any ={
   //     headers:headers
   //   };
@@ -52,13 +45,13 @@ export class StudentService{
   //   });
   // }
     loadUsersData() {
-    let query = new Parse.Query("Student",this.httpclient);
-    query.equalTo("sex","male");
-    query.limit(10);
-    query.find().subscribe(data=>{
-      this.users = data;
->>>>>>> 7c0fa47d0a824f98db5186589cb0d79bbb674462
-    });
+      return new Promise((resolve,reject)=>{
+        let query = new Parse.Query("Student",this.httpclient);
+        return query.find().subscribe(data=>{
+          this.users = data;
+          resolve(data);
+        });
+      })
   }
 
 

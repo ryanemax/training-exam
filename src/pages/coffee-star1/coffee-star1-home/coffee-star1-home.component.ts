@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { StudentService } from '../coffee-star1-data.ts';
 import {MatDialog} from '@angular/material';
+import "rxjs/operators/map";
 import {StudentDialogComponent} from '../student-dialog/student-dialog';
+import {MatTableDataSource} from '@angular/material';
 
 interface User {
   id?: number;
