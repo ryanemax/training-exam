@@ -39,10 +39,6 @@ export class StudentListComponent implements AfterViewInit {
 
   constructor(private http:HttpClient,private studentServ:StudentService,
   public dialog: MatDialog) {
-    this.studentServ.loadUsersData().then(data=>{
-      this.showChart();
-    });
-
   }
   selectUser(user){
     this.selectedUser = user;
@@ -102,7 +98,9 @@ export class StudentListComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.chartButton.nativeElement.style.background = "red";
+    this.studentServ.loadUsersData().then(data=>{
+      this.showChart();
+    });
   }
 
 }
