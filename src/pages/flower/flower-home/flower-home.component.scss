@@ -16,12 +16,14 @@ ul li {
 .b{
     
     list-style:none;
-    border-color: rgb(223, 185, 255);
+    border-color: rgb(204, 146, 216);
     border-collapse: collapse;
-    color:#b0c1f7;
-th{background-color: #b0c1f7;
+    color:#696969;
+}
+th{
+    background-color: #b0c1f7;
     text-align: center;
-    color: white;
+    color: #696969;
   
 }
 img{
@@ -29,16 +31,17 @@ img{
     height:95px;
 }
 td{
-    color: white;
+    color: 
+    #696969;
 }
 table{
-    border-color: rgb(185, 20, 218);
+    border-color: rgb(216, 109, 238);
 }
-}
+
 .button {
     background-color: pink; /* Green */
     border: none;
-    color: white;
+    color: #696969;
     padding: 5px 32px;
     text-align: center;
     text-decoration: none;
