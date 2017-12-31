@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient , HttpHeaders } from "@angular/common/http";
+import { BookService} from '../book-data';
 
 @Component({
   selector: 'app-book-detail',
@@ -11,7 +12,7 @@ export class BookDetailComponent implements OnInit {
   book:any;
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private http:HttpClient) { 
+    private http:HttpClient,private bookServ:BookService) { 
       this.book = {
         name:"Unknow Player"
       };

@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 
 import { FormsModule } from '@angular/forms';
+import { BookService} from './book-data';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { FormsModule } from '@angular/forms';
     BookItemComponent,
     BookPipe,
     BookBtn
-  ]
+  ],
+  providers:[BookService]
 })
 export class BookmanageModule { }

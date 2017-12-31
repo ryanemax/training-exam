@@ -41,9 +41,7 @@ export class InvHomeComponent implements OnInit {
   let options:any ={
     headers:headers
   };
-  this.http.get<ParseResponse>(url,options).subscribe(data=>{
-    this.items = data['results'];
-  });
+  
   }
   sortItems(type) {
     // 参考MDN中的ES6，Array语法

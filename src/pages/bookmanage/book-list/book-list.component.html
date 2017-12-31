@@ -1,8 +1,8 @@
 <em><h1>博雅书坊</h1></em>
 
-<button  mat-raised-button color="primary" (click)="sortBooks('asc')">正序</button>
-<button mat-raised-button color="accent" (click)="sortBooks('desc')" >倒序</button>
-<button  mat-raised-button color="accent" (click)="addNewBook()">新增图书</button>
+<button  mat-raised-button color="primary" (click)="bookServ.sortBooks('asc')">正序</button>
+<button mat-raised-button color="accent" (click)="bookServ.sortBooks('desc')" >倒序</button>
+<button  mat-raised-button color="accent" (click)="bookServ.addNewBook()">新增图书</button>
 <table cellspacing="0" cellpadding="0">
   <thead>
       <tr>
@@ -15,7 +15,7 @@
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let book of books">
+      <tr *ngFor="let book of bookServ.books">
           <td>{{book.objectId}}</td>
           <td>{{book.name}}</td>
           <td>{{book.author}}</td>
@@ -23,7 +23,7 @@
           <td>{{book.sale}}</td>
           <td>
               <mat-icon title="详情" routerLink="/bookmanage/{{book.objectId}}">menu</mat-icon>
-              <mat-icon title="删除" (click)="deleteBookByID(book.objectId)">delete</mat-icon>
+              <mat-icon title="删除" (click)="bookServ.deleteBookByID(book.objectId)">delete</mat-icon>
           </td>
       </tr>
   </tbody>
