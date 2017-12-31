@@ -2,17 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {MatTableDataSource} from '@angular/material';
+import {Item} from '../models/item-model';
 // import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
-interface Item {
-  objectId?:string;
-  code: string;
-  uom: string;
-  description: string;
-  count: number;
-  updatedAt?:string;
-  createdAt?:string;
-}
+
   interface ParseResponse {
     results: Item[];
   }
@@ -20,8 +13,8 @@ interface Item {
 @Injectable()
 export class ItemService{
     items : Item[] ;
-    displayedColumns = ['objectId'];
-    dataSource = new MatTableDataSource<Item>();
+    
+    
     constructor(private http:HttpClient){
     }
     loadItemsData() : Item[] {
@@ -34,7 +27,6 @@ export class ItemService{
       this.http.get<ParseResponse>(url,options).subscribe(data=>{
         this.items = data['results'];
       });
-      this.dataSource.data = [{"objectId": "aa"}];
       return this.items;
       }
 
@@ -77,7 +69,7 @@ export class ItemService{
         let options ={
           headers:headers
         };
-        if(!item){
+        if(!item.objectId){
           console.log(item);
           this.http.post(url,item,options).subscribe(data=>{
             this.loadItemsData();

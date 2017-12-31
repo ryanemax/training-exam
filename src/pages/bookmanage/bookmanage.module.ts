@@ -8,12 +8,33 @@ import { BookItemComponent } from './book-item/book-item.component';
 import {BookPipe} from './sharing/book.pipe';
 import {BookBtn} from './sharing/bookBtn.directive';
 
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
+import { MatOptionModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+
+import { FormsModule } from '@angular/forms';
+import { BookService} from './book-data';
+
+
 @NgModule({
   imports: [
     CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatIconModule,
+    MatMenuModule,
+    MatCardModule,
+    MatButtonModule,
     RouterModule.forChild([
       { path: '', component: BookListComponent, pathMatch: 'full' },
-      { path: 'detail', component: BookDetailComponent, pathMatch: 'full' }
+      { path: ':id', component: BookDetailComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [
@@ -23,6 +44,7 @@ import {BookBtn} from './sharing/bookBtn.directive';
     BookItemComponent,
     BookPipe,
     BookBtn
-  ]
+  ],
+  providers:[BookService]
 })
 export class BookmanageModule { }

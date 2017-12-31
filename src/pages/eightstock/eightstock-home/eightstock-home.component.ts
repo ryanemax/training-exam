@@ -3,9 +3,7 @@ import { PercentPipe } from '@angular/common/src/pipes/number_pipe';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import "rxjs/operators/map";
-import { forEach } from '../../../../node_modules/_@angular_router@5.0.0@@angular/router/src/utils/collection';
-import { Title } from '../../../../node_modules/_@angular_platform-browser@5.0.0@@angular/platform-browser/src/browser/title';
-import {EightstockNewschatComponent} from '../eightstock-newschat/eightstock-newschat.component';
+import { EightstockNewschatComponent } from '../eightstock-newschat/eightstock-newschat.component';
 
 
 interface Stock {
@@ -58,7 +56,7 @@ export class EightstockHomeComponent implements OnInit {
   sortType: String;
   sortMode: number;
 
-  constructor(private http: Http,public dialog: MatDialog) {
+  constructor(private http: Http, public dialog: MatDialog) {
     this.initLoad();
     this.tabNo = 1;
     this.sortType = '';
@@ -88,9 +86,7 @@ export class EightstockHomeComponent implements OnInit {
 
   getStockNews() {
     this.http.get(url + "/classes/EStockNews", options).subscribe(data => {
-      console.log(data.json().results);
       this.stockNewsList = data.json().results;
-
     });
   }
 
@@ -107,57 +103,50 @@ export class EightstockHomeComponent implements OnInit {
     this.sortType = type;
     if (type == 'id') {
       sortStock.sort((a, b) => (this.sortMode * (a.stockNo - b.stockNo)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'name') {
       sortStock.sort((a, b) => (this.sortMode * (a.name.localeCompare(b.name))));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'startPrice') {
       sortStock.sort((a, b) => (this.sortMode * (a.startPrice - b.startPrice)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'nowPrice') {
       sortStock.sort((a, b) => (this.sortMode * (a.nowPrice - b.nowPrice)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'change') {
       sortStock.sort((a, b) => (this.sortMode * ((a.nowPrice - a.startPrice) - (b.nowPrice - b.startPrice))));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'minPrice') {
       sortStock.sort((a, b) => (this.sortMode * (a.minPrice - b.minPrice)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'maxPrice') {
       sortStock.sort((a, b) => (this.sortMode * (a.maxPrice - b.maxPrice)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'volume') {
       sortStock.sort((a, b) => (this.sortMode * (a.volume - b.volume)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'amount') {
       sortStock.sort((a, b) => (this.sortMode * (a.amount - b.amount)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'marketValue') {
       sortStock.sort((a, b) => (this.sortMode * (a.marketValue - b.marketValue)));
-      this.sortMode = this.sortMode * -1;
     }
     if (type == 'circulationValue') {
       sortStock.sort((a, b) => (this.sortMode * (a.circulationValue - b.circulationValue)));
-      this.sortMode = this.sortMode * -1;
     }
+    this.sortMode = this.sortMode * -1;
   }
 
   ngOnInit() {
   }
 
-  openDialog(): void {
+  openDialog(stockNews): void {
     let dialogRef = this.dialog.open(EightstockNewschatComponent, {
-      width: '250px',
-      data: { name: 'aaaa'}
+      width: '600px',
+      data: {
+        newsId: stockNews.objectId,
+        title: stockNews.title
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

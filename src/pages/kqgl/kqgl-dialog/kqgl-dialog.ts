@@ -21,5 +21,7 @@ onNoClick(): void {
 save(){
     this.dialogRef.close(this.user);
 }
-
+close(){
+    this.dialogRef.close();
+}
 }
