@@ -94,7 +94,10 @@ const routes: Routes = [
     loadChildren: '../pages/supplier/supplier.module#SupplierModule'
   },
   {
-    path: 'clothes1',
+    path: 'cinematicket',
+  loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule'
+},
+   { path: 'clothes1',
     loadChildren: '../pages/clothes1/clothes1.module#Clothes1Module',
   }
 

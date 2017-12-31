@@ -1,9 +1,22 @@
-<ul>
-  <div id="sytle1">
-  <li *ngFor="let weatherInfo of weatherDataList"> 
-  <span (click)="deleteByDate(weatherInfo.dateInfo)">
-  <div id="sytle2">[删除日期]</div></span>
-  日期:{{weatherInfo.dateInfo}}，星期：{{weatherInfo.weekInfo}}，温度：{{weatherInfo.temperature}}，湿度：{{weatherInfo.years}}
-  </li>
-  </div>
-  </ul> 
+<h1>电影管理[{{cinemaServ.cinemas?cinemaServ.cinemas.length:0}}]</h1>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{cinema.name}}</mat-card-title>
+    <mat-card-subtitle>票数: {{cinema.counts}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
+  <mat-card-content>
+    <p>
+      电影详情：<br>
+      名称：{{cinema.name}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
