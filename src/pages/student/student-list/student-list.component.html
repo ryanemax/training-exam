@@ -43,6 +43,11 @@
           </mat-menu>
       </div>
 
+
+<button #chartButton (click)="loadNewChartData()">Show New Data</button>
+      <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div #studentChart (window:resize)="loadStudentChart()" style="width: 600px;height:400px;"></div>
+
       <table cellspacing="0" cellpadding="0">
           <thead>
               <tr>
@@ -51,6 +56,10 @@
                   <th>姓名</th>
                   <th>github</th>
                   <th>性别</th>
+                  <th>Exam1</th>
+                  <th>Exam2</th>
+                  <th>Exam3</th>
+                  <th>Exam4</th>
                   <!-- <th>价格</th> -->
                   <!-- <th>入手时间</th> -->
                   <th>操作</th>
@@ -63,6 +72,10 @@
                   <td>{{student.name}}</td>
                   <td>{{student.github}}</td>
                   <td>{{student.sex}}</td>
+                  <td>{{student.exam1}}</td>
+                  <td>{{student.exam2}}</td>
+                  <td>{{student.exam3}}</td>
+                  <td>{{student.exam4}}</td>
                   <!-- <td>{{student.price | studentCurrency:"cn"}}</td> -->
                   <!-- <td><span *ngIf="student.addTime">{{student.addTime.iso | date:"y-MM-dd"}}</span></td> -->
                   <td>

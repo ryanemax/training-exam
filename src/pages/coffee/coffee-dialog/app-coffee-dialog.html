@@ -1,0 +1,9 @@
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="coffee.name" matInput placeholder="姓名" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="coffee.brand" matInput placeholder="Brand" value="">
+</mat-form-field>
+<button (click)="save()" mat-raised-button>保存</button>

@@ -7,7 +7,7 @@
 <button class="llc-btn" (click)="service.sortGoods('asc')">正序</button>
 <button  class="llc-btn" (click)="service.sortGoods('desc')" >倒序</button>
 <button  class="llc-btn" (click)="service.sortGoods('random')">随机</button>
-<button  class="llc-btn" (click)="service.addGoods()">新商品登陆</button>
+<button  class="llc-btn" (click)="openDialog()">新商品登陆</button>
 
 <!--<ul class="llc-student-list">
    <li *ngFor="let goods of goodsList" class="col-3">
@@ -59,6 +59,9 @@
                 <!-- <mat-icon title="修改" (click)=showEditAssetDailog(student)>edit</mat-icon> -->
                 <!-- <mat-icon title="修改" routerLink="edit/{{student.objectId}}">edit</mat-icon> -->
                 <!-- <mat-icon title="查看" routerLink="view/{{student.objectId}}">menu</mat-icon> -->
+                <!-- <mat-icon title="查看" routerLink="/student/{{student.objectId}}">menu</mat-icon>-->
+                <mat-icon title="编辑" (click)="openDialog(goods)">修改</mat-icon>
+                <span routerLink="/ws-goods/{{goods.objectId}}">[查看]</span>
                 <span (click)="service.deleteGoods(goods.objectId)" >[删除]</span>
             </td>
         </tr>

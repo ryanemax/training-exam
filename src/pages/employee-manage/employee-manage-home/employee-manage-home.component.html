@@ -27,27 +27,26 @@
           </div>
 
         
-          <button class="addBtn" mat-raised-button (click)="addNewEmployee()"><mat-icon>add</mat-icon>
+          <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
               新增员工</button>
           <button class="sortBtn" mat-raised-button [matMenuTriggerFor]="menu">
                           <mat-icon>more_vert</mat-icon>排序方式
                         </button>
           <mat-menu #menu="matMenu">
-              <button mat-menu-item class="mat-menu-item" (click)="sortEmployees('asc')">
+              <button mat-menu-item class="mat-menu-item" (click)="employeeServ.sortEmployees('asc')">
                             <span>正序</span>
                           </button>
-              <button mat-menu-item (click)="sortEmployees('desc')">
+              <button mat-menu-item (click)="employeeServ.sortEmployees('desc')">
                             <span>倒序</span>
                           </button>
-              <button mat-menu-item (click)="sortEmployees('random')">
+              <button mat-menu-item (click)="employeeServ.sortEmployees('random')">
                             <span>随机</span>
                           </button>
           </mat-menu>
       </div>
 
       <table cellspacing="0" cellpadding="0" class="tabBtn">
-          <thead style=" border-style:solid;
-          border-bottom-color:#020202;">
+          <thead class="div">
               <tr>
                   <th>编号</th>
                   <th>姓名</th>
@@ -55,14 +54,12 @@
                   <th>部门</th>
                   <th>工资</th>
                   <th>入职时间</th>
-                  <th class="col-3">操作</th>
-                  
+                  <th class="col-3">操作</th>  
               </tr>
-              
           </thead>
           
           <tbody>
-              <tr *ngFor="let employee of employees">
+              <tr *ngFor="let employee of employeeServ.employees">
                   <td class="col-1">{{employee.objectId}}</td>
                   <td class="col-1">{{employee.name}}</td>
                   <td class="col-1">{{employee.sex}}</td>
@@ -70,7 +67,8 @@
                   <td class="col-1">{{employee.sale}}</td>
                   <td class="col-1">{{employee.joinin}}</td>
                   <td>
-                      <mat-icon title="删除" (click)="deleteEmployeeByID(employee.objectId)">delete</mat-icon>
+                        <mat-icon title="编辑" (click)="openDialog(employee)">修改</mat-icon>
+                      <mat-icon title="删除" (click)="employeeServ.deleteEmployeeByID(employee.objectId)">delete</mat-icon>
                       <mat-icon title="查看" routerLink="/employee/{{employee.objectId}}">menu</mat-icon>
                   </td>
               </tr>

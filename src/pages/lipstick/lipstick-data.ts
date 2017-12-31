@@ -42,16 +42,15 @@ export class LipStickService{
         });
       }
 
-      addNewLipstick(lipstick) {
+      addNewLipstick(lipstick?) {
         let url = "http://47.92.145.25:80/parse"+"/classes/Lipsticks";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
         let options ={
           headers:headers
         };
-        this.http.post(url,lipstick,options).subscribe(data=>{
-          this.loadLipsticksData();
-        });
+        lipstick["price"] = Number(lipstick["price"]);
+        lipstick["soldNumber"] = Number(lipstick["soldNumber"]);
         if(!lipstick.objectId){
           // 新增用户
           this.http.post(url,lipstick,options).subscribe(data=>{
@@ -66,8 +65,8 @@ export class LipStickService{
           this.http.put(url,lipstick,options).subscribe(data=>{
             this.loadLipsticksData();
           });
+        }
       }
-    }
       deleteLipstickByID(id){
         let url = "http://47.92.145.25:80/parse"+"/classes/Lipsticks"+"/"+id;
         let headers:HttpHeaders = new HttpHeaders();

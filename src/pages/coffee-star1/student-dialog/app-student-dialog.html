@@ -1,0 +1,17 @@
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="user.name" matInput placeholder="name" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="user.github" matInput placeholder="Github" value="">
+
+
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.sex" matInput placeholder="sex" value="">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input [(ngModel)]="user.goods" matInput placeholder="goods" value="">
+        </mat-form-field>
+<button (click)="save()" mat-raised-button>保存</button>
