@@ -54,7 +54,7 @@
     <!-- Operation Column -->
     <ng-container matColumnDef="operation">
       <mat-header-cell *matHeaderCellDef style="text-align: center;"> 操作 </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" style="text-align: center;">
         <button mat-icon-button routerLink="/lms/student/{{element.objectId}}"><mat-icon title="查看">description</mat-icon></button>
         <button mat-icon-button (click)="openDialog(element)"><mat-icon title="修改" >edit</mat-icon></button>
         <button mat-icon-button (click)="deleteStudentByID(element.objectId)"><mat-icon title="删除" >delete</mat-icon></button>
