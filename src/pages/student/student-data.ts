@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Http } from '@angular/http';
 // import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+
+// Cloud 微服务接口库
+import {Parse} from "../../cloud/cloud";
+// End of Cloud
 
 interface User {
     id?: number;
@@ -21,22 +26,28 @@ interface User {
 export class StudentService{
 
     users:any[];
-    constructor(private http:HttpClient){
+    constructor(private httpclient:HttpClient,private http:Http){
     }
   loadUsersData() {
    
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
+    let url = "http://47.92.145.25:80/parse"+"/classes/Student";
     let headers:HttpHeaders = new HttpHeaders();
     headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
     let options:any ={
       headers:headers
     };
-    return this.http.get<ParseResponse>(url,options).subscribe(data=>{
+    return this.httpclient.get<ParseResponse>(url,options).subscribe(data=>{
       this.users = data['results'];
       console.log(this.users);
     });
   }
+  //   loadUsersData() {
+  //   let query = new Parse.Query("Student",this.http);
+  //   query.find().subscribe(data=>{
+  //     this.users = data;
+  //   });
+  // }
 
 
     addNewUser(user) {
@@ -44,7 +55,7 @@ export class StudentService{
           alert("请输入正确的用户信息");
         }
 
-        let url = "http://47.92.145.25:80/parse"+"/classes/User12";
+        let url = "http://47.92.145.25:80/parse"+"/classes/Student";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
     
@@ -54,16 +65,16 @@ export class StudentService{
 
         if(!user.objectId){
         // 新增用户
-        this.http.post(url,user,options).subscribe(data=>{
+        this.httpclient.post(url,user,options).subscribe(data=>{
           this.loadUsersData();
         });
       }else{
         // 修改用户
-        url = "http://47.92.145.25:80/parse"+"/classes/User12/"+user.objectId;
+        url = "http://47.92.145.25:80/parse"+"/classes/Student/"+user.objectId;
         delete user["objectId"];
         delete user["createdAt"];
         delete user["updatedAt"];
-        this.http.put(url,user,options).subscribe(data=>{
+        this.httpclient.put(url,user,options).subscribe(data=>{
           this.loadUsersData();
         });
       }
@@ -72,7 +83,7 @@ export class StudentService{
       }
     
       deleteUserByID(id) {
-        let url = "http://47.92.145.25:80/parse"+"/classes/User12"+"/"+id;
+        let url = "http://47.92.145.25:80/parse"+"/classes/Student"+"/"+id;
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
     
@@ -80,7 +91,7 @@ export class StudentService{
           headers:headers
         };
     
-        this.http.delete(url,options).subscribe(data=>{
+        this.httpclient.delete(url,options).subscribe(data=>{
           this.loadUsersData();
         });
       }
