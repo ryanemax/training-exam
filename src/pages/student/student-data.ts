@@ -35,14 +35,6 @@ export class StudentService{
   //   let headers:HttpHeaders = new HttpHeaders();
   //   headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-<<<<<<< HEAD
-    let options:any ={
-      headers:headers
-    };
-     this.http.get<ParseResponse>(url,options).subscribe(data=>{
-      this.users = data['results'];
-      console.log(this.users);
-=======
   //   let options:any ={
   //     headers:headers
   //   };
@@ -57,7 +49,6 @@ export class StudentService{
     query.limit(10);
     query.find().subscribe(data=>{
       this.users = data;
->>>>>>> 7c0fa47d0a824f98db5186589cb0d79bbb674462
     });
   }
 
