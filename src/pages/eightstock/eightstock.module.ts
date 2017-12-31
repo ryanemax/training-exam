@@ -25,7 +25,6 @@ import {Parse} from "../../cloud/cloud";
     MatCardModule,
     MatTabsModule,
     MatButtonModule,
-    MatListModule,
     MatDialogModule,
     MatTooltipModule,
     FormsModule,
