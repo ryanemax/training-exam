@@ -1,66 +1,53 @@
-<h1 appItalic>商品列表</h1>
-<!--<div>
-<h1>已选择的用户</h1>
-<app-student-item [user]="selectedUser"></app-student-item>
-</div>  -->
-<!--<button appActButton class="llc-btn" (click)="sortGoods('asc')">正序</button> -->
-<button class="llc-btn" (click)="sortGoods('asc')">正序</button>
-<button  class="llc-btn" (click)="sortGoods('desc')" >倒序</button>
-<button  class="llc-btn" (click)="sortGoods('random')">随机</button>
-<button  class="llc-btn" (click)="addGoods()">新商品登陆</button>
 
-<!--<ul class="llc-student-list">
-   <li *ngFor="let goods of goodsList" class="col-3">
-    <div class="llc-student-list-id">
-      商品番号:{{goods.goodsNo}}
-    </div>
-    <div class="llc-student-list-name">
-      商品名称：{{goods.goodsNm}}
-    </div>
-    <div class="llc-student-list-git">
-      贩卖类型：{{goods.saleType | tpFilter}}
-    </div>
-    <div class="llc-student-list-sex">
-      制造商：{{goods.maker}}
-    </div>
-    <div class="llc-student-list-sex">
-      在库数量：{{goods.wsCnt}}
-    </div>-->
-    <!-- <div class="tar">
-      <span class="llc-student-list-del">x</span>
-    </div>
-  </li>
+<H1>在库商品管理</H1>
+<mat-tab-group (click)="loadGoodsChart();loadCharTwo();">
+  <mat-tab label="商品列表">
+    <div>
+      <div style="float:left;margin:10px;">
+        <button class="llc-btn" (click)="service.sortGoods('asc')">正序</button>
+        <button  class="llc-btn" (click)="service.sortGoods('desc')" >倒序</button>
+      </div>
+      
+      <div  style="float:right;margin:10px;">
+        <button style="" class="llc-btn" (click)="openDialog()">新商品登陆</button>
+      </div>
+      </div>
+      
+      <table cellspacing="0" cellpadding="0">
+          <thead>
+              <tr>
+                  <th >商品番号</th>
+                  <th>商品名称</th>
+                  <th>贩卖类型</th>
+                  <th >制造商</th>
+                  <th >入库日期</th>
+                  <th appItalic>在库数量</th> 
+                  <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let goods of service.goodsList">
+                  <td>{{goods.goodsNo}}</td>
+                  <!-- <td><img src="{{student.img}}" /></td> -->
+                  <td>{{goods.goodsNm}}</td>
+                  <td>{{goods.saleType | tpFilter}}</td>
+                  <td>{{goods.maker}}</td>
+                  <td>{{goods.createdAt | date:"yyyy/MM/dd"}}</td>
+                  <td>{{goods.wsCnt}}</td>
+                  <!-- <td><span *ngIf="student.addTime">{{student.addTime.iso | date:"y-MM-dd"}}</span></td> -->
+                  <td>
+                      <mat-icon title="编辑" (click)="openDialog(goods)">edit</mat-icon>
+                 <!--     <span routerLink="/ws-goods/{{goods.objectId}}">[查看]</span>  -->
+                      <mat-icon title="删除" (click)="service.deleteGoods(goods.objectId);loadGoodsChart()" >delete</mat-icon>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </mat-tab>
+  <mat-tab label="在库状态图">
+    <div  #goodsChart (window:resize)="loadGoodsChart()"style="width: 600px;height:400px;margin-top:10px;"></div>
+    <div  #goodsChart2 (window:resize)="loadCharTwo()"style="width: 600px;height:400px;margin-top:10px;"></div>
+  </mat-tab>
+</mat-tab-group>
 
-  <app-ws-good-list-item [goods]="goods" *ngFor="let goods of goodsList"></app-ws-good-list-item>  　
 
-</ul>-->
-
-<table cellspacing="0" cellpadding="0">
-    <thead>
-        <tr>
-            <th>商品番号</th>
-            <th>商品名称</th>
-            <th>贩卖类型</th>
-            <th>制造商</th>
-            <th>在库数量</th> 
-            <th>操作</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let goods of goodsList">
-            <td>{{goods.goodsNo}}</td>
-            <!-- <td><img src="{{student.img}}" /></td> -->
-            <td>{{goods.goodsNm}}</td>
-            <td>{{goods.saleType | tpFilter}}</td>
-            <td>{{goods.maker}}</td>
-            <td>{{goods.wsCnt}}</td>
-            <!-- <td><span *ngIf="student.addTime">{{student.addTime.iso | date:"y-MM-dd"}}</span></td> -->
-            <td>
-                <!-- <mat-icon title="修改" (click)=showEditAssetDailog(student)>edit</mat-icon> -->
-                <!-- <mat-icon title="修改" routerLink="edit/{{student.objectId}}">edit</mat-icon> -->
-                <!-- <mat-icon title="查看" routerLink="view/{{student.objectId}}">menu</mat-icon> -->
-                <span (click)="deleteGoods(goods.objectId)" >[删除]</span>
-            </td>
-        </tr>
-    </tbody>
-</table>

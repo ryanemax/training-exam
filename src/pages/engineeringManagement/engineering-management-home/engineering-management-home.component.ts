@@ -1,38 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EngineeringsMasterService } from '../engineManMaster-data';
+import { MatDialog } from '@angular/material';
+import { EngineeringManagementDialogComponent } from '../engineering-management-dialog/engineering-management-dialog.component';
+
+import "rxjs/operators/map";
+
+
 
 interface EngineeringsMaster {
-  id: number,
+  check?: boolean,
+  objectId?: string,
+  no: number,
   address: string,
   startDate: string,
   endDate: string,
   personLiable: string,
   status: string
 }
-
 @Component({
   selector: 'app-engineering-management-home',
   templateUrl: './engineering-management-home.component.html',
   styleUrls: ['./engineering-management-home.component.scss']
 })
+export class EngineeringManagementHomeComponent {
 
-export class EngineeringManagementHomeComponent implements OnInit {
+  constructor(private http: HttpClient, private engineeringsMasterService: EngineeringsMasterService, public dialog: MatDialog) {
+    this.engineeringsMasterService.loadUsersData();
+  }
+  setDate(ev){
+    console.log(ev);
+    let date = ev.value;
+  }
+  openDialog(user?): void {
+    if (!user) {
+      user = { name: "", github: "" };
+    }
+    let dialogRef = this.dialog.open(EngineeringManagementDialogComponent, {
+      width: '500px',
+      height: '500px',
+      data: user,
+    });
 
-  engineerings: Array<EngineeringsMaster>;
-  
-  constructor() { 
-    this.loadMasterData();
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.engineeringsMasterService.addData(result);
+    });
   }
 
-  ngOnInit() {
-  }
-
-  loadMasterData(){
-    this.engineerings=[
-      {id: 1, address:"大连中山区A小区", startDate: "20101001", endDate: "20101031",  personLiable: "张强", status: "完了"},
-      {id: 2, address:"大连中山区B小区", startDate: "20161001", endDate: "20161231",  personLiable: "张强", status: "完了"},
-      {id: 3, address:"大连中山区C小区", startDate: "20151001", endDate: "20151131",  personLiable: "张强", status: "完了"},
-      {id: 4, address:"大连中山区D小区", startDate: "20111001", endDate: "20171031",  personLiable: "张强", status: "完了"},
-      {id: 5, address:"大连中山区E小区", startDate: "20171001", endDate: "20171231",  personLiable: "张强", status: "实行中"}
-    ]
-  }
 }

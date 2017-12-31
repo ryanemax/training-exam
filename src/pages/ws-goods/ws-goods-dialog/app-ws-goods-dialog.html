@@ -1,0 +1,24 @@
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="goods.goodsNo" matInput placeholder="商品番号" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="goods.goodsNm" matInput placeholder="商品名称" value="">
+</mat-form-field>
+
+<mat-form-field>
+    <mat-select placeholder="贩卖类型" [(ngModel)]="goods.saleType">
+      <mat-option *ngFor="let type of saleTyptes" [value]="type.value">
+        {{ type.viewValue }}
+      </mat-option> 
+    </mat-select>
+  </mat-form-field>
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="goods.maker" matInput placeholder="制造商" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="goods.wsCnt" matInput placeholder="在库数量" value="">
+</mat-form-field>
+
+<div  style="text-align:center; width:'100%'"><button (click)="save()" mat-raised-button>保存</button>

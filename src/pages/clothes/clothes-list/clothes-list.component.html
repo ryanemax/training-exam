@@ -1,10 +1,73 @@
-<h1>列表(共：{{9939491293}}件衣物)</h1>
+<div>
+  <h1>服装管理</h1>
+  <div class="clothesContent">
+    <nav mat-tab-nav-bar>
+        
+       
+    </nav>
+     
+      <div class="tabMenu">
 
+          <div class="mat-table-controls">
+             
 
-<button appActButton class="llc-btn" (click)="sortClothes('asc')">正序</button>
-<button appActButton class="llc-btn" (click)="sortClothes('desc')" >倒序</button>
-<button appActButton class="llc-btn" (click)="sortClothes('random')">随机</button>
-<button appActButton class="llc-btn" (click)="addNewClothes()">新增服装</button>
-<ul class="llc-clothes-list">
-  <app-clothes-item (click)="selectClothes(clothes)" appActCard [cloth]="cloth" *ngFor="let cloth of cloth"></app-clothes-item>
-</ul>
+          </div>
+
+         
+          <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
+              新增用户</button>
+          <button class="sortBtn" mat-raised-button [matMenuTriggerFor]="menu">
+                          <mat-icon>more_vert</mat-icon>排序方式
+                        </button>
+          <mat-menu #menu="matMenu">
+              <button mat-menu-item class="mat-menu-item" (click)="clothesServ.sortClothes('asc')">
+                            <span>正序</span>
+                          </button>
+              <button mat-menu-item (click)="clothesServ.sortClothes('desc')">
+                            <span>倒序</span>
+                          </button>
+              <button mat-menu-item (click)="clothesServ.sortClothes('random')">
+                            <span>随机</span>
+                          </button>
+          </mat-menu>
+      </div>
+
+  
+
+  <button #chartButton (click)="loadNewChartData()">Show New Data</button>
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div #clothesChart (window:resize)="loadClothesChart()" style="width: 600px;height:400px;"></div>
+<table cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+               <th>ID</th>
+                <th>定位</th>
+                <th>品牌</th>
+                <th>生产日期</th>
+                <th>操作</th>
+                <th>Exam1</th>
+                <th>Exam2</th>
+                <th>Exam3</th>
+                <th>Exam4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cloth of clothesServ.clothes">
+                <td>{{cloth.objectId}}</td>
+                <td>{{cloth.name}}</td>
+                <td>{{cloth.brand}}</td>
+                <td>{{cloth.birthday}}</td>
+                <td>{{student.exam1}}</td>
+                <td>{{student.exam2}}</td>
+                <td>{{student.exam3}}</td>
+                <td>{{student.exam4}}</td>
+                <td>
+                   <mat-icon title="删除" (click)="clothesServ.deleteClothesByID(cloth.objectId)">delete</mat-icon>
+                   <mat-icon title="编辑" (click)="openDialog(cloth)">update</mat-icon>
+                   <mat-icon title="查看" routerLink="/clothes/{{cloth.objectId}}">menu</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

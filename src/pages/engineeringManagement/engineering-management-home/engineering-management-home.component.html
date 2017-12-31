@@ -1,12 +1,24 @@
 <p>
   工程管理系统
 </p>
+
+<mat-form-field>
+  <input (dateChange)="setDate($event)" matInput [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
 <div>
-  <button>追加</button>
+  <button mat-raised-button (click)="engineeringsMasterService.addData()">追加</button>
+  <button mat-raised-button (click)="engineeringsMasterService.delData()">删除</button>
 </div>
-<div id="div-1" class="div-fa">
+
+<div id="div-1" class="div-fa" style="margin-top:15px">
   <div id="div-2">
     <tr>
+      <td>
+        <span class="itemStyle">选择</span>
+      </td>
       <td>
         <span class="itemStyle">序号</span>
       </td>
@@ -20,7 +32,7 @@
         <span class="itemStyle">结束日</span>
       </td>
       <td>
-        <span class="itemStyle">总共实施（天）</span>
+        <span class="itemStyle">实施天数</span>
       </td>
       <td>
         <span class="itemStyle">施工责任人</span>
@@ -34,15 +46,21 @@
     </tr>
   </div>
   <div id="div-3">
-    <tr *ngFor="let item of engineerings;let i=index">
+    <tr *ngFor="let item of engineeringsMasterService.engineerings;let i=index">
       <td>
-        <span class="itemStyle">{{item.id}}</span>
+        <section class="example-section">
+          <mat-checkbox [(ngModel)]="item.check"></mat-checkbox>
+        </section>
+      </td>
+      <td>
+        <p hidden="hidden">{{item.objectId}}</p>
+        <span class="itemStyle">{{item.no}}</span>
       </td>
       <td>
         <span class="itemStyle">{{item.address}}</span>
       </td>
       <td>
-        <span class="itemStyle">{{item.startDate | dateFormat}}</span>
+        <span class="itemStyle">{{item.startDate}}</span>
       </td>
       <td>
         <span class="itemStyle">{{item.endDate}}</span>
@@ -57,12 +75,14 @@
         <span class="itemStyle">{{item.status}}</span>
       </td>
       <td>
-        <button class="itemStyle">详细</button>
+        <button class="updateBtn" mat-raised-button (click)="openDialog(item)">
+          <mat-icon>update</mat-icon>
+          详细
+        </button>
       </td>
     </tr>
   </div>
   <div>
     <app-engineering-btn></app-engineering-btn>
   </div>
-
 </div>

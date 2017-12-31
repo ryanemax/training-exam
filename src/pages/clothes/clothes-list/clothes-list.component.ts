@@ -1,93 +1,103 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { ClothesService } from '../clothes-data';
+import {ClothesDialogComponent} from '../clothes-dialog/clothes-dialog';
+import { MatDialog } from '@angular/material';
+
 
 interface Clothes {
-  id: number;
+  id?: number;
+  name: string;
+  brand: string;
+  birthday:string;
+  img:string;
 }
-
+interface ParseResponse {
+  results: any[];
+}
 @Component({
   selector: 'app-clothes-list',
   templateUrl: './clothes-list.component.html',
   styleUrls: ['./clothes-list.component.scss']
 })
-export class ClothesListComponent implements OnInit {
-  cloth: Array<Clothes>;
-  selectedclothes:any={
-    id:666,
+export class ClothesListComponent {
+ 
+  @ViewChild("chartButton") chartButton;  
+  @ViewChild("clothesChart") clothesChart;  
+  searchText:string;
+  selectedClothes:any={
+    id:111,
+    name:"Kingsman",
+    birthday:"1202/3/2",
+    brand:"sasasa"
    
   };
-
-  constructor() {
-    this.loadClothData();
+  /*foods:any = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];*/
+  Data1:any = ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"];
+  Data2:any = ["衬衫2","羊毛衫2","雪纺衫2","裤子","高跟鞋","袜子"];
+  showData:any
+  constructor(private http:HttpClient,private clothesServ:ClothesService, public dialog: MatDialog) {
+    this.clothesServ.loadClothesData();
+    this.showData = this.Data1;
   }
-  selectClothes(cloth){
-    this.selectClothes = cloth;
+  selectUser(cloth){
+    this.selectedClothes = cloth;
   }
-  sortClothes(type) {
-    // 参考MDN中的ES6，Array语法
-    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
-    if (type === 'asc') {
-      this.cloth.sort(function (a, b) {
-        if (a.id > b.id) {
-          return 1;
-        }
-        if (a.id < b.id) {
-          return -1;
-        }
-        return 0;
-      });
+  openDialog(cloth?): void {
+    if(!cloth){
+      cloth = {name:"",brand:""};
     }
+    let dialogRef = this.dialog.open(ClothesDialogComponent, {
+      width: '250px',
+      data: cloth,
+    });
 
-    if (type === 'desc') {
-      this.cloth.sort(function (a, b) {
-        if (a.id > b.id) {
-          return -1;
-        }
-        if (a.id < b.id) {
-          return 1;
-        }
-        return 0;
-      });
-    }
-
-    if(type === 'random') {
-      for(let i=0, len=this.cloth.length; i<len; i++){
-        let rand = Number(Math.random()*len).toFixed(0);
-        let temp = this.cloth[rand];
-        this.cloth[rand] = this.cloth[i];
-        this.cloth[i] = temp;
-      }
-    }
-    console.log("sortUsers Works!");
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.clothesServ.addNewClothes(result);
+    });
   }
+  // loadNewClothesData(){
+  //   this.showData = this.Data2;
+  //   this.loadClothesChart();
+  // }
+  // loadClothesChart(){
+  //   // 基于准备好的dom，初始化echarts实例
+  //   // let el = document.getElementById('studentChart');
+  //   let el = this.clothesChart.nativeElement;
+  //   let myChart = echarts.init(el);
 
-  loadClothData() {
-    this.cloth = [
-      {id: 5},
-      {id: 4},
-      {id: 3},
-      {id: 1},
-      {id: 2}
-    ];
-  }
+  //   // 指定图表的配置项和数据
+  //   let option = {
+  //       name: {
+  //           text: '服装定位'
+  //       },_
+  //       brand: {},
+  //       legend: {
+  //           data:['销量']
+  //       },
+  //       xAxis: {
+  //           data: this.showData
+  //       },
+  //       yAxis: {},
+  //       series: [{
+  //           name: '销量',
+  //           type: 'bar',
+  //           data: [5, 20, 36, 10, 10, 20]
+  //       }]
+  //   };
 
-  addNewClothes() {
-    let cloth = Number(Math.random() * 1000).toFixed(0);
-    let newCloth: Clothes = {
-      id: Number(cloth),
-     
-    }
-    this.cloth.push(newCloth);
-  }
+  //   // 使用刚指定的配置项和数据显示图表。
+  //   myChart.setOption(option);
+  // }
 
-  deleteUserByID(id) {
-    this.cloth.forEach((cloth, index, arr)=> {
-      if (cloth.id === id) {
-        arr.splice(index, 1);
-      }
-    })
-  }
-
-  ngOnInit() {
-  }
+  // ngAfterViewInit(){
+  //   this.loadClothesChart();    
+  //   this.chartButton.nativeElement.style.background = "red";
+  // }
 
 }

@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+  <div style="float: right">
+    <button mat-mini-fab color="warn" routerLink="/lms">
+      <mat-icon aria-label="Close icon">arrow_back</mat-icon>
+    </button>
+  </div>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>姓名: {{student.name}}</mat-card-title>
+    <mat-card-subtitle>学号: {{student.studentNo}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+        {{student.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="deleteStudentByID(element.objectId)"><mat-icon title="标记">favorite</mat-icon>标记</button>
+    <button mat-button (click)="deleteStudentByID(element.objectId)"><mat-icon title="删除">delete</mat-icon>删除</button>
+  </mat-card-actions>
+</mat-card>

@@ -7,6 +7,17 @@
   border-width: 0px;
   cursor:pointer;
 }
+.mat-icon{
+  cursor:pointer;
+}
+.tar{
+  text-align: right;
+}
+ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 li {
   position: relative;
   padding: 10px;
@@ -15,6 +26,7 @@ li {
   list-style: none;
   border: 1px solid #BDBDBD;
   border-radius: 4px;
+  width :200px;
 }
 
 li:hover {
@@ -48,4 +60,17 @@ li:hover {
 .item-list-description,
 .item-list-count {
   margin-bottom: 10px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
 }

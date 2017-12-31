@@ -1,0 +1,20 @@
+<li class="col-3">
+  <div class="llc-clothes-list-id">
+    ID:{{cloth.id}}
+
+  </div>
+  
+  <div class="llc-clothes-list-name">
+    名称：{{cloth.name | toK}}
+  </div>
+  <div class="llc-clothes-list-price">
+    价格：{{cloth.price}}
+  </div>
+  
+  <div class="llc-clothes-list-count">
+    数量：{{cloth.count | toK}}
+  </div>
+  <div class="tar" (click)='deleteById(cloth.id)'>
+    <span class="llc-clothes-list-del">x</span>
+  </div>
+</li>

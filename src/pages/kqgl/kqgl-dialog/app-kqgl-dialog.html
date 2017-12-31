@@ -1,0 +1,24 @@
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="user.name" matInput placeholder="姓名" value="">
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select [(ngModel)]="user.cq"  placeholder="出勤">
+      <mat-option value="1">出勤</mat-option>
+      <mat-option value="2">休假</mat-option>
+      <mat-option value="3">病假</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.qq" matInput placeholder="日期" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.dksj" matInput placeholder="打卡时间" value="">
+</mat-form-field>
+<button (click)="save()" mat-raised-button>保存</button>
+<button (click)="close()" mat-raised-button>关闭</button>

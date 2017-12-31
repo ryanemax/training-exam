@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 // HTTP for angular 4
 import { HttpModule } from '@angular/http';
 // end of Http Import
-
+import {Component} from '@angular/core';
+import {MatTableDataSource} from '@angular/material';
 
 import { NgModule } from '@angular/core';
 
@@ -14,9 +15,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,

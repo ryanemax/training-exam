@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, AfterViewInit, ViewChild} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { StudentService } from '../student-data';
-// import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 import {MatDialog} from '@angular/material';
 import {StudentDialogComponent} from '../student-dialog/student-dialog';
@@ -24,9 +23,11 @@ interface ParseResponse {
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.scss']
+  styleUrls: ['./student-list.component.scss'],
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent implements AfterViewInit {
+  @ViewChild("chartButton") chartButton;  
+  @ViewChild("studentChart") studentChart;  
   searchText:string;
   selectedUser:any={
     id:666,
@@ -38,7 +39,6 @@ export class StudentListComponent implements OnInit {
 
   constructor(private http:HttpClient,private studentServ:StudentService,
   public dialog: MatDialog) {
-    this.studentServ.loadUsersData();
   }
   selectUser(user){
     this.selectedUser = user;
@@ -57,7 +57,50 @@ export class StudentListComponent implements OnInit {
       this.studentServ.addNewUser(result);
     });
   }
-  ngOnInit() {
+  showChart(){
+    let cols = {}
+    let datas = {}
+    this.studentServ.users.forEach(item=>{
+      cols[item.objectId] = item.name;
+      datas[item.objectId] = item.exam1;
+    })
+    this.loadStudentChart(Object.values(cols),Object.values(datas)); 
+    
+  }
+  loadStudentChart(cols,datas){
+    // 基于准备好的dom，初始化echarts实例
+    // let el = document.getElementById('studentChart');
+    let el = this.studentChart.nativeElement;
+    let myChart = echart.init(el);
+
+    // 指定图表的配置项和数据
+    let option = {
+        title: {
+            text: 'Student成绩图'
+        },
+        tooltip: {},
+        legend: {
+            data:['成绩']
+        },
+        xAxis: {
+            data: cols
+        },
+        yAxis: {},
+        series: [{
+            name: '成绩',
+            type: 'bar',
+            data: datas
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  }
+
+  ngAfterViewInit(){
+    this.studentServ.loadUsersData().then(data=>{
+      this.showChart();
+    });
   }
 
 }

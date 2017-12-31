@@ -3,10 +3,19 @@
     ID:{{cloth.id}}
 
   </div>
-  <div class="llc-clothes-list-id">
+  <div class="llc-clothes-list-birthday">
     生产日期：
 
     {{birthday | date}}
+  </div>
+  <div class="llc-clothes-list-name">
+    name：{{cloth.name}}
+  </div>
+  <div class="llc-clothes-list-brand">
+    brand：{{cloth.brand}}
+  </div>
+  <div class="tar" (click)='deleteById(cloth.id)'>
+    <span class="llc-clothes-list-del">x</span>
   </div>
  
   
