@@ -17,12 +17,13 @@ import {StudentDialogComponent} from './student-dialog/student-dialog';
 import { MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { CoffeeDetailComponent } from './coffee-star1-detail/coffee-star1-detail.component';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
- 
+    MatTabsModule,
     FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,
     MatCardModule,
