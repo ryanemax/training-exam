@@ -8,6 +8,8 @@ import { MatTabsModule, MatFormFieldModule, MatInputModule, MatSelectModule, Mat
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 // Material Design End
 
 import { LmsHomeComponent } from './lms-home/lms-home.component';
@@ -43,7 +45,9 @@ import { LmsStudentService } from './lms-student.service';
     MatPaginatorModule,
     MatDialogModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRadioModule,
+    MatSnackBarModule
   ],
   declarations: [
     LmsHomeComponent,

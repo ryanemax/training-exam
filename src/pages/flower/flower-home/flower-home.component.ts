@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,ViewChild} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { FlowerService } from '../flower-data';
 //
@@ -24,16 +24,66 @@ interface ParseResponse {
   styleUrls: ['./flower-home.component.scss']
 })
 export class FlowerHomeComponent implements OnInit {
+  @ViewChild("studentChart") studentChart;  
   //flowers:Array<Flower>;
   selectedFlower:any={
     id:99,
     name:"鲜花",
     language:"xianhua",
-    price:"888"
+    price:"888",
+    img:"/assets/img/bh.jpg"
   };
+  Data1:any = ["百合","玫瑰","郁金香","杜鹃","满天星"];
+  Data2:any = ["百合1","玫瑰1","郁金香1","杜鹃1","满天星1"];
+  showData:any
   constructor(private http:HttpClient,private flowerServ:FlowerService,public dialog: MatDialog) {
+    
     this.flowerServ.loadFlowersData();
+    this.showData = this.Data1;
   }
+
+
+
+
+  // loadNewChartData(){
+  //   this.showData = this.Data2;
+  //   this.loadStudentChart();
+  // }
+  loadStudentChart(){
+    // 基于准备好的dom，初始化echarts实例
+    // let el = document.getElementById('studentChart');
+    let el = this.studentChart.nativeElement;
+    let myChart = echarts.init(el);
+
+    // 指定图表的配置项和数据
+    let option = {
+        title: {
+            text: ''
+        },
+        tooltip: {},
+        legend: {
+            data:['']
+        },
+        xAxis: {
+            data: this.showData
+        },
+        yAxis: {},
+        series: [{
+            name: '价格',
+            type: 'bar',
+            data: [5, 20, 36,10,29]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  }
+
+  ngAfterViewInit(){
+    this.loadStudentChart();    
+  }
+
+
   /*constructor() { 
     this.loadFlowersData();
   }
@@ -78,7 +128,7 @@ export class FlowerHomeComponent implements OnInit {
   }
   openDialog(flower?):void{
     if(!flower){
-      flower={name:"",language:"",price:""};
+      flower={name:"",language:"",price:"",img:""};
     }
     let dialogRef = this.dialog.open(FlowerDialogComponent, {
       width: '250px',

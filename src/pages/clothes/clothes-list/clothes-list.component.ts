@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ClothesService } from '../clothes-data';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 import {ClothesDialogComponent} from '../clothes-dialog/clothes-dialog';
 import { MatDialog } from '@angular/material';
 

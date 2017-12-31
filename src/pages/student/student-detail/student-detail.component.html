@@ -1,6 +1,6 @@
 <h1>学员管理[{{studentServ.users?studentServ.users.length:0}}]</h1>
 
-<mat-card class="example-card">
+<mat-card *ngIf="user" class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{user.name}}</mat-card-title>

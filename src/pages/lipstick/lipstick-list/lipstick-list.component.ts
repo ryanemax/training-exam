@@ -50,16 +50,18 @@ export class LipstickListComponent implements OnInit {
   }
   openDialog(lipstick?): void {
     if(!lipstick){
-      lipstick = {name:"",brand:"",colorNumber:"",price:"",soldNumber:""};
+      lipstick = {objectId:"",name:"",brand:"",colorNumber:"",price:null,soldNumber:null};
     }
     let dialogRef = this.dialog.open(LipstickDialogComponent, {
-      width: '250px',
+      width: '300px',
       data: lipstick,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.lipstickServ.addNewLipstick(result);
+      if (result){
+          this.lipstickServ.addNewLipstick(result);
+      }
     });
   }
   ngOnInit() {

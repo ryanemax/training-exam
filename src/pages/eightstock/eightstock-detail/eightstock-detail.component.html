@@ -1,31 +1,35 @@
-<div>
-  <button class="col-2" routerLink="/eightstock/">返回</button>
+<div class="col-12">
+  <button mat-raised-button class="col-2 example-tooltip-host" matTooltip="点击返回一览画面" matTooltipPosition="before" routerLink="/eightstock">返回</button>
+  <button mat-raised-button *ngIf="stockd&&stockd.selected" (click)="updateSelectStatusById(false)" class="col-2 example-tooltip-host" matTooltip="点击取消自选" matTooltipPosition="after">删除自选股</button>
+  <span *ngIf="stockd&&stockd.selected" style="font-size:12px">&nbsp;&nbsp;已添加到自选股列表</span>
+  <button mat-raised-button *ngIf="stockd&&!stockd.selected" (click)="updateSelectStatusById(true)" class="col-2 example-tooltip-host" matTooltip="点击添加自选" matTooltipPosition="after">添加到自选股列表</button>
 </div>
-<div  *ngIf="stockd">
+<BR>
+<div *ngIf="stockd">
   <mat-form-field class="col-2">
     <input matInput placeholder="股票代码" style="color:#444444" value={{stockd.stockNo}} disabled>
   </mat-form-field>
   <mat-form-field class="col-2">
-    <input matInput placeholder="股票名称" style="color:#444444" value={{stockd.name}} disabled >
+    <input matInput placeholder="股票名称" style="color:#444444" value={{stockd.name}} disabled>
   </mat-form-field>
-  <div class="col-6"></div>
 </div>
-<div  *ngIf="stockd">
+<div *ngIf="stockd">
   <mat-form-field class="col-2">
     <input matInput placeholder="当前价" style="color:#444444" value={{stockd.nowPrice}} disabled>
   </mat-form-field>
   <mat-form-field class="col-2">
-    <input matInput placeholder="开盘价" style="color:#444444" value={{stockd.startPrice}} disabled >
+    <input matInput placeholder="开盘价" style="color:#444444" value={{stockd.startPrice}} disabled>
   </mat-form-field>
   <mat-form-field class="col-2">
-    <input matInput placeholder="最低价" style="color:#444444" value={{stockd.minPrice}} disabled >
+    <input matInput placeholder="最低价" style="color:#444444" value={{stockd.minPrice}} disabled>
   </mat-form-field>
   <mat-form-field class="col-2">
-    <input matInput placeholder="最高价" style="color:#444444" value={{stockd.maxPrice}} disabled >
+    <input matInput placeholder="最高价" style="color:#444444" value={{stockd.maxPrice}} disabled>
   </mat-form-field>
 </div>
 <hr>
-<div class="col-12">
-    <img mat-card-image class="col-11" src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=b456f3cc800a19d8df0e8c575293e9ee/a08b87d6277f9e2f7fe1b7751f30e924b999f3f3.jpg" alt="股票分时图">
-</div>
+
+<div #stockLineChart (window:resize)="loadStockLineChart()" class="col-12" style="height:400px;"></div>
+<div #stockVolChart (window:resize)="loadStockVolChart()" class="col-12" style="height:200px;"></div>
+
 <hr>

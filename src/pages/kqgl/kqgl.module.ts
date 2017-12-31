@@ -5,6 +5,7 @@ import { KqglHomeComponent } from './kqgl-home/kqgl-home.component';
 import { KqglDetailComponent } from './kqgl-detail/kqgl-detail.component';
 import { Button1Directive } from './sharing/button1.directive';
 import { ToDateYmd } from './sharing/datetr.pipe';
+import { ToCqzk } from './sharing/cqzk.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -18,6 +19,7 @@ import { MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material';
 import { KqglService } from "./kqgl-data";
+
 
 import {KqglDialogComponent} from './kqgl-dialog/kqgl-dialog';
 @NgModule({
@@ -38,6 +40,7 @@ import {KqglDialogComponent} from './kqgl-dialog/kqgl-dialog';
     KqglDetailComponent,
     Button1Directive,
     ToDateYmd,
+    ToCqzk,
     KqglDialogComponent,
   ],
   providers:[KqglService],
