@@ -13,24 +13,30 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
-
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { TgouDialogComponent } from './tgou-dialog/tgou-dialog';
 
 @NgModule({
   imports: [
     CommonModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatOptionModule,
-    MatIconModule,MatMenuModule,FormsModule,
+    MatIconModule,MatMenuModule,MatCardModule,MatButtonModule,MatDialogModule,FormsModule,
     RouterModule.forChild([
       { path: '', component: TgouMallComponent, pathMatch: 'full' },
+      { path: ':id', component: TgouItemComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [
     TgouMallComponent,
     TgouItemComponent,
+    TgouDialogComponent,
     TgouToKPipe,
     TgouActCardDirective
-  ]
+  ],
+  entryComponents:[TgouDialogComponent]
 })
 export class TgouModule { }

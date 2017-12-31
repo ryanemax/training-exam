@@ -1,0 +1,21 @@
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="lipstick.name" matInput placeholder="名称" value="">
+</mat-form-field>
+    
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="lipstick.brand" matInput placeholder="品牌" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="lipstick.colorNumber" matInput placeholder="色号" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="lipstick.price" matInput placeholder="价位" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="lipstick.soldNumber" matInput placeholder="销售量" value="">
+</mat-form-field>
+
+<button style="width:40%" (click)="save()" mat-raised-button>保存</button>
+<button style="width:40%" (click)="onNoClick()" mat-raised-button>关闭</button>
+    
