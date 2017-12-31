@@ -1,7 +1,3 @@
-# 作者
-- 姓名：qingyuan.li
-- Github：hatherlee
-
 # 项目信息
 - 8方财富
     好用的看盘网站.
