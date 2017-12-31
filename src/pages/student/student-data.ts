@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+// import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 interface User {
     id?: number;
@@ -37,7 +37,7 @@ export class StudentService{
     let options:any ={
       headers:headers
     };
-    return this.http.get<ParseResponse>(url,options).subscribe(data=>{
+     this.http.get<ParseResponse>(url,options).subscribe(data=>{
       this.users = data['results'];
       console.log(this.users);
     });
