@@ -31,6 +31,10 @@ export class KqglService{
       {value: 'pizza-1', viewValue: 'Pizza'},
       {value: 'tacos-2', viewValue: 'Tacos'}
     ];
+
+    searchText:string;
+    searchType:string;
+
     constructor(private http:HttpClient){
     }
 
@@ -71,7 +75,18 @@ export class KqglService{
     });
   }
 
+  getUsers(){
+    let url = "http://47.92.145.25:80/parse"+"/classes/Kqgl";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
+    let options:any ={
+      headers:headers
+    };
+    this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.users = data['results'];
+    });
+  }
   addNewUser(user?) {
     if(user["name"]===""){
       alert("请输入正确的用户信息");
@@ -101,23 +116,40 @@ export class KqglService{
       });
     }
 
-    // let newUser: User = {
-    //   name: "Jack",
-    //   cq: "1",
-    //   qq: "",
-    //   dksj: "20171212 00:12:56"
-    // };
-    // this.http.post(url,newUser,options).subscribe(data=>{
-    //   this.loadUsersData();
-    // });
-
-
 
 
 
 
   }
 
+  search() {
+
+    let wheres:string = "";
+
+    if (this.searchText == "") {
+      wheres = '/classes/Kqgl';
+    }else{
+      if (this.searchType=="name") {
+        wheres = '/classes/Kqgl?where={"name":"'+this.searchText+'"}';
+      } else if(this.searchType=="ymd") {
+        wheres = '/classes/Kqgl?where={"cq":"'+this.searchText+'"}';
+      }
+    }
+    
+ 
+    let url = 'http://47.92.145.25:80/parse'+wheres;
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options:any ={
+      headers:headers
+    };
+    this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.users = data['results'];
+    });
+    
+    
+  }
 
   deleteUserByID(id) {
     // this.users.forEach((user, index, arr)=> {
