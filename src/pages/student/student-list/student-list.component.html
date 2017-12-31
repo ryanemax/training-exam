@@ -43,10 +43,9 @@
           </mat-menu>
       </div>
 
-
-<button #chartButton (click)="loadNewChartData()">Show New Data</button>
+<button (click)="showChart()">Show Charts</button>
       <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div #studentChart (window:resize)="loadStudentChart()" style="width: 600px;height:400px;"></div>
+    <div #studentChart style="width: 600px;height:400px;"></div>
 
       <table cellspacing="0" cellpadding="0">
           <thead>
