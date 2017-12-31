@@ -126,12 +126,13 @@ export class BookHomeComponent implements OnInit {
     // };
         // 修改图书借出状态
         if(book["status"]=="未借出"){
-          book.status = "已借出";
+          book.status = "借出";
         }
-        if(book["status"]=="已借出"){
-          book.status = "未借出";
+        if(book["status"]=="借出"){
+          book.status = "未借出";  
         }
         url = "http://47.92.145.25:80/parse"+"/classes/Book23/"+book.objectId; 
+        delete book["objectId"];
         delete book["createdAt"];
         delete book["updatedAt"];
         this.http.put(url,book,options).subscribe(data=>{

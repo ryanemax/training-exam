@@ -26,7 +26,7 @@
         <button class="llc-btn" (click) = 'UpdateBookStatus(book)'>借书</button>
         <button class="llc-btn-dis">还书</button>
         </span>
-        <span *ngIf = "book.status=='已借出'">
+        <span *ngIf = "book.status=='借出'">
           <button class="llc-btn-dis">借书</button>
           <button class="llc-btn" (click) = 'UpdateBookStatus(book)'>还书</button>
         </span>
