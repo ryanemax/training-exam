@@ -2,26 +2,24 @@ import {Component,Inject} from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
-    selector: 'app-kqgl-dialog',
-    templateUrl: 'app-kqgl-dialog.html',
+    selector: 'app-book-dialog',
+    templateUrl: 'app-book-dialog.html',
 })
-export class KqglDialogComponent {
+export class BookDialogComponent {
 
-user={};
+    book={};
 constructor(
-    public dialogRef: MatDialogRef<KqglDialogComponent>,
+    public dialogRef: MatDialogRef<BookDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
         Object.keys(data).forEach(key=>{
-            this.user[key] = data[key];
+            this.book[key] = data[key];
         });
     }
 onNoClick(): void {
     this.dialogRef.close();
 }
 save(){
-    this.dialogRef.close(this.user);
+    this.dialogRef.close(this.book);
 }
-close(){
-    this.dialogRef.close();
-}
+
 }

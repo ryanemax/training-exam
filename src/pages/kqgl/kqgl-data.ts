@@ -14,11 +14,23 @@ interface User {
   interface ParseResponse {
     results: any[];
   }
+  interface Food {
+    value:string;
+    viewValue:string;
+    
+  }
+
 
   @Injectable()
 export class KqglService{
 
     users:any[];
+    
+    foods = [
+      {value: 'steak-0', viewValue: 'Steak'},
+      {value: 'pizza-1', viewValue: 'Pizza'},
+      {value: 'tacos-2', viewValue: 'Tacos'}
+    ];
     constructor(private http:HttpClient){
     }
 
@@ -61,6 +73,10 @@ export class KqglService{
 
 
   addNewUser(user?) {
+    if(user["name"]===""){
+      alert("请输入正确的用户信息");
+      return;
+    }
     let url = "http://47.92.145.25:80/parse"+"/classes/Kqgl";
     let headers:HttpHeaders = new HttpHeaders();
     headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
@@ -68,15 +84,38 @@ export class KqglService{
     let options ={
       headers:headers
     };
-    let newUser: User = {
-      name: "Jack",
-      cq: "1",
-      qq: "",
-      dksj: "20171212 00:12:56"
-    };
-    this.http.post(url,newUser,options).subscribe(data=>{
-      this.loadUsersData();
-    });
+
+    if(!user.objectId){
+      // 新增用户
+      this.http.post(url,user,options).subscribe(data=>{
+        this.loadUsersData();
+      });
+    }else{
+      // 修改用户
+      url = "http://47.92.145.25:80/parse"+"/classes/Kqgl/"+user.objectId;
+      delete user["objectId"];
+      delete user["createdAt"];
+      delete user["updatedAt"];
+      this.http.put(url,user,options).subscribe(data=>{
+        this.loadUsersData();
+      });
+    }
+
+    // let newUser: User = {
+    //   name: "Jack",
+    //   cq: "1",
+    //   qq: "",
+    //   dksj: "20171212 00:12:56"
+    // };
+    // this.http.post(url,newUser,options).subscribe(data=>{
+    //   this.loadUsersData();
+    // });
+
+
+
+
+
+
   }
 
 

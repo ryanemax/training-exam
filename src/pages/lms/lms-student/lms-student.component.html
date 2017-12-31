@@ -26,7 +26,7 @@
       </tr>
     </table>
   </div>
-  <mat-table #table [dataSource]="dataSource" matSort>
+  <mat-table #table [dataSource]="dataSource" matSort matSortActive="studentNo" matSortDirection="asc">
     <!-- No. Column -->
     <ng-container matColumnDef="studentNo">
       <mat-header-cell *matHeaderCellDef mat-sort-header> 学号 <mat-icon title="排序">sort</mat-icon></mat-header-cell>
@@ -48,7 +48,7 @@
     <!-- Sex Column -->
     <ng-container matColumnDef="sex">
       <mat-header-cell *matHeaderCellDef mat-sort-header> 性别 <mat-icon title="排序">sort</mat-icon></mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.sex}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.sex == 0 ?"男":"女"}} </mat-cell>
     </ng-container>
 
     <!-- Operation Column -->
