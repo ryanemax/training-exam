@@ -41,10 +41,14 @@ export class LmsStudentService {
     return this.http.get(REST_API_LMS_CLASS_URL, options);
   }
 
-  getStudents(): Observable<Object> {
+  getStudents(param): Observable<Object> {
     let options = {
-      headers: REST_API_HEADERS
+      headers: REST_API_HEADERS,
+      params: {order: 'studentNo'}
     };
+    if (Object.keys(param).length > 0) {
+      options['params']['where'] = JSON.stringify(param);
+    }
     return this.http.get(REST_API_LMS_STUDENT_URL, options);
   }
 
@@ -64,16 +68,22 @@ export class LmsStudentService {
     }
     // Add Student
     if (!student.objectId) {
-      console.info("add");
       return this.http.post(REST_API_LMS_STUDENT_URL, student, options);
     } else { // Update Student
-      console.info("update");
       let objectId = student.objectId;
       delete student["objectId"];
       delete student["createdAt"];
       delete student["updatedAt"];
       return this.http.put(REST_API_LMS_STUDENT_URL + "/" + objectId, student, options);
     }
+  }
+
+  
+  deleteStudentByID(id) {
+    let options = {
+      headers: REST_API_HEADERS
+    };
+    return this.http.delete(REST_API_LMS_STUDENT_URL + "/" + id, options);
   }
 }
 

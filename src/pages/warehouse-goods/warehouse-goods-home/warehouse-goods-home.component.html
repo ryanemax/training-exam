@@ -1,8 +1,9 @@
 <h1>仓库货源管理</h1>
-<button appActWarehouseButton (click)="sortUsers('asc')" style="border-radius: 15px;">正序</button>
-<button appActWarehouseButton (click)="sortUsers('desc')" style="border-radius: 15px;">倒序</button>
-<button appActWarehouseButton (click)="mySort()" style="border-radius: 15px;">随机</button>
-<button appActWarehouseButton (click)="addNewUser()" style="border-radius: 15px;">新增商品</button>
+<button appActWarehouseButton (click)="wgServ.sortUsers('asc')" style="border-radius: 15px;">正序</button>
+<button appActWarehouseButton (click)="wgServ.sortUsers('desc')" style="border-radius: 15px;">倒序</button>
+<button appActWarehouseButton (click)="wgServ.mySort()" style="border-radius: 15px;">随机</button>
+<!-- <button appActWarehouseButton (click)="addNewUser()" style="border-radius: 15px;">新增商品</button> -->
+<button class="addBtn" mat-raised-button (click)="wgServ.addNewUser()" style="border-radius: 15px;"><mat-icon>add</mat-icon>新增商品</button>
 <table width="100%"  border="solid">
   <tr appActTr>
     <th>删除</th>
@@ -11,11 +12,15 @@
     <th>商品别名</th>
     <th>仓库所在地</th>
   </tr>
-  <tr *ngFor="let user of users;let i = index;" [style.backgroundColor]="(i % 2 == 0)?'#':'#AFB42B'">
-    <td ><span (click)="deleteUserByID(user.id)">[删除]</span></td>
-    <td >{{user.id}}</td>
-    <td >{{user.name}}</td>
-    <td >{{user.detailName | shortenString}}</td>
-  <td>{{user.address}}</td>
+  <tr *ngFor="let goods of wgServ.goodses;let i = index;">
+    <!-- <td ><span (click)="deletegoodsByID(goods.objectId)">[删除]</span></td> -->
+    <td >
+      <mat-icon title="查看" routerLink="/warehouse-goods/{{goods.objectId}}">menu</mat-icon>
+      <mat-icon title="删除" (click)="wgServ.deleteUserByID(goods.objectId)">delete</mat-icon>
+    </td>
+    <td >{{goods.objectId}}</td>
+    <td >{{goods.name}}</td>
+    <td >{{goods.detailName | shortenString}}</td>
+    <td>{{goods.address}}</td>
   </tr>
 </table>

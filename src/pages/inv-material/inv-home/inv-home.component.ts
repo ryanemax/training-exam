@@ -1,20 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit,ViewChild,AfterContentInit} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import {MatTableDataSource} from '@angular/material';
-import "rxjs/operators/map";
-import { ItemService } from '../item-data';
+import {MatTableDataSource,MatSort} from '@angular/material';
+import {DataSource} from '@angular/cdk/collections';
+import { ItemService } from '../services/item-data';
 import {MatDialog} from '@angular/material';
 import {ItemDialogComponent} from '../item-dialog/item-dialog';
-
-interface Item {
-  code: string,
-  uom: string,
-  description: string,
-  count: number,
-  objectId?:string;
-  updatedAt?:string;
-  createdAt?:string;
-}
+import { Observable } from 'rxjs/Observable';
+import {Item} from '../models/item-model';
 
 interface ParseResponse {
   results: any[];
@@ -25,23 +17,35 @@ interface ParseResponse {
   styleUrls: ['./inv-home.component.scss']
 })
 
-export class InvHomeComponent implements OnInit {
-  items: Array<Item>;
-  displayedColumns = [ 'objectId'];
+export class InvHomeComponent implements OnInit,AfterViewInit {
+  items: Item[] = this.itemtServ.loadItemsData();
+  displayedColumns = ['objectId','code','uom','description','count'];
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private http:HttpClient,private itemtServ:ItemService,public dialog: MatDialog) {
-    this.itemtServ.loadItemsData();
+
   }
 
   ngOnInit() {
+  
   }
+  ngAfterViewInit() {
+    this.items = this.itemtServ.loadItemsData();
+
+    // this.dataSource.data = [
+    //   {"objectId":"aaa","code":"aa","uom":"","description":"","count":0}
+    // ];
+   // this.dataSource.sort = this.sort;
+  }
+  
 
   openDialog(item?): void {
     if(!item){
       item = {code:"",uom:"",description:"",count:0};
     }
     let dialogRef = this.dialog.open(ItemDialogComponent, {
-      width: '250px',
+      width: '400px',
       data: item
     });
 
@@ -50,3 +54,4 @@ export class InvHomeComponent implements OnInit {
     });
   }
 }
+
