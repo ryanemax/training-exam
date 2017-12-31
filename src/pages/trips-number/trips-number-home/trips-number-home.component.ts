@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { StudentService } from '../bus-data';
+import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import "rxjs/operators/map";
 
 interface Bus {
   id?: number;
@@ -24,8 +25,8 @@ export class TripsNumberHomeComponent implements OnInit {
     name:"Kingsman",
     count:"0"
   };
-  constructor(private studentServ:StudentService) {
-    this.studentServ.loadUsersData();
+  constructor() {
+    //this.studentServ.loadUsersData();
   }
   selectUser(user){
     this.selectedUser = user;

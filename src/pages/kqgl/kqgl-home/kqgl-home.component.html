@@ -1,69 +1,81 @@
-
 <h1>考勤管理</h1>
-<div class="search-tab">
+<table>
+  <tr>
+    <td>
     <form class="example-form">
         <mat-form-field class="example-full-width">
           <textarea matInput placeholder="姓名"></textarea>
         </mat-form-field>
       </form>
+    </td>
+    <td>
+      <td>
     <button  style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
+  </td> <td>
     <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
-
-</div>
-
-
-<button mat-raised-button color="primary" (click)="kqglServ.sortUsers('asc')">正序</button>
-<button mat-raised-button color="primary" (click)="kqglServ.sortUsers('desc')" >倒序</button>
-<button mat-raised-button color="primary" (click)="kqglServ.sortUsers('random')">随机</button>
-<button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon>新增用户</button>
-<!-->
-<mat-tab-group>
-  <mat-tab label="Tab 1">Content 1</mat-tab>
-  <mat-tab label="Tab 2">Content 2</mat-tab>
-</mat-tab-group>
-<-->
-
-<table border="1" >
-  <tr>
-    
-    <td class="lev1">编号</td>
-    <td class="lev1">姓名</td>
-    <td class="lev1">出勤</td>
-    <td class="lev1">缺勤</td>
-    <td class="lev2">打卡时间</td>
-
-    <td class="lev1">操作</td>  </tr>
-
-  <tr *ngFor="let user of kqglServ.users">
-
-
-    
-  
-  <td >
-    {{user.objectId}}
   </td>
-  <td >
+  </tr>
 
-    {{user.name}}
-  </td>
-  <td >
-
-    {{user.cq}}
-  </td>
-  <td >
-
-    {{user.qq}}
-  </td>
-  <td >
-
-    {{user.dksj | toDateYmd}}
-  </td>
-  <td>
-      <mat-icon title="查看" routerLink="/kqgl/{{user.objectId}}">menu</mat-icon>
-      <mat-icon title="编辑" (click)="openDialog(user)">update</mat-icon>
-      <mat-icon title="删除" (click)="kqglServ.deleteUserByID(user.objectId)">delete</mat-icon>
-    
-  </td>
-</tr>
 </table>
+
+<mat-tab-group class="demo-tab-group">
+    <mat-tab label="检索结果">
+      <div class="demo-tab-content">
+
+        <div class="but">
+            <button mat-raised-button color="primary" (click)="kqglServ.sortUsers('asc')">正序</button>
+            <button mat-raised-button color="primary" (click)="kqglServ.sortUsers('desc')" >倒序</button>
+            <button mat-raised-button color="primary" (click)="kqglServ.sortUsers('random')">随机</button>
+            <button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon>新增用户</button>
+        </div>
+          <table class="gridtable" border="1" cellspacing="0" cellpadding="0">
+              <tr>
+                
+                <th>编号</th>
+                <th>姓名</th>
+                <th>出勤状况</th>
+                <th>日期</th>
+                <th>打卡时间</th>
+                <th>操作</th>  </tr>
+              <tr *ngFor="let user of kqglServ.users">
+            
+              <td >
+                {{user.objectId}}
+              </td>
+              <td >
+            
+                {{user.name}}
+              </td>
+              <td >
+            
+                {{user.cq | toCqzk}}
+              </td>
+              <td >
+            
+                {{user.qq}}
+              </td>
+              <td >
+            
+                  {{user.cq=='1'?user.dksj:'Na'}}
+                </td>
+              <td>
+                  <mat-icon title="查看" routerLink="/kqgl/{{user.objectId}}">menu</mat-icon>
+                  <mat-icon title="编辑" (click)="openDialog(user)">update</mat-icon>
+                  <mat-icon title="删除" (click)="kqglServ.deleteUserByID(user.objectId)">delete</mat-icon>
+                
+              </td>
+            </tr>
+          </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="图表表示">
+      
+      <div class="demo-tab-content">
+        
+      </div>  
+    </mat-tab>
+    
+  </mat-tab-group>
+
+
 

@@ -10,7 +10,7 @@
 .mat-icon{
   cursor:pointer;
 }
-.operation{
+.tar{
   text-align: right;
 }
 li {
@@ -54,4 +54,17 @@ li:hover {
 .item-list-description,
 .item-list-count {
   margin-bottom: 10px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
 }

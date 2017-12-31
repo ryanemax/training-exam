@@ -4,7 +4,7 @@
     padding: 10px;
     margin-bottom: 15px;
     margin-right: 10px;
-    width: 170px;
+    width: 100px;
     display: inline-block;
     list-style: none;
     border: 1px solid #BDBDBD;
@@ -15,7 +15,7 @@
     background-color: #B3E5FC;
   }
   
-  .llc-book-list-del {
+  .llc-clothes-list-del {
     position: absolute;
     right: 5px;
     top: 5px;
@@ -25,33 +25,21 @@
     line-height: 15px;
     cursor: pointer;
     color: #fff;
-    background-color: #F44336;
+    background-color:black;
     border-radius: 30px;
     font-size: 10px;
     font-weight: bold;
     font-family:  Helvetica, Arial, sans-serif;
   }
   
-  .llc-book-list-id {
+  .llc-clothes-list-id {
     font-weight: bold;
   }
   
-  .llc-book-list-id,
-  .llc-book-list-name,
-  .llc-book-list-git,
-  .llc-book-list-sex {
+  .llc-clothes-list-id,
+  .llc-clothes-list-name,
+  .llc-clothes-list-price,
+  .llc-clothes-list-count {
     margin-bottom: 10px;
+    
   }
-
-.llc-btn {
-  padding: 5px 10px;
-  border: 0 none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 15px;
-  background-color: #448AFF;
-  color: #fff;
-  cursor: pointer;
-  outline: 0 none;
-}

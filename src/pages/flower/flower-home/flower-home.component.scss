@@ -1,30 +1,53 @@
 ul li span {
-    color: red;
+    color: rgb(243, 22, 188);
 }
 
 ul li {
     color: blue;
 }
 .a{
-    color:pink;
+    color:rgb(250, 93, 122);
     text-align: center;
 }
-.b{
-    list-style:none;
-    border-color: rgb(223, 185, 255);
-    border-collapse: collapse;
-th{background-color: #b0c1f7;text-align: center;} 
-   
+.c{
+    font-size: 14px;
 }
+
+.b{
+    
+    list-style:none;
+    border-color: rgb(204, 146, 216);
+    border-collapse: collapse;
+    color:rgba(105, 42, 42, 0.87);
+}
+th{
+    background-color: #4d70e4;
+    text-align: center;
+    color: white;
+  
+}
+img{
+    width:95px;
+    height:95px;
+}
+td{
+    color: 
+    rgba(105, 42, 42, 0.87);
+}
+table{
+    border-color: rgb(216, 109, 238);
+    width:95%;
+}
+
 .button {
-    background-color: pink; /* Green */
+    background-color: rgb(80, 82, 228); /* Green */
     border: none;
     color: white;
     padding: 5px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */

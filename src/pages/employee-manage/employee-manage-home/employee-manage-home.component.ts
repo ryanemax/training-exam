@@ -2,7 +2,8 @@ import { Component, OnInit,Input } from '@angular/core';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import "rxjs/operators/map";
 import { EmployeeService } from '../employee-data';
-
+import {MatDialog} from '@angular/material';
+import {EmployeeDialogComponent} from '../employee-dialog/employee-dialog';
 
 @Component({
   selector: 'app-employee-manage-home',
@@ -20,7 +21,7 @@ export class EmployeeManageHomeComponent implements OnInit {
   //   sale:"5000",
   //   joinin:"2017.1"
   // };
-  constructor(private http:Http,private employeeServ:EmployeeService) {
+  constructor(private http:Http,private employeeServ:EmployeeService,public dialog: MatDialog) {
     employeeServ.loadEmployeesData();
   }
   // selectEmployee(employee){
@@ -122,7 +123,20 @@ export class EmployeeManageHomeComponent implements OnInit {
   //     this.loadUsersData();
   //   });
   // }
+    openDialog(employee?): void {
+    if(!employee){
+      employee = {name:"",dept:""};
+    }
+    let dialogRef = this.dialog.open(EmployeeDialogComponent, {
+      width: '250px',
+      data: employee,
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.employeeServ.addNewEmployee(result);
+    });
+  }   
   ngOnInit() {
   }
 

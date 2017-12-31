@@ -1,0 +1,12 @@
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="clothes1.name" matInput placeholder="名称" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="clothes1.price" matInput placeholder="price" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="clothes1.count" matInput placeholder="count" value="">
+    </mat-form-field>
+<button (click)="save()" mat-raised-button>保存</button>

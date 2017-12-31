@@ -6,6 +6,8 @@ ul li {
     color: blue;
 }
 
+.addBtn{float: right;margin:15px 0px 20px 10px;}
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -32,3 +34,9 @@ ul li {
 	-webkit-column-count:3; /* Safari and Chrome */
 	column-count:3;
 }
+
+table{width:100%;background-color: #f9f5f5;margin-bottom: 10px;}
+tr{font-weight: bold;}
+td{border:1px solid rgba(198, 183, 183, 0.75);padding: 10px;}
+.center{text-align: center;}
+table img{width: 80px;height: 80px;}

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
 import { BookHomeComponent } from './book-home/book-home.component';
-import { BookItemComponent } from './book-item/book-item.component';
+// import { BookItemComponent } from './book-item/book-item.component';
 import { TitleDirective } from './sharing/Title.directive';
 import { BookDialogComponent} from './book-dialog/book-dialog';
 import { MatDialogModule } from '@angular/material';
@@ -20,7 +20,7 @@ import { MatInputModule } from '@angular/material';
     ])
   ],
   declarations: [BookHomeComponent,
-    BookItemComponent,
+    // BookItemComponent,
     TitleDirective,
     BookDialogComponent],
   entryComponents:[BookDialogComponent]
