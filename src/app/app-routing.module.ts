@@ -20,17 +20,13 @@ const routes: Routes = [
     loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
   },
   {
-    path: 'employee-manage',
-    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
-  },
-  {
     path: 'bookmanage',
     loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
-  {
-    path: 'book',
-    loadChildren: '../pages/book/book.module#BookModule',
-  },
+  // {
+  //   path: 'book',
+  //   loadChildren: '../pages/book/book.module#BookModule',
+  // },
   {
     path: 'lipstick',
     loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',

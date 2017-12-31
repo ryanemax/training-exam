@@ -18,11 +18,12 @@ import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import {  FlowerDetailComponent } from './flower-detail/flower-detail.component';
 @NgModule({
   imports: [
-    CommonModule,MatDialogModule,
+    CommonModule,MatDialogModule, MatTabsModule,
     MatFormFieldModule,MatInputModule,
     FormsModule,MatIconModule,MatButtonModule,
     MatOptionModule,MatCardModule,//模块

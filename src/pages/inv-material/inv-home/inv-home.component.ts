@@ -25,9 +25,16 @@ export class InvHomeComponent implements OnInit,AfterViewInit {
 
   constructor(private http:HttpClient,private itemtServ:ItemService,public dialog: MatDialog) {
 
+<<<<<<< HEAD
     this.items = this.itemtServ.loadItemsData();
 
    
+=======
+  let options:any ={
+    headers:headers
+  };
+  
+>>>>>>> bdbd39da5c0c567ab6ae973e9dededea3dd898f2
   }
 
   ngOnInit() {
