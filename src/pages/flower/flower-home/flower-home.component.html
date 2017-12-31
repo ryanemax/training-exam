@@ -6,11 +6,12 @@
 <button class="button button2" (click)="openDialog()">新品鲜花</button>
 <br>
 <table class="b" width="100%"  border="2" style="margin:10px">
-    <tr>
+    <tr style="height:50px">
       <th>鲜花ID</th>
       <th>鲜花名</th>
       <th>鲜花花语</th>
       <th>鲜花价格</th>
+      <th>鲜花图片</th>
       <th>操作</th>
     </tr>
     <tr *ngFor="let flower of flowerServ.flowers"  appButton>
@@ -18,6 +19,7 @@
       <td >{{flower.name}}</td>
       <td >{{flower.language}}</td>
       <td>{{flower.price|toK}}</td>
+      <td><img src="{{flower.img?flower.img:'/assets/img/mg.jpg'}}" /></td>
       <td>
         <div class="button-row">
         <button mat-button (click)="openDialog(flower)">[修改]</button>
