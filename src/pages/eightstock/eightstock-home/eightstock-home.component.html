@@ -34,7 +34,7 @@
   </mat-tab>
   <mat-tab label="行情">
     <mat-card-content class="col-12">
-      <table class="col-12" style="background-color:#d4d4d4;height:32px;">
+      <table class="col-12 example-tooltip-host" matTooltip="点击排序" matTooltipPosition="after"  style="background-color:#d4d4d4;height:32px;">
         <tr class="col-12">
           <th class="col-1" (click)="sortStock('id',false)">股票代码</th>
           <th class="col-1" (click)="sortStock('name',false)">股票名称</th>
@@ -54,16 +54,15 @@
   <mat-tab label="资讯">
     <br>
     <mat-card class="col-11" *ngFor="let stockNews of stockNewsList">
-      <table class="col-12 example-tooltip-host" matTooltip="点击评论" matTooltipPosition="before" (click)="openDialog()">
+      <table class="col-12 example-tooltip-host" matTooltip="点击评论" matTooltipPosition="before" (click)="openDialog(stockNews.objectId)">
         <tr>
           <td class="col-3" colspan="1" rowspan="2">
             <img mat-card-image class="col-12" src={{stockNews.imagePath}} alt="{{stockNews.title}}">
           </td>
-          <td mat-card-title class="col-7" colspan="1" rowspan="1">{{stockNews.title}}</td>
-          <td mat-card-avatar class="col-2" colspan="1" rowspan="2">评论数{{stockNews.chatNum}} </td>
+          <td mat-card-title class="col-8" colspan="1" rowspan="1">{{stockNews.title}}</td>
         </tr>
         <tr>
-          <mat-card-content  class="col-9" colspan="1" rowspan="1">
+          <mat-card-content  class="col-10" colspan="1" rowspan="1">
               {{stockNews.content}}
           </mat-card-content>
         </tr>

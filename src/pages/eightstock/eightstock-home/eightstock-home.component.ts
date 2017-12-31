@@ -88,9 +88,7 @@ export class EightstockHomeComponent implements OnInit {
 
   getStockNews() {
     this.http.get(url + "/classes/EStockNews", options).subscribe(data => {
-      console.log(data.json().results);
       this.stockNewsList = data.json().results;
-
     });
   }
 
@@ -154,10 +152,10 @@ export class EightstockHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(): void {
+  openDialog(objectId): void {
     let dialogRef = this.dialog.open(EightstockNewschatComponent, {
-      width: '250px',
-      data: { name: 'aaaa'}
+      width: '600px',
+      data: { newsId: objectId}
     });
 
     dialogRef.afterClosed().subscribe(result => {
