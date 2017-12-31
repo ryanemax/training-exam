@@ -41,7 +41,7 @@ export class FlowerService{
     });
   }
     addNewFlower(flower) {
-      if(flower["name"]===""||flower["github"]===""){
+      if(flower["name"]===""||flower["language"]===""||flower["price"]===""){
         alert("请输入正确的用户信息");
       }
         let url = "http://47.92.145.25:80/parse"+"/classes/Flower";

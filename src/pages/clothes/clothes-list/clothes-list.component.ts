@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ClothesService } from '../clothes-data';
 import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+import {ClothesDialogComponent} from '../clothes-dialog/clothes-dialog';
+import { MatDialog } from '@angular/material';
 
 interface Clothes {
   id?: number;
@@ -18,7 +20,7 @@ interface ParseResponse {
   styleUrls: ['./clothes-list.component.scss']
 })
 export class ClothesListComponent implements OnInit {
-  dialog: any;
+  
   searchText:string;
   selectedClothes:any={
     id:111,
@@ -33,7 +35,7 @@ export class ClothesListComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
 
-  constructor(private http:HttpClient,private clothesServ:ClothesService) {
+  constructor(private http:HttpClient,private clothesServ:ClothesService, public dialog: MatDialog) {
     this.clothesServ.loadClothesData();
   }
   selectUser(cloth){
@@ -43,14 +45,14 @@ export class ClothesListComponent implements OnInit {
     if(!cloth){
       cloth = {name:"",brand:""};
     }
-    let dialogRef = this.dialog.open(ClothesListComponent, {
+    let dialogRef = this.dialog.open(ClothesDialogComponent, {
       width: '250px',
       data: cloth,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-     
+      this.clothesServ.addNewClothes(result);
     });
   }
   ngOnInit() {

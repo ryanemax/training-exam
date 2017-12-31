@@ -4,7 +4,7 @@ import { FlowerService } from '../flower-data';
 //
 import {MatDialog} from '@angular/material';
 import {FlowerDialogComponent} from '../flower-dialog/flower-dialog';   
-import { FlowerModule } from '../flower.module';
+//import { FlowerModule } from '../flower.module';
 
 interface Flower{
   id?:number,
@@ -29,7 +29,8 @@ export class FlowerHomeComponent implements OnInit {
     id:99,
     name:"鲜花",
     language:"xianhua",
-    price:"888"
+    price:"888",
+    img:"/assets/img/bh.jpg"
   };
   constructor(private http:HttpClient,private flowerServ:FlowerService,public dialog: MatDialog) {
     this.flowerServ.loadFlowersData();
@@ -78,7 +79,7 @@ export class FlowerHomeComponent implements OnInit {
   }
   openDialog(flower?):void{
     if(!flower){
-      flower={name:"",language:""};
+      flower={name:"",language:"",price:"",img:""};
     }
     let dialogRef = this.dialog.open(FlowerDialogComponent, {
       width: '250px',

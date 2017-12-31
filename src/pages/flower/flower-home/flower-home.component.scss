@@ -9,12 +9,31 @@ ul li {
     color:pink;
     text-align: center;
 }
+.c{
+    font-size: 14px;
+}
+
 .b{
+    
     list-style:none;
     border-color: rgb(223, 185, 255);
     border-collapse: collapse;
-th{background-color: #b0c1f7;text-align: center;} 
-   
+    color:#b0c1f7;
+th{background-color: #b0c1f7;
+    text-align: center;
+    color: white;
+  
+}
+img{
+    width:95px;
+    height:95px;
+}
+td{
+    color: white;
+}
+table{
+    border-color: rgb(185, 20, 218);
+}
 }
 .button {
     background-color: pink; /* Green */
@@ -24,7 +43,7 @@ th{background-color: #b0c1f7;text-align: center;}
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */

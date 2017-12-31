@@ -16,27 +16,29 @@ import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
-
+import { MatCardModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {  FlowerDetailComponent } from './flower-detail/flower-detail.component';
 @NgModule({
   imports: [
     CommonModule,MatDialogModule,
-
     MatFormFieldModule,MatInputModule,
-    FormsModule,MatIconModule,
-    MatOptionModule,
+    FormsModule,MatIconModule,MatButtonModule,
+    MatOptionModule,MatCardModule,//模块
   
     RouterModule.forChild([
       { path: '', component: FlowerHomeComponent, pathMatch: 'full' },
-    
+      { path: ':id', component: FlowerDetailComponent, pathMatch: 'full' }
     ])
   ],
-  declarations: [FlowerHomeComponent,
+  declarations: [FlowerHomeComponent,//页面
                 ButtonComponent,
                 ButtonDirective,
                 ToKPipe,
+                FlowerDetailComponent,
                 FlowerDialogComponent],
   providers:[FlowerService],
-  entryComponents:[FlowerDialogComponent]
+  entryComponents:[FlowerDialogComponent]//弹出的ALERT
 })
 export class FlowerModule { }
