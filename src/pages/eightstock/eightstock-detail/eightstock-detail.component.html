@@ -1,7 +1,8 @@
 <div class="col-12">
-  <button mat-raised-button class="col-2 example-tooltip-host" matTooltip="点击返回一览画面" matTooltipPosition="before" routerLink="/eightstock/">返回</button>
-  <button mat-raised-button *ngIf="stockd&&stockd.selected" (click)="updateSelectStatusById(false)" class="col-2 example-tooltip-host" matTooltip="点击取消自选" matTooltipPosition="after">-</button>
-  <button mat-raised-button *ngIf="stockd&&!stockd.selected" (click)="updateSelectStatusById(true)" class="col-2 example-tooltip-host" matTooltip="点击添加自选" matTooltipPosition="after">+</button>
+  <button mat-raised-button class="col-2 example-tooltip-host" matTooltip="点击返回一览画面" matTooltipPosition="before" routerLink="/eightstock">返回</button>
+  <button mat-raised-button *ngIf="stockd&&stockd.selected" (click)="updateSelectStatusById(false)" class="col-2 example-tooltip-host" matTooltip="点击取消自选" matTooltipPosition="after">删除自选股</button>
+  <span *ngIf="stockd&&stockd.selected" style="font-size:12px">&nbsp;&nbsp;已添加到自选股列表</span>
+  <button mat-raised-button *ngIf="stockd&&!stockd.selected" (click)="updateSelectStatusById(true)" class="col-2 example-tooltip-host" matTooltip="点击添加自选" matTooltipPosition="after">添加到自选股列表</button>
 </div>
 <BR>
 <div *ngIf="stockd">
