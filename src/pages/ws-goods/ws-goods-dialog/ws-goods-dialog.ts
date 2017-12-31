@@ -8,6 +8,10 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class WsGoodsDialogComponent {
 
 goods={};
+saleTyptes = [
+    {value: 1, viewValue: '单一'},
+    {value: 2, viewValue: '定期'}
+  ];
 constructor(
     public dialogRef: MatDialogRef<WsGoodsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -21,4 +25,5 @@ onNoClick(): void {
 save(){
     this.dialogRef.close(this.goods);
 }
+
 }
