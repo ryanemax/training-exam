@@ -4,16 +4,14 @@ button{
     background-color :rgb(178, 201, 245);
 }
 
-#sytle1{
-    font-size:15px;
-    background-color :rgb(0, 255, 234);
-
-    list-style-type:none
+#btn1-style{
+    float:left;
+   margin-left: 12px;
 }
 
-#sytle2{
-    font-size:15px;
-    font-style:italic;
+#btn2-style{
+    float:right;
+    margin-right: 0px;
 }
 
 li{

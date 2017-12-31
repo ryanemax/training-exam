@@ -10,7 +10,7 @@ export class WeatherButtonDirective {
  
     constructor(el:ElementRef) {
 
-      el.nativeElement.style.backgroundColor = "yellow";
+      el.nativeElement.style.backgroundColor = "primary";
       el.nativeElement.style.fontSize = "12px";
       el.nativeElement.style.margin = "15px";
       el.nativeElement.style.boxShadow = "1px 1px 5px #888888";

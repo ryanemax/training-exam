@@ -1,0 +1,20 @@
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="weatherData.dateInfo" matInput placeholder="日期" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="weatherData.weekInfo" matInput placeholder="星期" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="weatherData.temperature" matInput placeholder="温度" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="weatherData.humidity" matInput placeholder="湿度" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="weatherData.pm" matInput placeholder="PM值" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="weatherData.status" matInput placeholder="天气情况" value="">
+</mat-form-field>
+<button (click)="save()" mat-raised-button>保存</button>
