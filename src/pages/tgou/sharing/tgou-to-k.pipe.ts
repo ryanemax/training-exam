@@ -9,7 +9,7 @@ export class TgouToKPipe implements PipeTransform {
     if(value >= 1000){
       return "¥"+(value/1000).toFixed(3)  + "k";
     }
-    return value;
+    return "¥"+value;
   }
 
 }
