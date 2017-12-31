@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
   },
   {
-    path: 'employee-manage',
-    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
-  },
-  {
     path: 'bookmanage',
     loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },

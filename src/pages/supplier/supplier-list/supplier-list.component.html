@@ -1,6 +1,7 @@
 <h1>供应商信息</h1>
 
-
+<button class="addBtn" mat-raised-button (click)="service.addNewUser()"><mat-icon>add</mat-icon>
+  新增供应商</button>
 <table >
   <thead class="header">
     <th>ID</th>
@@ -10,7 +11,13 @@
     <th>操作</th>
   </thead>
   <tbody >
-    <tr *ngFor="let user of suppliers"> <td>{{user.id}}</td><td>{{user.name}}</td><td>：{{user.mail | toMail}}</td><td>{{user.location}} </td><td><button appActButton  (click)="deleteUserByID(user.id)" >提供的产品</button></td>
+    <tr *ngFor="let user of service.users"> <td>{{user.objectId}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.mail | toMail}}</td>
+      <td>{{user.location}} </td>
+      <td>
+          <mat-icon title="删除" (click)="service.deleteUserByID(user.objectId)">delete</mat-icon>
+          <button appActButton  (click)="deleteUserByID(user.objectId)" >提供的产品</button></td>
     </tr>
   </tbody>
 </table>
