@@ -28,26 +28,28 @@ export class StudentService{
     users:any[];
     constructor(private httpclient:HttpClient,private http:Http){
     }
-  loadUsersData() {
+  // loadUsersData() {
    
-    let url = "http://47.92.145.25:80/parse"+"/classes/Student";
-    let headers:HttpHeaders = new HttpHeaders();
-    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+  //   let url = "http://47.92.145.25:80/parse"+"/classes/Student";
+  //   let headers:HttpHeaders = new HttpHeaders();
+  //   headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-    let options:any ={
-      headers:headers
-    };
-    return this.httpclient.get<ParseResponse>(url,options).subscribe(data=>{
-      this.users = data['results'];
-      console.log(this.users);
-    });
-  }
-  //   loadUsersData() {
-  //   let query = new Parse.Query("Student",this.http);
-  //   query.find().subscribe(data=>{
-  //     this.users = data;
+  //   let options:any ={
+  //     headers:headers
+  //   };
+  //   return this.httpclient.get<ParseResponse>(url,options).subscribe(data=>{
+  //     this.users = data['results'];
+  //     console.log(this.users);
   //   });
   // }
+    loadUsersData() {
+    let query = new Parse.Query("Student",this.httpclient);
+    query.equalTo("sex","male");
+    query.limit(10);
+    query.find().subscribe(data=>{
+      this.users = data;
+    });
+  }
 
 
     addNewUser(user) {
