@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 // import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 import { Http } from '@angular/http';
-// import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
 
 // Cloud 微服务接口库
 import {Parse} from "../../cloud/cloud";
@@ -44,12 +45,13 @@ export class StudentService{
   //   });
   // }
     loadUsersData() {
-    let query = new Parse.Query("Student",this.httpclient);
-    query.equalTo("sex","male");
-    query.limit(10);
-    query.find().subscribe(data=>{
-      this.users = data;
-    });
+      return new Promise((resolve,reject)=>{
+        let query = new Parse.Query("Student",this.httpclient);
+        return query.find().subscribe(data=>{
+          this.users = data;
+          resolve(data);
+        });
+      })
   }
 
 
