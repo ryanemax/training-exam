@@ -3,8 +3,6 @@ import { PercentPipe } from '@angular/common/src/pipes/number_pipe';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import "rxjs/operators/map";
-import { forEach } from '../../../../node_modules/_@angular_router@5.0.0@@angular/router/src/utils/collection';
-import { Title } from '../../../../node_modules/_@angular_platform-browser@5.0.0@@angular/platform-browser/src/browser/title';
 import {EightstockNewschatComponent} from '../eightstock-newschat/eightstock-newschat.component';
 
 
