@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { Routes, RouterModule } from '@angular/router';
 import { BookHomeComponent } from './book-home/book-home.component';
@@ -14,7 +15,7 @@ import { MatInputModule } from '@angular/material';
   imports: [
     CommonModule,
     MatDialogModule,MatInputModule,
-    MatFormFieldModule,
+    MatFormFieldModule,FormsModule,
     RouterModule.forChild([
       { path: '', component: BookHomeComponent, pathMatch: 'full' },
     ])

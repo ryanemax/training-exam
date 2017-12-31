@@ -30,7 +30,7 @@
           <button class="llc-btn-dis">借书</button>
           <button class="llc-btn" (click) = 'UpdateBookStatus(book)'>还书</button>
         </span>
-        <button class="llc-btn">编辑</button>
+        <button class="llc-btn" (click)='openDialog(book)'>编辑</button>
         <div class="tar" (click)='deleteBookByID(book.objectId)'>
             <span class="llc-book-list-del">x</span>
           </div>

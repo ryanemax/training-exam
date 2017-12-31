@@ -131,8 +131,7 @@ export class BookHomeComponent implements OnInit {
         if(book["status"]=="已借出"){
           book.status = "未借出";
         }
-        url = "http://47.92.145.25:80/parse"+"/classes/Book23/"+book.objectId;
-        delete book["objectId"];
+        url = "http://47.92.145.25:80/parse"+"/classes/Book23/"+book.objectId; 
         delete book["createdAt"];
         delete book["updatedAt"];
         this.http.put(url,book,options).subscribe(data=>{
