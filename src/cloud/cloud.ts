@@ -1,4 +1,5 @@
-import { Http, Response, Headers } from '@angular/http';
+// import { Http, Response, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
@@ -6,15 +7,15 @@ import { Observable } from 'rxjs/Observable';
 var ParseConfig = {
     applicationId:"dev",
     serverURL: "http://47.92.145.25:80/parse",
-    headers:new Headers({
+    headers:new HttpHeaders({
         "X-Parse-Application-Id":"dev",
         "X-Parse-Master-Key":"angulardev",
         // "X-Parse-Session-Token":"r:059bbbebdc201de090f16fe9716b43bf",
         "Content-Type":"application/json; charset=utf-8",
-        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Methods",        
-        "Access-Control-Allow-Origin":"*",
-        "Access-Control-Allow-Credentials":"true",
-        "Access-Control-Allow-Methods":"GET, POST, PATCH, PUT, DELETE, OPTIONS",
+        // "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Methods",        
+        // "Access-Control-Allow-Origin":"*",
+        // "Access-Control-Allow-Credentials":"true",
+        // "Access-Control-Allow-Methods":"GET, POST, PATCH, PUT, DELETE, OPTIONS",
     })
 }
 
@@ -28,24 +29,24 @@ export namespace Parse {
     // export let VERSION: string;
 
     export class HttpHandler{
-        http:Http
-        constructor(http:Http){
-            this.http = http
+        httpclient:HttpClient
+        constructor(httpclient:HttpClient){
+            this.httpclient = httpclient
         }
-        extractData(res: Response) {
-            let body = res.json();
-            return body.results || [];
+        extractData(res: HttpResponse<any>) {
+            let body = res;
+            return body["results"] || [];
         }
-        extractDataByOne(res: Response) {
-            let body = res.json();
+        extractDataByOne(res: HttpResponse<any>) {
+            let body = res;
             return body || {};
         }
-        handleHttpError (error: Response | any) {
+        handleHttpError (error: HttpResponse<any> | any) {
         // In a real world app, we might use a remote logging infrastructure
         let errMsg: string;
-        if (error instanceof Response) {
-        const body = error.json() || '';
-        const err = body.error || JSON.stringify(body);
+        if (error instanceof HttpResponse) {
+        const body = error || '';
+        const err = body["error"] || JSON.stringify(body);
         errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {
         errMsg = error.message ? error.message : error.toString();
@@ -71,8 +72,8 @@ export namespace Parse {
         _where:any = {}
         _limit:number
         _skip:number
-        constructor(className:string,http:Http){
-            super(http)
+        constructor(className:string,httpclient:HttpClient){
+            super(httpclient)
             this.className = className
         }
         // 查询条件
@@ -118,7 +119,7 @@ export namespace Parse {
 
 
             url = encodeURI(url)
-            return this.http.get(url,{
+            return this.httpclient.get(url,{
                 headers: ParseConfig.headers,
                 // withCredentials: true
             })
@@ -128,7 +129,7 @@ export namespace Parse {
         get(id):Observable<ParseObject>{
             let url = ParseConfig.serverURL+"/classes/"+this.className+"/"+id;
             console.log(url);
-            return this.http.get(url,{
+            return this.httpclient.get(url,{
                 headers: ParseConfig.headers
             })
             .map(super.extractDataByOne)
@@ -149,14 +150,14 @@ export namespace Parse {
 */
 
     export class ParseObject extends HttpHandler{
-        headers:Headers
+        headers:HttpHeaders
         serverURL:string
 
         className:string
         createdAt:Date
         updatedAt:Date
-        constructor(className:string,http:Http){
-            super(http)
+        constructor(className:string,httpclient:HttpClient){
+            super(httpclient)
             this.className = className
             this.serverURL = ParseConfig.serverURL;
             this.headers = ParseConfig.headers;
@@ -164,7 +165,7 @@ export namespace Parse {
         }
         find():Observable<any[]>{
             let url = this.serverURL+"/classes/"+this.className
-            return this.http.get(url,{
+            return this.httpclient.get(url,{
                 headers: this.headers
             })
             .map(super.extractData)
