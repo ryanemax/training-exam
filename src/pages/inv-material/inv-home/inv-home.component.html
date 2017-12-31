@@ -1,11 +1,61 @@
-<div><h1>物料清单列表</h1></div>
-<button class = "inv-button" appInvButton (click)="sortItems('asc')">正序</button>
-<button class = "inv-button" appInvButton (click)="sortItems('desc')" >倒序</button>
-<button class = "inv-button" appInvButton (click)="sortItems('random')">随机</button>
-<button class = "inv-button" appInvButton (click)="addNewItem()">新增物料</button>
-<ul class="llc-item-list">
-<app-inv-item  [item]="item" *ngFor="let item of items"></app-inv-item>
-</ul>
+<h1>物料清单列表</h1>
+<button mat-raised-button color="primary" class="inv-button" (click)= "openDialog()" >新增物料</button>
+<mat-tab-group class="col-12">
+    <mat-tab label="物料表格" >
+        
+           <div>
+               <mat-table [dataSource]="dataSource" matSort>
+                 <ng-container matColumnDef="objectId">
+                   <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                   <mat-cell *matCellDef="let item"> {{item.objectId}} </mat-cell>
+                 </ng-container>
+                 <ng-container matColumnDef="code" >
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> 编码</mat-header-cell>
+                    <mat-cell *matCellDef="let item"> {{item.code}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="uom">
+                      <mat-header-cell *matHeaderCellDef> 单位</mat-header-cell>
+                      <mat-cell *matCellDef="let item"> {{item.uom}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef>描述</mat-header-cell>
+                        <mat-cell *matCellDef="let item"> {{item.description}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="count" mat-sort-header>
+                          <mat-header-cell *matHeaderCellDef>库存</mat-header-cell>
+                          <mat-cell *matCellDef="let item"> {{item.count}} </mat-cell>
+                        </ng-container>
+                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+               </mat-table>
+             </div>
+         </mat-tab>
+    <mat-tab label="物料卡片">
+      <div></div>
+        <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('asc')">正序</button>
+        <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('desc')" >倒序</button>
+        <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('random')">随机</button>
+        
+        
+        <ul>
+            <li  *ngFor="let item of itemtServ.items" >
+          <div class="tar" >
+              <span><mat-icon title="删除" (click)="itemtServ.deleteItemByID(item.objectId)">delete</mat-icon></span>              
+              <span><mat-icon title="编辑" (click)="openDialog(item)">edit</mat-icon></span>
+          </div>
+            <div class="item-list-id">ID：{{item.objectId}}</div>
+                  <div class="item-list-code">编码：{{item.code}}</div>
+                  <div class="item-list-uom">单位：{{item.uom}}</div>
+                  <div class="item-list-description">描述：{{item.description}}</div>
+                  <div class="item-list-count">库存：{{item.count | invTok}}</div>
+                  
+            </li>
+          </ul>
+    </mat-tab>
+    
+  </mat-tab-group>
+
+
 
 
 

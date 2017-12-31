@@ -1,1 +1,46 @@
-.studentContent{margin: 0px 10px;}
+
+.example-form {
+    min-width: 150px;
+    max-width: 250px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .example-button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .search-tab {
+    margin: 0px 10px;
+  }
+  .but{
+    margin-top: 20px;
+  }
+table.gridtable {
+  margin-top: 20px;
+	font-family: verdana,arial,sans-serif;
+	font-size:14px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #4489c9;
+}
+table.gridtable td {
+  width: 100px;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+

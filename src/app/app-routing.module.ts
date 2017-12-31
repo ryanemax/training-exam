@@ -20,16 +20,20 @@ const routes: Routes = [
     loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
   },
   {
-    path: 'employee-manage',
-    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
-  },
-  {
     path: 'bookmanage',
     loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
+  // {
+  //   path: 'book',
+  //   loadChildren: '../pages/book/book.module#BookModule',
+  // },
   {
     path: 'lipstick',
     loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
+  },
+  {
+    path: 'coffee',
+    loadChildren: '../pages/coffee/coffee.module#CoffeeModule',
   },
   {
     path: 'kqgl',
@@ -71,6 +75,10 @@ const routes: Routes = [
   {
     path: 'weather-data',
     loadChildren: '../pages/weather-data/weather-data.module#WeatherDataModule',
+  },
+  {
+    path: 'flower',
+    loadChildren: '../pages/flower/flower.module#FlowerModule',
   }
   ,
   {
@@ -88,7 +96,10 @@ const routes: Routes = [
   {
     path: 'cinematicket',
   loadChildren: '../pages/cinematicket/cinematicket.module#CinematicketModule'
-}
+},
+   { path: 'clothes1',
+    loadChildren: '../pages/clothes1/clothes1.module#Clothes1Module',
+  }
 
 ];
 
