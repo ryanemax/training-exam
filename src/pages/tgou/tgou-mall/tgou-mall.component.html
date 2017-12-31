@@ -29,15 +29,26 @@
 <p>You selected: {{selected}}</p> -->
 
 <ul>
-  <li *ngFor="let user of users">
-    <!-- <span><button (click)="deleteUserByID(user.objectId)">删除</button></span> -->
-    <mat-icon title="删除" (click)="deleteUserByID(user.objectId)">delete</mat-icon>
-    <mat-icon title="查看" routerLink="/tgou/{{user.objectId}}">menu</mat-icon>
-    <mat-icon title="编辑" (click)="openDialog(user)">edit</mat-icon>
-    GOODSID:{{user.objectId}}，商品名：{{user.name}}，英文名：{{user.github}}，价格：{{user.sex | toK}}
-    <br>
-    <img src={{user.img}}>
-  </li>
+  <table cellspacing="0" cellpadding="0">
+    <tbody>
+      <li *ngFor="let user of users">
+        <tr>
+          <!-- <span><button (click)="deleteUserByID(user.objectId)">删除</button></span> -->
+          <td width=10%>
+            <img src={{user.img}}>
+          </td>
+          <td style="text-align:left">
+            GOODSID:{{user.objectId}}，商品名：{{user.name}}，英文名：{{user.github}}，价格：{{user.sex | toK}}
+          </td>
+          <td width=12%>
+            <mat-icon title="删除" (click)="deleteUserByID(user.objectId)">delete</mat-icon>
+            <mat-icon title="查看" routerLink="/tgou/{{user.objectId}}">menu</mat-icon>
+            <mat-icon title="编辑" (click)="openDialog(user)">edit</mat-icon>
+          </td>
+        </tr>
+      </li>
+    </tbody>
+  </table>
 
   <h1>售出商品一览</h1>
   <div class="productImg-wrap">
