@@ -1,18 +1,22 @@
 <h1>考勤管理</h1>
 <table>
+    <tr>
+    <mat-select placeholder="搜索范围" [(ngModel)]="searchType" name="searchType">
+        <mat-option value="name">名称</mat-option>
+        <mat-option value="ymd">日期</mat-option>
+    </mat-select>
+  </tr>
   <tr>
-    <td>
-    <form class="example-form">
+    <td>	
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="姓名"></textarea>
+            <textarea [(ngModel)]="searchText" matInput placeholder="姓名" ></textarea>
         </mat-form-field>
-      </form>
     </td>
     <td>
       <td>
-    <button  style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
+    <button style="float:right;" color="light" mat-mini-fab (click)="kqglServ.search(searchType,searchText)"><mat-icon>search</mat-icon></button>
   </td> <td>
-    <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
+    <button style="float:right;" color="light" mat-mini-fab (click)="kqglServ.refresh()"><mat-icon>sync</mat-icon></button>
   </td>
   </tr>
 
@@ -71,7 +75,7 @@
     <mat-tab label="图表表示">
       
       <div class="demo-tab-content">
-        
+          <div #studentChart (window:resize)="loadNewChartData()" style="width: 600px;height:400px;"></div>
       </div>  
     </mat-tab>
     

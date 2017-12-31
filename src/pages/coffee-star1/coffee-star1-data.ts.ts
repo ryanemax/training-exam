@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 // import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+import { Http } from '@angular/http';
+// import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
+// Cloud 微服务接口库
+import {Parse} from "../../cloud/cloud";
 interface User {
     id?: number;
     name: string;

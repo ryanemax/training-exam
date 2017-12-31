@@ -1,0 +1,39 @@
+<h1 TitleDirective>图书列表</h1>
+<button appActButton class="llc-btn" (click)="sortBooks('asc')">正序</button>
+<button appActButton class="llc-btn" (click)="sortBooks('desc')" >倒序</button>
+<button appActButton class="llc-btn" (click)="openDialog()">新增</button>
+<ul class="llc-book-list">
+    <li *ngFor="let book of books">
+        <div>
+          <img src={{book.path}}/>
+        </div>
+        <div class="llc-book-list-column">
+          ID : {{book.objectId}}
+        </div>
+        <div class="llc-book-list-column">
+          书名：{{book.name}}
+        </div>
+        <div class="llc-book-list-column">
+          借书时间：{{book.cycle}}
+        </div>
+        <div class="llc-book-list-column">
+          价格：{{book.price}}
+        </div>
+        <div class="llc-book-list-column">
+          状态：{{book.status}}
+        </div>
+        <span *ngIf = "book.status=='未借出'">
+        <button class="llc-btn" (click) = 'UpdateBookStatus(book)'>借书</button>
+        <button class="llc-btn-dis">还书</button>
+        </span>
+        <span *ngIf = "book.status=='借出'">
+          <button class="llc-btn-dis">借书</button>
+          <button class="llc-btn" (click) = 'UpdateBookStatus(book)'>还书</button>
+        </span>
+        <button class="llc-btn" (click)='openDialog(book)'>编辑</button>
+        <div class="tar" (click)='deleteBookByID(book.objectId)'>
+            <span class="llc-book-list-del">x</span>
+          </div>
+      </li>
+  <!-- <app-book-item appActCard [book]="book" ></app-book-item> -->
+</ul>

@@ -1,23 +1,15 @@
-<li class="col-3">
-  <div class="llc-weather-date">
-    日期:{{weatherInfo.dateInfo}}
-  </div>
-  <div class="llc-weather-week">
-    星期：{{weatherInfo.weekInfo}}
-  </div>
-  <div class="llc-weather-temperature">
-    温度：{{weatherInfo.temperature | weather}}
-  </div>
-  <div class="llc-weather-humidity">
-    湿度：{{weatherInfo.humidity}}
-  </div>
-  <div class="llc-weather-pm">
-    PM值：{{weatherInfo.pm}}
-  </div>
-  <div class="llc-weather-comfort">
-    舒适度：{{weatherInfo.comfort}}
-  </div>
-  <div class="tar" (click)='deleteById(weatherInfo.date)'>
-    <ion-delete-button></ion-delete-button>
-  </div>
-</li>
+<h1>天气详细信息</h1>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{weatherData.imageURL}}</mat-card-title>
+    <mat-card-subtitle>weatheaData: {{weatherData.weekInfo}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514713784970&di=1f4fe4c129ad6e80a553038ed7f8a888&imgtype=0&src=http%3A%2F%2Fwww.uimaker.com%2Fuploads%2Fallimg%2F120711%2F1_120711020837_1.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      详细：{{weatherData.temperature | weather}}
+    </p>
+  </mat-card-content>
+</mat-card>

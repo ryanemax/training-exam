@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,OnInit, AfterViewInit, ViewChild} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 import {MatDialog} from '@angular/material';
@@ -24,6 +24,9 @@ interface ParseResponse {
   styleUrls: ['./kqgl-home.component.scss']
 })
 export class KqglHomeComponent implements OnInit {
+  @ViewChild("studentChart") studentChart;  
+
+  searchName:string = "";
   users: Array<User>;
   selectedUser:User={
     id:666,
@@ -32,10 +35,22 @@ export class KqglHomeComponent implements OnInit {
     qq:"0",
     dksj:"20171212 08:12:25"
   };
+
+  Data1:any 
+  Data2:any 
+  showData:any
+
   constructor(private http:HttpClient,private kqglServ:KqglService,
     public dialog: MatDialog) {
 
     this.kqglServ.loadUsersData();
+
+    // this.users.forEach((user,index,arr)=>{
+    //   this.Data1.push(user.cq);
+    // })
+
+    this.Data1 = ["12/10","12/11","12/12","12/13","12/14","12/15"];
+    this.Data2 = [5, 20, 36, 10, 10, 20];
    }
 
   ngOnInit() {
@@ -58,6 +73,45 @@ export class KqglHomeComponent implements OnInit {
     });
   }
  
+  loadNewChartData(){
 
-  
+
+    this.loadStudentChart(this.Data1,this.Data2);
+  }
+
+  loadStudentChart(cols,datas){
+    // 基于准备好的dom，初始化echarts实例
+    // let el = document.getElementById('studentChart');
+    let el = this.studentChart.nativeElement;
+    let myChart = echarts.init(el);
+
+    // 指定图表的配置项和数据
+    let option = {
+        title: {
+            text: '考勤图表'
+        },
+        tooltip: {},
+        legend: {
+            data:['出勤人数']
+        },
+        xAxis: {
+            data: cols
+        },
+        yAxis: {},
+        series: [{
+            name: '出勤人数',
+            type: 'bar',
+            data: datas
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  }
+
+  ngAfterViewInit(){
+    this.loadStudentChart(this.Data1,this.Data2);    
+
+  }
+
 }
