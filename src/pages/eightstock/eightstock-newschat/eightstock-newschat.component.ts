@@ -28,6 +28,7 @@ interface NewsChat {
 export class EightstockNewschatComponent {
 
   newsId: any;
+  title: any;
   newsChats: NewsChat[];
   nChat: NewsChat;
   constructor(private httpclient: HttpClient,
@@ -35,6 +36,7 @@ export class EightstockNewschatComponent {
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.newsId = data['newsId'];
+    this.title = data['title'];
     this.nChat = {
       newsId: this.newsId,
       name: '',
@@ -42,14 +44,11 @@ export class EightstockNewschatComponent {
       likes: 0,
       dislikes: 0
     }
-    // Object.keys(data).forEach(key => {
-    //   this.newsId = data[key];
-    // });
     this.getNewsChatByNewsId();
   }
   getNewsChatByNewsId() {
     let query = new Parse.Query("EStockChat", this.httpclient);
-    // query.limit(5);
+    query.equalTo('newsId',this.newsId);
     query.find().subscribe(data => {
       this.newsChats = data;
       console.log(data);
