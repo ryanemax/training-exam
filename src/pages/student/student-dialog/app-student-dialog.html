@@ -6,4 +6,30 @@
 <mat-form-field class="example-full-width">
 <input [(ngModel)]="user.github" matInput placeholder="Github" value="">
 </mat-form-field>
+
+<mat-form-field>
+    <mat-select [(ngModel)]="user.sex" placeholder="性别">
+      <mat-option [value]="male">
+        男
+      </mat-option>
+      <mat-option [value]="female">
+        女
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+<mat-form-field class="example-full-width">
+<input type="number" [(ngModel)]="user.exam1" matInput placeholder="Exam1" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+<input type="number" [(ngModel)]="user.exam2" matInput placeholder="Exam2" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+<input type="number" [(ngModel)]="user.exam3" matInput placeholder="Exam3" value="">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+    <input type="number" [(ngModel)]="user.exam4" matInput placeholder="Exam4" value="">
+    </mat-form-field>
+
 <button (click)="save()" mat-raised-button>保存</button>

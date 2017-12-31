@@ -1,0 +1,63 @@
+<h1>咖啡管理[{{studentServ.users?studentServ.users.length:0}}]</h1>
+
+<div class="studentContent">
+    
+          <div class="tabMenu">
+              <!-- <a mat-raised-button routerLink="edit/new">新增宝贝</a> -->
+              <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
+                  新增商品</button>
+              <button class="sortBtn" mat-raised-button [matMenuTriggerFor]="menu">
+                              <mat-icon>more_vert</mat-icon>排序方式
+                            </button>
+              <mat-menu #menu="matMenu">
+                  <button mat-menu-item class="mat-menu-item" (click)="studentServ.sortUsers('asc')">
+                                <span>正序</span>
+                              </button>
+                  <button mat-menu-item (click)="studentServ.sortUsers('desc')">
+                                <span>倒序</span>
+                              </button>
+                  <button mat-menu-item (click)="studentServ.sortUsers('random')">
+                                <span>随机</span>
+                              </button>
+              </mat-menu>
+          </div>
+ 
+<ul>
+      <h2>已选择的用户：{{selectedUser.name}}</h2>
+  <li *ngFor="let user of studentServ.users" (click)="selectUser(user)" appActButton>
+      <table style="width: 100%;">
+          <thead style="width: 100%;">
+              <tr style="width: 100%;">
+                  <th class="col-m-2">操作</th>
+                  <th class="col-m-2">ID</th>
+                  <th class="col-m-3">名称</th>
+                  <th class="col-m-2">浓度</th>
+                  <th class="col-m-3">价格</th>
+                  <th class="col-m-3">库存</th>
+                </tr>
+          </thead>
+          <tbody >
+            <tr>
+              <td>
+                    <button class="ll"  routerLink="/coffee-star1/{{user.objectId}}">查看</button>
+                <button class="ll"  (click)="openDialog(user)">修改</button>
+            <button class="ll"  (click)="studentServ.deleteUserByID(user.objectId)">删除</button></td>
+              <td style="text-align: center;">{{user.objectId}}</td>
+              <td style="text-align: center;" >{{user.name}}</td>
+              <td style="text-align: center;">{{user.github}}</td>
+              <td style="text-align: center;">{{user.sex}}</td>
+              <td style="text-align: center;">{{user.goods|toK}}</td>
+            </tr>
+          </tbody>
+      </table>
+  </li>
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link active="true">
+            咖啡列表
+            </a>
+    <a mat-tab-link routerLink="analysis">
+            统计分析
+         </a>
+</nav>
+</ul>
+

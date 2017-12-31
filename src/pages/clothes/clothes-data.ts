@@ -34,7 +34,11 @@ export class ClothesService{
   }
 
 
-    addNewClothes() {
+    addNewClothes(clothes) {
+      if(clothes["name"]===""||clothes["brand"]===""){
+        alert("请输入正确的衣服信息");
+      }
+
       let url = "http://47.92.145.25:80/parse"+"/classes/Clothes";
       let headers:HttpHeaders = new HttpHeaders();
       headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
@@ -42,14 +46,23 @@ export class ClothesService{
       let options:any ={
         headers:headers
       };
-        let newClothes: Clothes = {
-          name: "衣服",
-          brand:"dada",
-          birthday:"2012/03/02"
-        };
-        this.http.post(url,newClothes,options).subscribe(data=>{
-          this.loadClothesData();
-        });
+
+      if(!clothes.objectId){
+      // 新增用户
+      this.http.post(url,clothes,options).subscribe(data=>{
+        this.loadClothesData();
+      });
+    }else{
+      // 修改用户
+      url = "http://47.92.145.25:80/parse"+"/classes/Clothes/"+clothes.objectId;
+      delete clothes["objectId"];
+      delete clothes["createdAt"];
+      delete clothes["updatedAt"];
+      this.http.put(url,clothes,options).subscribe(data=>{
+        this.loadClothesData();
+      });
+    }
+
       }
     
       deleteClothesByID(id) {
