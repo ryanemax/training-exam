@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import "rxjs/operators/map";
 
-interface User{
-  id? : number;
-  name : string;
-  github : string;
-  sex : string;
-  img? : string;
-  objectId?:string;
-  updatedAt?:string;
-  createdAt?:string;
+import { MatDialog } from '@angular/material';
+import { TgouDialogComponent } from '../tgou-dialog/tgou-dialog';
+
+interface User {
+  id?: number;
+  name: string;
+  github: string;
+  sex: string;
+  img?: string;
+  objectId?: string;
+  updatedAt?: string;
+  createdAt?: string;
 }
 
 @Component({
@@ -19,26 +22,26 @@ interface User{
   styleUrls: ['./tgou-mall.component.scss']
 })
 export class TgouMallComponent implements OnInit {
-  users:Array<User>;
-  constructor(private http:Http) {
+  users: Array<User>;
+  constructor(private http: Http, public dialog: MatDialog) {
     this.loadUsersData();
   }
-  sortUsers(type){
+  sortUsers(type) {
     // 参考MDN中的ES6，Array语法
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
     if (type === 'asc') {
       // alert('dfdfg');
-      this.users.sort((a,b)=>(Number(a.sex) -Number(b.sex)));
+      this.users.sort((a, b) => (Number(a.sex) - Number(b.sex)));
     }
     if (type === 'desc') {
-      this.users.sort((a,b)=>(Number(b.sex) -Number(a.sex)));
+      this.users.sort((a, b) => (Number(b.sex) - Number(a.sex)));
     }
     if (type === 'random') {
-      this.users.sort((a,b)=>(Math.random() - 0.5));
+      this.users.sort((a, b) => (Math.random() - 0.5));
     }
     console.log("sortUsers Works!");
   }
-  loadUsersData(){
+  loadUsersData() {
     // let src1="//img.alicdn.com/bao/uploaded/i4/TB1gu4vKFXXXXXYXpXXXXXXXXXX_!!0-item_pic.jpg_b.jpg";
     // let src2="//img.alicdn.com/bao/uploaded/i3/3532929347/TB2qGlPfx6I8KJjSszfXXaZVXXa_!!3532929347.jpg_b.jpg";
     // let src3="//img.alicdn.com/bao/uploaded/i1/1579528508/TB28gDFmWigSKJjSsppXXabnpXa_!!1579528508.jpg_b.jpg";
@@ -47,20 +50,20 @@ export class TgouMallComponent implements OnInit {
     //   {id:2,img:src2,name:"茅台",github:"maotai",sex:"1798.00"},
     //   {id:3,img:src3,name:"獐子岛海参",github:"zhangzidao",sex:"10899.00"}
     // ];
-    let url = "http://47.92.145.25:80/parse"+"/classes/TGoods";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let url = "http://47.92.145.25:80/parse" + "/classes/TGoods";
+    let headers: Headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("X-Parse-Application-Id", "dev");
+    headers.append("X-Parse-Master-Key", "angulardev");
 
-    let options ={
-      headers:headers
+    let options = {
+      headers: headers
     };
-    this.http.get(url,options).subscribe(data=>{
+    this.http.get(url, options).subscribe(data => {
       this.users = data.json().results;
     });
   }
-  addNewUser(){
+  addNewUser(user) {
     // let uuid = Number(Math.random()*1000).toFixed(0);
     // let newUser:User = {
     //   id:Number(uuid),
@@ -69,43 +72,76 @@ export class TgouMallComponent implements OnInit {
     //   sex:"200"
     // };
     // this.users.push(newUser);
-    let url = "http://47.92.145.25:80/parse"+"/classes/TGoods";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
-    let options ={
-      headers:headers
-    };
-    let newUser: User = {
-      name:"泸州老窖",
-      github:"luzhou",
-      sex:"200",
-      img:"//img.alicdn.com/bao/uploaded/i4/725677994/TB2.EvqiQfb_uJjSsrbXXb6bVXa_!!725677994.jpg_b.jpg"
-    };
-    this.http.post(url,newUser,options).subscribe(data=>{
-      this.loadUsersData();
-    });
+    if (user["name"] === "" || user["github"] === "" || user["sex"] === "") {
+      alert("请输入正确的商品信息");
+    } else {
+      let url = "http://47.92.145.25:80/parse" + "/classes/TGoods";
+      let headers: Headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("X-Parse-Application-Id", "dev");
+      headers.append("X-Parse-Master-Key", "angulardev");
+      let options = {
+        headers: headers
+      };
+      // let newUser: User = {
+      //   name:"泸州老窖",
+      //   github:"luzhou",
+      //   sex:"200",
+      //   img:"//img.alicdn.com/bao/uploaded/i4/725677994/TB2.EvqiQfb_uJjSsrbXXb6bVXa_!!725677994.jpg_b.jpg"
+      // };
+      // this.http.post(url,newUser,options).subscribe(data=>{
+      //   this.loadUsersData();
+      // });
+      if (!user.objectId) {
+        // 新增用户
+        user["img"] = "//img.alicdn.com/tps/i1/TB14VZKHXXXXXcAXXXX64VRZFXX-105-105.png";
+        this.http.post(url, user, options).subscribe(data => {
+          this.loadUsersData();
+        });
+      } else {
+        // 修改用户
+        url = "http://47.92.145.25:80/parse" + "/classes/TGoods/" + user.objectId;
+        delete user["objectId"];
+        delete user["createdAt"];
+        delete user["updatedAt"];
+        this.http.put(url, user, options).subscribe(data => {
+          this.loadUsersData();
+        });
+      }
+    }
   }
-  deleteUserByID(id){
+  deleteUserByID(id) {
     // this.users.forEach((user,index,arr)=>{
     //   if(user.id===id){
     //     arr.splice(index,1);
     //   }
     // });
-    let url = "http://47.92.145.25:80/parse"+"/classes/TGoods"+"/"+id;
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
-    let options ={
-      headers:headers
+    let url = "http://47.92.145.25:80/parse" + "/classes/TGoods" + "/" + id;
+    let headers: Headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("X-Parse-Application-Id", "dev");
+    headers.append("X-Parse-Master-Key", "angulardev");
+    let options = {
+      headers: headers
     };
-    this.http.delete(url,options).subscribe(data=>{
+    this.http.delete(url, options).subscribe(data => {
       this.loadUsersData();
     });
   }
+  openDialog(user?): void {
+    if (!user) {
+      user = { name: "", github: "" };
+    }
+    let dialogRef = this.dialog.open(TgouDialogComponent, {
+      width: '250px',
+      data: user,
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.addNewUser(result);
+    });
+  }
   ngOnInit() {
   }
 

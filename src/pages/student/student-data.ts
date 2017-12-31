@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+import { Http } from '@angular/http';
+// import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
+
+// Cloud 微服务接口库
+import {Parse} from "../../cloud/cloud";
+// End of Cloud
 
 interface User {
     id?: number;
@@ -19,52 +24,68 @@ interface User {
 
 @Injectable()
 export class StudentService{
-    users:any[];
-    constructor(private http:HttpClient){
-    }
-  loadUsersData() {
-    // this.users = [
-    //   {id: 5, count:100, name: "Ryane", github: "ryanemax", sex: "male"},
-    //   {id: 4, count:999, name: "Liming", github: "liming", sex: "male"},
-    //   {id: 3, count:1000, name: "Xiaohong", github: "xiaohong", sex: "female"},
-    //   {id: 1, count:3432500, name: "Zhangdayong", github: "Zhangdayong", sex: "male"},
-    //   {id: 2, count:10012312321, name: "Hanmeimei", github: "Hanmeimei", sex: "female"}
-    // ];
-    let url = "http://47.92.145.25:80/parse"+"/classes/User12";
-    let headers:HttpHeaders = new HttpHeaders();
-    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-    let options:any ={
-      headers:headers
-    };
-    return this.http.get<ParseResponse>(url,options).subscribe(data=>{
-      this.users = data['results'];
-      console.log(this.users);
+    users:any[];
+    constructor(private httpclient:HttpClient,private http:Http){
+    }
+  // loadUsersData() {
+   
+  //   let url = "http://47.92.145.25:80/parse"+"/classes/Student";
+  //   let headers:HttpHeaders = new HttpHeaders();
+  //   headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+  //   let options:any ={
+  //     headers:headers
+  //   };
+  //   return this.httpclient.get<ParseResponse>(url,options).subscribe(data=>{
+  //     this.users = data['results'];
+  //     console.log(this.users);
+  //   });
+  // }
+    loadUsersData() {
+    let query = new Parse.Query("Student",this.httpclient);
+    query.equalTo("sex","male");
+    query.limit(10);
+    query.find().subscribe(data=>{
+      this.users = data;
     });
   }
 
 
-    addNewUser() {
-        let url = "http://47.92.145.25:80/parse"+"/classes/User12";
+    addNewUser(user) {
+        if(user["name"]===""||user["github"]===""){
+          alert("请输入正确的用户信息");
+        }
+
+        let url = "http://47.92.145.25:80/parse"+"/classes/Student";
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
     
         let options:any ={
           headers:headers
         };
-        let newUser: User = {
-          name: "Jack",
-          github: "Jack",
-          sex: "male",
-          count: 666
-        };
-        this.http.post(url,newUser,options).subscribe(data=>{
+
+        if(!user.objectId){
+        // 新增用户
+        this.httpclient.post(url,user,options).subscribe(data=>{
+          this.loadUsersData();
+        });
+      }else{
+        // 修改用户
+        url = "http://47.92.145.25:80/parse"+"/classes/Student/"+user.objectId;
+        delete user["objectId"];
+        delete user["createdAt"];
+        delete user["updatedAt"];
+        this.httpclient.put(url,user,options).subscribe(data=>{
           this.loadUsersData();
         });
       }
+
+
+      }
     
       deleteUserByID(id) {
-        let url = "http://47.92.145.25:80/parse"+"/classes/User12"+"/"+id;
+        let url = "http://47.92.145.25:80/parse"+"/classes/Student"+"/"+id;
         let headers:HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
     
@@ -72,7 +93,7 @@ export class StudentService{
           headers:headers
         };
     
-        this.http.delete(url,options).subscribe(data=>{
+        this.httpclient.delete(url,options).subscribe(data=>{
           this.loadUsersData();
         });
       }

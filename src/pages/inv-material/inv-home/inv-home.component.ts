@@ -1,87 +1,73 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit,ViewChild} from '@angular/core';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import {MatTableDataSource,MatSort} from '@angular/material';
+import {DataSource} from '@angular/cdk/collections';
+import { ItemService } from '../item-data';
+import {MatDialog} from '@angular/material';
+import {ItemDialogComponent} from '../item-dialog/item-dialog';
+import { Observable } from 'rxjs/Observable';
 interface Item {
-  id: number,
-  code: string,
-  uom: string,
-  description: string,
-  count: number
+  objectId?:string;
+  code: string;
+  uom: string;
+  description: string;
+  count: number;
+  updatedAt?:string;
+  createdAt?:string;
 }
 
+interface ParseResponse {
+  results: any[];
+}
 @Component({
   selector: 'app-inv-home',
   templateUrl: './inv-home.component.html',
   styleUrls: ['./inv-home.component.scss']
 })
 
-export class InvHomeComponent implements OnInit {
-  items: Array<Item>;
-  constructor() {
-    this.loadItemsData();
+export class InvHomeComponent implements OnInit,AfterViewInit {
+  items: Item[] = this.itemtServ.loadItemsData();
+  displayedColumns = ['objectId','code','uom','description','count'];
+  dataSource = new MatTableDataSource<Item>();
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private http:HttpClient,private itemtServ:ItemService,public dialog: MatDialog) {
+
+    this.dataSource = new MatTableDataSource();
+    this.items = this.itemtServ.loadItemsData();
+    //this.dataSource.data = this.itemtServ.items;
+   
   }
 
   ngOnInit() {
+  
   }
-  loadItemsData() {
-    this.items = [
-      {id: 1, code:"XX001",uom:"Each",description:"ring",count:1000},
-      {id: 2, code:"XX002",uom:"Each",description:"shell",count:3000},
-      {id: 3, code:"XX003",uom:"Each",description:"bolt and nut",count:66},
-      {id: 4, code:"XX004",uom:"Each",description:"block hoop",count:780},
-      {id: 5, code:"XX005",uom:"Each",description:"nameplate",count:34}
-    ];
+  ngAfterViewInit() {
+    let url = "http://47.92.145.25:80/parse"+"/classes/InvItems";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+    let options:any ={
+      headers:headers
+    };
+    this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.dataSource.data = data['results'];
+    });
+    this.dataSource.sort = this.sort;
   }
-  sortItems(type) {
-    // 参考MDN中的ES6，Array语法
-    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
-    if (type == 'asc') {
-      this.items.sort(function (a, b) {
-        if (a.id > b.id) {
-          return 1;
-        }
-        if (a.id < b.id) {
-          return -1;
-        }
-        return 0;
-      });
-    }
+  
 
-    if (type == 'desc') {
-      this.items.sort(function (a, b) {
-        if (a.id > b.id) {
-          return -1;
-        }
-        if (a.id < b.id) {
-          return 1;
-        }
-        return 0;
-      });
+  openDialog(item?): void {
+    if(!item){
+      item = {code:"",uom:"",description:"",count:0};
     }
+    let dialogRef = this.dialog.open(ItemDialogComponent, {
+      width: '250px',
+      data: item
+    });
 
-    if(type == 'random') {
-      this.items.sort(function (a, b) {
-        return Math.random()*10 - Math.random()* 10;
-      });
-    }
-    console.log("sortUsers Works!");
+    dialogRef.afterClosed().subscribe(result => {
+      this.itemtServ.addNewItem(result);
+    });
   }
-  addNewItem() {
-    let uuid = Number(Math.random() * 1000).toFixed(0);
-    let newItem: Item = {
-      id: Number(uuid),
-      code: "XXFS01",
-      uom: "Meter",
-      description: "test",
-      count: 666
-    }
-    this.items.push(newItem);
-  }
-
-  deleteItemByID(id) {
-    this.items.forEach((item, index, arr)=> {
-      if (item.id == id) {
-        arr.splice(index, 1);
-      }
-    })
-  }
-
 }
+

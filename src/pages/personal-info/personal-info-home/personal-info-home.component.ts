@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import "rxjs/operators/map";
 
 interface User {
   id?: number;
   name: string;
-  phone: number;
+  phone: string;
   sex: string;
   email: string;
   objectId?:string;
@@ -13,6 +13,9 @@ interface User {
   createdAt?:string;
 }
 
+interface ParseResponse {
+  results: any[];
+}
 
 @Component({
   selector: 'app-personal-info-home',
@@ -22,24 +25,20 @@ interface User {
 export class PersonalInfoHomeComponent implements OnInit {
   users: any;
 
-  constructor(private http:Http) {
+  constructor(private http:HttpClient) {
     this.loadUsersData();
   }
   loadUsersData() {
     let url = "http://47.92.145.25:80/parse"+"/classes/PersonalInfo";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
 
-    let options ={
+    let options:any ={
       headers:headers
     };
-    this.http.get(url,options).subscribe(data=>{
-      this.users = data.json().results;
+    this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.users = data['results'];
     });
-
-
   }
 
   sortUsers(type) {
@@ -69,22 +68,37 @@ export class PersonalInfoHomeComponent implements OnInit {
     }
   }
 
-  addNewPeople() {
+  addNewUser() {
     let url = "http://47.92.145.25:80/parse"+"/classes/PersonalInfo";
-    let headers:Headers = new Headers();
-    headers.append("Content-Type","application/json");
-    headers.append("X-Parse-Application-Id","dev");
-    headers.append("X-Parse-Master-Key","angulardev");
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options:any ={
+      headers:headers
+    };
+
+    let newUser: User = {
+      phone: "18640877761",
+      name: "xiaoming",
+      email: "18640877761@163.com",
+      sex: "male"
+    };
+
+    this.http.post(url,newUser,options).subscribe(data=>{
+      this.loadUsersData();
+    });
+  }
+
+  deleteUserByID(id) {
+    let url = "http://47.92.145.25:80/parse"+"/classes/PersonalInfo"+"/"+id;
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
     let options ={
       headers:headers
     };
-    let newUser: User = {
-      name: "xiaoming",
-      phone: 18640877761,
-      sex: "male",
-      email: "18640877761@163.com"
-    };
-    this.http.post(url,newUser,options).subscribe(data=>{
+
+    this.http.delete(url,options).subscribe(data=>{
       this.loadUsersData();
     });
   }

@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 
 interface Book {
-  id: number,
-  name: string,
-  cycle: string,
-  price: string,
-  status: string
+  id?: number;
+  name: string;
+  cycle: string;
+  price: string;
+  status: string;
+  path:string;
+  objectId?:string;
+  updatedAt?:string;
+  createdAt?:string;
+}
+
+interface ParseResponse {
+  results: any[];
 }
 
 @Component({
@@ -23,7 +33,7 @@ export class BookHomeComponent implements OnInit {
     status:"0"
   };
 
-  constructor() {
+  constructor(private http:HttpClient) {
     this.loadBooksData();
   }
   selectBook(book){
@@ -35,10 +45,10 @@ export class BookHomeComponent implements OnInit {
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
     if (type == 'asc') {
       this.books.sort(function (a, b) {
-        if (a.id > b.id) {
+        if (a.price > b.price) {
           return 1;
         }
-        if (a.id < b.id) {
+        if (a.price < b.price) {
           return -1;
         }
         return 0;
@@ -47,10 +57,10 @@ export class BookHomeComponent implements OnInit {
 
     if (type == 'desc') {
       this.books.sort(function (a, b) {
-        if (a.id > b.id) {
+        if (a.price > b.price) {
           return -1;
         }
-        if (a.id < b.id) {
+        if (a.price < b.price) {
           return 1;
         }
         return 0;
@@ -68,34 +78,54 @@ export class BookHomeComponent implements OnInit {
     console.log("sortUsers Works!");
   }
   loadBooksData() {
-    this.books = [
-      {id: 5, name: "Chinese", cycle: "3天", price: "800RMB", status:"0"},
-      {id: 4, name: "English", cycle: "5天", price: "200RMB", status:"0"},
-      {id: 3, name: "Japanese", cycle: "1天", price: "100RMB", status:"0"},
-      {id: 1, name: "dance", cycle: "8天", price: "700RMB", status:"0"},
-      {id: 2, name: "sing", cycle: "9天", price: "500RMB", status:"0"}
-    ];
+    let url = "http://47.92.145.25:80/parse"+"/classes/Book23";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options:any ={
+      headers:headers
+    };
+    return this.http.get<ParseResponse>(url,options).subscribe(data=>{
+      this.books = data['results'];
+      console.log(this.books);
+    });
   }
 
   addNewBook() {
-    let uuid = Number(Math.random() * 1000).toFixed(0);
-    let newBook: Book = {
-      id: Number(uuid),
-      name: "Jack",
-      cycle: "Jack",
-      price: "male",
-      status: ""
-          }
-    this.books.push(newBook);
+    let url = "http://47.92.145.25:80/parse"+"/classes/Book23";
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options ={
+      headers:headers
+    };
+
+    let newBook : Book = {
+      name: "长长的路",
+      cycle: "2天",
+      price: "15元",
+      status: "0",
+      path:"http://img12.360buyimg.com/n2/jfs/t16318/280/90747547/364871/d190653a/5a28ec95N88d3e08f.jpg"
+    };
+
+    this.http.post(url,newBook,options).subscribe(data=>{
+      this.loadBooksData();
+    });
   }
 
-  // deleteBookByID(id) {
-  //   this.books.forEach((book, index, arr)=> {
-  //     if (book.id == id) {
-  //       arr.splice(index, 1);
-  //     }
-  //   })
-  // }
+  deleteBookByID(id) {
+    let url = "http://47.92.145.25:80/parse"+"/classes/Book23"+"/"+id;
+    let headers:HttpHeaders = new HttpHeaders();
+    headers = headers.set("Content-Type","application/json").set("X-Parse-Application-Id","dev").set("X-Parse-Master-Key","angulardev");
+
+    let options ={
+      headers:headers
+    };
+
+    this.http.delete(url,options).subscribe(data=>{
+      this.loadBooksData();
+    });
+  }
   ngOnInit() {
   }
 
