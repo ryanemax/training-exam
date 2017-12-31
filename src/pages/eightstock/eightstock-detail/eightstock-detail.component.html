@@ -27,8 +27,8 @@
   </mat-form-field>
 </div>
 <hr>
-<mat-card class="col-11">
-  <img mat-card-image class="col-12" src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=b456f3cc800a19d8df0e8c575293e9ee/a08b87d6277f9e2f7fe1b7751f30e924b999f3f3.jpg"
-    alt="股票分时图">
-</mat-card>
+
+<div #stockLineChart (window:resize)="loadStockLineChart()" class="col-12" style="height:400px;"></div>
+<div #stockVolChart (window:resize)="loadStockVolChart()" class="col-12" style="height:200px;"></div>
+
 <hr>
