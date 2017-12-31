@@ -20,21 +20,11 @@ interface ParseResponse {
 export class InvHomeComponent implements OnInit,AfterViewInit {
   items: Item[] = this.itemtServ.loadItemsData();
   displayedColumns = ['objectId','code','uom','description','count'];
-  //dataSource = new MatTableDataSource<Item>();
+
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private http:HttpClient,private itemtServ:ItemService,public dialog: MatDialog) {
 
-<<<<<<< HEAD
-    this.items = this.itemtServ.loadItemsData();
-
-   
-=======
-  let options:any ={
-    headers:headers
-  };
-  
->>>>>>> bdbd39da5c0c567ab6ae973e9dededea3dd898f2
   }
 
   ngOnInit() {
@@ -42,7 +32,7 @@ export class InvHomeComponent implements OnInit,AfterViewInit {
   }
   ngAfterViewInit() {
     this.items = this.itemtServ.loadItemsData();
-    //this.dataSource = this.itemtServ.dataSource;
+
     // this.dataSource.data = [
     //   {"objectId":"aaa","code":"aa","uom":"","description":"","count":0}
     // ];
