@@ -3,7 +3,7 @@ import { PercentPipe } from '@angular/common/src/pipes/number_pipe';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import "rxjs/operators/map";
-import {EightstockNewschatComponent} from '../eightstock-newschat/eightstock-newschat.component';
+import { EightstockNewschatComponent } from '../eightstock-newschat/eightstock-newschat.component';
 
 
 interface Stock {
@@ -56,7 +56,7 @@ export class EightstockHomeComponent implements OnInit {
   sortType: String;
   sortMode: number;
 
-  constructor(private http: Http,public dialog: MatDialog) {
+  constructor(private http: Http, public dialog: MatDialog) {
     this.initLoad();
     this.tabNo = 1;
     this.sortType = '';
@@ -140,10 +140,13 @@ export class EightstockHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(objectId): void {
+  openDialog(stockNews): void {
     let dialogRef = this.dialog.open(EightstockNewschatComponent, {
       width: '600px',
-      data: { newsId: objectId}
+      data: {
+        newsId: stockNews.objectId,
+        title: stockNews.title
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

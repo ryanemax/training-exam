@@ -54,7 +54,7 @@
   <mat-tab label="资讯">
     <br>
     <mat-card class="col-11" *ngFor="let stockNews of stockNewsList">
-      <table class="col-12 example-tooltip-host" matTooltip="点击评论" matTooltipPosition="before" (click)="openDialog(stockNews.objectId)">
+      <table class="col-12 example-tooltip-host" matTooltip="点击评论" matTooltipPosition="before" (click)="openDialog(stockNews)">
         <tr>
           <td class="col-3" colspan="1" rowspan="2">
             <img mat-card-image class="col-12" src={{stockNews.imagePath}} alt="{{stockNews.title}}">
