@@ -1,8 +1,12 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Inject } from '@angular/core';
 import { PercentPipe } from '@angular/common/src/pipes/number_pipe';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import "rxjs/operators/map";
 import { forEach } from '../../../../node_modules/_@angular_router@5.0.0@@angular/router/src/utils/collection';
+import { Title } from '../../../../node_modules/_@angular_platform-browser@5.0.0@@angular/platform-browser/src/browser/title';
+import {EightstockNewschatComponent} from '../eightstock-newschat/eightstock-newschat.component';
+
 
 interface Stock {
   objectId?: number,
@@ -25,6 +29,13 @@ interface MarketIndex {
   percent: number
   total: number
 }
+interface StockNews {
+  objectId?: number,
+  title: string,
+  content: string,
+  imagePath: string,
+  chatNum: number,
+}
 let url = "http://47.92.145.25:80/parse";
 let headers: Headers = new Headers();
 headers.append("Content-Type", "application/json");
@@ -40,13 +51,14 @@ let options = { headers: headers };
 export class EightstockHomeComponent implements OnInit {
 
   stocks: Array<Stock>;
-  selectedStocks: Array<Stock>=[];
+  selectedStocks: Array<Stock> = [];
   marketIndexes: Array<MarketIndex>;
+  stockNewsList: Array<StockNews>;
   tabNo: number;
   sortType: String;
   sortMode: number;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,public dialog: MatDialog) {
     this.initLoad();
     this.tabNo = 1;
     this.sortType = '';
@@ -60,6 +72,7 @@ export class EightstockHomeComponent implements OnInit {
       { id: 3, name: "创业板指", price: 1748, percent: -1.09, total: 567.6 }
     ];
     this.getStockList();
+    this.getStockNews();
   }
 
   getStockList() {
@@ -70,6 +83,14 @@ export class EightstockHomeComponent implements OnInit {
           this.selectedStocks.push(stock);
         }
       })
+    });
+  }
+
+  getStockNews() {
+    this.http.get(url + "/classes/EStockNews", options).subscribe(data => {
+      console.log(data.json().results);
+      this.stockNewsList = data.json().results;
+
     });
   }
 
@@ -133,4 +154,15 @@ export class EightstockHomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  openDialog(): void {
+    let dialogRef = this.dialog.open(EightstockNewschatComponent, {
+      width: '250px',
+      data: { name: 'aaaa'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
 }
