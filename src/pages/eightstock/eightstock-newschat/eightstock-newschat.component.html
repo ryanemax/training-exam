@@ -1,2 +1,24 @@
-sdsddfsfhds
-{{ppppp}}
+<div class="col-11">
+    <mat-card style="height:30px" class="col-12" *ngFor="let newsChat of newsChats">
+        <table class="col-12">
+            <tr>
+                <td class="col-11">{{newsChat.name}}:</td>
+                <td class="col-1" (click)="deleteChat(newsChat.objectId)">删除</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="col-12">{{newsChat.chat}}</td>
+            </tr>
+        </table>
+    </mat-card>
+    <br>
+    <mat-form-field class="col-12">
+        <input class="col-3" matInput placeholder="你的名字" style="color:#444444" [(ngModel)]="nChat.name">
+    </mat-form-field>
+    <mat-form-field class="col-12">
+        <textarea matInput placeholder="你的评论" style="color:#444444" [(ngModel)]="nChat.chat"></textarea>
+    </mat-form-field>
+    <div class="col-12">
+        <button mat-raised-button class="col-2" (click)="saveChat()">发表评论</button>
+        <button mat-raised-button class="col-2" (click)="onNoClick()">返回</button>
+    </div>
+</div>
