@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from '../../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
 
 @Component({
   selector: 'app-warehouse-goods-detail',

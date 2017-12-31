@@ -90,7 +90,7 @@ export class LmsStudentComponent implements OnInit {
   
   openDialog(student?): void {
     if(!student){
-      student = {studentNo: 0, name:"", classId:"", sex: ""};
+      student = {studentNo: '', name:"", classId:"", sex: ""};
     }
     let dialogRef = this.dialog.open(LmsStudentDialogComponent, {
       width: '400px',
