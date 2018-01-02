@@ -4,6 +4,18 @@
 </mat-form-field>
 
 <mat-form-field class="example-full-width">
-<input [(ngModel)]="employee.dept" matInput placeholder="Github" value="">
+    <input [(ngModel)]="employee.sex" matInput placeholder="sex" value="">
 </mat-form-field>
+
+<mat-form-field class="example-full-width">
+<input [(ngModel)]="employee.dept" matInput placeholder="dept" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+    <input type="number" [(ngModel)]="employee.sale" matInput placeholder="sale" value="">
+</mat-form-field> 
+
+<mat-form-field class="example-full-width">
+    <input [(ngModel)]="employee.joinin" matInput placeholder="joinin" value="">
+</mat-form-field> 
 <button (click)="save()" mat-raised-button>保存</button>
