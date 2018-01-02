@@ -66,7 +66,7 @@ export class EightstockHomeComponent implements OnInit {
   initLoad() {
     this.marketIndexes = [
       { id: 1, name: "上证指数", price: 3301, percent: 4.09, total: 1523.4 },
-      { id: 2, name: "深证成指", price: 7589, percent: 13.09, total: 3023.9 },
+      { id: 2, name: "深证成指", price: 7589, percent: 3.09, total: 3023.9 },
       { id: 3, name: "创业板指", price: 1748, percent: -1.09, total: 567.6 }
     ];
     this.getStockList();
