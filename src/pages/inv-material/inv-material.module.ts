@@ -10,11 +10,12 @@ import { MatTableModule} from '@angular/material/table';
 import { ItemService } from "./services/item-data";
 import { MatIconModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
-
+import {MatPaginatorModule} from '@angular/material/paginator'
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule } from '@angular/material/input';
 import {ItemDialogComponent} from './item-dialog/item-dialog';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   imports: [
@@ -24,6 +25,8 @@ import {ItemDialogComponent} from './item-dialog/item-dialog';
     MatTableModule,
     MatIconModule,
     MatDialogModule,
+    MatSortModule,
+    MatPaginatorModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,

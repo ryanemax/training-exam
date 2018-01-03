@@ -3,9 +3,7 @@ import { PercentPipe } from '@angular/common/src/pipes/number_pipe';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import "rxjs/operators/map";
-import { forEach } from '../../../../node_modules/_@angular_router@5.0.0@@angular/router/src/utils/collection';
-import { Title } from '../../../../node_modules/_@angular_platform-browser@5.0.0@@angular/platform-browser/src/browser/title';
-import {EightstockNewschatComponent} from '../eightstock-newschat/eightstock-newschat.component';
+import { EightstockNewschatComponent } from '../eightstock-newschat/eightstock-newschat.component';
 
 
 interface Stock {
@@ -58,7 +56,7 @@ export class EightstockHomeComponent implements OnInit {
   sortType: String;
   sortMode: number;
 
-  constructor(private http: Http,public dialog: MatDialog) {
+  constructor(private http: Http, public dialog: MatDialog) {
     this.initLoad();
     this.tabNo = 1;
     this.sortType = '';
@@ -68,7 +66,7 @@ export class EightstockHomeComponent implements OnInit {
   initLoad() {
     this.marketIndexes = [
       { id: 1, name: "上证指数", price: 3301, percent: 4.09, total: 1523.4 },
-      { id: 2, name: "深证成指", price: 7589, percent: 13.09, total: 3023.9 },
+      { id: 2, name: "深证成指", price: 7589, percent: 3.09, total: 3023.9 },
       { id: 3, name: "创业板指", price: 1748, percent: -1.09, total: 567.6 }
     ];
     this.getStockList();
@@ -142,10 +140,13 @@ export class EightstockHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(objectId): void {
+  openDialog(stockNews): void {
     let dialogRef = this.dialog.open(EightstockNewschatComponent, {
       width: '600px',
-      data: { newsId: objectId}
+      data: {
+        newsId: stockNews.objectId,
+        title: stockNews.title
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

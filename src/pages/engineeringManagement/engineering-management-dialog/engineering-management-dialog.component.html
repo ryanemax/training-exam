@@ -1,0 +1,29 @@
+<div>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.objectId" matInput placeholder="编号" disabled/>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.no" matInput placeholder="序号" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.address" matInput placeholder="施工地点" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.startDate" matInput placeholder="开始日" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.endDate" matInput placeholder="结束日" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.days" matInput placeholder="实施天数" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.personLiable" matInput placeholder="施工责任人" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="user.status" matInput placeholder="状态" />
+  </mat-form-field>
+</div>
+<div>
+  <button (click)="save()" mat-raised-button>确定</button>
+</div>

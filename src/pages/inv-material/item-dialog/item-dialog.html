@@ -12,4 +12,6 @@
 <mat-form-field class="example-full-width">
 <input [(ngModel)]="item.count" matInput placeholder="数量" value=""/>
 </mat-form-field>
-<button (click)="save()" mat-raised-button>保存</button>
+<div><button mat-raised-button (click)="save()">保存</button>
+    <button mat-raised-button (click)="onNoClick()">返回</button></div>
+

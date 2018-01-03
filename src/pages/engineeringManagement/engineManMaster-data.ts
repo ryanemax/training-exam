@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface EngineeringsMaster {
     check?: boolean,
+    objectId?: string,
     no: number,
     address: string,
     startDate: string,
@@ -31,11 +32,11 @@ export class EngineeringsMasterService {
         };
         this.http.get<ParseResponse>(url, options).subscribe(data => {
             this.engineerings = data['results'];
-            console.log(this.engineerings);
+            
         });
     }
 
-    addData() {
+    addData(data) {
         let url = "http://47.92.145.25:80/parse" + "/classes/EngineeringManagementMaster";
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.set("Content-Type", "application/json").set("X-Parse-Application-Id", "dev").set("X-Parse-Master-Key", "angulardev");
@@ -57,11 +58,13 @@ export class EngineeringsMasterService {
     }
 
     delData() {
+        console.log('del star');
+        console.log(this.engineerings);
+        let deleteList = this.engineerings.filter(a => a.check);
+        deleteList.forEach(element => {
+            console.log(element.objectId);       
 
-        this.engineerings = this.engineerings.filter(a => a.check);
-        this.engineerings.forEach(element => {
-
-            let url = "http://47.92.145.25:80/parse" + "/classes/EngineeringManagementMaster" + "/" + element.no;
+            let url = "http://47.92.145.25:80/parse" + "/classes/EngineeringManagementMaster" + "/" + element.objectId;
             let headers: HttpHeaders = new HttpHeaders();
             headers = headers.set("Content-Type", "application/json").set("X-Parse-Application-Id", "dev").set("X-Parse-Master-Key", "angulardev");
 

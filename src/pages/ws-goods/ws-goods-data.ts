@@ -19,6 +19,9 @@ interface ParseResponse {
 @Injectable()
 export class WsGoodsService{
     goodsList:any[];
+    private goodsNmList:Array<String>;
+    private goodsCntList:Array<String>;
+    public goodsPieList:Array<any>;
     constructor(private http:HttpClient){
     }
 
@@ -36,15 +39,34 @@ export class WsGoodsService{
     let options:any ={
         headers:headers
       };
+      this.goodsNmList = [];
+      this.goodsCntList = [];
+      this.goodsPieList = [];
       return this.http.get<ParseResponse>(url,options).subscribe(data=>{
         this.goodsList = data['results'];
-        console.log(this.goodsList);
+        this.goodsList.forEach(goods=>{
+          this.goodsNmList.push(goods["goodsNm"]);
+          this.goodsCntList.push(String(goods["wsCnt"]));
+          this.goodsPieList.push({value:goods["wsCnt"], name:goods["goodsNm"]})
+        });
+     //   console.log(this.goodsList);
       });
+  }
+
+  getGoodsNmList():Array<any>{
+  //  console.log(this.goodsNmList);
+     return this.goodsNmList;
+  }
+
+  getGoodsCntList():Array<any>{
+  //  console.log(this.goodsCntList);
+     return this.goodsCntList;
   }
 
   addNewGoods(goods) {
     if(goods["goodsNo"]===""||goods["goodsNm"]===""){
       alert("请输入正确的商品信息");
+      return;
     }
 
     let url = "http://47.92.145.25:80/parse"+"/classes/MyGoods";
@@ -54,12 +76,13 @@ export class WsGoodsService{
     let options:any ={
       headers:headers
     };
+    goods["wsCnt"] = Number(goods["wsCnt"]);
 
     if(!goods.objectId){
     // 新增商品
-    this.http.post(url,goods,options).subscribe(data=>{
-      this.loadGoodsList();
-    });
+      this.http.post(url,goods,options).subscribe(data=>{
+        this.loadGoodsList();
+      });
   }else{
     // 修改商品
     url = "http://47.92.145.25:80/parse"+"/classes/MyGoods/"+goods.objectId;

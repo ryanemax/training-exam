@@ -18,6 +18,13 @@ ul{
   flex-direction: row;
   flex-wrap: wrap;
 }
+.control_line{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  
+}
 li {
   position: relative;
   padding: 10px;
@@ -69,6 +76,7 @@ li:hover {
 
 .mat-table {
   overflow: auto;
+  max-height: 500px;
 }
 
 .mat-header-cell.mat-sort-header-sorted {

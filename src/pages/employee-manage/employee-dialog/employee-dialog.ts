@@ -6,8 +6,8 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
     templateUrl: 'app-employee-dialog.html',
 })
 export class EmployeeDialogComponent {
-
-    employee={};
+     employee={name:"",sale:""};
+     
 constructor(
     public dialogRef: MatDialogRef<EmployeeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {

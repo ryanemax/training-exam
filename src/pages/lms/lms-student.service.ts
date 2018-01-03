@@ -21,8 +21,16 @@ export interface LmsStudent {
   sex: string;
 }
 
+export interface LmsScore {
+  objectId: string,
+  studentId: number;
+  score: string;
+}
+
 const REST_API_LMS_STUDENT_URL: string = 'http://47.92.145.25:80/parse/classes/LmsStudent';
 const REST_API_LMS_CLASS_URL: string = 'http://47.92.145.25:80/parse/classes/LmsClass';
+const REST_API_LMS_SCORE_URL: string = 'http://47.92.145.25:80/parse/classes/LmsScore';
+
 const REST_API_HEADERS: HttpHeaders = new HttpHeaders({
   "Content-Type": "application/json",
   "X-Parse-Application-Id": "dev",
@@ -39,6 +47,13 @@ export class LmsStudentService {
       headers: REST_API_HEADERS
     };
     return this.http.get(REST_API_LMS_CLASS_URL, options);
+  }
+
+  getScore(): Observable<Object> {
+    let options = {
+      headers: REST_API_HEADERS
+    };
+    return this.http.get(REST_API_LMS_SCORE_URL, options);
   }
 
   getStudents(param): Observable<Object> {

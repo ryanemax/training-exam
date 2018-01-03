@@ -18,7 +18,7 @@ import { MatMenuModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
-
+import { MatTabsModule} from '@angular/material/tabs';
 import {WsGoodsDialogComponent} from './ws-goods-dialog/ws-goods-dialog';
 
 import { WsGoodsService } from "./ws-goods-data";
@@ -28,7 +28,7 @@ import { WsGoodsService } from "./ws-goods-data";
     MatFormFieldModule,MatInputModule,
     FormsModule,MatIconModule,MatMenuModule,
     MatSelectModule,MatOptionModule,MatCardModule,
-    MatButtonModule,MatDialogModule,
+    MatButtonModule,MatDialogModule,MatTabsModule,
     RouterModule.forChild([
       { path: '', component: WsGoodsListComponent, pathMatch: 'full' },
       { path: ':id', component: WsGoodsDialogComponent, pathMatch: 'full' }

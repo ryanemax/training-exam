@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 //import { Observable } from '../../../node_modules/_rxjs@5.5.2@rxjs/Observable';
-
+// import {Parse} from "../../cloud/cloud";
+// import { Http } from '@angular/http';
 interface Flower {
   id?:number,
   name:string,
@@ -21,12 +22,12 @@ export class FlowerService{
     flowers:any[];
     constructor(private http:HttpClient){
     }
-    loadFlowersData(){
-      // this.flowers = [
-      //   {id:1,name:"百合",language:"百年好合",price:"800"},
-      //   {id:2,name:"玫瑰",language:"爱情",price:"2800"},
-      //   {id:3,name:"郁金香",language:"荣誉的皇冠",price:"3000"}
-      // ];
+   loadFlowersData(){
+  //     // this.flowers = [
+  //     //   {id:1,name:"百合",language:"百年好合",price:"800"},
+  //     //   {id:2,name:"玫瑰",language:"爱情",price:"2800"},
+  //     //   {id:3,name:"郁金香",language:"荣誉的皇冠",price:"3000"}
+  //     // ];
 
     let url = "http://47.92.145.25:80/parse"+"/classes/Flower";
     let headers:HttpHeaders = new HttpHeaders();
@@ -40,6 +41,17 @@ export class FlowerService{
       console.log(this.flowers);
     });
   }
+  // loadFlowersData() {
+  //   let query = new Parse.Query("Flower",this.httpclient);
+    
+  //   query.find().subscribe(data=>{
+  //     this.flowers = data;
+  //   });
+  // }
+
+
+
+
     addNewFlower(flower) {
       if(flower["name"]===""||flower["language"]===""||flower["price"]===""){
         alert("请输入正确的用户信息");

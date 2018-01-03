@@ -13,7 +13,7 @@
       </nav>
       <div class="tabMenu">
 
-          <div class="mat-table-controls">
+          <!-- <div class="mat-table-controls">
               <mat-select placeholder="搜索范围" [(ngModel)]="searchType" name="searchType">
                   <mat-option value="name">名称</mat-option>
                   <mat-option value="classification">分类</mat-option>
@@ -24,11 +24,12 @@
               <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
               <button style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
 
-          </div>
+          </div> -->
 
         
-          <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
-              新增员工</button>
+          <!-- <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
+              新增员工</button> -->
+          <button mat-button color="primary" class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>新增员工</button>
           <button class="sortBtn" mat-raised-button [matMenuTriggerFor]="menu">
                           <mat-icon>more_vert</mat-icon>排序方式
                         </button>
@@ -67,9 +68,9 @@
                   <td class="col-1">{{employee.sale}}</td>
                   <td class="col-1">{{employee.joinin}}</td>
                   <td>
-                        <mat-icon title="编辑" (click)="openDialog(employee)">修改</mat-icon>
+                      <mat-icon title="编辑" (click)="openDialog(employee)">update</mat-icon>
                       <mat-icon title="删除" (click)="employeeServ.deleteEmployeeByID(employee.objectId)">delete</mat-icon>
-                      <mat-icon title="查看" routerLink="/employee/{{employee.objectId}}">menu</mat-icon>
+                      <mat-icon title="查看" routerLink="/employee-manage/{{employee.objectId}}">menu</mat-icon>
                   </td>
               </tr>
           </tbody>

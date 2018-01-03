@@ -23,10 +23,14 @@ const routes: Routes = [
     path: 'bookmanage',
     loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
-  // {
-  //   path: 'book',
-  //   loadChildren: '../pages/book/book.module#BookModule',
-  // },
+  {
+    path: 'employee-manage',
+    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
+  },
+  {
+    path: 'book',
+    loadChildren: '../pages/book/book.module#BookModule',
+  },
   {
     path: 'lipstick',
     loadChildren: '../pages/lipstick/lipstick.module#LipstickModule',
@@ -99,6 +103,10 @@ const routes: Routes = [
 },
    { path: 'clothes1',
     loadChildren: '../pages/clothes1/clothes1.module#Clothes1Module',
+  },
+  {
+    path: 'coffee-star1',
+    loadChildren: '../pages/coffee-star1/coffee-star1.module#CoffeeStar1Module',
   }
 
 ];

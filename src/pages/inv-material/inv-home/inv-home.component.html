@@ -1,46 +1,67 @@
 <h1>物料清单列表</h1>
-<button mat-raised-button color="primary" class="inv-button" (click)= "openDialog()" >新增物料</button>
+<!-- <button mat-raised-button color="primary" class="inv-button" (click)= "openDialog()" >新增物料</button> -->
+<!-- <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('asc')">正序</button>
+<button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('desc')" >倒序</button>
+<button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('random')">随机</button> -->
 <mat-tab-group class="col-12">
     <mat-tab label="物料表格" >
-        
-           <div>
-               <mat-table [dataSource]="dataSource" matSort>
-                 <ng-container matColumnDef="objectId">
-                   <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                   <mat-cell *matCellDef="let item"> {{item.objectId}} </mat-cell>
-                 </ng-container>
-                 <ng-container matColumnDef="code" >
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> 编码</mat-header-cell>
-                    <mat-cell *matCellDef="let item"> {{item.code}} </mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="uom">
-                      <mat-header-cell *matHeaderCellDef> 单位</mat-header-cell>
-                      <mat-cell *matCellDef="let item"> {{item.uom}} </mat-cell>
-                    </ng-container>
-                    <ng-container matColumnDef="description">
-                        <mat-header-cell *matHeaderCellDef>描述</mat-header-cell>
-                        <mat-cell *matCellDef="let item"> {{item.description}} </mat-cell>
-                      </ng-container>
-                      <ng-container matColumnDef="count" mat-sort-header>
-                          <mat-header-cell *matHeaderCellDef>库存</mat-header-cell>
-                          <mat-cell *matCellDef="let item"> {{item.count}} </mat-cell>
-                        </ng-container>
-                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-               </mat-table>
-             </div>
+      <div class="example-container mat-elevation-z8">
+          <div class="example-header control_line" >
+              <div><mat-form-field>
+                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="请输入搜索文字">
+                </mat-form-field></div>
+              <div><button mat-raised-button  class="inv-button" (click)= "openDialog()" ><mat-icon>add</mat-icon>新增物料</button></div>    
+            </div>
+        <mat-table #table [dataSource]="dataSource" matSort matSortActive="code" matSortDirection="asc">
+          <!-- Position Column -->
+          <ng-container matColumnDef="objectId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.objectId}} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 编码 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="uom">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 单位 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.uom}} </mat-cell>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 描述 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="count">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 库存量 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.count}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="operation">
+              <mat-header-cell *matHeaderCellDef style="text-align: center;"> 操作 </mat-header-cell>
+              <mat-cell *matCellDef="let element" style="text-align: center;">       
+                <span><mat-icon title="删除" (click)="deleteItemByID(element.objectId)">delete</mat-icon></span>              
+                <span><mat-icon title="编辑" (click)="openDialog(element)">edit</mat-icon></span>
+              </mat-cell>
+            </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator #paginator
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+      </div>
          </mat-tab>
     <mat-tab label="物料卡片">
-      <div></div>
-        <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('asc')">正序</button>
-        <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('desc')" >倒序</button>
-        <button mat-raised-button color="primary" class="inv-button" (click)="itemtServ.sortItems('random')">随机</button>
-        
         
         <ul>
-            <li  *ngFor="let item of itemtServ.items" >
+            <li  *ngFor="let item of items" >
           <div class="tar" >
-              <span><mat-icon title="删除" (click)="itemtServ.deleteItemByID(item.objectId)">delete</mat-icon></span>              
+              <span><mat-icon title="删除" (click)="deleteItemByID(item.objectId)">delete</mat-icon></span>              
               <span><mat-icon title="编辑" (click)="openDialog(item)">edit</mat-icon></span>
           </div>
             <div class="item-list-id">ID：{{item.objectId}}</div>
@@ -52,7 +73,10 @@
             </li>
           </ul>
     </mat-tab>
-    
+    <mat-tab label="库存分析">
+      <div #itemChart (window:resize)="loadItemChart()" style="width: 600px;height:400px;"></div>
+      
+    </mat-tab>
   </mat-tab-group>
 
 
