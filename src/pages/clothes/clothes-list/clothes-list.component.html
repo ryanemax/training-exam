@@ -2,26 +2,14 @@
   <h1>服装管理</h1>
   <div class="clothesContent">
     <nav mat-tab-nav-bar>
-        <a mat-tab-link active="true">
-                服装列表
-                </a>
-        <a mat-tab-link routerLink="analysis">
-               aa
-             </a>
+        
+       
     </nav>
      
       <div class="tabMenu">
 
           <div class="mat-table-controls">
-              <mat-select placeholder="搜索范围" [(ngModel)]="searchType" name="searchType">
-                  <mat-option value="name">名称</mat-option>
-                  <mat-option value="classification">分类</mat-option>
-              </mat-select>
-              <mat-input-container>
-                  <input [(ngModel)]="searchText" matInput placeholder="请输入要搜索的内容">
-              </mat-input-container>
-              <button style="float:right;" color="light" mat-mini-fab (click)="refresh()"><mat-icon>sync</mat-icon></button>
-              <button style="float:right;" color="light" mat-mini-fab (click)="search(searchType,searchText)"><mat-icon>search</mat-icon></button>
+             
 
           </div>
 
@@ -44,30 +32,42 @@
           </mat-menu>
       </div>
 
-      <table cellspacing="0" cellpadding="0">
-          <thead>
-              <tr>
-                  <th>姓名</th>
-                  <th>定位</th>
-                  <th>品牌</th>
-                  <th>生产日期</th>
-                  
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let cloth of clothesServ.clothes">
-                  <td>{{cloth.objectId}}</td>
-                  <td>{{cloth.name}}</td>
-                  <td>{{cloth.brand}}</td>
-                  <td>{{cloth.birthday}}</td>
-                  <td>
-                     <mat-icon title="删除" (click)="clothesServ.deleteClothesByID(cloth.objectId)">delete</mat-icon>
-                     <mat-icon title="编辑" (click)="openDialog(cloth)">修改</mat-icon>
-                   
-                  </td>
-              </tr>
-          </tbody>
-      </table>
+  
 
-  </div>
+  <button #chartButton (click)="loadNewChartData()">Show New Data</button>
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div #clothesChart (window:resize)="loadClothesChart()" style="width: 600px;height:400px;"></div>
+<table cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+               <th>ID</th>
+                <th>定位</th>
+                <th>品牌</th>
+                <th>生产日期</th>
+                <th>操作</th>
+                <th>Exam1</th>
+                <th>Exam2</th>
+                <th>Exam3</th>
+                <th>Exam4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cloth of clothesServ.clothes">
+                <td>{{cloth.objectId}}</td>
+                <td>{{cloth.name}}</td>
+                <td>{{cloth.brand}}</td>
+                <td>{{cloth.birthday}}</td>
+                <td>{{student.exam1}}</td>
+                <td>{{student.exam2}}</td>
+                <td>{{student.exam3}}</td>
+                <td>{{student.exam4}}</td>
+                <td>
+                   <mat-icon title="删除" (click)="clothesServ.deleteClothesByID(cloth.objectId)">delete</mat-icon>
+                   <mat-icon title="编辑" (click)="openDialog(cloth)">update</mat-icon>
+                   <mat-icon title="查看" routerLink="/clothes/{{cloth.objectId}}">menu</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

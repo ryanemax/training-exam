@@ -44,6 +44,7 @@ export class EmployeeService{
         if(employee["name"]===""||employee["dept"]===""){
           alert("请输入正确的用户信息");
         }
+        employee['sale']= Number(employee['sale']);
 
         let url = "http://47.92.145.25:80/parse"+"/classes/Employee12";
         let headers:HttpHeaders = new HttpHeaders();
@@ -59,6 +60,7 @@ export class EmployeeService{
           this.loadEmployeesData();
         });
       }else{
+        console.log(employee);
         // 修改用户
         url = "http://47.92.145.25:80/parse"+"/classes/Employee12/"+employee.objectId;
         delete employee["objectId"];

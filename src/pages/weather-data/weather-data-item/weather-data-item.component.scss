@@ -40,6 +40,14 @@
   .llc-weather-temperature,
   .llc-weather-humidity,
   .llc-weather-pm,
-  .llc-weather-comfort {
+  .llc-weather-status {
     margin-bottom: 15px;
+  }
+
+  .example-card {
+    width: 300px;
+  }
+  .example-header-image {
+    background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514713682193&di=8ef99e36ffbffd2fb633278ebe85d0fe&imgtype=0&src=http%3A%2F%2Fpic31.photophoto.cn%2F20140426%2F0020033040100979_b.jpg');
+    background-size: initial;
   }

@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: '../pages/bookmanage/bookmanage.module#BookmanageModule',
   },
   {
+    path: 'employee-manage',
+    loadChildren: '../pages/employee-manage/employee-manage.module#EmployeeManageModule',
+  },
+  {
     path: 'book',
     loadChildren: '../pages/book/book.module#BookModule',
   },

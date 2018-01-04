@@ -1,6 +1,7 @@
 <h1 class="hone">电影票系统[{{cinemaServ.cinemas?cinemaServ.cinemas.length:0}}]：</h1>
 <div >
-    <button class="button-style" (click)="cinemaServ.addNewCinema()">增加</button>
+    <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
+            新增用户</button>
     <button class="button-style" appActButton (click)="cinemaServ.sortcinemas('asc')">正序</button>
     <button class="button-style" (click)="cinemaServ.sortcinemas('desc')" >倒序</button>
     <button class="button-style" (click)="cinemaServ.sortcinemas('random')">随机</button>

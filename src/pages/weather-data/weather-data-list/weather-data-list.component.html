@@ -1,17 +1,39 @@
 <h1>一周天气信息预报：</h1>
-<button appWeatherButton (click)="sortUsers('asc')">日期排序</button>
-<button appWeatherButton (click)="sortUsers('desc')" >温度排序</button>
-<button appWeatherButton (click)="sortUsers('random')">正常</button>
-<button appWeatherButton (click)="addNewUser()">下周天气预报</button>
-<ul>
-    <div id="sytle1">
-    <li *ngFor="let weatherInfo of weatherDataList">      
-        <span (click)="deleteByDate(weatherInfo.dateInfo)">
-          <div appWeatherButton id="sytle2" style="float:right;">[删除日期]</div></span>
-          日期:{{weatherInfo.dateInfo}}，星期：{{weatherInfo.weekInfo}}，温度：{{weatherInfo.temperature | weather}}，湿度：{{weatherInfo.humidity}}
-    
-    </li>
-    </div>
+<div id="btn1-style">
+  <button appWeatherButton (click)="weatherDataServ.sortUsers('date')">日期排序</button>
+  <button appWeatherButton (click)="weatherDataServ.sortUsers('temperature')" >温度排序</button>
+</div>
+<div id="btn2-style">
+  <button appWeatherButton (click)="weatherDataServ.sortUsers('temperature')">上周天气预报</button>
+  <button appWeatherButton (click)="weatherDataServ.sortUsers('temperature')">下周天气预报</button>
+  <button appWeatherButton (click)="openDialog()">新增天气预报</button>
+</div>
+<table style="width:100%;background-color: #f9f5f58f;margin-bottom: 10px;">
+    <thead>
+       <tr>
+            <th>日期</th>
+            <th>星期</th>
+            <th>温度</th>
+            <th>湿度</th>
+            <th>PM值</th>
+            <th>天气情况</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr *ngFor="let weatherInfo of weatherDataServ.weatherDataList">
+                <td>{{weatherInfo.dateInfo}}</td>
+                <td>{{weatherInfo.weekInfo}}</td>
+                <td>{{weatherInfo.temperature | weather}}</td>
+                <td>{{weatherInfo.humidity}}</td>
+                <td>{{weatherInfo.pm}}</td>
+                <td>{{weatherInfo.status}}</td>
+                <td>
+                    <mat-icon title="详细" routerLink="/weather-data/{{weatherInfo.objectId}}">menu</mat-icon>
+                    <mat-icon title="修改" (click)="openDialog(weatherInfo)">favorite</mat-icon>
+                    <button mat-raised-button color="primary" (click)="weatherDataServ.deleteByObjId(weatherInfo.objectId)">删除</button>
+                </td>
+            </tr>
+    </tbody>
 
-    
-</ul>
+</table>

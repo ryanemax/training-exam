@@ -1,10 +1,27 @@
-<h1>员工列表</h1>
-<button  class="llc-btn" (click)="sortEmployees('asc')">正序</button>
-<button  class="llc-btn" (click)="sortEmployees('desc')" >倒序</button>
-<button  class="llc-btn" (click)="sortEmployees('random')">随机</button>
-<button  class="llc-btn" (click)="addNewEmployee()">新增员工</button>
-<ul class="llc-employee-list">
-  
-  <!-- <app-employee-manage-home  [employee]="employee" *ngFor="let employee of employees"></app-employee-manage-home> -->
-</ul>
+<h1>员工管理</h1>
+<!-- [{{EmployeeServ.employees?EmployeeServ.employees.length:0}}] -->
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{employee.name}}</mat-card-title>
+    <!-- <mat-card-title>{{employee.name}}</mat-card-title> -->
+    <mat-card-subtitle>dept: {{employee.dept}}</mat-card-subtitle>
+  </mat-card-header>
+    <P>员工详细信息：</P>
+    <p>
+      员工姓名：{{employee.name}}
+    </p>
+    <p>
+      员工部门：{{employee.dept}}
+    </p>
+  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content>
+    <p>
+     员工工资：{{employee.sale}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button routerLink="/employee-manage">BACK</button>
+  </mat-card-actions>
+</mat-card>
 
