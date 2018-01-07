@@ -1,14 +1,15 @@
 <h1 class="hone">电影票系统[{{cinemaServ.cinemas?cinemaServ.cinemas.length:0}}]：</h1>
-<div >
-    <button class="addBtn" mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>
-            新增用户</button>
+<div>
+    <button class="addBtn" mat-raised-button (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+        新增用户</button>
     <button class="button-style" appActButton (click)="cinemaServ.sortcinemas('asc')">正序</button>
-    <button class="button-style" (click)="cinemaServ.sortcinemas('desc')" >倒序</button>
+    <button class="button-style" (click)="cinemaServ.sortcinemas('desc')">倒序</button>
     <button class="button-style" (click)="cinemaServ.sortcinemas('random')">随机</button>
 </div>
 <hr>
-<div class="CinemaContent">
-    <button (click)="showChart()">Show Charts</button>
+<div class="CinemaContent ">
+    <button  (click)="showChart()">Show Charts</button>
     <div #cinemaChart style="width: 600px;height:400px;"></div>
     <table cellspacing="0" cellpadding="0">
         <thead>
@@ -17,19 +18,25 @@
                 <!-- <th>宝贝图片</th> -->
                 <th>电影名</th>
                 <th>票数</th>
-                <th>操作</th>
+                <th style="width:35px">操作</th>
+                <th style="width:35px">操作</th>
+                <th style="width:35px">操作</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let cinema of cinemaServ.cinemas">
-                    <td>{{cinema.objectId}}</td>
-                    <td>{{cinema.name}}</td>
-                    <td>{{cinema.counts}}</td>
-                    <td>
-                    <mat-icon title="编辑" (click)="openDialog(cinema)">修改</mat-icon>
+                <td>{{cinema.objectId}}</td>
+                <td>{{cinema.name}}</td>
+                <td>{{cinema.counts}}</td>
+                <td>
+                    <mat-icon title="编辑" (click)="openDialog(cinema)">update</mat-icon>
+                </td>
+                <td>
                     <mat-icon title="查看" routerLink="/cinematicket/{{cinema.objectId}}">menu</mat-icon>
+                </td>
+                <td>
                     <mat-icon title="删除" (click)="cinemaServ.deleteCinemaId(cinema.objectId)">delete</mat-icon>
-                    </td>
+                </td>
             </tr>
         </tbody>
     </table>

@@ -46,6 +46,9 @@ export class CinematicketHomeComponent implements AfterViewInit {
         } else {
           this.cinemaServ.updateCinema(result);
         }
+        setTimeout(() => {
+          this.showChart();
+         }, 300);
       }
      
     });
@@ -91,7 +94,9 @@ export class CinematicketHomeComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     this.cinemaServ.loadCinemaData()
-     // this.showChart();
+     setTimeout(() => {
+      this.showChart();
+     }, 300);
   }
 
 }
