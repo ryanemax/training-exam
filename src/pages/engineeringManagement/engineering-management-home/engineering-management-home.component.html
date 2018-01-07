@@ -1,47 +1,53 @@
 <p>
   工程管理系统
 </p>
-
-<mat-form-field>
-  <input (dateChange)="setDate($event)" matInput [matDatepicker]="picker" placeholder="Choose a date">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-
 <div>
-  <button mat-raised-button (click)="engineeringsMasterService.addData()">追加</button>
-  <button mat-raised-button (click)="engineeringsMasterService.delData()">删除</button>
+  <mat-form-field>
+    <input (dateChange)="setDate($event)" matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div>
+  <button class="updateBtn" mat-raised-button (click)="openDialog('create')">
+    <mat-icon>add</mat-icon>
+    追加
+  </button>
+  <button class="updateBtn" mat-raised-button (click)="engineeringsMasterService.delData()">
+    <mat-icon>delete</mat-icon>
+    删除
+  </button>
 </div>
 
 <div id="div-1" class="div-fa" style="margin-top:15px">
   <div id="div-2">
-    <tr>
-      <td>
-        <span class="itemStyle">选择</span>
+    <tr style="width:1000px">
+      <td style="width:3%;">
+        <span>选择</span>
+      </td>
+      <td style="width:6%;text-align: center">
+        <span>序号</span>
+      </td>
+      <td style="width:15%;text-align: center">
+        <span>施工地点</span>
+      </td>
+      <td style="width:15%;text-align: center">
+        <span>开始日</span>
+      </td>
+      <td style="width:12%;text-align: center">
+        <span>结束日</span>
+      </td>
+      <td style="width:10%;text-align: center">
+        <span>实施天数</span>
+      </td>
+      <td style="width:10%;text-align: center">
+        <span>施工责任人</span>
+      </td>
+      <td style="width:8%;text-align: center">
+        <span>状态</span>
       </td>
       <td>
-        <span class="itemStyle">序号</span>
-      </td>
-      <td>
-        <span class="itemStyle">施工地点</span>
-      </td>
-      <td>
-        <span class="itemStyle">开始日</span>
-      </td>
-      <td>
-        <span class="itemStyle">结束日</span>
-      </td>
-      <td>
-        <span class="itemStyle">实施天数</span>
-      </td>
-      <td>
-        <span class="itemStyle">施工责任人</span>
-      </td>
-      <td>
-        <span class="itemStyle">状态</span>
-      </td>
-      <td>
-        <span class="itemStyle">详细</span>
+        <span style="margin-left: 20%">详细</span>
       </td>
     </tr>
   </div>
@@ -66,7 +72,7 @@
         <span class="itemStyle">{{item.endDate}}</span>
       </td>
       <td>
-        <span class="itemStyle">{{item.endDate}}-{{item.startDate}}</span>
+        <span class="itemStyle">{{item.endDate-item.startDate+1}}</span>
       </td>
       <td>
         <span class="itemStyle">{{item.personLiable}}</span>
@@ -75,7 +81,7 @@
         <span class="itemStyle">{{item.status}}</span>
       </td>
       <td>
-        <button class="updateBtn" mat-raised-button (click)="openDialog(item)">
+        <button class="updateBtn" mat-raised-button (click)="openDialog('read',item)">
           <mat-icon>update</mat-icon>
           详细
         </button>

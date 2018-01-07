@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { randomBytes } from 'crypto';
 
 interface EngineeringsMaster {
     check?: boolean,
@@ -44,7 +45,9 @@ export class EngineeringsMasterService {
         let options: any = {
             headers: headers
         };
+        
         let engineerings: EngineeringsMaster = {
+            
             no: 5,
             address: '大连市中山区Z',
             startDate: '20171230',
