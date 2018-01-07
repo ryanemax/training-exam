@@ -1,4 +1,5 @@
 <h1>一周天气信息预报：</h1>
+<div #weatherDataChart style="width: 800px;height:400px;"></div>
 <div id="btn1-style">
   <button appWeatherButton (click)="weatherDataServ.sortWeatherData('date')">日期排序</button>
   <button appWeatherButton (click)="weatherDataServ.sortWeatherData('temperature')">温度排序</button>
@@ -37,4 +38,5 @@
     </tbody>
 
 </table>
+
 </div>
