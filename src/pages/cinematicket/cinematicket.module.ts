@@ -11,8 +11,8 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatOptionModule } from '@angular/material';
-
-
+import { CinematicketDialogComponent } from './cinematicket-dialog/cinematicket-dialog.component'
+import { MatDialogModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
@@ -20,8 +20,8 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule,
-    MatIconModule,MatMenuModule,MatCardModule,MatButtonModule,FormsModule,
+    CommonModule,MatFormFieldModule,MatDialogModule,
+    MatIconModule,MatMenuModule,MatCardModule,MatButtonModule,FormsModule,MatInputModule,MatSelectModule,MatOptionModule,
     RouterModule.forChild([
       {path: '', component: CinematicketHomeComponent, pathMatch: 'full'},
       {path: ':objectId', component: CinematicketItemComponent, pathMatch: 'full'},
@@ -32,8 +32,10 @@ import { FormsModule } from '@angular/forms';
     CinematicketItemComponent,
     ActButtonDirestive,
     ToKPipe,
+    CinematicketDialogComponent
 
   ],
-  providers:[CinemaService]
+  providers:[CinemaService],
+  entryComponents:[CinematicketDialogComponent]
 })
 export class CinematicketModule { }

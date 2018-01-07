@@ -7,15 +7,9 @@
     <button class="button-style" (click)="cinemaServ.sortcinemas('random')">随机</button>
 </div>
 <hr>
-<div class="studentContent">
-<!-- <div class="stype1">
-    <li *ngFor="let cinema of cinemaServ.cinemas">  
-        <span (click)="cinemaServ.deleteCinemaByName(cinema.objectId)">    
-        <div class="shanchu">[删除]</div>
-      </span>
-         ID:{{cinema.objectId}}  电影名称：{{cinema.name}}  票数：{{cinema.counts |tok}}
-    </li>
-    </div> -->
+<div class="CinemaContent">
+    <button (click)="showChart()">Show Charts</button>
+    <div #cinemaChart style="width: 600px;height:400px;"></div>
     <table cellspacing="0" cellpadding="0">
         <thead>
             <tr>
@@ -31,8 +25,11 @@
                     <td>{{cinema.objectId}}</td>
                     <td>{{cinema.name}}</td>
                     <td>{{cinema.counts}}</td>
+                    <td>
+                    <mat-icon title="编辑" (click)="openDialog(cinema)">修改</mat-icon>
                     <mat-icon title="查看" routerLink="/cinematicket/{{cinema.objectId}}">menu</mat-icon>
                     <mat-icon title="删除" (click)="cinemaServ.deleteCinemaId(cinema.objectId)">delete</mat-icon>
+                    </td>
             </tr>
         </tbody>
     </table>

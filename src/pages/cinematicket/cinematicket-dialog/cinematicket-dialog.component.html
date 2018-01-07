@@ -1,0 +1,9 @@
+<mat-form-field class="example-full-width">
+  <input [(ngModel)]="cinema.name" matInput placeholder="电影名称" value="">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <input type="number" [(ngModel)]="cinema.counts" matInput placeholder="cinema" value="">
+</mat-form-field>
+
+<button (click)="save()" mat-raised-button>保存</button>
