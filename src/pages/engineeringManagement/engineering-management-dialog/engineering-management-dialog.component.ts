@@ -16,10 +16,15 @@ export class EngineeringManagementDialogComponent {
     });
   }
   onNoClick(): void {
-    this.dialogRef.close();
-  }
-  save() {
+    this.user = {};
     this.dialogRef.close(this.user);
   }
+  save() {
 
+    if (this.data.flg == 'read') {
+      this.onNoClick();
+    } else {
+      this.dialogRef.close(this.user);
+    }
+  }
 }

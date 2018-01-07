@@ -16,7 +16,8 @@ interface EngineeringsMaster {
   startDate: string,
   endDate: string,
   personLiable: string,
-  status: string
+  status: string,
+  flg?: string
 }
 @Component({
   selector: 'app-engineering-management-home',
@@ -28,23 +29,28 @@ export class EngineeringManagementHomeComponent {
   constructor(private http: HttpClient, private engineeringsMasterService: EngineeringsMasterService, public dialog: MatDialog) {
     this.engineeringsMasterService.loadUsersData();
   }
-  setDate(ev){
+  setDate(ev) {
     console.log(ev);
     let date = ev.value;
   }
-  openDialog(user?): void {
-    if (!user) {
-      user = { name: "", github: "" };
+  openDialog(flg: string, user?): void {
+    if (flg == 'create') {
+      user = {};
     }
+    user.flg = flg;
+    console.log(flg);
     let dialogRef = this.dialog.open(EngineeringManagementDialogComponent, {
       width: '500px',
       height: '500px',
-      data: user,
+      data: user
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.engineeringsMasterService.addData(result);
+      if (result == '') {
+        this.engineeringsMasterService.addData(result);
+      } else {
+        this.engineeringsMasterService.loadUsersData();
+      }
     });
   }
 
