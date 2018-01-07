@@ -35,7 +35,7 @@ interface WeatherData{
         });
     }
 
-    sortUsers(type){
+    sortWeatherData(type){
       if (type == "date") {
         this.weatherDataList.sort(function(a, b) {
           if (a.dateInfo > b.dateInfo) {
@@ -46,12 +46,16 @@ interface WeatherData{
           }
         });
       } else if (type == "temperature") {
-        this.weatherDataList.sort(function(a, b) {
-          if (a.dateInfo < b.dateInfo) {
-            return 1;
-          }
-          if (a.dateInfo > b.dateInfo) {
+          this.weatherDataList.sort(function(a, b) {
+          let compA : String;
+          let compB : String;
+          compA = a.temperature!=null?a.temperature.substr(0,1):"0";
+          compB = b.temperature!=null?b.temperature.substr(0,1):"0";
+          if (compA < compB) {          
             return -1;
+          }
+          if (compA > compB) {
+            return 1;
           }
         });
       }

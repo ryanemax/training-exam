@@ -13,3 +13,14 @@ button{
     float:right;
     margin-right: 0px;
 }
+
+tr{
+    font-weight: bold;
+}
+td,th{
+    border:1px solid rgba(173, 213, 229, 0.75);padding: 10px;
+    text-align: center;
+}
+th{
+    background-color: #2854a7;
+}
