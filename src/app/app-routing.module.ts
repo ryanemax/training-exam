@@ -12,10 +12,6 @@ const routes: Routes = [
     // data: { title: "主页" }
   },
   {
-    path: 'bigdata',
-    loadChildren: '../pages/bigdata/bigdata.module#BigdataModule',
-  },
-  {
     path: 'el-home',
     loadChildren: '../pages/el-bill-manage-system/el-bill-manage-system.module#ElBillManageSystemModule',
   },
